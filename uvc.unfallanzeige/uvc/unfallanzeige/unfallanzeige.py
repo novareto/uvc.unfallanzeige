@@ -99,9 +99,9 @@ class Add(group.GroupForm, PageAddForm):
         UAZLibrary.need()
 
 
-class WizardTemplate(PageTemplate):
-    view(Add)
-    template = grok.PageTemplateFile('templates/wizardform.pt')
+#class WizardTemplate(PageTemplate):
+#    view(Add)
+#    template = grok.PageTemplateFile('templates/wizardform.pt')
 
 
 @grok.subscribe(IMyHomeFolder, grok.IObjectAddedEvent)
