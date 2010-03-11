@@ -6,9 +6,12 @@ import grok
 
 from megrok import resource
 from hurry.jquery import jquery
+from uvcsite.resources import UVCResources
+
 
 class UAZLibrary(resource.ResourceLibrary):
     resource.name('uazlib')
     grok.path('static')
 
-    resource.resource('uaz.js', depends=[jquery,])
+    resource.resource('tabs.js', depends=[jquery])
+    resource.resource('uaz.js')

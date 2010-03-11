@@ -1,4 +1,4 @@
-<div class="input-form">
+<div class="input-form" id="wizard">
   <div class="form-header">
     <h1 tal:condition="view/label|nothing"
 	tal:content="view/label">
@@ -9,6 +9,17 @@
     </p>   
   </div>
   <div class="tooltip"></div>
+  
+  <ul class="tabs">
+    <li tal:repeat="group view/groups">
+      <a href=""
+	 tal:define="idx repeat/group/index"
+	 tal:content="group/label"
+	 tal:attributes="href string:#fieldset-$idx;
+			 rel idx" />
+    </li>
+  </ul>
+
   <form action="." method="post"
 	enctype="multipart/form-data" class="edit-form"
 	metal:define-macro="form"
@@ -19,85 +30,36 @@
 		      action view/action|nothing;
 		      name view/name;
 		      id view/id">
-    <fieldset>
-    <metal:block define-macro="subform">
-      <div class="viewspace" metal:define-slot="viewspace">
-	<metal:block define-slot="header">
-	  <div class="status"
-	       tal:condition="view/status"
-	       metal:define-macro="header">
-	    <div class="summary"
-		 i18n:translate=""
-		 tal:content="view/status">
-	      Form status summary
-	    </div>
-	    <ul class="errors"
-		tal:replace="nothing"
-		tal:condition="view/widgets/errors"
-		metal:define-macro="errors">
-          <li tal:repeat="error view/widgets/errors">
-	    <tal:block condition="error/widget">
-	      <span tal:replace="error/widget/label" />:
-	    </tal:block>
-	    <span tal:replace="structure error/render">Error Type</span>
-	  </li>
-	    </ul>
-	    
-	  </div>
-	</metal:block>
-	<div metal:define-slot="extra-info" tal:replace="nothing">
-	</div>
-	<div metal:define-slot="main">
-	  <metal:block define-macro="widget-rows">
+    <fieldset class="main">
+      <div class="viewspace" id="panes" metal:define-slot="viewspace">
+	<tal:groups tal:repeat="view view/groups">
+	  <div rel="" tal:attributes="rel repeat/view/index;
+				      id string:fieldset-${repeat/view/index}">
+	    <h3 tal:content="view/label">Label</h3>
+
 	    <tal:block repeat="widget view/widgets/values">
 	      <div id="" class="row"
 		   tal:attributes="id string:${widget/id}-row;
 				   class python: widget.error is not None and 'row row_error' or 'row'"
 		   tal:condition="python:widget.mode != 'hidden'">
-		<metal:block define-macro="widget-row">
-		  <label>
-		    <span tal:replace="widget/label"/>
-		    <span class="required" tal:condition="widget/required"
-			  >*</span>
-                </label>      
-		<div class="widget" tal:content="structure widget/render">
-		  <input type="text" size="24" value="" />
-		</div>
+		<label>
+		  <span tal:replace="widget/label"/>
+		  <span class="required" tal:condition="widget/required"
+			>*</span>
+		</label>      
+
 		<div class="error" tal:condition="widget/error">
 		  <span tal:replace="structure widget/error/render">error</span>
 		</div>
-		</metal:block>
+
+		<div class="widget" tal:content="structure widget/render" />
 	      </div> 
 	      <input type="hidden" value=""
 		     tal:condition="python:widget.mode == 'hidden'"
 		     tal:replace="structure widget/render" />
 	    </tal:block>
-	  </metal:block>
-	  <metal:block define-macro="groups"
-		       tal:condition="view/groups|nothing">
-	    <tal:groups tal:repeat="view view/groups">
-	    <fieldset rel="" tal:attributes="rel repeat/view/index">
-	      <legend tal:condition="view/label"
-		      tal:content="view/label">Label</legend>
-	      <metal:block define-slot="group-header">
-		<div class="status"
-		     tal:condition="view/widgets/errors">
-		  <div metal:use-macro="macro:form-errors" />
-		</div>
-	      </metal:block>
-	      <metal:block define-slot="group-rows">
-		<div metal:use-macro="macro:widget-rows" />
-	      </metal:block>
-	      
-	      <a href="#" class="validate"
-		 >Test the validation for this fieldset</a>
-
-	    </fieldset>
-	    </tal:groups>
-	  </metal:block>
 	</div>
-	<metal:block define-slot="above-buttons">
-	</metal:block>
+	</tal:groups>
       </div>
       <metal:block define-slot="buttons">
 	<div metal:define-macro="buttons">
@@ -109,9 +71,6 @@
 	  </div>
 	</div>
       </metal:block>
-      <metal:block define-slot="bottom">
-      </metal:block>
-    </metal:block>
     </fieldset>
   </form>
 </div>
