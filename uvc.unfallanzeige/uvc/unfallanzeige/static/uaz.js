@@ -20,4 +20,11 @@ $(document).ready(function(){
         $('#form-widgets-unfuplz-row').toggle();
         $('#form-widgets-unfuort-row').toggle();
     });
+
+
+    $("#wizard").tabs("div.panes > div");
+
+
+
+
 });

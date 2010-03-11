@@ -1,0 +1,122 @@
+<div class="input-form">
+  <div class="form-header">
+    <h1 tal:condition="view/label|nothing"
+	tal:content="view/label">
+      Form Label
+    </h1>
+    <p tal:condition="view/description|nothing">
+      <span tal:content="view/description" />
+    </p>   
+  </div>
+  <div class="tooltip"></div>
+  <form action="." method="post" enctype="multipart/form-data" class="edit-form"
+	metal:define-macro="form"
+	tal:attributes="method view/method;
+                      enctype view/enctype;
+		      acceptCharset view/acceptCharset;
+		      accept view/accept;
+		      action view/action|nothing;
+		      name view/name;
+		      id view/id">
+    <fieldset>
+    <metal:block define-macro="subform">
+      <div class="viewspace" metal:define-slot="viewspace">
+	<metal:block define-slot="header">
+	  <div class="status"
+	       tal:condition="view/status"
+	       metal:define-macro="header">
+	    <div class="summary"
+		 i18n:translate=""
+		 tal:content="view/status">
+	      Form status summary
+	    </div>
+	    
+	    <ul class="errors"
+		tal:replace="nothing"
+		tal:condition="view/widgets/errors"
+		metal:define-macro="errors">
+          <li tal:repeat="error view/widgets/errors">
+	    <tal:block condition="error/widget">
+	      <span tal:replace="error/widget/label" />:
+	    </tal:block>
+	    <span tal:replace="structure error/render">Error Type</span>
+	  </li>
+	    </ul>
+	    
+	  </div>
+	</metal:block>
+	<div metal:define-slot="extra-info" tal:replace="nothing">
+	</div>
+        <div tal:condition="view/groups|nothing"
+             tal:define="groups view/groups">
+            <ul class="tabs">
+               <li tal:repeat="group groups">
+                  <a href="#"> <span tal:replace="group/label"/> </a>
+               </li>
+            </ul>
+        </div>
+	<div metal:define-slot="main">
+	  <metal:block define-macro="widget-rows">
+	    <tal:block repeat="widget view/widgets/values">
+	      <div id="" class="row"
+		   tal:attributes="id string:${widget/id}-row;
+				   class python: widget.error is not None and 'row row_error' or 'row'"
+		   tal:condition="python:widget.mode != 'hidden'">
+		<metal:block define-macro="widget-row">
+		  <label>
+		    <span tal:replace="widget/label"/>
+		    <span class="required" tal:condition="widget/required"
+			  >*</span>
+		   <!-- <span class="small" tal:content="widget/title"/>-->
+                </label>      
+		<div class="widget" tal:content="structure widget/render">
+		  <input type="text" size="24" value="" />
+		</div>
+		<div class="error" tal:condition="widget/error">
+		  <span tal:replace="structure widget/error/render">error</span>
+		</div>
+		</metal:block>
+	      </div> 
+	      <input type="hidden" value=""
+		     tal:condition="python:widget.mode == 'hidden'"
+		     tal:replace="structure widget/render" />
+	    </tal:block>
+	  </metal:block>
+	  <metal:block define-macro="groups">
+	    <fieldset tal:condition="view/groups|nothing"
+		      tal:repeat="view view/groups">
+	      <legend tal:condition="view/label"
+		      tal:content="view/label">Label</legend>
+	      <metal:block define-slot="group-header">
+		<div class="status"
+		     tal:condition="view/widgets/errors">
+		  <div metal:use-macro="macro:form-errors" />
+		</div>
+	      </metal:block>
+	      <metal:block define-slot="group-rows">
+		<div metal:use-macro="macro:widget-rows" />
+	      </metal:block>
+	      <metal:subgroups tal:condition="view/groups|nothing"
+			       metal:use-macro="macro:form-groups" />
+	    </fieldset>
+	  </metal:block>
+	</div>
+	<metal:block define-slot="above-buttons">
+	</metal:block>
+      </div>
+      <metal:block define-slot="buttons">
+	<div metal:define-macro="buttons">
+	  <div class="buttons" tal:condition="view/action|nothing"
+	       metal:define-slot="bottom-buttons">
+	    <input tal:repeat="action view/actions/values"
+		   tal:replace="structure action/render"
+		   />
+	  </div>
+	</div>
+      </metal:block>
+      <metal:block define-slot="bottom">
+      </metal:block>
+    </metal:block>
+    </fieldset>
+  </form>
+</div>
