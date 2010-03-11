@@ -48,20 +48,26 @@ class InlineValidation(grok.MultiAdapter):
                     break
         return errors
 
-    def traverse(self, name, ignore):
+    def traverse(self, name, extra):
         if not self.check() or not name:
             return ValueError
         self.update()
+        if (self.request._traversal_stack):
+            self.extra = self.request._traversal_stack.pop()
         return getMultiAdapter((self, self.request), name=name)
 
 
 class Validators(grok.JSON):
     grok.context(InlineValidation)
 
-    def fieldset(self, fieldset):
+    def fieldset(self):
         """Valides a given fieldset
         """
-        pass
+        idx = int(self.context.extra)
+        fieldnames = list(self.context.form.groups[idx].fields.keys())
+        errors = self.context.validate(fieldnames, fieldset=idx)
+        return {'success': not errors, 'errors': errors}
+        
 
     def field(self, fieldname, fieldset=None):
         wprefix = self.context.form.widgets.prefix

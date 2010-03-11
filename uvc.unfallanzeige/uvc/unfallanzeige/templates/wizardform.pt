@@ -9,7 +9,8 @@
     </p>   
   </div>
   <div class="tooltip"></div>
-  <form action="." method="post" enctype="multipart/form-data" class="edit-form"
+  <form action="." method="post"
+	enctype="multipart/form-data" class="edit-form"
 	metal:define-macro="form"
 	tal:attributes="method view/method;
                       enctype view/enctype;
@@ -30,7 +31,6 @@
 		 tal:content="view/status">
 	      Form status summary
 	    </div>
-	    
 	    <ul class="errors"
 		tal:replace="nothing"
 		tal:condition="view/widgets/errors"
@@ -47,14 +47,6 @@
 	</metal:block>
 	<div metal:define-slot="extra-info" tal:replace="nothing">
 	</div>
-        <div tal:condition="view/groups|nothing"
-             tal:define="groups view/groups">
-            <ul class="tabs">
-               <li tal:repeat="group groups">
-                  <a href="#"> <span tal:replace="group/label"/> </a>
-               </li>
-            </ul>
-        </div>
 	<div metal:define-slot="main">
 	  <metal:block define-macro="widget-rows">
 	    <tal:block repeat="widget view/widgets/values">
@@ -67,7 +59,6 @@
 		    <span tal:replace="widget/label"/>
 		    <span class="required" tal:condition="widget/required"
 			  >*</span>
-		   <!-- <span class="small" tal:content="widget/title"/>-->
                 </label>      
 		<div class="widget" tal:content="structure widget/render">
 		  <input type="text" size="24" value="" />
@@ -82,9 +73,10 @@
 		     tal:replace="structure widget/render" />
 	    </tal:block>
 	  </metal:block>
-	  <metal:block define-macro="groups">
-	    <fieldset tal:condition="view/groups|nothing"
-		      tal:repeat="view view/groups">
+	  <metal:block define-macro="groups"
+		       tal:condition="view/groups|nothing">
+	    <tal:groups tal:repeat="view view/groups">
+	    <fieldset rel="" tal:attributes="rel repeat/view/index">
 	      <legend tal:condition="view/label"
 		      tal:content="view/label">Label</legend>
 	      <metal:block define-slot="group-header">
@@ -96,9 +88,12 @@
 	      <metal:block define-slot="group-rows">
 		<div metal:use-macro="macro:widget-rows" />
 	      </metal:block>
-	      <metal:subgroups tal:condition="view/groups|nothing"
-			       metal:use-macro="macro:form-groups" />
+	      
+	      <a href="#" class="validate"
+		 >Test the validation for this fieldset</a>
+
 	    </fieldset>
+	    </tal:groups>
 	  </metal:block>
 	</div>
 	<metal:block define-slot="above-buttons">

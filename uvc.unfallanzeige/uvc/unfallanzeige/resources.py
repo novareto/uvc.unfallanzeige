@@ -11,4 +11,4 @@ class UAZLibrary(resource.ResourceLibrary):
     resource.name('uazlib')
     grok.path('static')
 
-    resource.resource('uaz.js', depends=[jquery,], bottom=True)
+    resource.resource('uaz.js', depends=[jquery,])
