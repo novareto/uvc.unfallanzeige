@@ -1,6 +1,10 @@
 $(document).ready(function(){
   var form = $('form'); 
 
+  function on_success() {
+
+  }
+
   function on_failure(errors) {
       suffix = "-row";
       $.each(errors, function(key, value) {
@@ -40,6 +44,7 @@ $(document).ready(function(){
       submitButton: 'form-buttons-add',
       validateMethod: inline_validation,
       onFailure: on_failure,
+      onSuccess: on_success,
   });
 
 });

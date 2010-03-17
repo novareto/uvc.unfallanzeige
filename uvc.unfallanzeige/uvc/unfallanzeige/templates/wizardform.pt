@@ -20,7 +20,7 @@
     </li>
   </ul>
 
-  <form action="." method="post"
+  <form action="." method="post" id="wizard"
 	enctype="multipart/form-data" class="edit-form"
 	metal:define-macro="form"
 	tal:attributes="method view/method;
@@ -28,8 +28,7 @@
 		      acceptCharset view/acceptCharset;
 		      accept view/accept;
 		      action view/action|nothing;
-		      name view/name;
-		      id view/id">
+		      name view/name;">
 	<tal:groups tal:repeat="view view/groups">
 	  <fieldset rel="" class="step"
 		    tal:attributes="rel repeat/view/index;
