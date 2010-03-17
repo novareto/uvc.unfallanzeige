@@ -10,7 +10,7 @@ from megrok.pagetemplate import PageTemplate, view
 from megrok.z3cform.base import PageAddForm, Fields
 from uvc.layout.menus import SidebarMenu
 from uvc.unfallanzeige.interfaces import IUnfallanzeige, IUnfallanzeigeFolder
-from uvc.unfallanzeige.resources import UAZLibrary
+from uvc.unfallanzeige.resources import formwizard
 from uvcsite import ProductFolder, Content, schema, contenttype
 from uvcsite.interfaces import IMyHomeFolder, ISidebar
 from z3c.form import form, group
@@ -96,7 +96,7 @@ class Add(group.GroupForm, PageAddForm):
 
     def update(self):
         super(Add, self).update()
-        UAZLibrary.need()
+        formwizard.need()
 
 
 class WizardTemplate(PageTemplate):

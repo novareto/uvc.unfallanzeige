@@ -30,12 +30,11 @@
 		      action view/action|nothing;
 		      name view/name;
 		      id view/id">
-    <fieldset class="main">
-      <div class="viewspace" id="panes" metal:define-slot="viewspace">
 	<tal:groups tal:repeat="view view/groups">
-	  <div rel="" tal:attributes="rel repeat/view/index;
-				      id string:fieldset-${repeat/view/index}">
-	    <h3 tal:content="view/label">Label</h3>
+	  <fieldset rel="" class="step"
+		    tal:attributes="rel repeat/view/index;
+				    id string:fieldset-${repeat/view/index}">
+	    <legend tal:content="view/label">Label</legend>
 
 	    <tal:block repeat="widget view/widgets/values">
 	      <div id="" class="row"
@@ -58,9 +57,9 @@
 		     tal:condition="python:widget.mode == 'hidden'"
 		     tal:replace="structure widget/render" />
 	    </tal:block>
-	</div>
+	</fieldset>
 	</tal:groups>
-      </div>
+
       <metal:block define-slot="buttons">
 	<div metal:define-macro="buttons">
 	  <div class="buttons" tal:condition="view/action|nothing"
@@ -71,6 +70,5 @@
 	  </div>
 	</div>
       </metal:block>
-    </fieldset>
   </form>
 </div>

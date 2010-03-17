@@ -9,9 +9,14 @@ from hurry.jquery import jquery
 from uvcsite.resources import UVCResources
 
 
-class UAZLibrary(resource.ResourceLibrary):
+
+class UAZLibrary(resource.Library):
     resource.name('uazlib')
     grok.path('static')
 
-    resource.resource('tabs.js', depends=[jquery])
-    resource.resource('uaz.js')
+
+wizard = resource.ResourceInclusion(
+    UAZLibrary, 'formToWizard.js', depends=[jquery])
+
+formwizard = resource.ResourceInclusion(
+    UAZLibrary, 'uaz.js', depends=[wizard])

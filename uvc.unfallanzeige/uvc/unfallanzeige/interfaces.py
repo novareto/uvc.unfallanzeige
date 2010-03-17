@@ -3,7 +3,7 @@
 # cklinger@novareto.de
 
 
-from zope.schema import TextLine, Bool, Date, Choice, Text
+from zope.schema import TextLine, Bool, Date, Choice, Text, Int
 from zope.interface import Invalid, invariant
 
 from uvcsite import IProductFolder, IContent
@@ -26,7 +26,7 @@ class IUnfallanzeige(IContent):
         description = u"Street"
         )
 
-    unfunr = TextLine(
+    unfunr = Int(
         title = u"Number",
         description = u"Number"
         )

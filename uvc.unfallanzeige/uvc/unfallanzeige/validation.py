@@ -44,7 +44,8 @@ class InlineValidation(grok.MultiAdapter):
         for fieldname in fieldnames:
             for error in self.errors:
                 if error.widget == form.widgets[fieldname]:
-                    errors.add(fieldname, error.message, self.request)
+                    widgetid = form.widgets[fieldname].id
+                    errors.add(widgetid, error.message, self.request)
                     break
         return errors
 

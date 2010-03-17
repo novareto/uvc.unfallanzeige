@@ -1,60 +1,45 @@
 $(document).ready(function(){
-
   var form = $('form'); 
-  var wizard = $('#wizard')
 
-  $("ul.tabs", wizard).tabs("#panes > div",
-			    function(event, index) { 
-	if (index > 0) {
-	    dataString = form.serialize();
-            idx = index - 1;
-	    success = false;
-	    $.ajax({
-		type: "POST",
-		url: form.attr('action') + '/++validate++fieldset/' + idx,
-		data: dataString,
-		dataType: "json",
-		async: false,
-		success: function(data) {
-		    if (data.success == true) {
-			alert('success');
-			success = true;
-		    } 
-		    else {
-			alert('failure');
-			success = false;
-		    }
-		}
-	    });
-	    return success;
-	}
-    });
- 
-    $("#panes > div").not(':last').append(
-	'<button class="next">Next</button>');
+  function on_failure(errors) {
+      suffix = "-row";
+      $.each(errors, function(key, value) {
+	  row = $('#' + key + suffix);
+	  row.addClass('row_error');
+	  row.append("<div class='error'>" + value + "</div>");
+      });
+  }
 
-    $("#panes > div").not(':first').append(
-	'<button class="prev">Previous</button>');
+  function inline_validation(idx) {
+      $('.row_error').removeClass('row_error');
+      $('div.error').remove();
 
-    $("#panes > div:last").append(
-	'<button class="submit">Send</button>');
+      dataString = form.serialize();
+      success = false;
+      errors = null;
+      $.ajax({
+	  type: "POST",
+	  url: form.attr('action') + '/++validate++fieldset/' + idx,
+	  data: dataString,
+	  dataType: "json",
+	  async: false,
+	  success: function(data) {
+	      if (data.success == true) {
+		  success = true;
+	      } 
+	      else {
+		  success = false;
+		  errors = data.errors
+	      }
+	  }
+      });
+      return errors
+  }
 
-    form.find('input[type=submit]').remove();
-
-    var api = $("ul.tabs", wizard).tabs(0); 
-
-    // "next tab" button 
-    $("button.next").click(function() { 
-        api.next(); 
-    }); 
- 
-    // "previous tab" button 
-    $("button.prev").click(function() { 
-        api.prev(); 
-    });
-
-    $("button.submit").click(function() {
-        form.submit();
-    });
+  form.formToWizard({
+      submitButton: 'form-buttons-add',
+      validateMethod: inline_validation,
+      onFailure: on_failure,
+  });
 
 });
