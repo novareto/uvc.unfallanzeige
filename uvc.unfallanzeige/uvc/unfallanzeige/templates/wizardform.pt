@@ -9,16 +9,6 @@
     </p>   
   </div>
   <div class="tooltip"></div>
-  
-  <ul class="tabs">
-    <li tal:repeat="group view/groups">
-      <a href=""
-	 tal:define="idx repeat/group/index"
-	 tal:content="group/label"
-	 tal:attributes="href string:#fieldset-$idx;
-			 rel idx" />
-    </li>
-  </ul>
 
   <form action="." method="post" id="wizard"
 	enctype="multipart/form-data" class="edit-form"

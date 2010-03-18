@@ -19,6 +19,17 @@ from megrok.z3cform import wizard as z3cwizard
 from z3c.wizard import wizard, step
 from zope.schema.fieldproperty import FieldProperty
 
+from megrok import resource
+from hurry.jquery import jquery
+
+
+class z3cWizardLib(resource.Library):
+    resource.name('ajaxwizard')
+    grok.path('wizard')
+
+z3cWizard = resource.ResourceInclusion(
+    z3cWizardLib, 'z3c.js', depends=[jquery])
+
 
 class UAZMenuWizard(Entry):
     grok.context(Interface)
@@ -35,23 +46,15 @@ class UAZMenuWizard(Entry):
         return absoluteURL(homeFolder, self.request) + '/unfallanzeigen/startwizard'
 
 
+class INewUnfallanzeige(IUnfallanzeige):
+    pass
+
+
 class Unfallanzeige(Content):
     """ContentType fuer das Lastschriftverfahren"""
-    grok.implements(IUnfallanzeige)
+    schema(INewUnfallanzeige)
     grok.name('unfallanzeige')
 
-    unfustdor = FieldProperty(IUnfallanzeige['unfustdor'])
-    unfustrasse = FieldProperty(IUnfallanzeige['unfustrasse'])
-    unfunr = FieldProperty(IUnfallanzeige['unfunr'])
-    unfuplz = FieldProperty(IUnfallanzeige['unfuplz'])
-    unfuort = FieldProperty(IUnfallanzeige['unfuort'])
-    anspname = FieldProperty(IUnfallanzeige['anspname'])
-    anspfon = FieldProperty(IUnfallanzeige['anspfon'])
-    uadbru = FieldProperty(IUnfallanzeige['uadbru'])
-    uadst = FieldProperty(IUnfallanzeige['uadst'])
-    unfute = FieldProperty(IUnfallanzeige['unfute'])
-    unflar = FieldProperty(IUnfallanzeige['unflar'])
-    unvlaraddr = FieldProperty(IUnfallanzeige['unvlaraddr'])
 
 class StartWizard(grok.View):
     grok.implements(z3cwizard.IWizard)
@@ -86,6 +89,10 @@ class Basic(z3cwizard.PageStep):
        'unfustdor', 'unfustrasse', 'unfunr',
         'unfuplz', 'unfuort', 'anspname', 'anspfon')
 
+    def update(self):
+        z3cWizard.need()
+        z3cwizard.PageStep.update(self)
+
 
 class Job(z3cwizard.PageStep):
     grok.context(UazWizard)
@@ -94,3 +101,6 @@ class Job(z3cwizard.PageStep):
     fields = Fields(IUnfallanzeige).select(
         'uadbru', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
+    def update(self):
+        z3cWizard.need()
+        z3cwizard.PageStep.update(self)
