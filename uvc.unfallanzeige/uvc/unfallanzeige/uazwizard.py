@@ -1,5 +1,5 @@
 import grok
-
+from megrok.pagetemplate import PageTemplate, view
 from dolmen.menu import menu, menuentry, Entry
 from hurry.workflow.interfaces import IWorkflowInfo
 from megrok.z3cform.base import PageAddForm, Fields
@@ -10,7 +10,7 @@ from uvcsite.interfaces import IMyHomeFolder, ISidebar
 from z3c.form import form, group
 from z3c.form.browser.radio import RadioFieldWidget
 from zope.app.homefolder.interfaces import IHomeFolder
-
+from uvc.layout.layout import IUVCLayer
 
 from zope.app.security.interfaces import IUnauthenticatedPrincipal
 from zope.interface import Interface
@@ -21,6 +21,7 @@ from zope.schema.fieldproperty import FieldProperty
 
 from megrok import resource
 from hurry.jquery import jquery
+from z3c.wizard.interfaces import IStep
 
 
 class z3cWizardLib(resource.Library):
@@ -84,6 +85,7 @@ class UazWizard(z3cwizard.WizardForm):
 class Basic(z3cwizard.PageStep):
     grok.context(UazWizard)
     label = u'Basic Information'
+    form_name = u'Basic Information'
 
     fields = Fields(IUnfallanzeige).select(
        'unfustdor', 'unfustrasse', 'unfunr',
@@ -97,6 +99,7 @@ class Basic(z3cwizard.PageStep):
 class Job(z3cwizard.PageStep):
     grok.context(UazWizard)
     label = u'Basic Information'
+    form_name = u'Basic Information'
 
     fields = Fields(IUnfallanzeige).select(
         'uadbru', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
@@ -104,3 +107,10 @@ class Job(z3cwizard.PageStep):
     def update(self):
         z3cWizard.need()
         z3cwizard.PageStep.update(self)
+
+    def render(self):
+        return WizardTemplate(self, self.request)
+
+
+
+    

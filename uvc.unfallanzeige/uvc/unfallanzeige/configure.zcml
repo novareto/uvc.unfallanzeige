@@ -2,6 +2,9 @@
            xmlns:grok="http://namespaces.zope.org/grok">
   <include package="grok" />
   <include package="megrok.z3cform.wizard"/>
+
+  <includeOverrides file="overrides.zcml" />
+
   <grok:grok package="." />
 </configure>
 

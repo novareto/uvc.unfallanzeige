@@ -1,0 +1,82 @@
+<div class="wizard">
+  <h1 tal:content="view/wizard/label">label</h1>
+
+  <div class="wizardMenu" metal:define-macro="wizard-menu">
+    <span tal:repeat="item view/wizard/stepMenu"
+	  tal:attributes="class item/class">
+      <span
+	  tal:condition="item/selected"
+	  tal:content="item/title" />
+      <a href=""
+	 tal:condition="not:item/selected"
+	 tal:attributes="href item/url"
+	 tal:content="item/title" />
+    </span>
+  </div>
+
+  <form action="." method="post"
+	enctype="multipart/form-data" class="edit-form input-form"
+        tal:attributes="method view/method;
+                        enctype view/enctype;
+                        acceptCharset view/acceptCharset;
+                        accept view/accept;
+                        action view/action;
+                        name view/name;
+                        id view/id">
+
+      <div class="viewspace">
+	<fieldset>
+	  <legend class="label"
+	       tal:condition="view/label|nothing"
+	       tal:content="view/label">
+	    Form Label
+	  </legend>
+	
+          <div class="required-info"
+               metal:define-macro="wizard-required-info"
+               tal:condition="view/showRequired">
+            <tal:info content="structure view/requiredInfo" />
+          </div>
+
+          <div class="status" tal:condition="view/status">
+            <div class="summary"
+                 i18n:translate=""
+                 tal:content="view/status">
+              Form status summary
+            </div>
+            <ul class="errors"
+                tal:condition="view/widgets/errors">
+              <li tal:repeat="error view/widgets/errors">
+                <tal:block condition="error/widget">
+                  <span tal:replace="error/widget/label" />:
+                </tal:block>
+                <span tal:replace="structure error/render">Error Type</span>
+              </li>
+            </ul>
+          </div>
+
+        <div class="step">
+           <div metal:use-macro="macro:widget-rows" />
+        </div>
+
+	<div class="buttons">
+	  <span class="back">
+	    <input tal:repeat="action view/wizard/actions/backActions"
+		   tal:replace="structure action/render"
+		   />
+	  </span>
+	  <span class="step">
+	    <input tal:repeat="action view/actions/values"
+		   tal:replace="structure action/render"
+		   />
+	  </span>
+	  <span class="forward">
+	    <input tal:repeat="action view/wizard/actions/forwardActions"
+		   tal:replace="structure action/render"
+		   />
+	  </span>
+	</div>
+      </fieldset>
+      </div>
+  </form>
+</div>
