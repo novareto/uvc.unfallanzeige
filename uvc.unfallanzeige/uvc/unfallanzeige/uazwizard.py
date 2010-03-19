@@ -19,18 +19,19 @@ from megrok.z3cform import wizard as z3cwizard
 from z3c.wizard import wizard, step
 from zope.schema.fieldproperty import FieldProperty
 
-from megrok import resource
-from hurry.jquery import jquery
+#from megrok import resource
+#from hurry.jquery import jquery
+#
+#
+#class z3cWizardLib(resource.Library):
+#    resource.name('ajaxwizard')
+#    grok.path('wizard')
+#
+#z3cWizard = resource.ResourceInclusion(
+#    z3cWizardLib, 'z3c.js', depends=[jquery])
 from z3c.wizard.interfaces import IStep
 
-
-class z3cWizardLib(resource.Library):
-    resource.name('ajaxwizard')
-    grok.path('wizard')
-
-z3cWizard = resource.ResourceInclusion(
-    z3cWizardLib, 'z3c.js', depends=[jquery])
-
+from megrok.z3cform.wizard import z3cWizard
 
 class UAZMenuWizard(Entry):
     grok.context(Interface)
@@ -108,9 +109,4 @@ class Job(z3cwizard.PageStep):
         z3cWizard.need()
         z3cwizard.PageStep.update(self)
 
-    def render(self):
-        return WizardTemplate(self, self.request)
 
-
-
-    
