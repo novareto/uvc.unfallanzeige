@@ -15,8 +15,5 @@ class UAZLibrary(resource.Library):
     grok.path('static')
 
 
-wizard = resource.ResourceInclusion(
-    UAZLibrary, 'formToWizard.js', depends=[jquery])
-
-formwizard = resource.ResourceInclusion(
-    UAZLibrary, 'uaz.js', depends=[wizard])
+uazjs = resource.ResourceInclusion(
+    UAZLibrary, 'uaz.js', depends=[jquery])

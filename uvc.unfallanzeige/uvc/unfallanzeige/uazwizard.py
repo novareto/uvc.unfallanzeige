@@ -19,19 +19,25 @@ from megrok.z3cform import wizard as z3cwizard
 from z3c.wizard import wizard, step
 from zope.schema.fieldproperty import FieldProperty
 
-#from megrok import resource
-#from hurry.jquery import jquery
-#
-#
-#class z3cWizardLib(resource.Library):
-#    resource.name('ajaxwizard')
-#    grok.path('wizard')
-#
-#z3cWizard = resource.ResourceInclusion(
-#    z3cWizardLib, 'z3c.js', depends=[jquery])
 from z3c.wizard.interfaces import IStep
-
 from megrok.z3cform.wizard import z3cWizard
+
+
+### Content
+
+class Unfallanzeige(Content):
+    """ContentType fuer das Lastschriftverfahren"""
+    schema(IUnfallanzeige)
+    grok.name('unfallanzeige')
+
+
+class UnfallanzeigenContainer(ProductFolder):
+    """Container fuer die Speicherung der Lastschriftdokumente"""
+    grok.implements(IUnfallanzeigeFolder)
+    contenttype(Unfallanzeige)
+
+
+### MenuStuff
 
 class UAZMenuWizard(Entry):
     grok.context(Interface)
@@ -48,16 +54,6 @@ class UAZMenuWizard(Entry):
         return absoluteURL(homeFolder, self.request) + '/unfallanzeigen/startwizard'
 
 
-class INewUnfallanzeige(IUnfallanzeige):
-    pass
-
-
-class Unfallanzeige(Content):
-    """ContentType fuer das Lastschriftverfahren"""
-    schema(INewUnfallanzeige)
-    grok.name('unfallanzeige')
-
-
 class StartWizard(grok.View):
     grok.implements(z3cwizard.IWizard)
     grok.context(IUnfallanzeigeFolder)
@@ -69,6 +65,8 @@ class StartWizard(grok.View):
     def render(self):
         self.redirect(self.url(self.uaz, 'uazwizard'))
 
+
+### Wizard
 
 class UazWizard(z3cwizard.WizardForm):
     """ Wizard form."""
@@ -110,3 +108,9 @@ class Job(z3cwizard.PageStep):
         z3cwizard.PageStep.update(self)
 
 
+@grok.subscribe(IMyHomeFolder, grok.IObjectAddedEvent)
+def addContainer(homefolder, event):
+    """LastschriftContainer wird per Event im Homeordner angelegt.
+       Der Event wird mit der ersten Anmeldung im Portal aufgerufen.
+    """
+    homefolder['unfallanzeigen'] = UnfallanzeigenContainer() 
