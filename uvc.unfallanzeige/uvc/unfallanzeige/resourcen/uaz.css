@@ -72,7 +72,16 @@ div#form-widgets-unfuort-row div.widget {
   width: 400px;
 }
 
+#form-widgets-anspfon-row  input {
+  margin-left: 50px;
+}
+
+#form-widgets-anspname-row input {
+  position: absolute;
+  margin-left: 90px;
+}
+
 #form-widgets-anspfon-row label {
   position: absolute;
-  margin-left: 150px;
+  margin-left: -260px;
 }
