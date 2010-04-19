@@ -1,0 +1,54 @@
+/*
+UAZ StyleSheets
+*/
+
+#form-widgets-unfustrasse-row,
+#form-widgets-unfunr-row,
+#form-widgets-unfuplz-row,
+#form-widgets-unfuort-row,
+#form-widgets-unfuname-row {
+  display: none;
+}
+
+
+div#form-widgets-unfuname-row div.widget, 
+div#form-widgets-unfustrasse-row div.widget, 
+div#form-widgets-unfunr-row div.widget, 
+div#form-widgets-unfuplz-row div.widget, 
+div#form-widgets-unfuort-row div.widget {
+  margin-left: 6em;
+}
+
+
+/* Nicer Form */
+
+.input-form .step .row  {
+  clear:both;
+  margin:0.5em;
+  padding-top:0.6em;
+}
+
+.input-form .step .row label {
+  font-size:1em;
+  font-weight:bold;
+  text-align:right;
+  white-space:nowrap;
+  width: 12em;
+}
+
+.input-form .step .widget {
+  float:left;
+  margin-left:2em;
+  width:auto;
+}
+
+/* Progress */
+
+#page-body .wizardMenu span {
+  color:#B0B1B3;
+  padding:10px;
+}
+
+#page-body .wizardMenu .selecte {
+  color:#000000;
+}

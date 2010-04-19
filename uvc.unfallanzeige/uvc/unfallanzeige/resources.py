@@ -12,7 +12,7 @@ from uvcsite.resources import UVCResources
 
 class UAZLibrary(resource.Library):
     resource.name('uazlib')
-    grok.path('static')
+    grok.path('resourcen')
 
 
 uazjs = resource.ResourceInclusion(
