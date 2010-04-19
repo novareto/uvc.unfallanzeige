@@ -23,23 +23,23 @@ div#form-widgets-unfuort-row div.widget {
 /* Nicer Form */
 
 .input-form .step .row  {
-  clear:both;
-  margin:0.5em;
-  padding-top:0.6em;
+  clear: both;
+  margin: 0.5em;
+  padding-top: 0.6em;
 }
 
 .input-form .step .row label {
-  font-size:1em;
-  font-weight:bold;
-  text-align:right;
-  white-space:nowrap;
-  width: 12em;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+  width: 200px;
 }
 
 .input-form .step .widget {
-  float:left;
-  margin-left:2em;
-  width:auto;
+  float: left;
+  margin-left: 2em;
+  width: 200px;
 }
 
 /* Progress */
@@ -51,4 +51,23 @@ div#form-widgets-unfuort-row div.widget {
 
 #page-body .wizardMenu .selecte {
   color:#000000;
+}
+
+#form-widgets-anspfon-row label,
+#form-widgets-anspname-row label {
+  width: 120px;
+}
+
+#form-widgets-anspfon-row .widget,
+#form-widgets-anspfon-row input,
+#form-widgets-anspname-row input,
+#form-widgets-anspname-row .widget {
+  width: 150px;
+}
+
+#form-widgets-anspfon-row {
+  position: absolute;
+  margin-top: -1em;
+  margin-left: 350px;
+  width: 400px;
 }
