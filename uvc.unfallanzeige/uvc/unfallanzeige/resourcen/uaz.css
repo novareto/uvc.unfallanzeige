@@ -63,6 +63,22 @@ div#form-widgets-unfuort-row div.widget {
 #form-widgets-anspname-row input,
 #form-widgets-anspname-row .widget {
   width: 150px;
+  margin-bottom: 3em;
+}
+
+#form-widgets-anspfon-row .error,
+#form-widgets-anspname-row .error {
+  position: absolute;
+  width: 150px;
+  margin-top: 1em;
+}
+
+#form-widgets-anspname-row .error {
+  margin-left: 100px;
+}
+
+#form-widgets-anspfon-row .error {
+  margin-left: 20px;
 }
 
 #form-widgets-anspfon-row {
