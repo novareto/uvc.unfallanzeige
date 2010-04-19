@@ -3,10 +3,9 @@
 # cklinger@novareto.de
 
 
-from zope.schema import TextLine, Bool, Date, Choice, Text, Int
-from zope.interface import Invalid, invariant
-
 from uvcsite import IProductFolder, IContent
+from zope.interface import Invalid, invariant
+from zope.schema import TextLine, Bool, Date, Choice, Text, Int
 
 
 class IUnfallanzeigeFolder(IProductFolder):
@@ -16,63 +15,74 @@ class IUnfallanzeigeFolder(IProductFolder):
 class IUnfallanzeige(IContent):
 
     unfustdor = Choice(
-        title = u"Company of the Employee",
-        description = u"Who does the Employee work",
-        values = ('here', 'not here'),
+        title = u"Arbeitsstelle",
+        description = u"Die Versicherte Person ist regelmäßig tätig",
+        values = (u'In dem vorher genannten Unternehmen', 'In einer Zweigniederlassung'),
+        )
+
+    unfuname = TextLine(
+        title = u"Name",
+        description = u"Name der Zweigstelle",
+        required = False,
         )
 
     unfustrasse = TextLine(
-        title = u"Street",
-        description = u"Street"
+        title = u"Strasse",
+        description = u"Strasse",
+        required = False,
         )
 
     unfunr = Int(
-        title = u"Number",
-        description = u"Number"
+        title = u"Nr.",
+        description = u"Hausnummer",
+        required = False,
         )
 
     unfuplz = TextLine(
-        title = u"ZipCode",
-        description = u"Zipcode"
+        title = u"Postleitzahl",
+        description = u"Postleitzahl",
+        required = False,
         )
 
     unfuort = TextLine(
-        title = u"Place",
-        description = u"Place"
+        title = u"Ort",
+        description = u"Ort",
+        required = False,
         )
 
     anspname = TextLine(
-        title = u"Name",
-        description = u"Name of a responsible Person",
+        title = u"Ansprechpartner",
+        description = u"Ansprechpartner",
         )
 
     anspfon = TextLine(
-        title = u"Phone",
-        description = u"Phone of a responsible Person",
+        title = u"Telefon",
+        description = u"Telefon",
         )
 
 
 # Page Two
 
-    uadbru = TextLine(
-        title = u"Kind of work",
-        description = u"What kind of work does the employee",
+    uadbru = Choice(
+        title = u"Position",
+        description = u"Die versicherte Person ist zum Unfallzeitpunkt beschäftigt als",
+        values = ('Drucker', 'Bildhauer'),
         )
 
     uadst = TextLine(
-        title = u"since",
-        description = u"Since when does he work on this job mm.YYYY",
+        title = u"Im Unternehmen seit:",
+        description = u"und in dieser Tätigkeit seit: Datum (mm.jjjj)",
         )
 
     unfute = TextLine(
-        title = u"function",
-        description = u"which function has the employee in the company",
+        title = u"Tätig als",
+        description = u"In welchem Teil des Unternehmens ist der Versicherte ständig tätig?",
         )
 
     unflar = Choice(
-        title = u"parttimeworker",
-        description = u"Is the employee a part time worker",
-        values = ('yes', 'no'),
+        title = u"Leiharbeitsfirma",
+        description = u"Ist die versicherte Person Leiharbeitnehmer?",
+        values = ('ja', 'nein'),
         )
 
     unvlaraddr = Text(

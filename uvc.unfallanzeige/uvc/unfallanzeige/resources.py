@@ -17,3 +17,6 @@ class UAZLibrary(resource.Library):
 
 uazjs = resource.ResourceInclusion(
     UAZLibrary, 'uaz.js', depends=[jquery])
+
+uazcss = resource.ResourceInclusion(
+    UAZLibrary, 'uaz.css')

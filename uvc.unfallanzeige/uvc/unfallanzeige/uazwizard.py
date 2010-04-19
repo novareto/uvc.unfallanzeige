@@ -22,6 +22,7 @@ from zope.schema.fieldproperty import FieldProperty
 from z3c.wizard.interfaces import IStep
 from megrok.z3cform.wizard import z3cWizard
 
+from resources import uazjs, uazcss
 
 ### Content
 
@@ -86,12 +87,19 @@ class Basic(z3cwizard.PageStep):
     label = u'Basic Information'
     form_name = u'Basic Information'
 
+    showCompleteButton = False
+
     fields = Fields(IUnfallanzeige).select(
-       'unfustdor', 'unfustrasse', 'unfunr',
+       'unfustdor', 'unfuname', 'unfustrasse', 'unfunr',
         'unfuplz', 'unfuort', 'anspname', 'anspfon')
 
+    fields['unfustdor'].widgetFactory = RadioFieldWidget
+
+
     def update(self):
-        z3cWizard.need()
+        #z3cWizard.need()
+        uazcss.need()
+        uazjs.need()
         z3cwizard.PageStep.update(self)
 
 
@@ -100,11 +108,16 @@ class Job(z3cwizard.PageStep):
     label = u'Basic Information'
     form_name = u'Basic Information'
 
+    handleApplyOnBack = True
+
     fields = Fields(IUnfallanzeige).select(
         'uadbru', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
+    fields['unflar'].widgetFactory = RadioFieldWidget
+
     def update(self):
-        z3cWizard.need()
+        uazjs.need()
+        uazcss.need()
         z3cwizard.PageStep.update(self)
 
 

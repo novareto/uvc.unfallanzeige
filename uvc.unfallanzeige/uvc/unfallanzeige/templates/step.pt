@@ -4,6 +4,7 @@
   <div class="wizardMenu" metal:define-macro="wizard-menu">
     <span tal:repeat="item view/wizard/stepMenu"
 	  tal:attributes="class item/class">
+    <!--
       <span
 	  tal:condition="item/selected"
 	  tal:content="item/title" />
@@ -11,6 +12,9 @@
 	 tal:condition="not:item/selected"
 	 tal:attributes="href item/url"
 	 tal:content="item/title" />
+     -->
+
+      <span tal:replace="item/title" />
     </span>
   </div>
 
