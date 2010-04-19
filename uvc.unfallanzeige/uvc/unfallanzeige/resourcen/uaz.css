@@ -71,3 +71,8 @@ div#form-widgets-unfuort-row div.widget {
   margin-left: 350px;
   width: 400px;
 }
+
+#form-widgets-anspfon-row label {
+  position: absolute;
+  margin-left: 150px;
+}
