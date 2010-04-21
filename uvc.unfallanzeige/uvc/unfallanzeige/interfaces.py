@@ -6,6 +6,7 @@
 from uvcsite import IProductFolder, IContent
 from zope.interface import Invalid, invariant
 from zope.schema import TextLine, Bool, Date, Choice, Text, Int
+from fields import OptionalChoice
 
 
 class IUnfallanzeigeFolder(IProductFolder):
@@ -63,9 +64,11 @@ class IUnfallanzeige(IContent):
 
 # Page Two
 
-    uadbru = Choice(
+    uadbru = OptionalChoice(
         title = u"Position",
-        description = u"Die versicherte Person ist zum Unfallzeitpunkt beschäftigt als",
+        alternative=True,
+        description = (u"Die versicherte Person ist zum "
+                       u"Unfallzeitpunkt beschäftigt als"),
         values = ('Drucker', 'Bildhauer'),
         )
 
