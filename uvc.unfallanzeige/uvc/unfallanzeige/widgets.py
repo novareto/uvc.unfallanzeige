@@ -36,6 +36,27 @@ class NonExclusiveSelect(select.SelectWidget):
     klass = u'alternative-choice-widget'
     implements(INonExclusiveSelect)
 
+    def extract(self, default=interfaces.NO_VALUE):
+        """See z3c.form.interfaces.IWidget."""
+        #print "EXTRACT", self.name
+        #import pdb; pdb.set_trace()
+        if (self.name not in self.request and
+            self.name+'-empty-marker' in self.request):
+            return []
+        value = self.request.get(self.name, default)
+        if value != default:
+            if not isinstance(value, (tuple, list)):
+                value = (value,)
+            # do some kind of validation, at least only use existing values
+            for token in value:
+                if token == self.noValueToken:
+                    continue
+                try:
+                    self.terms.getTermByToken(token)
+                except LookupError:
+                    return value
+        return value
+
     def update(self):
         """See z3c.form.interfaces.IWidget."""
         optchoice.need()

@@ -20,14 +20,14 @@ class OptionalChoice(Choice):
 
     def _validate(self, value):
 
-        import pdb
-        pdb.set_trace()
+        #import pdb
+        #pdb.set_trace()
         
         # Pass all validations during initialization
         if self._init_field:
             return
         
-        super(OptionalChoice, self)._validate(value)
+        #super(OptionalChoice, self)._validate(value)
         if not self.alternative:
             vocabulary = self.vocabulary
             if vocabulary is None:
