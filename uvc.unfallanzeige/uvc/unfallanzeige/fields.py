@@ -19,9 +19,14 @@ class OptionalChoice(Choice):
             directlyProvides(self, IAlternativeChoice)
 
     def _validate(self, value):
+
+        import pdb
+        pdb.set_trace()
+        
         # Pass all validations during initialization
         if self._init_field:
             return
+        
         super(OptionalChoice, self)._validate(value)
         if not self.alternative:
             vocabulary = self.vocabulary

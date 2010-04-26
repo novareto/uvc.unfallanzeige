@@ -2,16 +2,9 @@
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      tal:omit-tag="">  
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('select.alternative-choice').append
-  });
-</script>
-
-<select id="" name="" class="alternative-choice"
-	tabindex="" disabled="" multiple="" size=""
+<select class="alternative-choice"
         tal:attributes="id view/id;
-                        name string:${view/name}:list;
+                        name string:${view/name};
                         title view/title;
                         lang view/lang;
                         multiple view/multiple;
@@ -30,7 +23,7 @@
 ></tal:block>
 </select>
 
-<input type="text" name="ignored-anyway"
+<input type="text" name="ignored-anyway" class="alternative-input"
        tal:attributes="name string:${view/name}-alternative" />
 
 <input name="field-empty-marker" type="hidden" value="1"

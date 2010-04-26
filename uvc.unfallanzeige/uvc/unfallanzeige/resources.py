@@ -14,9 +14,11 @@ class UAZLibrary(resource.Library):
     resource.name('uazlib')
     grok.path('resourcen')
 
-
 uazjs = resource.ResourceInclusion(
     UAZLibrary, 'uaz.js', depends=[jquery])
 
 uazcss = resource.ResourceInclusion(
     UAZLibrary, 'uaz.css')
+
+optchoice = resource.ResourceInclusion(
+    UAZLibrary, 'choice.js', depends=[jquery])

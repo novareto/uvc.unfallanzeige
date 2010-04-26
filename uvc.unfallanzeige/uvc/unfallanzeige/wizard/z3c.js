@@ -11,7 +11,12 @@ $(document).ready(function() {
 
   $('form input[type=submit]').live("click", function(e) {
       clicked = "&" + $(this).attr('name') + "=" + $(this).attr('value');
-      
+
+      // We set explicitly the optionnal select inputs.      
+      set_opt_select();
+      alert('options set');
+
+
       dataString = $('form').serialize() + clicked;
       success = false;
       errors = null;

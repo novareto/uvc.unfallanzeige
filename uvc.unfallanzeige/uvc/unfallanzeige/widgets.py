@@ -2,6 +2,8 @@
 
 import grok
 import megrok.z3cform.base as z3cform
+import zope.schema
+import zope.component
 
 from zope.interface import Interface, implements
 from zope.component import getMultiAdapter
@@ -11,8 +13,10 @@ import zope.interface
 import zope.schema
 import zope.schema.interfaces
 from zope.i18n import translate
+from uvc.unfallanzeige.resources import optchoice
 
 from z3c.form import interfaces
+from z3c.form.converter import SequenceDataConverter
 from z3c.form.i18n import MessageFactory as _
 from z3c.form.browser import widget
 from z3c.form.browser import select
@@ -33,7 +37,8 @@ class NonExclusiveSelect(select.SelectWidget):
     implements(INonExclusiveSelect)
 
     def update(self):
-        """See z3c.form.interfaces.IWidget."""        
+        """See z3c.form.interfaces.IWidget."""
+        optchoice.need()
         super(select.SelectWidget, self).update()
         anothervalue = True
         
@@ -86,3 +91,23 @@ class AltChoiceWidgetInput(z3cform.WidgetTemplate):
 def FileFieldWidget(field, request):
     """IFieldWidget factory for FileWidget."""
     return z3cform.FieldWidget(field, NonExclusiveSelect(request))
+
+
+class SequenceDataConverter(grok.MultiAdapter, SequenceDataConverter):
+    """Basic data converter for ISequenceWidget."""
+    grok.adapts(IAlternativeChoice, INonExclusiveSelect)
+
+    def toWidgetValue(self, value):
+        """Convert from Python bool to HTML representation."""
+        widget = self.widget
+        # if the value is the missing value, then an empty list is produced.
+        if value is self.field.missing_value:
+            return []
+        return [value]
+
+    def toFieldValue(self, value):
+        """See interfaces.IDataConverter"""
+        widget = self.widget
+        if not len(value) or value[0] == widget.noValueToken:
+            return self.field.missing_value
+        return value[0]
