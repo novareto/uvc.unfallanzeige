@@ -7,6 +7,7 @@
                         name string:${view/name};
                         title view/title;
                         lang view/lang;
+                        disabled view/disabled;
                         multiple view/multiple;
                         size view/size">
 <tal:block repeat="item view/items"

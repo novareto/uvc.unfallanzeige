@@ -124,7 +124,7 @@ class SequenceDataConverter(grok.MultiAdapter, SequenceDataConverter):
         # if the value is the missing value, then an empty list is produced.
         if value is self.field.missing_value:
             return []
-        return [value]
+        return value
 
     def toFieldValue(self, value):
         """See interfaces.IDataConverter"""

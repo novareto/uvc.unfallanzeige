@@ -24,7 +24,8 @@ setup(name='uvc.unfallanzeige',
       install_requires=[
           'setuptools',
           'z3c.wizard',
-          'megrok.z3cform.wizard'
+          'megrok.z3cform.wizard',
+          'z3c.schema',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

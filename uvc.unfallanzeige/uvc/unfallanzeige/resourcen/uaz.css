@@ -32,7 +32,6 @@ div#form-widgets-unfuort-row div.widget {
   font-size: 1em;
   font-weight: bold;
   text-align: right;
-  white-space: nowrap;
   width: 200px;
 }
 
@@ -40,6 +39,12 @@ div#form-widgets-unfuort-row div.widget {
   float: left;
   margin-left: 2em;
   width: 200px;
+}
+
+.input-form .step .row label span.small {
+  text-align: right;
+  width: 200px;
+  margin: 0 0 0 0px;
 }
 
 /* Progress */

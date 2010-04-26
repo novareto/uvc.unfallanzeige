@@ -64,7 +64,7 @@ class IUnfallanzeige(IContent):
 
 # Page Two
 
-    uadbru = OptionalChoice(
+    uadbru1 = OptionalChoice(
         title = u"Position",
         alternative=True,
         description = (u"Die versicherte Person ist zum "
@@ -94,3 +94,83 @@ class IUnfallanzeige(IContent):
         )
 
 
+    prsname = TextLine(
+        title = u"Name",
+        description = u"Name des Versicherten",
+        )
+
+    prsvor = TextLine(
+        title = u"Vorname",
+        description = u"Vorname des Versicherten",
+        )
+
+    ikstrnr = TextLine(
+        title = u"Anschrift des Versicherten",
+        description = u"Strasse, Hausnummer",
+        )
+
+    lkz = Choice(
+        title = u"Länderkennzeichen",
+        description = u"Länderkennzeichen",
+        values = (u'Deutschland', u'Polen'),
+        )
+
+    ikzplz = TextLine(
+        title = u"Postleitzahl",
+        description = u"Postleitzahl",
+        )
+    ikzort = TextLine(
+        title = u"Ort",
+        description = u"Ort",
+        )
+
+    prsgeb = TextLine(
+        title = u"Geburtsdatum des Versicherten",
+        description = u"Geburtsdatum (tt.mm.jjjj)",
+        )
+
+    prssta = TextLine(
+        title = u"Staatsangehörigkeit",
+        description = u"Staatsangehörigkeit",
+        )
+
+    unfbu = Choice(
+        title = u"Angaben zum Arbeitsverhältnis",
+        description = u"Angaben zum Arbeitsverhältnis",
+        values = (u'Arbeitnehmer', u'Ehegatte des Unternehmers', u'...')
+        )
+
+    vehearbeitsv = Choice(
+        title = u"Ehegattenarbeitsvertrag",
+        description = u"Ehegattenarbeitsvertrag",
+        values = (u'Ja', u'Nein'),
+        )
+
+    vehebis = TextLine(
+        title = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
+        description = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
+        )
+
+    veheentgeltbis = TextLine(
+        title = u"Entgelt gezahlt bis",
+        description = u"Entgelt bezahlt bis",
+        )
+
+    unfefz = TextLine(
+        title = u"Entgeltfortzahlung bis",
+        description = u"Entgeltfortzahlung bis",
+        )
+
+    unfkka = TextLine(
+        title = u"Anschrift der Krankenkasse",
+        description = u"Anschrift der Krankenkasse",
+        )
+
+     
+     
+
+     
+
+     
+
+ 

@@ -79,13 +79,15 @@ class UazWizard(z3cwizard.WizardForm):
         return [
             step.addStep(self, 'basic', weight=1),
             step.addStep(self, 'job', weight=2),
+            step.addStep(self, 'person', weight=3),
             ]
 
 
+### Steps
+
 class Basic(z3cwizard.PageStep):
     grok.context(UazWizard)
-    label = u'Basic Information'
-    form_name = u'Basic Information'
+    label = forn_name = u'Basis Informationen'
 
     showCompleteButton = False
 
@@ -97,7 +99,6 @@ class Basic(z3cwizard.PageStep):
 
 
     def update(self):
-        #z3cWizard.need()
         uazcss.need()
         uazjs.need()
         z3cwizard.PageStep.update(self)
@@ -105,13 +106,12 @@ class Basic(z3cwizard.PageStep):
 
 class Job(z3cwizard.PageStep):
     grok.context(UazWizard)
-    label = u'Basic Information'
-    form_name = u'Basic Information'
+    label = form_name = u'Angaben zur versicherten Person'
 
     handleApplyOnBack = True
 
     fields = Fields(IUnfallanzeige).select(
-        'uadbru', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
+        'uadbru1', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
     fields['unflar'].widgetFactory = RadioFieldWidget
 
@@ -119,6 +119,27 @@ class Job(z3cwizard.PageStep):
         uazjs.need()
         uazcss.need()
         z3cwizard.PageStep.update(self)
+
+
+class Person(z3cwizard.PageStep):
+    grok.context(UazWizard)
+    label = form_name = u'weitere Angaben zur versicherten Person'
+
+    handleApplyOnBack = True
+
+    fields = Fields(IUnfallanzeige).select(
+        'prsname', 'prsvor', 'ikstrnr', 'lkz', 'ikzplz', 
+        'ikzort', 'prsgeb', 'prssta', 'unfbu', 'vehearbeitsv', 
+        'vehebis', 'veheentgeltbis', 'unfefz', 'unfkka')
+
+    fields['unfbu'].widgetFactory = RadioFieldWidget
+    fields['vehearbeitsv'].widgetFactory = RadioFieldWidget
+
+    def update(self):
+        uazjs.need()
+        uazcss.need()
+        z3cwizard.PageStep.update(self)
+
 
 
 @grok.subscribe(IMyHomeFolder, grok.IObjectAddedEvent)
