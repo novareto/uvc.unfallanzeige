@@ -40,6 +40,8 @@ class UnfallanzeigenContainer(ProductFolder):
 
 ### MenuStuff
 
+from uvc.layout.menus import category
+
 class UAZMenuWizard(Entry):
     grok.context(Interface)
     grok.title('Unfallanzeige Wizard')
@@ -52,7 +54,8 @@ class UAZMenuWizard(Entry):
         if IUnauthenticatedPrincipal.providedBy(principal):
             return
         homeFolder = IHomeFolder(principal).homeFolder
-        return absoluteURL(homeFolder, self.request) + '/unfallanzeigen/startwizard'
+        return (absoluteURL(homeFolder, self.request) +
+                '/unfallanzeigen/startwizard')
 
 
 class StartWizard(grok.View):
