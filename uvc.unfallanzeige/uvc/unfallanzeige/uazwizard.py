@@ -3,10 +3,10 @@ from megrok.pagetemplate import PageTemplate, view
 from dolmen.menu import menu, menuentry, Entry
 from hurry.workflow.interfaces import IWorkflowInfo
 from megrok.z3cform.base import PageAddForm, Fields
-from uvc.layout.menus import SidebarMenu
 from uvc.unfallanzeige.interfaces import IUnfallanzeige, IUnfallanzeigeFolder
 from uvcsite import ProductFolder, Content, schema, contenttype
-from uvcsite.interfaces import IMyHomeFolder, ISidebar
+from uvcsite.interfaces import IMyHomeFolder
+from uvc.layout.menus import GlobalMenu
 from z3c.form import form, group
 from z3c.form.browser.radio import RadioFieldWidget
 from zope.app.homefolder.interfaces import IHomeFolder
@@ -45,7 +45,7 @@ from uvc.layout.menus import category
 class UAZMenuWizard(Entry):
     grok.context(Interface)
     grok.title('Unfallanzeige Wizard')
-    menu(SidebarMenu)
+    menu(GlobalMenu)
     grok.order(30)
 
     @property
