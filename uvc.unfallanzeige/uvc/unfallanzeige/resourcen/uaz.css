@@ -20,6 +20,10 @@ div#form-widgets-unfuort-row div.widget {
 }
 
 
+.input-form .step .row .option label {
+  width: 34em;
+}
+
 /* Nicer Form */
 
 .input-form .step .row  {
@@ -32,13 +36,12 @@ div#form-widgets-unfuort-row div.widget {
   font-size: 1em;
   font-weight: bold;
   text-align: right;
-  width: 200px;
+  width: 200px
 }
 
 .input-form .step .widget {
   float: left;
   margin-left: 2em;
-  width: 200px;
 }
 
 .input-form .step .row label span.small {
@@ -54,55 +57,6 @@ div#form-widgets-unfuort-row div.widget {
   padding:10px;
 }
 
-#page-body .wizardMenu .selecte {
+#page-body .wizardMenu .selected {
   color:#000000;
-}
-
-#form-widgets-anspfon-row label,
-#form-widgets-anspname-row label {
-  width: 120px;
-}
-
-#form-widgets-anspfon-row .widget,
-#form-widgets-anspfon-row input,
-#form-widgets-anspname-row input,
-#form-widgets-anspname-row .widget {
-  width: 150px;
-  margin-bottom: 3em;
-}
-
-#form-widgets-anspfon-row .error,
-#form-widgets-anspname-row .error {
-  position: absolute;
-  width: 150px;
-  margin-top: 1em;
-}
-
-#form-widgets-anspname-row .error {
-  margin-left: 100px;
-}
-
-#form-widgets-anspfon-row .error {
-  margin-left: 20px;
-}
-
-#form-widgets-anspfon-row {
-  position: absolute;
-  margin-top: -1em;
-  margin-left: 350px;
-  width: 400px;
-}
-
-#form-widgets-anspfon-row  input {
-  margin-left: 50px;
-}
-
-#form-widgets-anspname-row input {
-  position: absolute;
-  margin-left: 90px;
-}
-
-#form-widgets-anspfon-row label {
-  position: absolute;
-  margin-left: -260px;
 }

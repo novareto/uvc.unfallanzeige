@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+/* Doppel Feld Telefonnummer Ansprechpartner */
+
+ $('#form-widgets-anspfon-row').appendFieldTo('#form-widgets-anspname-row');
+
+
  $('#form-widgets-unfustdor-0').click( function(event){
      $('#form-widgets-unfustrasse-row, \
         #form-widgets-unfuname-row, \

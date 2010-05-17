@@ -4,7 +4,7 @@
   <include package="grok" />
   <include package="megrok.z3cform.base" />
   <include package="megrok.z3cform.wizard"/>
-  <includeOverrides file="overrides.zcml" />
+  <include package="uvc.widgets"/>
   <grok:grok package="." />
 
 </configure>

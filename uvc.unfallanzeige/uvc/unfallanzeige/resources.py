@@ -8,6 +8,7 @@ from megrok import resource
 from hurry.jquery import jquery
 from uvcsite.resources import UVCResources
 
+from uvc.widgets.resources import double
 
 
 class UAZLibrary(resource.Library):
@@ -15,10 +16,8 @@ class UAZLibrary(resource.Library):
     grok.path('resourcen')
 
 uazjs = resource.ResourceInclusion(
-    UAZLibrary, 'uaz.js', depends=[jquery])
+    UAZLibrary, 'uaz.js', depends=[double])
 
 uazcss = resource.ResourceInclusion(
     UAZLibrary, 'uaz.css')
 
-optchoice = resource.ResourceInclusion(
-    UAZLibrary, 'choice.js', depends=[jquery])

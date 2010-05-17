@@ -6,10 +6,15 @@
 from uvcsite import IProductFolder, IContent
 from zope.interface import Invalid, invariant
 from zope.schema import TextLine, Bool, Date, Choice, Text, Int
-from fields import OptionalChoice
+from z3c.wizard.interfaces import IWizard
+from uvc.widgets.fields import OptionalChoice
 
 
-class IUnfallanzeigeFolder(IProductFolder):
+class IUnfallanzeigenFolder(IProductFolder):
+    """Markerinterface"""
+
+
+class IUnfallanzeigeWizard(IWizard):
     """Markerinterface"""
 
 
