@@ -26,6 +26,15 @@ class Basic(z3cwizard.PageStep):
     fields['unfustdor'].widgetFactory = RadioFieldWidget
 
 
+class Adress(grok.Viewlet):
+    grok.viewletmanager(uvcsite.IExtraInfo)
+    grok.context(IUnfallanzeige)
+    grok.view(Basic)
+
+    def render(self):
+        return "ICH BINS DIE ADRESE"
+
+
 class Job(z3cwizard.PageStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Angaben zur versicherten Person'

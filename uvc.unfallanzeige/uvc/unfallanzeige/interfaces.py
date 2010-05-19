@@ -149,33 +149,28 @@ class IUnfallanzeige(IContent):
         title = u"Ehegattenarbeitsvertrag",
         description = u"Ehegattenarbeitsvertrag",
         values = (u'Ja', u'Nein'),
+        required = False,
         )
 
     vehebis = TextLine(
         title = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
         description = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
+        required = False,
         )
 
     veheentgeltbis = TextLine(
         title = u"Entgelt gezahlt bis",
         description = u"Entgelt bezahlt bis",
+        required = False,
         )
 
     unfefz = TextLine(
         title = u"Entgeltfortzahlung bis",
         description = u"Entgeltfortzahlung bis",
+        required = False,
         )
 
     unfkka = TextLine(
         title = u"Anschrift der Krankenkasse",
         description = u"Anschrift der Krankenkasse",
         )
-
-     
-     
-
-     
-
-     
-
- 
