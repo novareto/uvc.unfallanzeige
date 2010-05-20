@@ -71,9 +71,9 @@ class IUnfallanzeige(IContent):
 
     uadbru1 = OptionalChoice(
         title = u"Position",
-        alternative=True,
         description = (u"Die versicherte Person ist zum "
                        u"Unfallzeitpunkt beschäftigt als"),
+        alternative=True,
         values = ('Drucker', 'Bildhauer'),
         )
 
@@ -82,9 +82,11 @@ class IUnfallanzeige(IContent):
         description = u"und in dieser Tätigkeit seit: Datum (mm.jjjj)",
         )
 
-    unfute = TextLine(
+    unfute = OptionalChoice(
         title = u"Tätig als",
         description = u"In welchem Teil des Unternehmens ist der Versicherte ständig tätig?",
+        alternative=True,
+        values = ('Verwaltung', 'Druckerei', 'Schreinerei')
         )
 
     unflar = Choice(
@@ -96,8 +98,10 @@ class IUnfallanzeige(IContent):
     unvlaraddr = Text(
         title = u"Address",
         description = u"Address of the Part Time Company",
+        required = False,
         )
 
+# Step 3
 
     prsname = TextLine(
         title = u"Name",
@@ -109,9 +113,14 @@ class IUnfallanzeige(IContent):
         description = u"Vorname des Versicherten",
         )
 
-    ikstrnr = TextLine(
+    ikstr = TextLine(
         title = u"Anschrift des Versicherten",
-        description = u"Strasse, Hausnummer",
+        description = u"Strasse",
+        )
+
+    iknr = TextLine(
+        title = u"",
+        description = u"Nr",
         )
 
     lkz = Choice(
@@ -124,6 +133,7 @@ class IUnfallanzeige(IContent):
         title = u"Postleitzahl",
         description = u"Postleitzahl",
         )
+
     ikzort = TextLine(
         title = u"Ort",
         description = u"Ort",
@@ -134,9 +144,16 @@ class IUnfallanzeige(IContent):
         description = u"Geburtsdatum (tt.mm.jjjj)",
         )
 
-    prssta = TextLine(
+    prssex = Choice(
+        title = u"Geschlecht",
+        description = u"Geschlecht",
+        values = [u'maennlich', 'weiblich']
+        )
+
+    prssta = Choice(
         title = u"Staatsangehörigkeit",
         description = u"Staatsangehörigkeit",
+        values = ['Albanien', 'Belgien', 'Deutschland', 'Schweiz']
         )
 
     unfbu = Choice(
@@ -154,19 +171,19 @@ class IUnfallanzeige(IContent):
 
     vehebis = TextLine(
         title = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
-        description = u"Ehegattenarbeitsvertrag (Vertragsbeginn)",
+        description = u"Seit wann (tt.mm.jjjj)",
         required = False,
         )
 
     veheentgeltbis = TextLine(
         title = u"Entgelt gezahlt bis",
-        description = u"Entgelt bezahlt bis",
+        description = u"Entgelt wurde bezahlt bis (tt.mm.jjjj)",
         required = False,
         )
 
     unfefz = TextLine(
         title = u"Entgeltfortzahlung bis",
-        description = u"Entgeltfortzahlung bis",
+        description = u"Für wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?",
         required = False,
         )
 
@@ -174,3 +191,90 @@ class IUnfallanzeige(IContent):
         title = u"Anschrift der Krankenkasse",
         description = u"Anschrift der Krankenkasse",
         )
+
+#Step4
+
+    unfdatum = TextLine(
+        title = u"Unfallzeitpunkt",
+        description = u"Datum",
+        )
+
+    unfzeit = TextLine(
+        title = u"Unfallzeitpunkt",
+        description = u"Zeit",
+        )
+
+    unfort_detail = Choice(
+        title = u"Unfallort",
+        description = u"Bitte geben Sie an wo sich der Unfall ereignete:",
+        values = ('Im Betriebsgelaende', 'Arbeitsweg'),
+        )
+
+    unfort = TextLine(
+        title = u"Unfallort",
+        description = u"Unfallort (genaue Orts- und Strassenangabe mit Postleitzahl)",
+        )
+
+    unfhg1= Text(
+        title = u"Unfallhergang",
+        description = u"Bitte schildern sie ausführlich wie sich der Unfall ereignete",
+        )
+
+    unfhg2= Choice(
+        title = u"Zeugen",
+        description = u"Die Angaben beruhen auf den Schilderungen:",
+        values = ('Des Verunfallten', 'eines Zeugen'),
+        )
+
+    unfkn1 = TextLine(
+        title = u"Erstkontakt",
+        description = u"Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift des Zeugen)",
+        required = False,
+        )
+
+    unfkn2 = Choice(
+        title = u"Augenzeuge",
+        description = u"War diese Person Augenzeuge",
+        values = ('ja', 'nein'),
+        )
+
+# Step 5     
+
+    prstkz = Choice(
+        title = u"Tödlicher Unfall",
+        description = u"Handelt es sich um einen toedlichen Unfall?",
+        values = ('ja', 'nein'),
+         )
+
+    unfae1 = Choice(
+        title = u"Fortsetzung der Arbeit",
+        description = u"Hat der Versicherte die Arbeit eingestellt?",
+        values = ('nein', 'ja, sofort', 'ja, spaeter am'),
+        required = False,
+        )
+
+    unfaedatum = TextLine(
+        title = u"wann",
+        description = u"Bitte Datum (tt.mm.jjjj)",
+        required = False,
+        )
+
+    unfaezeit = TextLine(
+        title = u"",
+        description = u"und Uhrzeit (hh:mm)",
+        required = False,
+        )
+     
+    unfwa1 = Choice(
+        title = u"Wieder Aufgenommen",
+        description = u"Hat der Versicherte die Arbeit wieder aufgenommen?",
+        values = ('ja', 'nein'),
+        required = False,
+        )
+
+    unfwax = TextLine(
+        title = u"Wieder aufegnommen",
+        description = u"Wenn ja: aufgenommen am Datum (tt.mm.jjjj)",
+        required = False,
+        )
+

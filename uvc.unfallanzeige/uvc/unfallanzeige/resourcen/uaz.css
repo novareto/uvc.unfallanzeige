@@ -2,15 +2,14 @@
 UAZ StyleSheets
 */
 
-#form-widgets-unfustrasse-row,
-#form-widgets-unfunr-row,
-#form-widgets-unfuplz-row,
-#form-widgets-unfuort-row,
-#form-widgets-unfuname-row {
-  display: none;
-}
+/* Einrückung optionale Felder */
 
+div#form-widgets-vehearbeitsv-row div.widget {
+  margin-left: 4em;
+}    
 
+div#form-widgets-vehebis-row div.widget, 
+div#form-widgets-veheentgeltbis-row div.widget,
 div#form-widgets-unfuname-row div.widget, 
 div#form-widgets-unfustrasse-row div.widget, 
 div#form-widgets-unfunr-row div.widget, 
@@ -19,6 +18,33 @@ div#form-widgets-unfuort-row div.widget {
   margin-left: 6em;
 }
 
+
+/* Unterschiedliche Feldlängen */
+
+#form-widgets-unfdatum,
+#form-widgets-veheentgeltbis,
+#form-widgets-vehebis,
+#form-widgets-prsgeb {
+ width: 7em;
+}
+
+#form-widgets-uadst {
+ width: 5em;
+}
+
+#form-widgets-unfzeit,
+#form-widgets-iknr,
+#form-widgets-unfunr,
+#form-widgets-unfuplz,
+#form-widgets-ikzplz {
+ width: 4em;
+}
+
+#form-widgets-unfefz {
+ width: 2em;
+}
+
+/* Längere Beschreibung der options in select */
 
 .input-form .step .row .option label {
   width: 34em;
@@ -36,7 +62,7 @@ div#form-widgets-unfuort-row div.widget {
   font-size: 1em;
   font-weight: bold;
   text-align: right;
-  width: 200px
+  width: 250px
 }
 
 .input-form .step .widget {
@@ -46,7 +72,7 @@ div#form-widgets-unfuort-row div.widget {
 
 .input-form .step .row label span.small {
   text-align: right;
-  width: 200px;
+  width: 250px;
   margin: 0 0 0 0px;
 }
 
