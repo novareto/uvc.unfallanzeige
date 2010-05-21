@@ -37,6 +37,8 @@ class UnfallanzeigeWizard(z3cwizard.WizardForm):
             z3c.wizard.step.addStep(self, 'person', weight=3),
             z3c.wizard.step.addStep(self, 'accidenti', weight=4),
             z3c.wizard.step.addStep(self, 'accidentii', weight=5),
+            z3c.wizard.step.addStep(self, 'basicinformation', weight=6),
+            z3c.wizard.step.addStep(self, 'finish', weight=7),
             ]
 
 

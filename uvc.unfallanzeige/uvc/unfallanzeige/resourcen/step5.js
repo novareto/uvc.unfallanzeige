@@ -1,10 +1,10 @@
 $(document).ready(function(){
  // Init Hide All //
 
- $('#form-widgets-unfae1-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row, #form-widgets-unfwa1-row, #form-widgets-unfwax-row').hide();
+ $('#form-widgets-unfeba1-row, #form-widgets-unfae1-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row, #form-widgets-unfwa1-row, #form-widgets-unfwax-row').hide();
 
  var death = $('#form-widgets-prstkz-row input:checked').val();
- if (death == 'ja'){
+ if (death == 'nein'){
    $('#form-widgets-unfae1-row').show();   
  }
 
@@ -23,7 +23,7 @@ $(document).ready(function(){
  }
 
  //Tödlicher Unfall //
- $('#form-widgets-prstkz-0').click( function(event){ 
+ $('#form-widgets-prstkz-1').click( function(event){ 
    $('#form-widgets-unfae1-row').fadeIn();   
  });   
 
@@ -68,5 +68,23 @@ $(document).ready(function(){
    $('#form-widgets-unfwax-row').hide();
  });
 
+
+ // Besuch beim Arzt //
+ var arzt = $('#form-widgets-unfeba-row input:checked').val();
+ if (arzt == 'Name und Anschrift'){
+   $('#form-widgets-unfeba1-row').show();
+ }
+
+ $('#form-widgets-unfeba-0').click( function(event){
+   $('#form-widgets-unfeba1-row :input').val('');
+   $('#form-widgets-unfeba1-row').fadeOut();
+ });
+
+ $('#form-widgets-unfeba-1').click( function(event){
+   $('#form-widgets-unfeba1-row').fadeIn();
+ });
+
+ //DoppelFelder //
  $('#form-widgets-unfaezeit-row').appendFieldTo('#form-widgets-unfaedatum-row');
+ $('#form-widgets-uadbabis-row').appendFieldTo('#form-widgets-uadbavon-row');
 });

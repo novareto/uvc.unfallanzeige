@@ -170,12 +170,41 @@ class AccidentII(BasicStep):
     handleApplyOnBack = True
 
     fields = z3cform.Fields(IUnfallanzeige).select(
-        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1', 'unfwax')
+        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1', 
+        'unfwax', 'uadbavon', 'uadbabis', 'diavkt', 'diaadv', 'unfeba', 'unfeba1')
 
     fields['prstkz'].widgetFactory = RadioFieldWidget
     fields['unfae1'].widgetFactory = RadioFieldWidget
     fields['unfwa1'].widgetFactory = RadioFieldWidget
+    fields['unfeba'].widgetFactory = RadioFieldWidget
 
     def update(self):
         super(BasicStep, self).update()
         resources.step5.need()
+
+
+class BasicInformation(BasicStep):
+    grok.context(UnfallanzeigeWizard)
+    label = form_name = u'Allgemeine Informationen zum Unternehmen'
+
+    handleApplyOnBack = True
+
+    fields = z3cform.Fields(IUnfallanzeige).select('unfus3', 'unfus2')
+
+
+    def update(self):
+        super(BasicStep, self).update()
+
+
+class Finish(BasicStep):
+    grok.context(UnfallanzeigeWizard)
+    label = form_name = u'Versand und Druck der Unfallanzeige'
+
+    handleApplyOnBack = True
+
+    fields = z3cform.Fields(IUnfallanzeige).select('behandlung')
+
+    fields['behandlung'].widgetFactory = RadioFieldWidget
+
+    def update(self):
+        super(BasicStep, self).update()

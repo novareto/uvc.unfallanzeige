@@ -9,6 +9,11 @@ $(document).ready(function(){
      }
 
   $('#form-widgets-unflar-row input:radio').change(function() {
-      $('#form-widgets-unvlaraddr-row').toggle();
+      if ($(this).val() == 'ja') {
+        $('#form-widgets-unvlaraddr-row').fadeIn();
+      }
+      else {
+        $('#form-widgets-unvlaraddr-row').fadeOut();
+      }
   });
 });

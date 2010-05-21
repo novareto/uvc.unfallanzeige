@@ -278,3 +278,62 @@ class IUnfallanzeige(IContent):
         required = False,
         )
 
+    uadbavon = TextLine(
+        title = u"Arbeitszeit Beginn",
+        description = u"Die Arbeitszeit beginnt um Uhrzeit (hh:mm)",
+        )
+
+    uadbabis = TextLine(
+        title = u"Ende",
+        description = u"und endet um Uhrzeit (hh:mm)",
+        )
+     
+    diavkt = TextLine(
+        title = u"Verletzte Körperteile",
+        description = u"Welche Körperteile sind verletzt?",
+        )
+
+    diaadv = TextLine(
+        title = u"Art der Verletzung",
+        description = u"Welche Art der Verletzung liegt vor",
+        )
+
+    unfeba = Choice(
+        title = u"Name des erstbehandelnden Arztes",
+        description = u"Wie lauten Name und Anschrift des erstbehandelnden Arztes / Krankenhauses?",
+        values = ("Es ist keine Aerztliche Behandlung erforderlich", "Name und Anschrift"),
+        )
+
+    unfeba1 = TextLine(
+        title = u"Erstbehandelnder Artz (Name und Anschrift)",
+        description = u"Name und Anschrift",
+        required = False,
+        )
+
+#Step 6
+
+    unfus3 = TextLine(
+        title = u"Personal- bzw. Betriebsrat",
+        description = u"Die folgende Person des Personal- bzw Betriebsrates wurde informiert"
+                      u"(bitte Name und Vorname eintragen)",
+        )
+
+    unfus2 = TextLine(
+        title = u"Unternehmer / Bevollmaechtigter",
+        description = u"Name, Vorname des Unternehmens / des Bevollmaechtigten",
+        )
+
+#Step 7
+
+    behandlung = Choice(
+        title = u"Weiteres Vorgehen",
+        description = u"Wie möchten Sie weiter vorgehen.",
+        values = ('Druck', 'Versand', 'Druck & Versand')
+        )
+
+     
+
+     
+     
+     
+     
