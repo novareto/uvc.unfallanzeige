@@ -11,7 +11,6 @@ import zope.component
 import megrok.z3cform.base as z3cform
 import megrok.z3cform.wizard as z3cwizard 
 
-from z3c.form.interfaces import IErrorViewSnippet
 from z3c.form.browser.radio import RadioFieldWidget
 
 from uvc.unfallanzeige import resources
@@ -19,36 +18,11 @@ from uvc.unfallanzeige.interfaces import IUnfallanzeige, IUnfallanzeigeWizard
 from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard 
 
 
-class BasicStep(z3cwizard.PageStep):
-    label = form_name = u""
-    grok.baseclass()
-
-    def extractData(self):
-        data, errors = z3cwizard.PageStep.extractData(self)
-        step_errors = []
-        for field, message in self.validateStep(data):
-            widget = self.widgets[field]
-            error = zope.interface.Invalid(message)
-            view = zope.component.getMultiAdapter(
-                    (error, self.request, widget, widget.field,
-                     self, self.context), IErrorViewSnippet)
-            view.update()
-            if not widget.error:
-                widget.error = view
-            step_errors.append(view)
-        if step_errors:
-            errors += tuple(step_errors)
-        return data, errors    
-
-    def validateStep(self, data):
-        return []
-
-
 #
 ## Step1
 #
 
-class Basic(BasicStep):
+class Basic(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Basis Informationen'
 
@@ -61,7 +35,7 @@ class Basic(BasicStep):
     fields['unfustdor'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
         resources.step1.need()
 
     def validateStep(self, data):
@@ -93,7 +67,7 @@ class Adress(grok.Viewlet):
 ## Step2
 #
 
-class Job(BasicStep):
+class Job(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Angaben zur versicherten Person'
 
@@ -105,15 +79,14 @@ class Job(BasicStep):
     fields['unflar'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
         resources.step2.need()
 
 #
 ## Step3
 #
-import pprint
 
-class Person(BasicStep):
+class Person(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'weitere Angaben zur versicherten Person'
 
@@ -129,7 +102,7 @@ class Person(BasicStep):
     fields['vehearbeitsv'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
         resources.step3.need()
 
     def validateStep(self, data):
@@ -145,7 +118,7 @@ class Person(BasicStep):
         return error 
 
 
-class AccidentI(BasicStep):
+class AccidentI(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Informationen zum Unfall Teil I'
 
@@ -159,11 +132,11 @@ class AccidentI(BasicStep):
     fields['unfkn2'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
         resources.step4.need()
 
 
-class AccidentII(BasicStep):
+class AccidentII(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Informationen zum Unfall Teil II'
 
@@ -179,11 +152,11 @@ class AccidentII(BasicStep):
     fields['unfeba'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
         resources.step5.need()
 
 
-class BasicInformation(BasicStep):
+class BasicInformation(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
 
@@ -193,10 +166,10 @@ class BasicInformation(BasicStep):
 
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()
 
 
-class Finish(BasicStep):
+class Finish(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Versand und Druck der Unfallanzeige'
 
@@ -207,4 +180,4 @@ class Finish(BasicStep):
     fields['behandlung'].widgetFactory = RadioFieldWidget
 
     def update(self):
-        super(BasicStep, self).update()
+        super(uvcsite.BasicStep, self).update()

@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2010 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 
 import grok
 import uvcsite
 import zope.interface
 
-import uvc.unfallanzeige
 import megrok.z3cform.wizard
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder
 from uvc.unfallanzeige.uazwizard import Unfallanzeige
-
 
 
 class UAZMenuWizard(uvcsite.Entry):
@@ -36,5 +34,3 @@ class StartWizard(grok.View):
 
     def render(self):
         self.redirect(self.url(self.uaz, 'unfallanzeigewizard'))
-
-

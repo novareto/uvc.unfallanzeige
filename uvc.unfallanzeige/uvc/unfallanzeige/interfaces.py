@@ -4,8 +4,7 @@
 
 
 from uvcsite import IProductFolder, IContent
-from zope.interface import Invalid, invariant
-from zope.schema import TextLine, Bool, Date, Choice, Text, Int
+from zope.schema import TextLine, Choice, Text, Int
 from z3c.wizard.interfaces import IWizard
 from uvc.widgets.fields import OptionalChoice
 
