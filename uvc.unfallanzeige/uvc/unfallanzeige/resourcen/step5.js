@@ -28,7 +28,7 @@ $(document).ready(function(){
  });   
 
  //Kein Tödlicher Unfall//
- $('#form-widgets-prstkz-1').click( function(event){ 
+ $('#form-widgets-prstkz-0').click( function(event){ 
    $('#form-widgets-unfae1-row input:radio, #form-widgets-unfwa1-row input:radio').removeAttr('checked');   
    $('#form-widgets-unfwax-row :input, #form-widgets-unfaedatum-row :input, #form-widgets-unfaezeit-row :input').val('');
    $('#form-widgets-unfwa1-row, #form-widgets-unfwax-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row, #form-widgets-unfae1-row').fadeOut();   

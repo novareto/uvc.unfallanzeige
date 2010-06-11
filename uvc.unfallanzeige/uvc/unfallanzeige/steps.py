@@ -57,7 +57,7 @@ class Basic(uvcsite.BasicStep):
 class Adress(grok.Viewlet):
     grok.viewletmanager(uvcsite.IExtraInfo)
     grok.context(IUnfallanzeige)
-    grok.view(Basic)
+    #grok.view(Basic)
 
     def render(self):
         return "ICH BINS DIE ADRESE"
@@ -81,6 +81,13 @@ class Job(uvcsite.BasicStep):
     def update(self):
         super(uvcsite.BasicStep, self).update()
         resources.step2.need()
+
+    def validateStep(self, data):
+        errors = []
+        if data.get('unflar') == 'ja':
+            if not data.get('unvlaraddr'):
+                errors.append( ('unvlaraddr', u'Bitte die Adresse der Firma ausfüllen.') )
+        return errors
 
 #
 ## Step3
@@ -155,7 +162,28 @@ class AccidentII(uvcsite.BasicStep):
         super(uvcsite.BasicStep, self).update()
         resources.step5.need()
 
+    def validateStep(self, data):
+        error = []
+        if data.get('prstkz') == "nein":
+            if not data.get('unfae1'):
+                error.append(('unfae1', 'Bitte machen Sie Angaben in diesem Feld.'))
+            else:
+                if data.get('unfae1') == "ja, sofort":
+                    if not data.get('unfwa1'):
+                        error.append(('unfwa1', 'Bitte machen Sie Angaben in diesem Feld.'))
+                
+                elif data.get('unfae1') == "ja, spaeter am":
+                    if not data.get('unfwa1'):
+                        error.append(('unfwa1', 'Bitte machen Sie Angaben in diesem Feld.'))
+                    if not data.get('unfaedatum'):
+                        error.append(('unfaedatum', 'Bitte machen Sie Angaben in diesem Feld.'))
+                    if not data.get('unfaezeit'):
+                        error.append(('unfaezeit', 'Bitte machen Sie Angaben in diesem Feld.'))
+        return error
 
+
+
+## Step 5
 class BasicInformation(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
