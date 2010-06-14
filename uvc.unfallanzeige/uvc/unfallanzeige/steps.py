@@ -124,6 +124,9 @@ class Person(uvcsite.BasicStep):
                     error.append(('veheentgeltbis', 'Bitte hier eine Eingabe machen'))
         return error 
 
+#
+## Step4
+#
 
 class AccidentI(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
@@ -142,6 +145,9 @@ class AccidentI(uvcsite.BasicStep):
         super(uvcsite.BasicStep, self).update()
         resources.step4.need()
 
+#
+## Step5
+#
 
 class AccidentII(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
@@ -171,6 +177,10 @@ class AccidentII(uvcsite.BasicStep):
                 if data.get('unfae1') == "ja, sofort":
                     if not data.get('unfwa1'):
                         error.append(('unfwa1', 'Bitte machen Sie Angaben in diesem Feld.'))
+                    else:
+                        if data.get('unfwa1') == "ja":
+                            if not data.get('unfwax'):
+                                error.append(('unfwax', 'Bitte machen Sie Angaben in diesem Feld.'))
                 
                 elif data.get('unfae1') == "ja, spaeter am":
                     if not data.get('unfwa1'):
@@ -179,11 +189,16 @@ class AccidentII(uvcsite.BasicStep):
                         error.append(('unfaedatum', 'Bitte machen Sie Angaben in diesem Feld.'))
                     if not data.get('unfaezeit'):
                         error.append(('unfaezeit', 'Bitte machen Sie Angaben in diesem Feld.'))
+        if data.get('unfeba') == "Name und Anschrift":
+            if not data.get('unfeba1'):
+                error.append(('unfeba1', 'Bitte machen Sie Angaben in diesem Feld.'))
         return error
 
 
+#
+## Step 6 
+#
 
-## Step 5
 class BasicInformation(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
@@ -197,6 +212,10 @@ class BasicInformation(uvcsite.BasicStep):
         super(uvcsite.BasicStep, self).update()
 
 
+#
+## Step 7
+#
+
 class Finish(uvcsite.BasicStep):
     grok.context(UnfallanzeigeWizard)
     label = form_name = u'Versand und Druck der Unfallanzeige'
@@ -207,5 +226,3 @@ class Finish(uvcsite.BasicStep):
 
     fields['behandlung'].widgetFactory = RadioFieldWidget
 
-    def update(self):
-        super(uvcsite.BasicStep, self).update()

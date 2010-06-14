@@ -2,7 +2,7 @@
 # Copyright (c) 2007-2010 NovaReto GmbH
 # cklinger@novareto.de
 
-
+from zope.interface import Interface
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
 from z3c.wizard.interfaces import IWizard
@@ -16,6 +16,8 @@ class IUnfallanzeigenFolder(IProductFolder):
 class IUnfallanzeigeWizard(IWizard):
     """Markerinterface"""
 
+class IPresentation(Interface):
+    """ Marker Interface """
 
 class IUnfallanzeige(IContent):
 

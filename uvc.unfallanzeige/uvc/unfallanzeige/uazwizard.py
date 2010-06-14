@@ -46,3 +46,6 @@ class UnfallanzeigeWizard(z3cwizard.WizardForm):
         super(UnfallanzeigeWizard, self).update()
         uazjs.need()
         uazcss.need()
+
+    def doFinish(self):
+        print "FINISH"
