@@ -16,14 +16,19 @@ from tempfile import TemporaryFile
 from string import replace
 
 
+def nN(value):
+    if value == None:
+        return ""
+    return value
 
-bv2={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Hamburg','name3':'','strasse':'Ottenser HauptstraÃe 54','plzort':'22765 Hamburg'}
-bv3={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Hannnover','name3':'','strasse':'WalderseestraÃe 5/6','plzort':'30163 Hannover'}
-bv4={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Berlin','name3':'','strasse':'Axel-Springer-StraÃe 52','plzort':'10969 Berlin'}
-bv5={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Dresden','name3':'','strasse':'HofmÃ¼hlenstraÃe 4','plzort':'01187 Dresden'}
-bv6={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Wuppertal','name3':'','strasse':'Aue 96','plzort':'42103 Wuppertal'}
-bv7={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV Wiesbaden','name3':'','strasse':'Wiesbadener StraÃe 70','plzort':'65197 Wiesbaden'}
-bv9={'name1':'Berufsgenossenschaft fÃ¼r Fahrzeughaltungen','name2':'BV MÃ¼nchen','name3':'','strasse':'Deisenhofener StraÃe 74','plzort':'81539 MÃ¼nchen'}
+
+bv2={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Hamburg','name3':'','strasse':'Ottenser Hauptstrasse 54','plzort':'22765 Hamburg'}
+bv3={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Hannnover','name3':'','strasse':'Walderseestrasse 5/6','plzort':'30163 Hannover'}
+bv4={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Berlin','name3':'','strasse':'Axel-Springer-Strasse 52','plzort':'10969 Berlin'}
+bv5={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Dresden','name3':'','strasse':'Hofmühlenstrasse 4','plzort':'01187 Dresden'}
+bv6={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Wuppertal','name3':'','strasse':'Aue 96','plzort':'42103 Wuppertal'}
+bv7={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Wiesbaden','name3':'','strasse':'Wiesbadener Strasse 70','plzort':'65197 Wiesbaden'}
+bv9={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV München','name3':'','strasse':'Deisenhofener Strasse 74','plzort':'81539 München'}
 
 
 
@@ -607,14 +612,14 @@ class Presentation(grok.MultiAdapter):
 #
 #   (4) Name, Vorname des Versicherten
 #
-        versname=context.prsname #getattr(uaz,'prsnam','')
-        versvorname=context.prsvor #getattr(uaz,'prsvor','')
+        versname = nN(context.prsname) #getattr(uaz,'prsnam','')
+        versvorname = nN(context.prsvor) #getattr(uaz,'prsvor','')
         c.setFont(schriftart,10)
         c.drawString(1.7*cm,20.7*cm,versname+', '+versvorname)
 #
 #   (5) Geburtsdatum
 #
-        gebdatum=context.prsgeb #getattr(uaz,'prsgeb','')
+        gebdatum=nN(context.prsgeb) #getattr(uaz,'prsgeb','')
         if  len(gebdatum) != 0:
             gebdatum=gebdatum.split('.')
             gebtag=gebdatum[0]
@@ -638,12 +643,12 @@ class Presentation(grok.MultiAdapter):
 #
 #   (6) Strasse Hausnummer
 #
-        plzort=context.ikzplz #grrc(v=getattr(uaz,'prsplzort',['','']),ret=['      .',''])
-        aplz=context.ikzplz
-        ort=context.ikzort
+        plzort=nN(context.ikzplz) #grrc(v=getattr(uaz,'prsplzort',['','']),ret=['      .',''])
+        aplz=nN(context.ikzplz)
+        ort=nN(context.ikzort)
         #strhsnr=context.getIkstrnr() #grrc(v=getattr(uaz,'prsstrnr',['','']),ret=['',''])
-        strasse=context.ikstr
-        hausnummer=context.iknr
+        strasse=nN(context.ikstr)
+        hausnummer=nN(context.iknr)
         c.setFont(schriftart,10)
         c.drawString(12.6*cm,19.85*cm,ort)
         c.drawString(1.7*cm,19.85*cm,strasse+' '+hausnummer)
@@ -653,14 +658,14 @@ class Presentation(grok.MultiAdapter):
             c.drawString(11.1*cm,19.85*cm,aplz[2])
             c.drawString(11.6*cm,19.85*cm,aplz[3])
             c.drawString(12.1*cm,19.85*cm,aplz[4])
-        elif land != 'D' and land != '  ':
+        elif land != 'D' and land != None:
             c.setFont(schriftart,10)
             c.drawString(10.1*cm,19.85*cm,land+'-'+aplz)
 #
 #   (7) Geschlecht
 #
         c.setFont(schriftart,10)
-        sex=context.prssex
+        sex=nN(context.prssex)
         if sex == '1':
             c.drawString(1.9*cm,19.0*cm,'x')
         elif sex == '2':
@@ -668,18 +673,14 @@ class Presentation(grok.MultiAdapter):
 #
 #   (8) Staatsangehörigkeitt
 #
-        staat=context.prssta #grrc(v=getattr(uaz,'prssta',['','']),ret=[' ',''])
+        staat=nN(context.prssta) #grrc(v=getattr(uaz,'prssta',['','']),ret=[' ',''])
         c.setFont(schriftart,10)
-     #   staat=getattr(uaz,'prssta',['',''])
-        if staat[0] == 'sonstiges':
-           c.drawString(6.6*cm,19.0*cm,staat[1])
-        else:
-           c.drawString(6.6*cm,19.0*cm,staat[0])
+        c.drawString(6.6*cm,19.0*cm,staat)
 #
 #   (9) Leiharbeitnehmer
 #
         c.setFont(schriftart,10)
-        leiharbeit=context.unflar #getattr(uaz,'unflar','')
+        leiharbeit=nN(context.unflar) #getattr(uaz,'unflar','')
         if leiharbeit == 'ja':
             c.drawString(17.4*cm,19.0*cm,'x')
         elif leiharbeit == 'nein':
@@ -688,17 +689,17 @@ class Presentation(grok.MultiAdapter):
 #   (10) Auszubildender 
 #
         c.setFont(schriftart,10)   
-        azubi=context.uadbru1
+        azubi=nN(context.uadbru1)
 #    azubi=getattr(uaz,'uadbru',['',''])
-        if azubi[0] == 'Auszubildender':
+        if azubi == 'Auszubildender':
             c.drawString(1.9*cm,18.15*cm,'x')
-        elif azubi[0] != 'Auszubildender':
+        elif azubi != 'Auszubildender':
             c.drawString(3.7*cm,18.15*cm,'x')
 #
 #   (11) Ist der Versicherte
 #
         c.setFont(schriftart,10)
-        ist=context.unfbu #getattr(uaz,'unfbu',[''])
+        ist=nN(context.unfbu) #getattr(uaz,'unfbu',[''])
         if ist == 'Unternehmer':
             c.drawString(9.5*cm,18.55*cm,'x')
         elif ist == 'Mit dem Unternehmer verwand':
@@ -713,7 +714,7 @@ class Presentation(grok.MultiAdapter):
 #    (12) Anspruch auf Entgeltfortzahlung
 #
         c.setFont(schriftart,10)
-        entgelt=context.unfefz # grrc(v=getattr(uaz,'unfefz',''),ret='  ')
+        entgelt=nN(context.unfefz) # grrc(v=getattr(uaz,'unfefz',''),ret='  ')
         if len(entgelt) == 0:
             entgelt="  "
         c.drawString(3.7*cm,17.3*cm,entgelt[0])
@@ -723,13 +724,13 @@ class Presentation(grok.MultiAdapter):
 #    (13) Krankenkasse des Versicherten
 # 
         c.setFont(schriftart,8)
-        kk=context.unfkka #getattr(uaz,'unfkka','')
+        kk=nN(context.unfkka) #getattr(uaz,'unfkka','')
         c.drawString(6.7*cm,17.3*cm,kk)
 #
 #   (14) Tödlicher Unfall
 #
         c.setFont(schriftart,10)
-        tod=context.prstkz #getattr(uaz,'prstkz','')
+        tod=nN(context.prstkz) #getattr(uaz,'prstkz','')
         if tod == 'ja':
             c.drawString(1.9*cm,16.45*cm,'x')
         elif tod == 'nein':
@@ -738,12 +739,12 @@ class Presentation(grok.MultiAdapter):
 #   (15) Unfallzeitpunkt
 #
         c.setFont(schriftart,10)
-        uzeit=context.unfzeit
+        uzeit=nN(context.unfzeit)
         
-        if uzeit != ['','']:
+        if uzeit != '':
 
-            datum=context.unfdatum
-            stunde=context.unfzeit
+            datum=nN(context.unfdatum)
+            stunde=nN(context.unfzeit)
 
             datum=datum.split('.')
             tag=datum[0]
@@ -784,12 +785,12 @@ class Presentation(grok.MultiAdapter):
 #   (16) Unfallort
 #
         c.setFont(schriftart,10)
-        uort=context.unfort #getattr(uaz,'unfuor','')
+        uort=nN(context.unfort) #getattr(uaz,'unfuor','')
         c.drawString(1.7*cm,15.6*cm,uort)
 #
 #   (17) Ausführliche Schilderung des Unfalls
 #
-        ubericht=context.unfhg1
+        ubericht=nN(context.unfhg1)
         #Entfernung von evtl. Zeilenumbruechen aus dem Text
         ubericht=ubericht.replace('\r\n',' ')
         ubericht=ubericht.replace('\r',' ')
@@ -851,7 +852,7 @@ class Presentation(grok.MultiAdapter):
         else:
             pass
         c.setFont(schriftart,10)
-        schilderungen=context.unfhg2 #getattr(uaz,'unfhg2',[''])
+        schilderungen=nN(context.unfhg2) #getattr(uaz,'unfhg2',[''])
         if schilderungen == 'des Versicherten':
             c.drawString(8.0*cm,9.5*cm,'x')
         elif schilderungen == 'anderer Person':
@@ -859,7 +860,7 @@ class Presentation(grok.MultiAdapter):
 #
 #   (18) Verletztes Körperteile
 #
-        kteile=context.diavkt #getattr(uaz,'diavkt','')
+        kteile=nN(context.diavkt) #getattr(uaz,'diavkt','')
         if len(kteile)>50:
             c.setFont(schriftart,8)
         else:
@@ -868,7 +869,7 @@ class Presentation(grok.MultiAdapter):
 #
 #   (19) Art der Verletzung
 #
-        vart=context.diaadv #getattr(uaz,'diaadv','')
+        vart=nN(context.diaadv) #getattr(uaz,'diaadv','')
         if len(vart)>50:
             c.setFont(schriftart,8)
         else:
@@ -877,14 +878,14 @@ class Presentation(grok.MultiAdapter):
 #
 #   (20) Wer hat von dem Unfall Kenntnis genommen?
 #
-        wer=context.unfkn1 #ngetattr(uaz,'unfkn1','')
+        wer=nN(context.unfkn1) #ngetattr(uaz,'unfkn1','')
         if len(wer)>60:
             c.setFont(schriftart,8)
         else:
             c.setFont(schriftart,10)
         c.drawString(1.7*cm,7.8*cm,wer)
         c.setFont(schriftart,10)
-        augenzeuge=context.unfkn2 #getattr(uaz,'unfkn2','')
+        augenzeuge=nN(context.unfkn2) #getattr(uaz,'unfkn2','')
         if augenzeuge == 'ja':
             c.drawString(15.8*cm,7.8*cm,'x')
         elif augenzeuge == 'nein':
@@ -896,12 +897,12 @@ class Presentation(grok.MultiAdapter):
 #    arzt=getattr(uaz,'unfeba1','')
 #    c.drawString(1.7*cm,6.55*cm,arzt.encode('latin-1'))
 
-        abehandlung=context.unfeba
+        abehandlung=nN(context.unfeba)
         if abehandlung=='Es ist keine Aerztliche Behandlung erforderlich':
             c.drawString(1.7*cm,6.95*cm,u'keine ärztliche Behandlung erforderlich')
 
         c.setFont(schriftart,8)
-        arzt=context.unfeba1 #grrc(v=getattr(uaz,'unfeba1',''),ret=' ')
+        arzt=nN(context.unfeba1) #grrc(v=getattr(uaz,'unfeba1',''),ret=' ')
         n=75
         y=6.95
         while len(arzt) > 0:
@@ -933,8 +934,8 @@ class Presentation(grok.MultiAdapter):
         zeit=""
         if zeit != ['','']:
             
-            beginn=context.uadbavon
-            ende=context.uadbabis
+            beginn=nN(context.uadbavon)
+            ende=nN(context.uadbabis)
                 
             if beginn.find(':')!=-1:
                 beginn=beginn.split(':')
@@ -971,16 +972,13 @@ class Presentation(grok.MultiAdapter):
 #   (23) Zum Unfallzeitpunkt beschäftigt alss
 #
         c.setFont(schriftart,10)   
-        taetig=context.uadbru1 #grrc(v=getattr(uaz,'uadbru',['','']),ret=[' ',''])
-        if taetig[0] == 'sonstiges':
-           c.drawString(1.7*cm,5.7*cm,taetig[1])
-        else:
-           c.drawString(1.7*cm,5.7*cm,taetig[0])
+        taetig=nN(context.uadbru1) #grrc(v=getattr(uaz,'uadbru',['','']),ret=[' ',''])
+        c.drawString(1.7*cm,5.7*cm,taetig)
 #
 #   (24) Seit wann bei dieser Tätigkeitt
 #
         c.setFont(schriftart,10)
-        abeginn=context.uadst
+        abeginn=nN(context.uadst)
         if abeginn!="":
             
             if abeginn.find('.')!=-1:
@@ -1000,24 +998,21 @@ class Presentation(grok.MultiAdapter):
 #   (25) In welchem Teil des Unternehmens
 #
         c.setFont(schriftart,10)
-        unter=context.unfute #grrc(v=getattr(uaz,'unfute',['','']),ret=[' ',''])
+        unter=nN(context.unfute) #grrc(v=getattr(uaz,'unfute',['','']),ret=[' ',''])
 #    unter=getattr(uaz,'unfute',['',''])
-        if unter[0] == 'sonstiges':
-            c.drawString(1.7*cm,4.85*cm,unter[1])
-        else:
-            c.drawString(1.7*cm,4.85*cm,unter[0])
+        c.drawString(1.7*cm,4.85*cm,unter)
 #
 #   (26) Hat der Versicherte die Arbeit eingestellt?
 #
         c.setFont(schriftart,10)
-        einstell=context.unfae1
+        einstell=nN(context.unfae1)
         if einstell == 'nein':
             c.drawString(8.0*cm,4.0*cm,'x')
         elif einstell == 'sofort':
             c.drawString(9.6*cm,4.0*cm,'x')
         elif einstell == 'Spaeter am':
             c.drawString(14.4*cm,4.0*cm,'x')
-            edat=context.getUnfaex()
+            edat=nN(context.unfaex)
             
             tagmonat=edat[0]
             stunde=edat[1]
@@ -1047,13 +1042,13 @@ class Presentation(grok.MultiAdapter):
 #   (27) Hat der Versicherte die Arbeit wieder aufgenommen?
 #
         c.setFont(schriftart,10)
-        aufnahme=context.unfwa1
+        aufnahme=nN(context.unfwa1)
         if aufnahme == 'nein':
             c.drawString(9.6*cm,3.1*cm,'x')
         elif aufnahme == 'ja':
             c.drawString(14.4*cm,3.1*cm,'x')
 
-            azeit=context.unfwax
+            azeit=nN(context.unfwax)
             import pdb; pdb.set_trace() 
 
             azeit=azeit.split('.')
@@ -1079,12 +1074,11 @@ class Presentation(grok.MultiAdapter):
 #
         c.setFont(schriftart,8)
         c.drawString(2.8*cm,1.5*cm,date)
-        unternehmer=context.getUnfus2() #getattr(uaz,'unfus2','')
-        personalrat=context.getUnfus3() #getattr(uaz,'unfus3','')
-        anspartel=context.getAnspartel() #grrc(v=getattr(uaz,'anspartel',['','']),ret=['',''])
+        unternehmer=nN(context.unfus2) #getattr(uaz,'unfus2','')
+        personalrat=nN(context.unfus3) #getattr(uaz,'unfus3','')
 #    anspartel1="%s,%s" %(anspartel[0],anspartel[1])
-        anspar=anspartel[0]
-        tel=anspartel[1] 
+        anspar=nN(context.anspname)
+        tel=nN(context.anspfon) 
         c.drawString(4.8*cm,1.5*cm,unternehmer)
         c.drawString(10.0*cm,1.5*cm,personalrat)
         if len(tel)!=0:
@@ -1098,10 +1092,9 @@ class Presentation(grok.MultiAdapter):
 #
 #   Druck der Zusatzinformationen
 #
-        zweigstelle=context.getUnfustdor() #getattr(uaz,'unfustdor','')
-        verleihfirma=context.getUnflar() #getattr(uaz,'unflar','')
-        ehegatte=context.getUnfbu() #getattr(uaz,'unfbu','')
-        masch=context.getMaschine() #getattr(uaz,'maschine','')
+        zweigstelle=nN(context.unfustdor) #getattr(uaz,'unfustdor','')
+        verleihfirma=nN(context.unflar) #getattr(uaz,'unflar','')
+        ehegatte=nN(context.unfbu) #getattr(uaz,'unfbu','')
 
 #    print zweigstelle
 #    print verleihfirma
@@ -1110,6 +1103,8 @@ class Presentation(grok.MultiAdapter):
 #    a=len(nextpage)
 #    print a
 
+
+        masch = "nein"
         if zweigstelle=='Zweigstelle' or verleihfirma=='ja' or ehegatte=='Ehegatte des Unternehmers' or masch=='ja' or len(nextpage) > 1:
 
 
@@ -1187,8 +1182,8 @@ class Presentation(grok.MultiAdapter):
 
             #Name, Vorname des Versicherten
             #
-            versname=context.getPrsnam() #getattr(uaz,'prsnam','')
-            versvorname=context.getPrsvor() #getattr(uaz,'prsvor','')
+            versname=nN(context.prsnam) #getattr(uaz,'prsnam','')
+            versvorname=nN(context.prsvor) #getattr(uaz,'prsvor','')
             c.setFont(schriftart,10)
             if len(versvorname) > 0:
                 c.drawString(1.7*cm,23.2*cm,versname+', '+versvorname)
@@ -1200,7 +1195,7 @@ class Presentation(grok.MultiAdapter):
             #Unfallzeitpunkt
             #
             c.setFont(schriftart,10)
-            uzeit=context.getUnfzeit()
+            uzeit=nN(context.unfzeit)
 
             if uzeit != ['','']:
 
@@ -1233,7 +1228,7 @@ class Presentation(grok.MultiAdapter):
                 if len(stunde) > 1:
                     c.drawString(16*cm,23.2*cm,unfallzeit+" Uhr")
 
-            addrzweigstelle1=context.getUnfustrasse() #grrc(v=getattr(uaz,'unfustrasse',['','']),ret=['',''])
+            addrzweigstelle1=nN(context.unfustrasse) #grrc(v=getattr(uaz,'unfustrasse',['','']),ret=['',''])
             name=addrzweigstelle1[0]
             strasse=addrzweigstelle1[1]
             c.setFont(schriftartfett,10)
@@ -1243,12 +1238,12 @@ class Presentation(grok.MultiAdapter):
             c.drawString(8*cm,21.5*cm,name)
             c.drawString(1.8*cm,21*cm,"Anschrift der Zweigniederlassung:")
             c.drawString(8*cm,21*cm,strasse)
-            addrzweigstelle2=context.getUnfuplzort() #grrc(v=getattr(uaz,'unfuplzort',['','']),ret=['',''])
-            plz=addrzweigstelle2[0]
-            ort=addrzweigstelle2[1]
+            #addrzweigstelle2=nN(context.unfuplzort() #grrc(v=getattr(uaz,'unfuplzort',['','']),ret=['',''])
+            plz=nN(context.unfuplz)
+            ort=nN(context.unfuort)
             c.drawString(8*cm,20.5*cm,plz+" "+ort)
 
-            leihbetrieb=context.getUnflaraddr() #grrc(v=getattr(uaz,'unflfaddr',''),ret=' ')
+            leihbetrieb=nN(context.unflaraddr) #grrc(v=getattr(uaz,'unflfaddr',''),ret=' ')
             leihe=[]
             if str(leihbetrieb).find('\r\n') != -1:
                 leihe=leihbetrieb.split('\r\n')
@@ -1290,8 +1285,8 @@ class Presentation(grok.MultiAdapter):
 
             c.setFont(schriftartfett,10)
             c.drawString(1.8*cm,15.5*cm,"Angaben zum Ehegatten des Unternehmers")
-            vertrag=context.getVehearbeitsv() #getattr(uaz,'vehearbeitsv','')
-            beginn=context.getVehebis() #getattr(uaz,'vehebis','')
+            vertrag=nN(context.getVehearbeitsv()) #getattr(uaz,'vehearbeitsv','')
+            beginn=nN(context.getVehebis()) #getattr(uaz,'vehebis','')
             print "beginn", beginn
             if beginn != "":
                 beginn=beginn.split('.')
@@ -1308,7 +1303,7 @@ class Presentation(grok.MultiAdapter):
             else:
                 ehebeginn=' '
 
-            entgelt=context.getVeheentgeltbis() #getattr(uaz,'veheentgeltbis','')
+            entgelt=nN(context.getVeheentgeltbis()) #getattr(uaz,'veheentgeltbis','')
             if entgelt != '':
                 entgelt=entgelt.split('.')
                 if len(entgelt[0])==1:
@@ -1334,19 +1329,19 @@ class Presentation(grok.MultiAdapter):
 
             c.setFont(schriftartfett,10)
             c.drawString(1.8*cm,13*cm,"Angaben zum Unfall an einer Maschine")
-            art=context.getMart() #getattr(uaz,'mart','')
-            hersteller=context.getMhersteller() #getattr(uaz,'mhersteller','')
-            typ=context.getMtyp() #getattr(uaz,'mtyp','')
-            baujahr=context.getMbaujahr() #getattr(uaz,'mbaujahr','')
+            #art=nN(context.getMart() #getattr(uaz,'mart','')
+            #hersteller=nN(context.getMhersteller() #getattr(uaz,'mhersteller','')
+            #typ=nN(context.getMtyp() #getattr(uaz,'mtyp','')
+            #baujahr=nN(context.getMbaujahr() #getattr(uaz,'mbaujahr','')
             c.setFont(schriftart,10)
             c.drawString(1.8*cm,12.5*cm,"Art der Maschine:")
-            c.drawString(8*cm,12.5*cm,art)
+            #c.drawString(8*cm,12.5*cm,art)
             c.drawString(1.8*cm,12*cm,"Hersteller der Maschine:")
-            c.drawString(8*cm,12*cm,hersteller)
+            #c.drawString(8*cm,12*cm,hersteller)
             c.drawString(1.8*cm,11.5*cm,"Typ der Maschine:")
-            c.drawString(8*cm,11.5*cm,typ)
+            #c.drawString(8*cm,11.5*cm,typ)
             c.drawString(1.8*cm,11*cm,"Baujahr der Maschine:")
-            c.drawString(8*cm,11*cm,baujahr)
+            #c.drawString(8*cm,11*cm,baujahr)
 
             c.setFont(schriftartfett,10)
             c.drawString(1.8*cm,10*cm,"Beschreibung des Unfallhergangs (Fortsetzung)")
