@@ -66,7 +66,7 @@ class Presentation(grok.MultiAdapter):
         metadata = IZopeDublinCore(context)
         mitglied = ''.join(metadata.creators)
         filename = "/tmp/uaz_%s.pdf" %mitglied
-        addr = ICompanyAddress(request.principal).getAddress()
+        addr = ICompanyInfo(request.principal).getAddress()
         c = canvas.Canvas(filename,pagesize=A4)
 
         c.setAuthor("BG fÃ¼r Fahrzeughaltungen")
