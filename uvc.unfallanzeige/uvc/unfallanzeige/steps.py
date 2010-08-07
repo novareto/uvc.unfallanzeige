@@ -60,7 +60,7 @@ class Adress(grok.Viewlet):
     #grok.view(Basic)
 
     def render(self):
-        return "ICH BINS DIE ADRESE"
+        return "Daten des Unternehmens"
 
 
 #
