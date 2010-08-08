@@ -49,13 +49,13 @@ class IUnfallanzeige(IContent):
 
     unfuplz = TextLine(
         title = _(u"PLZ"),
-        description = _(u"Postleitzahl"),
+        description = _(u"Bitte geben Sie Postleitzahl"),
         required = False,
         )
 
     unfuort = TextLine(
         title = _(u"Ort"),
-        description = _(u"Ort der Zweigstelle."),
+        description = _(u"Ort der Zweigstelle an."),
         required = False,
         )
 
@@ -66,7 +66,7 @@ class IUnfallanzeige(IContent):
 
     anspfon = TextLine(
         title = _(u"Telefon"),
-        description = _(u"bitte vergessen Sie dabei nicht die Telefonnummer."),
+        description = _(u"vergessen Sie dabei bitte nicht die Telefonnummer."),
         )
 
 
@@ -98,8 +98,8 @@ class IUnfallanzeige(IContent):
         )
 
     unvlaraddr = Text(
-        title = _(u"Zeitarbeitsunternehmen"),
-        description = _(u"Bitte geben Sie Name und Anschrift des Zeitarbeitsunternehmens an."),
+        title = _(u"Personaldienstleister"),
+        description = _(u"Bitte geben Sie Name und Anschrift des Personaldienstleisters bzw. Zeitarbeitsunternehmens an."),
         required = False,
         )
 
@@ -116,13 +116,13 @@ class IUnfallanzeige(IContent):
         )
 
     ikstr = TextLine(
-        title = _(u"Anschrift (Str."),
+        title = _(u"Anschrift (Strasse"),
         description = _(u"Bitte geben Sie Strasse"),
         )
 
     iknr = TextLine(
         title = _(u"Hs.-Nr.)"),
-        description = _(u"Hausnummer des Versicherten an,"),
+        description = _(u"Hausnummer des Versicherten an."),
         )
 
     lkz = Choice(
@@ -133,12 +133,12 @@ class IUnfallanzeige(IContent):
 
     ikzplz = TextLine(
         title = _(u"PLZ"),
-        description = _(u"Postleitzahl"),
+        description = _(u"Bitte geben Sie Postleitzahl"),
         )
 
     ikzort = TextLine(
         title = _(u"Ort"),
-        description = _(u"Ort"),
+        description = _(u"Ort des Versicherten an."),
         )
 
     prsgeb = TextLine(
@@ -179,7 +179,7 @@ class IUnfallanzeige(IContent):
 
     veheentgeltbis = TextLine(
         title = _(u"Entgeltzahlung"),
-        description = _(u"Entgelt aus dem Ehegattenarbeitsvertrag wurde bezahlt bis (tt.mm.jjjj)"),
+        description = _(u"Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"),
         required = False,
         )
 
@@ -198,12 +198,12 @@ class IUnfallanzeige(IContent):
 
     unfdatum = TextLine(
         title = _(u"Unfallzeitpunkt (Datum"),
-        description = _(u"Unfallatum (mm.tt.jjjj)"),
+        description = _(u"Bitte geben Sie das Unfallatum (mm.tt.jjjj)"),
         )
 
     unfzeit = TextLine(
         title = _(u"Zeit)"),
-        description = _(u"Zeitpunkt (hh:mm):"),
+        description = _(u"den Zeitpunkt (hh:mm) des Unfalls an."),
         )
 
     unfort_detail = Choice(
@@ -287,7 +287,7 @@ class IUnfallanzeige(IContent):
 
     uadbabis = TextLine(
         title = _(u"Ende)"),
-        description = _(u"endet um Uhrzeit (hh:mm)"),
+        description = _(u"endet um Uhrzeit (hh:mm)."),
         )
      
     diavkt = TextLine(
