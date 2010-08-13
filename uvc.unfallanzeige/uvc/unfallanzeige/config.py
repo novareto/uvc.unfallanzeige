@@ -7,30 +7,25 @@ import grok
 import uvcsite
 import zope.interface
 
-import megrok.z3cform.wizard
-from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder
 from uvc.unfallanzeige.uazwizard import Unfallanzeige
+from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder
 
-
-class UAZMenuWizard(uvcsite.Entry):
-    grok.context(zope.interface.Interface)
-    grok.title('Unfallanzeige Wizard')
-    uvcsite.menu(uvcsite.GlobalMenu)
-    grok.order(30)
-
-    @property
-    def url(self):
-        adapter = uvcsite.IGetHomeFolderUrl(self.request)
-        return adapter.getURL() + 'unfallanzeigen/startwizard'
+from zope.app.homefolder.interfaces import IHomeFolder
 
 
 class StartWizard(grok.View):
-    grok.implements(megrok.z3cform.wizard.IWizard)
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(zope.interface.Interface)
+    grok.title(u"Unfallanzeige")
+    uvcsite.menu(uvcsite.IGlobalMenu)
 
     def update(self):
+        """ Wir müssen zunächst eine Instanz der Unfallanzeige
+            anlegen. Diese Instanz dient als Context für den
+            Wizard.
+        """
+        hf = IHomeFolder(self.request.principal).homeFolder
         self.uaz = uaz = Unfallanzeige()
-        self.context.add(uaz)
+        hf['unfallanzeigen'].add(uaz)
 
     def render(self):
         self.redirect(self.url(self.uaz, 'unfallanzeigewizard'))

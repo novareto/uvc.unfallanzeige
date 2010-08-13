@@ -3,8 +3,6 @@
            xmlns:i18n="http://namespaces.zope.org/i18n">
 
   <include package="grok" />
-  <include package="megrok.z3cform.base" />
-  <include package="megrok.z3cform.wizard"/>
   <include package="uvc.widgets"/>
   <grok:grok package="." />
 

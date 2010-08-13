@@ -11,10 +11,10 @@ div#form-widgets-vehearbeitsv-row div.widget {
 div#form-widgets-vehebis-row div.widget, 
 div#form-widgets-veheentgeltbis-row div.widget,
 div#form-widgets-unfuname-row div.widget, 
-div#form-widgets-unfustrasse-row div.widget, 
-div#form-widgets-unfunr-row div.widget, 
-div#form-widgets-unfuplz-row div.widget, 
-div#form-widgets-unfuort-row div.widget {
+div#field-form-basic-field-unfustrasse div.widget, 
+div#field-form-basic-field-unfunr div.widget, 
+div#field-form-basic-field-unfuplz div.widget, 
+div#field-form-basic-field-unfuort div.widget {
   margin-left: 6em;
 }
 
@@ -36,8 +36,8 @@ div#form-widgets-unfuort-row div.widget {
 #form-widgets-uadbabis,
 #form-widgets-unfzeit,
 #form-widgets-iknr,
-#form-widgets-unfunr,
-#form-widgets-unfuplz,
+#form-basic-field-unfunr,
+#form-basic-field-unfuplz,
 #form-widgets-ikzplz {
  width: 4em;
 }

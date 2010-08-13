@@ -5,7 +5,6 @@
 from zope.interface import Interface
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
-from z3c.wizard.interfaces import IWizard
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 
@@ -13,7 +12,7 @@ class IUnfallanzeigenFolder(IProductFolder):
     """Markerinterface"""
 
 
-class IUnfallanzeigeWizard(IWizard):
+class IUnfallanzeigeWizard(Interface):
     """Markerinterface"""
 
 class IPresentation(Interface):
@@ -75,7 +74,6 @@ class IUnfallanzeige(IContent):
     uadbru1 = OptionalChoice(
         title = _(u"Taetigkeit zum Unfallzeitpunkt"),
         description = _(u"Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"),
-        alternative=True,
         values = ('Drucker', 'Bildhauer'),
         )
 
@@ -87,7 +85,6 @@ class IUnfallanzeige(IContent):
     unfute = OptionalChoice(
         title = _(u"Teil des Unternehmens"),
         description = _(u"In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"),
-        alternative=True,
         values = ('Verwaltung', 'Druckerei', 'Schreinerei')
         )
 

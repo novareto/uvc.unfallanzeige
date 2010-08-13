@@ -40,9 +40,10 @@ from zope.dublincore.interfaces import IZopeDublinCore
 from zope.publisher.interfaces import IRequest
 from uvcsite.api.interfaces import ICompanyInfo, ICompanyAddress
 
-@uvcsite.menuentry(uvcsite.IDocumentActions)
 class Druck(grok.View):
     grok.context(IUnfallanzeige)
+    grok.title(" ")
+    uvcsite.menu(uvcsite.IDocumentActions, order=0, icon="@@/uvc-icons/icon_pdf.gif")
 
     def render(self):
         RESPONSE = self.request.response

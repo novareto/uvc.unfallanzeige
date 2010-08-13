@@ -2,38 +2,41 @@ $(document).ready(function(){
 
 /* Doppel Felder */
 
- $('#form-widgets-anspfon-row').appendFieldTo('#form-widgets-anspname-row');
- $('#form-widgets-unfuort-row').appendFieldTo('#form-widgets-unfuplz-row');
- $('#form-widgets-unfunr-row').appendFieldTo('#form-widgets-unfustrasse-row');
+ $('#field-form-basic-field-anspfon').appendFieldTo('#field-form-basic-field-anspname');
+ $('#field-form-basic-field-unfunr').appendFieldTo('#field-form-basic-field-unfustrasse');
+ $('#field-form-basic-field-unfuort').appendFieldTo('#field-form-basic-field-unfuplz');
 
 /* Andere Adresse */
 
- var zweigstelle = $('#form-widgets-unfustdor-row input:checked').val();
+ var zweigstelle = $('#field-form-basic-field-unfustdor input:checked').val();
  
  if (zweigstelle == 'In einer Zweigniederlassung') {
-     $('#form-widgets-unfustrasse-row, \
-        #form-widgets-unfuname-row, \
-        #form-widgets-unfuplz-row').show()
+     $('#field-form-basic-field-unfustrasse, \
+        #field-form-basic-field-unfuname, \
+        #field-form-basic-field-unfuplz').show()
         }
  else {
-     $('#form-widgets-unfustrasse-row, \
-        #form-widgets-unfuname-row, \
+     $('#field-form-basic-field-unfustrasse, \
+        #field-form-basic-field-unfuname, \
         #form-widgets-unfunr-row, \
-        #form-widgets-unfuplz-row, \
-        #form-widgets-unfuort-row').hide()
+        #field-form-basic-field-unfuplz, \
+        #field-form-basic-field-unfuort').hide()
         }
 
- $('#form-widgets-unfustdor-0').click( function(event){
-     $('#form-widgets-unfustrasse-row, \
-        #form-widgets-unfuname-row, \
-        #form-widgets-unfunr-row, \
-        #form-widgets-unfuplz-row, \
-        #form-widgets-unfuort-row').slideUp();
+ $('#field-form-basic-field-unfustdor input:radio').click( function(event){
+     val = $(this).val()
+     if (val=='In dem vorher genannten Unternehmen') {
+       $('#field-form-basic-field-unfustrasse, \
+          #field-form-basic-field-unfuname, \
+          #form-widgets-unfunr-row, \
+          #field-form-basic-field-unfuplz, \
+          #field-form-basic-field-unfuort').slideUp();
+        }  
+     if (val=='In einer Zweigniederlassung') {
+       $('#field-form-basic-field-unfustrasse, \
+        #field-form-basic-field-unfuname, \
+        #field-form-basic-field-unfuplz').slideDown();
+      }  
  });
 
- $('#form-widgets-unfustdor-1').click( function(event){
-     $('#form-widgets-unfustrasse-row, \
-        #form-widgets-unfuname-row, \
-        #form-widgets-unfuplz-row').slideDown();
- });
 });

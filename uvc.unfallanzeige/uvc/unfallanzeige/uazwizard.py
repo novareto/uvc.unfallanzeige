@@ -5,9 +5,7 @@
 
 import grok
 import uvcsite
-import z3c.wizard
 
-import megrok.z3cform.wizard as z3cwizard 
 from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
 
@@ -24,28 +22,14 @@ class Unfallanzeigen(uvcsite.ProductFolder):
     uvcsite.contenttype(Unfallanzeige)
 
 
-class UnfallanzeigeWizard(z3cwizard.WizardForm):
+class UnfallanzeigeWizard(uvcsite.Wizard):
     """ Wizard form."""
+    grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
 
     label = u'Unfallanzeige'
-
-    def setUpSteps(self):
-        return [
-            z3c.wizard.step.addStep(self, 'basic', weight=1),
-            z3c.wizard.step.addStep(self, 'job', weight=2),
-            z3c.wizard.step.addStep(self, 'person', weight=3),
-            z3c.wizard.step.addStep(self, 'accidenti', weight=4),
-            z3c.wizard.step.addStep(self, 'accidentii', weight=5),
-            z3c.wizard.step.addStep(self, 'basicinformation', weight=6),
-            z3c.wizard.step.addStep(self, 'finish', weight=7),
-            ]
-
 
     def update(self):
         super(UnfallanzeigeWizard, self).update()
         uazjs.need()
         uazcss.need()
-
-    def doFinish(self):
-        print "FINISH"

@@ -23,8 +23,7 @@ setup(name='uvc.unfallanzeige',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'z3c.wizard',
-          'megrok.z3cform.wizard',
+          'reportlab',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
