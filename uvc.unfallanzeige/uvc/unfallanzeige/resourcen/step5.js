@@ -1,90 +1,90 @@
 $(document).ready(function(){
  // Init Hide All //
 
- $('#form-widgets-unfeba1-row, #form-widgets-unfae1-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row, #form-widgets-unfwa1-row, #form-widgets-unfwax-row').hide();
+ $('#field-form-accidentii-field-unfeba1, #field-form-accidentii-field-unfae1, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax').hide();
 
  var death = $('#form-widgets-prstkz-row input:checked').val();
  if (death == 'nein'){
-   $('#form-widgets-unfae1-row').show();   
+   $('#field-form-accidentii-field-unfae1').show();   
  }
 
- var fortgesetzt = $('#form-widgets-unfae1-row input:checked').val();
+ var fortgesetzt = $('#field-form-accidentii-field-unfae1 input:checked').val();
  if (fortgesetzt == 'ja, sofort'){
-   $('#form-widgets-unfwa1-row').show();
+   $('#field-form-accidentii-field-unfwa1').show();
  }
  if (fortgesetzt == 'ja, spaeter am'){
-   $('#form-widgets-unfwa1-row').show();
-   $('#form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row').show();
+   $('#field-form-accidentii-field-unfwa1').show();
+   $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').show();
  }
 
- var aufgenommen = $('#form-widgets-unfwa1-row input:checked').val();
+ var aufgenommen = $('#field-form-accidentii-field-unfwa1 input:checked').val();
  if (aufgenommen == 'ja'){
-   $('#form-widgets-unfwax-row').show();
+   $('#field-form-accidentii-field-unfwax').show();
  }
 
  //Tödlicher Unfall //
- $('#form-widgets-prstkz-1').click( function(event){ 
-   $('#form-widgets-unfae1-row').fadeIn();   
+ $('#form-accidentii-field-prstkz-nein').click( function(event){ 
+   $('#field-form-accidentii-field-unfae1').fadeIn();   
  });   
 
  //Kein Tödlicher Unfall//
- $('#form-widgets-prstkz-0').click( function(event){ 
-   $('#form-widgets-unfae1-row input:radio, #form-widgets-unfwa1-row input:radio').removeAttr('checked');   
-   $('#form-widgets-unfwax-row :input, #form-widgets-unfaedatum-row :input, #form-widgets-unfaezeit-row :input').val('');
-   $('#form-widgets-unfwa1-row, #form-widgets-unfwax-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row, #form-widgets-unfae1-row').fadeOut();   
+ $('#form-accidentii-field-prstkz-ja').click( function(event){ 
+   $('#field-form-accidentii-field-unfae1 input:radio, #field-form-accidentii-field-unfwa1 input:radio').removeAttr('checked');   
+   $('#field-form-accidentii-field-unfwax :input, #field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
+   $('#field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfae1').fadeOut();   
  });    
 
  // Arbeit nicht beendent //
- $('#form-widgets-unfae1-0').click( function(event){
-   $('#form-widgets-unfwa1-row input:radio').removeAttr('checked');
-   $('#form-widgets-unfwa1-row').hide();
-   $('#form-widgets-unfwax-row :input, #form-widgets-unfaedatum-row :input, #form-widgets-unfaezeit-row :input').val('');
-   $('#form-widgets-unfwax-row, #form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row').hide();
+ $('#form-accidentii-field-unfae1-nein').click( function(event){
+   $('#field-form-accidentii-field-unfwa1 input:radio').removeAttr('checked');
+   $('#field-form-accidentii-field-unfwa1').hide();
+   $('#field-form-accidentii-field-unfwax :input, #field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
+   $('#field-form-accidentii-field-unfwax, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').hide();
  });
 
  //Arbeit sofort eingetellt//
  $('#form-widgets-unfae1-1').click( function(event){
-   $('#form-widgets-unfwa1-row').show();
-   $('#form-widgets-unfaedatum-row :input, #form-widgets-unfaezeit-row :input').val('');
-   $('#form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row').hide();
+   $('#field-form-accidentii-field-unfwa1').show();
+   $('#field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
+   $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').hide();
  });
 
  //Arbeit eingestellt später am //
  $('#form-widgets-unfae1-2').click( function(event){
-   $('#form-widgets-unfaedatum-row, #form-widgets-unfaezeit-row').show();
-   $('#form-widgets-unfwa1-row').show();
-   $('#form-widgets-unfaezeit-row').hide()
+   $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').show();
+   $('#field-form-accidentii-field-unfwa1').show();
+   $('#field-form-accidentii-field-unfaezeit').hide()
  });
 
 
  //Arbeit wieder aufgenommen am //
  $('#form-widgets-unfwa1-0').click( function(event){
-   $('#form-widgets-unfwax-row').show();
+   $('#field-form-accidentii-field-unfwax').show();
  });
 
  //Arbeit nicht wieder aufgenommen am //
  $('#form-widgets-unfwa1-1').click( function(event){
-   $('#form-widgets-unfwax-row :input').val('');
-   $('#form-widgets-unfwax-row').hide();
+   $('#field-form-accidentii-field-unfwax :input').val('');
+   $('#field-form-accidentii-field-unfwax').hide();
  });
 
 
  // Besuch beim Arzt //
  var arzt = $('#form-widgets-unfeba-row input:checked').val();
  if (arzt == 'Name und Anschrift'){
-   $('#form-widgets-unfeba1-row').show();
+   $('#field-form-accidentii-field-unfeba1').show();
  }
 
  $('#form-widgets-unfeba-0').click( function(event){
-   $('#form-widgets-unfeba1-row :input').val('');
-   $('#form-widgets-unfeba1-row').fadeOut();
+   $('#field-form-accidentii-field-unfeba1 :input').val('');
+   $('#field-form-accidentii-field-unfeba1').fadeOut();
  });
 
  $('#form-widgets-unfeba-1').click( function(event){
-   $('#form-widgets-unfeba1-row').fadeIn();
+   $('#field-form-accidentii-field-unfeba1').fadeIn();
  });
 
  //DoppelFelder //
- $('#form-widgets-unfaezeit-row').appendFieldTo('#form-widgets-unfaedatum-row');
+ $('#field-form-accidentii-field-unfaezeit').appendFieldTo('#field-form-accidentii-field-unfaedatum');
  $('#form-widgets-uadbabis-row').appendFieldTo('#form-widgets-uadbavon-row');
 });

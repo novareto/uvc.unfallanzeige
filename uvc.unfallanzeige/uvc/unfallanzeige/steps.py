@@ -10,7 +10,7 @@ import zope.component
 
 from uvc.unfallanzeige import resources
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
-from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard 
+from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige 
 
 from dolmen.forms import base
 from zeam.form.base.markers import NO_VALUE
@@ -21,9 +21,11 @@ from zeam.form.base.errors import Error
 #
 
 class Basic(uvcsite.Step):
-    grok.context(IUnfallanzeige)
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(10)
     label = u'Basis Informationen'
+    ignoreContent = False
 
 
     fields = base.Fields(IUnfallanzeige).select(
@@ -33,7 +35,7 @@ class Basic(uvcsite.Step):
     fields['unfustdor'].mode = "radio"
 
     def update(self):
-        super(uvcsite.Step, self).update()
+        super(Basic, self).update()
         resources.step1.need()
 
     def validateStep(self, data):
@@ -65,35 +67,35 @@ class Adress(grok.Viewlet):
 #
 
 class Job(uvcsite.Step):
-    grok.context(IUnfallanzeige)
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(20)
+    ignoreContent = False
     label = form_name = u'Angaben zur versicherten Person'
-
-    handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
         'uadbru1', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
-    #fields['unflar'].widgetFactory = RadioFieldWidget
+    fields['unflar'].mode = "radio"
 
     def update(self):
-        super(uvcsite.Step, self).update()
+        super(Job, self).update()
         resources.step2.need()
 
     def validateStep(self, data):
-        errors = []
         if data.get('unflar') == 'ja':
             if not data.get('unvlaraddr'):
-                errors.append( ('unvlaraddr', u'Bitte die Adresse der Firma ausfüllen.') )
-        return errors
+                self.errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.','unvlaraddr'))
+        return self.errors
 
 #
 ## Step3
 #
 
 class Person(uvcsite.Step):
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(30)
     label = form_name = u'weitere Angaben zur versicherten Person'
 
     handleApplyOnBack = True
@@ -103,43 +105,41 @@ class Person(uvcsite.Step):
         'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv', 
         'vehebis', 'veheentgeltbis', 'unfefz', 'unfkka')
 
-    #fields['unfbu'].widgetFactory = RadioFieldWidget
-    #fields['prssex'].widgetFactory = RadioFieldWidget
-    #fields['vehearbeitsv'].widgetFactory = RadioFieldWidget
+    fields['unfbu'].mode = "radio"
+    fields['prssex'].mode = "radio"
+    fields['vehearbeitsv'].mode = "radio"
 
     def update(self):
-        super(uvcsite.Step, self).update()
+        super(Person, self).update()
         resources.step3.need()
 
     def validateStep(self, data):
-        error = []
         if data.get('unfbu') == "Ehegatte des Unternehmers":
             if not data.get('vehearbeitsv'):
-                error.append(('vehearbeitsv', 'Bitte hier eine Eingabe machen'))
+                self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
                 if not data.get('vehebis'):
-                    error.append(('vehebis', 'Bitte hier eine Eingabe machen'))
+                    self.errors.append(Error('Bitte hier eine Eingabe machen', identiefier='vehebis'))
                 if not data.get('veheentgeltbis'):
-                    error.append(('veheentgeltbis', 'Bitte hier eine Eingabe machen'))
-        return error 
+                    self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='veheentgeltbis'))
+        return self.errors 
 
 #
 ## Step4
 #
 
 class AccidentI(uvcsite.Step):
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(40)
     label = form_name = u'Informationen zum Unfall Teil I'
-
-    handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
         'unfdatum', 'unfzeit', 'unfort_detail', 'unfort',
         'unfhg1', 'unfhg2', 'unfkn1', 'unfkn2')
 
-    #fields['unfhg2'].widgetFactory = RadioFieldWidget
-    #fields['unfkn2'].widgetFactory = RadioFieldWidget
+    fields['unfhg2'].mode = "radio"
+    fields['unfkn2'].mode = "radio"
 
     def update(self):
         super(uvcsite.Step, self).update()
@@ -150,8 +150,9 @@ class AccidentI(uvcsite.Step):
 #
 
 class AccidentII(uvcsite.Step):
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(50)
     label = form_name = u'Informationen zum Unfall Teil II'
 
     handleApplyOnBack = True
@@ -160,10 +161,10 @@ class AccidentII(uvcsite.Step):
         'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1', 
         'unfwax', 'uadbavon', 'uadbabis', 'diavkt', 'diaadv', 'unfeba', 'unfeba1')
 
-    #fields['prstkz'].widgetFactory = RadioFieldWidget
-    #fields['unfae1'].widgetFactory = RadioFieldWidget
-    #fields['unfwa1'].widgetFactory = RadioFieldWidget
-    #fields['unfeba'].widgetFactory = RadioFieldWidget
+    fields['prstkz'].mode = "radio"
+    fields['unfae1'].mode = "radio"
+    fields['unfwa1'].mode = "radio"
+    fields['unfeba'].mode = "radio"
 
     def update(self):
         super(uvcsite.Step, self).update()
@@ -201,8 +202,9 @@ class AccidentII(uvcsite.Step):
 #
 
 class BasicInformation(uvcsite.Step):
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(60)
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
 
     handleApplyOnBack = True
@@ -219,8 +221,9 @@ class BasicInformation(uvcsite.Step):
 #
 
 class Finish(uvcsite.Step):
-    grok.context(IUnfallanzeigenFolder)
+    grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
+    grok.order(70)
     label = form_name = u'Versand und Druck der Unfallanzeige'
 
     handleApplyOnBack = True

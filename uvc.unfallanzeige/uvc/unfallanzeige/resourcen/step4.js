@@ -1,3 +1,3 @@
 $(document).ready(function(){
- $('#form-widgets-unfzeit-row').appendFieldTo('#form-widgets-unfdatum-row');
+ $('#field-form-accidenti-field-unfzeit').appendFieldTo('#field-form-accidenti-field-unfdatum');
 });

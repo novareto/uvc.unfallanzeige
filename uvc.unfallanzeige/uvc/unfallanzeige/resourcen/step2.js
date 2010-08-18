@@ -1,19 +1,19 @@
 /* Step II */
 $(document).ready(function(){
- var leihfirma = $('#form-widgets-unflar-row input:checked').val();
+ var leihfirma = $('#field-form-job-field-unflar input:checked').val();
  if (leihfirma == 'ja') {
-     $('#form-widgets-unvlaraddr-row').show()
+     $('#field-form-job-field-unvlaraddr').show()
      }
  else {
-     $('#form-widgets-unvlaraddr-row').hide()
+     $('#field-form-job-field-unvlaraddr').hide()
      }
 
-  $('#form-widgets-unflar-row input:radio').change(function() {
+  $('#field-form-job-field-unflar input:radio').change(function() {
       if ($(this).val() == 'ja') {
-        $('#form-widgets-unvlaraddr-row').fadeIn();
+        $('#field-form-job-field-unvlaraddr').fadeIn();
       }
       else {
-        $('#form-widgets-unvlaraddr-row').fadeOut();
+        $('#field-form-job-field-unvlaraddr').fadeOut();
       }
   });
 });

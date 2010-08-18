@@ -4,12 +4,12 @@ UAZ StyleSheets
 
 /* Einrückung optionale Felder */
 
-div#form-widgets-vehearbeitsv-row div.widget {
+div#field-form-person-field-vehearbeitsv div.widget {
   margin-left: 4em;
 }    
 
-div#form-widgets-vehebis-row div.widget, 
-div#form-widgets-veheentgeltbis-row div.widget,
+div#field-form-person-field-vehebis div.widget, 
+div#field-form-person-field-veheentgeltbis div.widget,
 div#form-widgets-unfuname-row div.widget, 
 div#field-form-basic-field-unfustrasse div.widget, 
 div#field-form-basic-field-unfunr div.widget, 
@@ -21,24 +21,26 @@ div#field-form-basic-field-unfuort div.widget {
 
 /* Unterschiedliche Feldlängen */
 
-#form-widgets-unfdatum,
-#form-widgets-veheentgeltbis,
-#form-widgets-vehebis,
-#form-widgets-prsgeb {
+#form-accidenti-field-unfdatum,
+#form-person-field-veheentgeltbis,
+#form-person-field-vehebis,
+#form-person-field-prsgeb {
  width: 7em;
 }
 
-#form-widgets-uadst {
+#form-job-field-uadst {
  width: 5em;
 }
 
-#form-widgets-uadbavon,
-#form-widgets-uadbabis,
-#form-widgets-unfzeit,
-#form-widgets-iknr,
+#form-accidentii-field-uadbavon,
+#form-accidentii-field-uadbabis,
+#form-accidenti-field-uadbavon,
+#form-accidenti-field-uadbabis,
+#form-accidenti-field-unfzeit,
 #form-basic-field-unfunr,
 #form-basic-field-unfuplz,
-#form-widgets-ikzplz {
+#form-person-field-iknr,
+#form-person-field-ikzplz {
  width: 4em;
 }
 
