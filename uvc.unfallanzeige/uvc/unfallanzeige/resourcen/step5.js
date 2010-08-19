@@ -3,7 +3,7 @@ $(document).ready(function(){
 
  $('#field-form-accidentii-field-unfeba1, #field-form-accidentii-field-unfae1, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax').hide();
 
- var death = $('#form-widgets-prstkz-row input:checked').val();
+ var death = $('#field-form-accidentii-field-prstkz input:checked').val();
  if (death == 'nein'){
    $('#field-form-accidentii-field-unfae1').show();   
  }
@@ -12,7 +12,7 @@ $(document).ready(function(){
  if (fortgesetzt == 'ja, sofort'){
    $('#field-form-accidentii-field-unfwa1').show();
  }
- if (fortgesetzt == 'ja, spaeter am'){
+ if (fortgesetzt == 'ja, spaeter am:'){
    $('#field-form-accidentii-field-unfwa1').show();
    $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').show();
  }
@@ -23,19 +23,19 @@ $(document).ready(function(){
  }
 
  //Tödlicher Unfall //
- $('#form-accidentii-field-prstkz-nein').click( function(event){ 
+ $('#form-accidentii-field-prstkz-1').click( function(event){ 
    $('#field-form-accidentii-field-unfae1').fadeIn();   
  });   
 
  //Kein Tödlicher Unfall//
- $('#form-accidentii-field-prstkz-ja').click( function(event){ 
+ $('#form-accidentii-field-prstkz-0').click( function(event){ 
    $('#field-form-accidentii-field-unfae1 input:radio, #field-form-accidentii-field-unfwa1 input:radio').removeAttr('checked');   
    $('#field-form-accidentii-field-unfwax :input, #field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
    $('#field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfae1').fadeOut();   
  });    
 
  // Arbeit nicht beendent //
- $('#form-accidentii-field-unfae1-nein').click( function(event){
+ $('#form-accidentii-field-unfae1-0').click( function(event){
    $('#field-form-accidentii-field-unfwa1 input:radio').removeAttr('checked');
    $('#field-form-accidentii-field-unfwa1').hide();
    $('#field-form-accidentii-field-unfwax :input, #field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
@@ -43,14 +43,14 @@ $(document).ready(function(){
  });
 
  //Arbeit sofort eingetellt//
- $('#form-widgets-unfae1-1').click( function(event){
+ $('#form-accidentii-field-unfae1-1').click( function(event){
    $('#field-form-accidentii-field-unfwa1').show();
    $('#field-form-accidentii-field-unfaedatum :input, #field-form-accidentii-field-unfaezeit :input').val('');
    $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').hide();
  });
 
  //Arbeit eingestellt später am //
- $('#form-widgets-unfae1-2').click( function(event){
+ $('#form-accidentii-field-unfae1-2').click( function(event){
    $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').show();
    $('#field-form-accidentii-field-unfwa1').show();
    $('#field-form-accidentii-field-unfaezeit').hide()
@@ -58,33 +58,34 @@ $(document).ready(function(){
 
 
  //Arbeit wieder aufgenommen am //
- $('#form-widgets-unfwa1-0').click( function(event){
+ $('#form-accidentii-field-unfwa1-0').click( function(event){
    $('#field-form-accidentii-field-unfwax').show();
  });
 
  //Arbeit nicht wieder aufgenommen am //
- $('#form-widgets-unfwa1-1').click( function(event){
+ $('#form-accidentii-field-unfwa1-1').click( function(event){
    $('#field-form-accidentii-field-unfwax :input').val('');
    $('#field-form-accidentii-field-unfwax').hide();
  });
 
 
  // Besuch beim Arzt //
- var arzt = $('#form-widgets-unfeba-row input:checked').val();
- if (arzt == 'Name und Anschrift'){
+ var arzt = $('#field-form-accidentii-field-unfeba input:checked').val();
+ console.log(arzt)
+ if (arzt == 'Aerztliche Behandlung bei:'){
    $('#field-form-accidentii-field-unfeba1').show();
  }
 
- $('#form-widgets-unfeba-0').click( function(event){
+ $('#form-accidentii-field-unfeba-0').click( function(event){
    $('#field-form-accidentii-field-unfeba1 :input').val('');
    $('#field-form-accidentii-field-unfeba1').fadeOut();
  });
 
- $('#form-widgets-unfeba-1').click( function(event){
+ $('#form-accidentii-field-unfeba-1').click( function(event){
    $('#field-form-accidentii-field-unfeba1').fadeIn();
  });
 
  //DoppelFelder //
  $('#field-form-accidentii-field-unfaezeit').appendFieldTo('#field-form-accidentii-field-unfaedatum');
- $('#form-widgets-uadbabis-row').appendFieldTo('#form-widgets-uadbavon-row');
+ $('#field-form-accidentii-field-uadbabis').appendFieldTo('#field-form-accidentii-field-uadbavon');
 });

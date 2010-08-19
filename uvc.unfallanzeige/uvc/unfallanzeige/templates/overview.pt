@@ -1,0 +1,15 @@
+<div tal:condition="viewlet/available">
+  <script> $('#accordion').accoridon() </script>
+  <div id="accordion">
+     <tal:rep repeat="subform viewlet/subforms">
+       <h3 tal:content="subform/label" />
+        <div>
+       <tal:rep1 repeat="field subform/daten">
+          <span tal:content="field/title"/>
+          <span tal:content="field/data"/>
+       </tal:rep1>
+        </div>
+    </tal:rep>
+  </div>
+
+</div>

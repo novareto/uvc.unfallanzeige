@@ -16,6 +16,9 @@ from dolmen.forms import base
 from zeam.form.base.markers import NO_VALUE
 from zeam.form.base.errors import Error 
 
+
+grok.templatedir('templates')
+
 #
 ## Step1
 #
@@ -52,16 +55,6 @@ class Basic(uvcsite.Step):
                 self.errors.append(Error(u'Bitte das Feld Plz ausfüllen.', identifier='unfuplz'))
         return self.errors        
 
-
-class Adress(grok.Viewlet):
-    grok.viewletmanager(uvcsite.IExtraInfo)
-    grok.context(UnfallanzeigeWizard)
-    #grok.view(Basic)
-
-    def render(self):
-        return "Daten des Unternehmens"
-
-
 #
 ## Step2
 #
@@ -84,7 +77,7 @@ class Job(uvcsite.Step):
 
     def validateStep(self, data):
         if data.get('unflar') == 'ja':
-            if not data.get('unvlaraddr'):
+            if data.get('unvlaraddr') == NO_VALUE:
                 self.errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.','unvlaraddr'))
         return self.errors
 
@@ -115,12 +108,12 @@ class Person(uvcsite.Step):
 
     def validateStep(self, data):
         if data.get('unfbu') == "Ehegatte des Unternehmers":
-            if not data.get('vehearbeitsv'):
+            if data.get('vehearbeitsv') == NO_VALUE:
                 self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
-                if not data.get('vehebis'):
-                    self.errors.append(Error('Bitte hier eine Eingabe machen', identiefier='vehebis'))
-                if not data.get('veheentgeltbis'):
+                if data.get('vehebis') == NO_VALUE:
+                    self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehebis'))
+                if data.get('veheentgeltbis') == NO_VALUE:
                     self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='veheentgeltbis'))
         return self.errors 
 
@@ -173,27 +166,27 @@ class AccidentII(uvcsite.Step):
     def validateStep(self, data):
         error = []
         if data.get('prstkz') == "nein":
-            if not data.get('unfae1'):
-                error.append(('unfae1', 'Bitte machen Sie Angaben in diesem Feld.'))
+            if data.get('unfae1') == NO_VALUE:
+                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfae1',))
             else:
                 if data.get('unfae1') == "ja, sofort":
-                    if not data.get('unfwa1'):
-                        error.append(('unfwa1', 'Bitte machen Sie Angaben in diesem Feld.'))
+                    if data.get('unfwa1') == NO_VALUE:
+                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
                     else:
                         if data.get('unfwa1') == "ja":
-                            if not data.get('unfwax'):
-                                error.append(('unfwax', 'Bitte machen Sie Angaben in diesem Feld.'))
+                            if data.get('unfwax') == NO_VALUE:
+                                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwax'))
                 
                 elif data.get('unfae1') == "ja, spaeter am":
-                    if not data.get('unfwa1'):
-                        error.append(('unfwa1', 'Bitte machen Sie Angaben in diesem Feld.'))
-                    if not data.get('unfaedatum'):
-                        error.append(('unfaedatum', 'Bitte machen Sie Angaben in diesem Feld.'))
-                    if not data.get('unfaezeit'):
-                        error.append(('unfaezeit', 'Bitte machen Sie Angaben in diesem Feld.'))
-        if data.get('unfeba') == "Name und Anschrift":
-            if not data.get('unfeba1'):
-                error.append(('unfeba1', 'Bitte machen Sie Angaben in diesem Feld.'))
+                    if data.get('unfwa1') == NO_VALUE:
+                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
+                    if data.get('unfaedatum') == NO_VALUE:
+                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaedatum'))
+                    if data.get('unfaezeit') == NO_VALUE:
+                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaezeit'))
+        if data.get('unfeba') == "Aerztliche Behandlung bei:":
+            if data.get('unfeba1') == NO_VALUE:
+                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfeba1'))
         return error
 
 
@@ -207,14 +200,7 @@ class BasicInformation(uvcsite.Step):
     grok.order(60)
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
 
-    handleApplyOnBack = True
-
     fields = base.Fields(IUnfallanzeige).select('unfus3', 'unfus2')
-
-
-    def update(self):
-        super(uvcsite.Step, self).update()
-
 
 #
 ## Step 7
@@ -225,10 +211,31 @@ class Finish(uvcsite.Step):
     grok.view(UnfallanzeigeWizard)
     grok.order(70)
     label = form_name = u'Versand und Druck der Unfallanzeige'
-
-    handleApplyOnBack = True
-
     fields = base.Fields(IUnfallanzeige).select('behandlung')
 
-    #fields['behandlung'].widgetFactory = RadioFieldWidget
+    fields['behandlung'].mode = "radio"
+
+
+class Overview(grok.Viewlet):
+    grok.view(UnfallanzeigeWizard)
+    grok.viewletmanager(uvcsite.IExtraInfo)
+    grok.context(IUnfallanzeige)
+
+    @property
+    def available(self):
+        if int(self.view.step) == 6:
+            return True
+        return False
+
+    @property
+    def subforms(self):
+        rc=[]
+        for subform in self.view.subforms[:-1]:
+            subform.updateWidgets()
+            data = {'label': subform.label,
+                    'daten': []}
+            for field in subform.fieldWidgets:
+                data['daten'].append(dict(title=field.title, data=field.inputValue()))
+            rc.append(data)
+        return rc 
 

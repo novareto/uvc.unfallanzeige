@@ -2,11 +2,24 @@
 # Copyright (c) 2007-2010 NovaReto GmbH
 # cklinger@novareto.de
 
+import time
+
 from zope.interface import Interface
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
+from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit
+
+
+def validateShortDatum(value):
+    """ """
+    try:
+        time.strptime(value, "%m.%Y")
+    except ValueError:
+        raise NotValidEingabeDatum(value)
+    return True
+
 
 class IUnfallanzeigenFolder(IProductFolder):
     """Markerinterface"""
@@ -15,8 +28,10 @@ class IUnfallanzeigenFolder(IProductFolder):
 class IUnfallanzeigeWizard(Interface):
     """Markerinterface"""
 
+
 class IPresentation(Interface):
     """ Marker Interface """
+
 
 class IUnfallanzeige(IContent):
 
@@ -40,7 +55,7 @@ class IUnfallanzeige(IContent):
         required = False,
         )
 
-    unfunr = Int(
+    unfunr = TextLine(
         title = _(u"Hs.-Nr."),
         description = _(u"Hausnummer der Zweigstelle an."),
         required = False,
@@ -80,6 +95,7 @@ class IUnfallanzeige(IContent):
     uadst = TextLine(
         title = _(u"Beginn der Beschaeftigung"),
         description = _(u"Der Versicherte ist beschaeftigt seit: (mm.jjjj)"),
+        constraint = validateShortDatum,
         )
 
     unfute = OptionalChoice(
@@ -141,6 +157,7 @@ class IUnfallanzeige(IContent):
     prsgeb = TextLine(
         title = _(u"Geburtsdatum"),
         description = _(u"Geburtsdatum des Versicherten (tt.mm.jjjj)"),
+        constraint = validateDatum,
         )
 
     prssex = Choice(
@@ -172,18 +189,22 @@ class IUnfallanzeige(IContent):
         title = _(u"Ehegattenarbeitsvertrag (Vertragsbeginn)"),
         description = _(u"Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"),
         required = False,
+        constraint = validateDatum,
         )
 
     veheentgeltbis = TextLine(
         title = _(u"Entgeltzahlung"),
         description = _(u"Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"),
         required = False,
+        constraint = validateDatum,
         )
 
-    unfefz = TextLine(
+    unfefz = Int(
         title = _(u"Entgeltfortzahlung"),
         description = _(u"Fuer wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?"),
         required = False,
+        max=99,
+        min=0,
         )
 
     unfkka = TextLine(
@@ -196,11 +217,13 @@ class IUnfallanzeige(IContent):
     unfdatum = TextLine(
         title = _(u"Unfallzeitpunkt (Datum"),
         description = _(u"Bitte geben Sie das Unfallatum (mm.tt.jjjj)"),
+        constraint = validateDatum,
         )
 
     unfzeit = TextLine(
         title = _(u"Zeit)"),
         description = _(u"den Zeitpunkt (hh:mm) des Unfalls an."),
+        constraint = validateUhrzeit,
         )
 
     unfort_detail = Choice(
@@ -256,12 +279,14 @@ class IUnfallanzeige(IContent):
         title = _(u"Datum"),
         description = _(u"Bitte geben Sie Datum (tt.mm.jjjj)"),
         required = False,
+        constraint = validateDatum,
         )
 
     unfaezeit = TextLine(
         title = _(u"Uhrzeit"),
         description = _(u"Uhrzeit (hh:mm) an."),
         required = False,
+        constraint = validateUhrzeit,
         )
      
     unfwa1 = Choice(
@@ -275,16 +300,19 @@ class IUnfallanzeige(IContent):
         title = _(u"Datum der Wiederaufnahme"),
         description = _(u"An welchem Tag wurde die Arbeit wieder aufgenommen (tt.mm.jjjj)?"),
         required = False,
+        constraint = validateDatum,
         )
 
     uadbavon = TextLine(
         title = _(u"Arbeitszeit (Beginn"),
         description = _(u"Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"),
+        constraint = validateUhrzeit,
         )
 
     uadbabis = TextLine(
         title = _(u"Ende)"),
         description = _(u"endet um Uhrzeit (hh:mm)."),
+        constraint = validateUhrzeit,
         )
      
     diavkt = TextLine(

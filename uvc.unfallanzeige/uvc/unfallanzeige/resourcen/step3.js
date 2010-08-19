@@ -8,7 +8,7 @@ $(document).ready(function(){
     #field-form-person-field-vehebis, \
     #field-form-person-field-veheentgeltbis').hide()
 
- var ehegatte = $('#form-widgets-unfbu-1:checked').val();
+ var ehegatte = $('#form-person-field-unfbu-4:checked').val();
  if (ehegatte == 'Ehegatte des Unternehmers'){
      $('#field-form-person-field-vehearbeitsv').show();
  }

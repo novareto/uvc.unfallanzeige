@@ -4,10 +4,13 @@ UAZ StyleSheets
 
 /* Einrückung optionale Felder */
 
+div#field-form-accidentii-field-unfae1 div.widget,
 div#field-form-person-field-vehearbeitsv div.widget {
   margin-left: 4em;
 }    
 
+div#field-form-accidentii-field-unfaedatum div.widget,
+div#field-form-accidentii-field-unfwa1 div.widget,
 div#field-form-person-field-vehebis div.widget, 
 div#field-form-person-field-veheentgeltbis div.widget,
 div#form-widgets-unfuname-row div.widget, 
@@ -18,9 +21,15 @@ div#field-form-basic-field-unfuort div.widget {
   margin-left: 6em;
 }
 
+div#field-form-accidentii-field-unfwax div.widget {
+  margin-left: 8em;
+}
 
 /* Unterschiedliche Feldlängen */
 
+#form-accidentii-field-unfwax,
+#form-accidentii-field-unfwa1,
+#form-accidentii-field-unfaedatum,
 #form-accidenti-field-unfdatum,
 #form-person-field-veheentgeltbis,
 #form-person-field-vehebis,
@@ -32,6 +41,7 @@ div#field-form-basic-field-unfuort div.widget {
  width: 5em;
 }
 
+#form-accidentii-field-unfaezeit,
 #form-accidentii-field-uadbavon,
 #form-accidentii-field-uadbabis,
 #form-accidenti-field-uadbavon,
@@ -44,7 +54,7 @@ div#field-form-basic-field-unfuort div.widget {
  width: 4em;
 }
 
-#form-widgets-unfefz {
+#form-person-field-unfefz {
  width: 2em;
 }
 
@@ -82,11 +92,33 @@ div#field-form-basic-field-unfuort div.widget {
 
 /* Progress */
 
-#page-body .wizardMenu span {
-  color:#B0B1B3;
-  padding:10px;
+#page-body ul.wizard-steps {
+ border:1px dashed #DDDDDD;
+ clear:both;
+ display:inline;
+ float:right;
+ margin-top:-1em;
+ text-align:right;
 }
 
-#page-body .wizardMenu .selected {
-  color:#000000;
+#page-body form fieldset {
+ width: 98%
+
 }
+
+#page-body ul.wizard-steps li {
+     list-style-type:decimal;
+}
+
+#page-body .wizard-steps .previous {
+ color: #8cb97c;
+ text-decoration: none;
+}
+#page-body .wizard-steps .current {
+ color: #5e90ac;
+ font-weight: bold;
+}
+#page-body .wizard-steps .next {
+ color: #cd3d3d;
+}
+
