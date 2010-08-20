@@ -71,7 +71,6 @@ $(document).ready(function(){
 
  // Besuch beim Arzt //
  var arzt = $('#field-form-accidentii-field-unfeba input:checked').val();
- console.log(arzt)
  if (arzt == 'Aerztliche Behandlung bei:'){
    $('#field-form-accidentii-field-unfeba1').show();
  }
