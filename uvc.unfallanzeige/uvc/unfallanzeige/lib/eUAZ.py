@@ -43,7 +43,8 @@ from uvcsite.api.interfaces import ICompanyInfo, ICompanyAddress
 class Druck(grok.View):
     grok.context(IUnfallanzeige)
     grok.title(" ")
-    uvcsite.sectionmenu(uvcsite.IDocumentActions, order=0, icon="@@/uvc-icons/icon_pdf.gif")
+
+    uvcsite.sectionmenu(uvcsite.IDocumentActions, order=0, icon="/@@/uvc-icons/icon_pdf.gif")
 
     def render(self):
         RESPONSE = self.request.response
