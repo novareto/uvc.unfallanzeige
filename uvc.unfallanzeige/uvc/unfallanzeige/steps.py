@@ -226,16 +226,3 @@ class Overview(grok.Viewlet):
         if int(self.view.step) == 6:
             return True
         return False
-
-    @property
-    def subforms(self):
-        rc=[]
-        for subform in self.view.subforms[:-1]:
-            subform.updateWidgets()
-            data = {'label': subform.label,
-                    'daten': []}
-            for field in subform.fieldWidgets:
-                data['daten'].append(dict(title=field.title, data=field.inputValue()))
-            rc.append(data)
-        return rc 
-

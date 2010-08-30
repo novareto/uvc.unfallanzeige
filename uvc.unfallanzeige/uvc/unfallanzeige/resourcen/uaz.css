@@ -64,6 +64,17 @@ div#field-form-accidentii-field-unfwax div.widget {
   width: 34em;
 }
 
+div#accordion h3 {
+  border-left: none;
+  padding-left: 25px;
+  width: 500px;
+}
+
+div.ui-accordion-content {
+  width: 462px;
+}
+
+
 /* Nicer Form */
 
 .input-form .step .row  {
