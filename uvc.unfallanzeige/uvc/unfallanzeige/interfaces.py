@@ -89,7 +89,7 @@ class IUnfallanzeige(IContent):
     uadbru1 = OptionalChoice(
         title = _(u"Taetigkeit zum Unfallzeitpunkt"),
         description = _(u"Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"),
-        values = ('Drucker', 'Bildhauer'),
+        vocabulary = "uvc.uadbru1",
         )
 
     uadst = TextLine(
@@ -101,7 +101,7 @@ class IUnfallanzeige(IContent):
     unfute = OptionalChoice(
         title = _(u"Teil des Unternehmens"),
         description = _(u"In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"),
-        values = ('Verwaltung', 'Druckerei', 'Schreinerei')
+        vocabulary = "uvc.unfute",
         )
 
     unflar = Choice(
