@@ -41,19 +41,19 @@ class Basic(uvcsite.Step):
         super(Basic, self).update()
         resources.step1.need()
 
-    def validateStep(self, data):
+    def validateStep(self, data, errors):
         if data.get('unfustdor') == 'In einer Zweigniederlassung':
             if data.get('unfuort') == NO_VALUE:
-                self.errors.append(Error(u'Bitte das Feld Ort ausfüllen.', identifier='unfuort'))
+                errors.append(Error(u'Bitte das Feld Ort ausfüllen.', identifier='unfuort'))
             if data.get('unfustrasse') == NO_VALUE:
-                self.errors.append(Error(u'Bitte das Feld Strasse ausfüllen.', identifier='unfustrasse'))
+                errors.append(Error(u'Bitte das Feld Strasse ausfüllen.', identifier='unfustrasse'))
             if data.get('unfunr') == NO_VALUE:
-                self.errors.append(Error(u'Bitte das Feld Nummer ausfüllen.', identifier='unfunr'))
+                errors.append(Error(u'Bitte das Feld Nummer ausfüllen.', identifier='unfunr'))
             if data.get('unfuname') == NO_VALUE:
-                self.errors.append(Error(u'Bitte das Feld Name ausfüllen.', identifier='unfuname'))
+                errors.append(Error(u'Bitte das Feld Name ausfüllen.', identifier='unfuname'))
             if data.get('unfuplz') == NO_VALUE:
-                self.errors.append(Error(u'Bitte das Feld Plz ausfüllen.', identifier='unfuplz'))
-        return self.errors        
+                errors.append(Error(u'Bitte das Feld Plz ausfüllen.', identifier='unfuplz'))
+        return errors        
 
 #
 ## Step2
@@ -75,11 +75,11 @@ class Job(uvcsite.Step):
         super(Job, self).update()
         resources.step2.need()
 
-    def validateStep(self, data):
+    def validateStep(self, data, errors):
         if data.get('unflar') == 'ja':
             if data.get('unvlaraddr') == NO_VALUE:
-                self.errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.','unvlaraddr'))
-        return self.errors
+                errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.','unvlaraddr'))
+        return errors
 
 #
 ## Step3
@@ -106,16 +106,16 @@ class Person(uvcsite.Step):
         super(Person, self).update()
         resources.step3.need()
 
-    def validateStep(self, data):
+    def validateStep(self, data, errors):
         if data.get('unfbu') == "Ehegatte des Unternehmers":
             if data.get('vehearbeitsv') == NO_VALUE:
-                self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehearbeitsv'))
+                errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
                 if data.get('vehebis') == NO_VALUE:
-                    self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehebis'))
+                    errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehebis'))
                 if data.get('veheentgeltbis') == NO_VALUE:
-                    self.errors.append(Error('Bitte hier eine Eingabe machen', identifier='veheentgeltbis'))
-        return self.errors 
+                    errors.append(Error('Bitte hier eine Eingabe machen', identifier='veheentgeltbis'))
+        return errors 
 
 #
 ## Step4
@@ -163,31 +163,31 @@ class AccidentII(uvcsite.Step):
         super(uvcsite.Step, self).update()
         resources.step5.need()
 
-    def validateStep(self, data):
+    def validateStep(self, data, errors):
         error = []
         if data.get('prstkz') == "nein":
             if data.get('unfae1') == NO_VALUE:
-                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfae1',))
+                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfae1',))
             else:
                 if data.get('unfae1') == "ja, sofort":
                     if data.get('unfwa1') == NO_VALUE:
-                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
                     else:
                         if data.get('unfwa1') == "ja":
                             if data.get('unfwax') == NO_VALUE:
-                                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwax'))
+                                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwax'))
                 
                 elif data.get('unfae1') == "ja, spaeter am":
                     if data.get('unfwa1') == NO_VALUE:
-                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
                     if data.get('unfaedatum') == NO_VALUE:
-                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaedatum'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaedatum'))
                     if data.get('unfaezeit') == NO_VALUE:
-                        self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaezeit'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaezeit'))
         if data.get('unfeba') == "Aerztliche Behandlung bei:":
             if data.get('unfeba1') == NO_VALUE:
-                self.errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfeba1'))
-        return error
+                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfeba1'))
+        return errors
 
 
 #
