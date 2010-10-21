@@ -5,7 +5,7 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 
 
-def vocabulary(terms):
+def vocabulary(*terms):
     """ """
     return SimpleVocabulary([SimpleTerm(value, token, title) for value, token, title in terms])
 
@@ -15,7 +15,9 @@ class Uadbru1Sources(grok.GlobalUtility):
     grok.name(u'uvc.uadbru1')
     
     def __call__(self, context):
-        return vocabulary(('Hausmeister', 'Drucker', 'Bildhauer'))
+        return vocabulary(('Hausmeister', 'Hausmeister', 'Hausmeister'),
+                          ('Drucker', 'Drucker', 'Druker'),
+                          ('Bildhauer', 'Bildhauer', 'Bildhauer'))
         
 
 class UnfuteSources(grok.GlobalUtility):
@@ -23,7 +25,9 @@ class UnfuteSources(grok.GlobalUtility):
     grok.name(u'uvc.unfute')
     
     def __call__(self, context):
-        return vocabulary(('Verwaltung', 'Druckerei', 'Schreinerei'))
+        return vocabulary(('Verwaltung', 'Verwaltung', 'Verwaltung')
+                          ('Druckerei', 'Druckerei', 'Druckerei')
+                          ('Schreinerei', 'Schreinerei', 'Schreinerei'))
 
 
 class StaSources(grok.GlobalUtility):
