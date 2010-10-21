@@ -169,7 +169,7 @@ class IUnfallanzeige(IContent):
     prssta = Choice(
         title = _(u"Staatsangehoerigkeit"),
         description = _(u"Staatsangehoerigkeit des Versicherten"),
-        values = ['Albanien', 'Belgien', 'Deutschland', 'Schweiz']
+        vocabulary = 'uvc.sta',
         )
 
     unfbu = Choice(
