@@ -7,7 +7,7 @@ from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 
 def vocabulary(terms):
     """ """
-    return SimpleVocabulary([SimpleTerm(title, title, title) for title in terms])
+    return SimpleVocabulary([SimpleTerm(value, token, title) for value, token, title in terms])
 
 
 class Uadbru1Sources(grok.GlobalUtility):
