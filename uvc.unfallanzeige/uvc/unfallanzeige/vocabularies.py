@@ -31,7 +31,7 @@ class StaSources(grok.GlobalUtility):
     grok.name(u'uvc.sta')
 
     def __call__(self, context):
-        return vocabulary(
+        return vocabulary((
                           ('001', 'Deutschland',_(u'label_deutschland')),
                           ('010','Albanien',_(u'label_albanien')),
                           ('011','Belgien',_(u'label_belgien')),
@@ -105,4 +105,4 @@ class StaSources(grok.GlobalUtility):
                           ('078','Iran',_(u'label_iran')),
                           ('089','Australien',_(u'label_australien')),
                           ('099', 'sonstiges',_(u'label_sonstiges')),
-                          )
+                          ))
