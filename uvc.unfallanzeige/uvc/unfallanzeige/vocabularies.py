@@ -10,6 +10,10 @@ def vocabulary(*terms):
     return SimpleVocabulary([SimpleTerm(value, token, title) for value, token, title in terms])
 
 
+def vocabulary_list(terms):
+    return SimpleVocabulary([SimpleTerm(value, token, title) for value, token, title in terms])
+
+
 class Uadbru1Sources(grok.GlobalUtility):
     grok.implements(IVocabularyFactory)
     grok.name(u'uvc.uadbru1')
@@ -35,7 +39,7 @@ class StaSources(grok.GlobalUtility):
     grok.name(u'uvc.sta')
 
     def __call__(self, context):
-        return vocabulary((
+        return vocabulary_list((
                           ('001', 'Deutschland',_(u'label_deutschland')),
                           ('010','Albanien',_(u'label_albanien')),
                           ('011','Belgien',_(u'label_belgien')),
@@ -58,25 +62,25 @@ class StaSources(grok.GlobalUtility):
                           ('029','Schweden',_(u'label_schweden')),
                           ('030','Schweiz',_(u'label_schweiz')),
                           ('031','Armenien',_(u'label_armenien')),
-                          ('031','Aserbaidschan',_(u'label_aserbaidschan')),
-                          ('031','Belarus',_(u'label_belarus')),
-                          ('031','Georgien',_(u'label_georgien')),
-                          ('031','Kasachstan',_(u'label_kasachstan')),
-                          ('031','Kirgisistan',_(u'label_kirgisistan')),
-                          ('031','Moldawien',_(u'label_moldawien')),
-                          ('031','Russland',_(u'label_russland')),
-                          ('031','Tadschikistan',_(u'label_tadschikistan')),
-                          ('031','Turkmenistan',_(u'label_turkmenistan')),
-                          ('031','Ukraine',_(u'label_ukraine')),
-                          ('031','Usbekistan',_(u'label_usbekistan')),
+                          ('0311','Aserbaidschan',_(u'label_aserbaidschan')),
+                          ('0312','Belarus',_(u'label_belarus')),
+                          ('0313','Georgien',_(u'label_georgien')),
+                          ('0314','Kasachstan',_(u'label_kasachstan')),
+                          ('0315','Kirgisistan',_(u'label_kirgisistan')),
+                          ('0316','Moldawien',_(u'label_moldawien')),
+                          ('0317','Russland',_(u'label_russland')),
+                          ('0318','Tadschikistan',_(u'label_tadschikistan')),
+                          ('0319','Turkmenistan',_(u'label_turkmenistan')),
+                          ('03110','Ukraine',_(u'label_ukraine')),
+                          ('03111','Usbekistan',_(u'label_usbekistan')),
                           ('032','Spanien',_(u'label_spanien')),
                           ('033','Tschechien',_(u'label_tschechien')),
-                          ('033','Slowakei',_(u'label_slowakei')),
+                          ('0331','Slowakei',_(u'label_slowakei')),
                           ('034','Tuerkei',_(u'label_tuerkei')),
                           ('035','Ungarn',_(u'label_ungarn')),
                           ('036','Lettland',_(u'label_lettland')),
-                          ('036','Litauen',_(u'label_litauen')),
-                          ('036','Estland',_(u'label_estland')),
+                          ('0361','Litauen',_(u'label_litauen')),
+                          ('0362','Estland',_(u'label_estland')),
                           ('037','Malta',_(u'label_malta')),
                           ('038','Zypern',_(u'label_zypern')),
                           ('039','Bosnien',_(u'label_bosnien')),
@@ -108,5 +112,4 @@ class StaSources(grok.GlobalUtility):
                           ('077','Pakistan',_(u'label_pakistan')),
                           ('078','Iran',_(u'label_iran')),
                           ('089','Australien',_(u'label_australien')),
-                          ('099', 'sonstiges',_(u'label_sonstiges')),
                           ))
