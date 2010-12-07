@@ -16,6 +16,7 @@ from zope.app.homefolder.interfaces import IHomeFolder
 class StartWizard(grok.View):
     grok.context(zope.interface.Interface)
     grok.title(u"Unfallanzeige")
+    grok.baseclass()
     uvcsite.menu(uvcsite.IGlobalMenu)
 
     def update(self):
