@@ -29,8 +29,8 @@ class UnfuteSources(grok.GlobalUtility):
     grok.name(u'uvc.unfute')
     
     def __call__(self, context):
-        return vocabulary(('Verwaltung', 'Verwaltung', 'Verwaltung')
-                          ('Druckerei', 'Druckerei', 'Druckerei')
+        return vocabulary(('Verwaltung', 'Verwaltung', 'Verwaltung'),
+                          ('Druckerei', 'Druckerei', 'Druckerei'),
                           ('Schreinerei', 'Schreinerei', 'Schreinerei'))
 
 
