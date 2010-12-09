@@ -3,10 +3,16 @@
 # cklinger@novareto.de
 
 import time
+import grok
 
 from zope.interface import Interface
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
+from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleVocabulary
+
+from zope.component import queryUtility
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit
@@ -31,6 +37,21 @@ class IUnfallanzeigeWizard(Interface):
 
 class IPresentation(Interface):
     """ Marker Interface """
+
+
+class DynVocab(object):
+    grok.implements(IContextSourceBinder)
+
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, context):
+        vocab = queryUtility(
+            IVocabularyFactory, name=self.name)
+        if not vocab:
+            return SimpleVocabulary([]) 
+        return vocab(context) 
+
 
 
 class IUnfallanzeige(IContent):
@@ -89,7 +110,7 @@ class IUnfallanzeige(IContent):
     uadbru1 = OptionalChoice(
         title = _(u"Taetigkeit zum Unfallzeitpunkt"),
         description = _(u"Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"),
-        vocabulary = "uvc.uadbru1",
+        source=DynVocab("uvc.uadbru1"),
         )
 
     uadst = TextLine(
@@ -101,7 +122,7 @@ class IUnfallanzeige(IContent):
     unfute = OptionalChoice(
         title = _(u"Teil des Unternehmens"),
         description = _(u"In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"),
-        vocabulary = "uvc.unfute",
+        source = DynVocab("uvc.unfute"),
         )
 
     unflar = Choice(
@@ -169,7 +190,7 @@ class IUnfallanzeige(IContent):
     prssta = Choice(
         title = _(u"Staatsangehoerigkeit"),
         description = _(u"Staatsangehoerigkeit des Versicherten"),
-        vocabulary = 'uvc.sta',
+        source = DynVocab(u'uvc.sta'),
         )
 
     unfbu = Choice(
