@@ -14,6 +14,9 @@ class Unfallanzeige(uvcsite.Content):
     """ContentType fuer das Lastschriftverfahren"""
     uvcsite.schema(IUnfallanzeige)
     grok.name('unfallanzeige')
+    grok.title('Unfallanzeige')
+
+
 
 
 class Unfallanzeigen(uvcsite.ProductFolder):
@@ -22,10 +25,25 @@ class Unfallanzeigen(uvcsite.ProductFolder):
     uvcsite.contenttype(Unfallanzeige)
 
 
+class Adder(grok.View):
+    grok.context(IUnfallanzeigenFolder)
+    grok.name('add')
+    
+    def update(self):
+        self.uaz = uaz = Unfallanzeige()
+        self.context.add(uaz)
+
+    def render(self):
+        self.redirect(self.url(self.uaz, 'edit'))
+
+
+
 class UnfallanzeigeWizard(uvcsite.Wizard):
     """ Wizard form."""
     grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
+    grok.name('edit')
+
 
     label = u'Unfallanzeige'
 

@@ -29,4 +29,4 @@ class StartWizard(grok.View):
         hf['unfallanzeigen'].add(uaz)
 
     def render(self):
-        self.redirect(self.url(self.uaz, 'unfallanzeigewizard'))
+        self.redirect(self.url(self.uaz, 'edit'))
