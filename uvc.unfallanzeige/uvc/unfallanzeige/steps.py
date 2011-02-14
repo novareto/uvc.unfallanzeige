@@ -89,6 +89,7 @@ class Person(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(30)
+    ignoreContent = False
     label = form_name = u'weitere Angaben zur versicherten Person'
 
     handleApplyOnBack = True
@@ -125,6 +126,7 @@ class AccidentI(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(40)
+    ignoreContent = False
     label = form_name = u'Informationen zum Unfall Teil I'
 
     fields = base.Fields(IUnfallanzeige).select(
@@ -146,6 +148,7 @@ class AccidentII(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(50)
+    ignoreContent = False
     label = form_name = u'Informationen zum Unfall Teil II'
 
     handleApplyOnBack = True
@@ -198,6 +201,7 @@ class BasicInformation(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(60)
+    ignoreContent = False
     label = form_name = u'Allgemeine Informationen zum Unternehmen'
 
     fields = base.Fields(IUnfallanzeige).select('unfus3', 'unfus2')
@@ -210,6 +214,7 @@ class Finish(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(70)
+    ignoreContent = False
     label = form_name = u'Versand und Druck der Unfallanzeige'
     fields = base.Fields(IUnfallanzeige).select('behandlung')
 
