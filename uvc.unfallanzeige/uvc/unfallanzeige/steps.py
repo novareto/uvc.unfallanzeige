@@ -30,10 +30,9 @@ class Basic(uvcsite.Step):
     label = u'Basis Informationen'
     ignoreContent = False
 
-
     fields = base.Fields(IUnfallanzeige).select(
-       'unfustdor', 'unfuname', 'unfustrasse', 'unfunr',
-        'unfuplz', 'unfuort', 'anspname', 'anspfon')
+       'title', 'unfustdor', 'unfuname', 'unfustrasse', 
+       'unfunr', 'unfuplz', 'unfuort', 'anspname', 'anspfon')
 
     fields['unfustdor'].mode = "radio"
 
