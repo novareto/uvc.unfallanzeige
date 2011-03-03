@@ -237,7 +237,7 @@ class IUnfallanzeige(IContent):
 
     unfdatum = TextLine(
         title = _(u"Unfallzeitpunkt (Datum"),
-        description = _(u"Bitte geben Sie das Unfallatum (mm.tt.jjjj)"),
+        description = _(u"Bitte geben Sie das Unfallatum (tt.mm.jjjj)"),
         constraint = validateDatum,
         )
 
