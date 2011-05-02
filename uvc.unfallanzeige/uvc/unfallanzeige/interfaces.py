@@ -3,14 +3,14 @@
 # cklinger@novareto.de
 
 import time
-import grok
+import grokcore.component as grok
 
 from zope.interface import Interface
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from zope.component import queryUtility
 from uvc.widgets.fields import OptionalChoice
@@ -52,6 +52,24 @@ class DynVocab(object):
             return SimpleVocabulary([]) 
         return vocab(context) 
 
+
+@grok.provider(IContextSourceBinder) 
+def vocab_prssex(context):
+    return SimpleVocabulary((
+        SimpleTerm('maennlich', 'maennlich', u'männlich'),
+        SimpleTerm('weiblich', 'weiblich', u'weiblich')
+        ))
+
+
+@grok.provider(IContextSourceBinder) 
+def vocab_unfbu(context):
+    return SimpleVocabulary((
+        SimpleTerm('Arbeitnehmer', 'Arbeitnehmer', u'Arbeitnehmer'),
+        SimpleTerm('Gesellschafter/Geschaeftsfuehrer', 'Gesellschfter/Geschaeftsfuehrer', u'Gesellschafter/Geschäftsführer'),
+        SimpleTerm('Unternehmer', 'Unternehmer', u'Unternehmer'),
+        SimpleTerm('Mit dem Unternehmer verwandt', 'Mit dem Unternehmer verwandt', u'Mit dem Unternehmer verwandt'),
+        SimpleTerm('Ehegatte des Unternehmers', 'Ehegatte des Unternehmers', u'Ehegatte des Unternehmers'),
+    ))
 
 
 class IUnfallanzeige(IContent):
@@ -184,7 +202,7 @@ class IUnfallanzeige(IContent):
     prssex = Choice(
         title = _(u"Geschlecht"),
         description = _(u"Geschlecht des Versicherten"),
-        values = [u'maennlich', 'weiblich']
+        source = vocab_prssex,
         )
 
     prssta = Choice(
@@ -196,7 +214,7 @@ class IUnfallanzeige(IContent):
     unfbu = Choice(
         title = _(u"Angaben zum Arbeitsverhaeltnis"),
         description = _(u"Bitte waehlen Sie aus, in welchem Arbeitsverhaeltnis der Versicherte steht."),
-        values = (u'Arbeitnehmer', u'Gesellschafter/Geschaeftsfuehrer', u'Unternehmer', u'Mit dem Unternehmer verwandt', u'Ehegatte des Unternehmers')
+        source = vocab_unfbu,
         )
 
     vehearbeitsv = Choice(
