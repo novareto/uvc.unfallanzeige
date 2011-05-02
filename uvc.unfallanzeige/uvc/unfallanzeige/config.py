@@ -17,7 +17,6 @@ class StartWizard(grok.View):
     grok.context(zope.interface.Interface)
     grok.title(u"Unfallanzeige")
     grok.baseclass()
-    uvcsite.menu(uvcsite.IGlobalMenu)
 
     def update(self):
         """ Wir müssen zunächst eine Instanz der Unfallanzeige

@@ -133,3 +133,7 @@ div.ui-accordion-content {
  color: #cd3d3d;
 }
 
+div .input-form .row_error {
+  background: 50% white;
+  border:1px solid #DDDDDD;
+}
