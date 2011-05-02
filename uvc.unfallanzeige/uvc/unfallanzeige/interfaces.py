@@ -72,6 +72,16 @@ def vocab_unfbu(context):
     ))
 
 
+@grok.provider(IContextSourceBinder) 
+def vocab_unfortdetail(context):
+    return SimpleVocabulary((
+        SimpleTerm('Auf dem Betriebsgelaende', 'Auf dem Betriebsgelaende', u'Auf dem Betriebsgelände'),
+        SimpleTerm('Auf dem Weg von oder zur Arbeit', 'Auf dem Weg von oder zur Arbeit', u'Auf dem Weg von oder zur Arbeit'),
+        SimpleTerm('Auf dem Geschaeftsweg', 'Auf dem Geschaeftsweg', u'Auf dem Geschäftsweg'),
+        SimpleTerm('Ausserhalb des Betriebsgelaendes', 'Ausserhalb des Betriebsgelaendes', u'Ausserhalb des Betriebsgeländes'),
+        ))
+
+
 class IUnfallanzeige(IContent):
 
 # Default Page
@@ -268,7 +278,7 @@ class IUnfallanzeige(IContent):
     unfort_detail = Choice(
         title = _(u"Unfallort"),
         description = _(u"Bitte waehlen Sie aus wo sich der Unfall ereignete."),
-        values = ('Auf dem Betriebsgelaende', 'Auf dem Weg von oder zur Arbeit', 'Auf dem Geschaeftsweg', 'Ausserhalb des Betriebsgelaendes'),
+        source = vocab_unfortdetail,
         )
 
     unfort = Text(
@@ -297,6 +307,7 @@ class IUnfallanzeige(IContent):
         title = _(u"Augenzeuge"),
         description = _(u"War diese Person Augenzeuge?"),
         values = ('ja', 'nein'),
+        required = False,
         )
 
 # Step 5     
