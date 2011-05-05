@@ -25,7 +25,7 @@ class StartWizard(grok.View):
         """
         hf = IHomeFolder(self.request.principal).homeFolder
         self.uaz = uaz = Unfallanzeige()
-        hf['unfallanzeigen'].add(uaz)
+        hf['Unfallanzeigen'].add(uaz)
 
     def render(self):
         self.redirect(self.url(self.uaz, 'edit'))
