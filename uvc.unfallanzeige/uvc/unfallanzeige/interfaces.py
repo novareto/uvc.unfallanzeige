@@ -190,7 +190,7 @@ class IUnfallanzeige(IContent):
     lkz = Choice(
         title = _(u"Laenderkennzeichen"),
         description = _(u"Laenderkennzeichen des Versicherten"),
-        values = (u'Deutschland', u'Polen'),
+        source = DynVocab(u'uvc.lkz'),
         )
 
     ikzplz = TextLine(
