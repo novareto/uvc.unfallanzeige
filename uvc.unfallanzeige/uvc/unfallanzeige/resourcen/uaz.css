@@ -137,3 +137,26 @@ div .input-form .row_error {
   background: 50% white;
   border:1px solid #DDDDDD;
 }
+
+#accordion dl {
+  clear: both;
+  font-size: 14px;
+}
+
+#accordion dt {
+ clear:left;
+ float:left;
+ text-align:right;
+ width: 24em;
+ font-weight: bold;
+ padding-bottom:3px;
+}
+
+#accordion dd {
+ margin-left: 26em;
+}
+
+#accordion .pane {
+ background-color: #333333;
+ height: auto;
+ }

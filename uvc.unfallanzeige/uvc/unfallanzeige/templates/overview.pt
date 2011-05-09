@@ -7,42 +7,142 @@
       <dl>
         <dt>Titel del Unfallanzeige</dt>
         <dd tal:content="daten/title"></dd>
-        
-        <dt> Name des Betriebs </dt>
-        <dd tal:content="context/unfuname"/>
 
-        <dt>Unfallort</dt>
-        <dd><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></dd>
 
-        <dt>Strasse, Nr.: </dt>
-        <dd> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></dd>
+        <dt> Die versicherte Person ist regelmässig tätig: </dt>
+        <dd tal:content="daten/unfustdor"/>
 
-        <dt> Ansprechpartner </dt>
+        <div tal:condition="python: context.unfustdor=='In einer Zweigniederlassung'">
+
+          <dt> Name der Zweigniederlassung </dt>
+          <dd tal:content="context/unfuname"/>
+
+          <dt>Unfallort</dt>
+          <dd><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></dd>
+
+          <dt>Strasse, Nr.: </dt>
+          <dd> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></dd>
+
+        </div>
+
+        <dt> Ansprechpartner: </dt>
         <dd tal:content="context/anspname"/>
 
-        <dt> Telefonnummer </dt>
+        <dt> Telefonnummer: </dt>
         <dd tal:content="context/anspfon"/>
 
      </div>
 
      <h2> Angaben zur versicherten Person </h2>
      <div class="pane">
+       <dl>
+         <dt> Die versicherte Person war zum Unfallzeitpunkt beschäftigt als: </dt>
+         <dd tal:content="context/uadbru1" />
+        </dl>
+        <dl>
+         <dt> Der versicherte ist beschäftigt seit: </dt>
+         <dd tal:content="context/uadst" />
+        <dl>
+         <dt> In welchen Teil des Unternehmens ist der Versicherte beschäftigt </dt>
+         <dd tal:content="context/unfute" />
+        </dl> 
+         <dt> Ist die versicherte Person Leiharbeitnehmer: </dt>
+         <dd tal:content="context/unflar" />
+         <div tal:condition="python: context.unflar == 'ja'">
+           <dt> Name und Anschrift des Personaldienstleister </dt>
+           <dd tal:content="context/unvlaraddr"/>
+         </div>
+       </dl>
      </div>
 
      <h2> weitere Angaben zur versicherten Person </h2>
      <div class="pane">
+       <dl>
+         <dt> Name des Versicherten </dt>
+         <dd tal:content="context/prsname"> </dd>
+         <dt> Vorname </dt>
+         <dd tal:content="context/prsvor"> </dd>
+         <dt> Anschrift </dt>
+         <dd> <span tal:replace="context/ikstr"/> <span tal:replace="context/iknr"/> </dd>
+              <dd> <span tal:replace="context/lkz"/> 
+                  <span tal:replace="context/ikzplz"/>
+                  <span tal:replace="context/ikzort"/> 
+              </dd>
+         <dt> Geburtsdatum </dt>
+         <dd tal:content="context/prsgeb"/>
+         <dt> Geschlecht </dt>
+         <dd tal:content="context/prssex" />
+         <dt> Staatsangehörigkeit </dt>
+         <dd tal:content="context/prssta" />
+         <dl>
+           <dt> Der Versicherte steht in folgenden Arbeitsverhältnis </dt>
+           <dd tal:content="context/unfbu" />
+         </dl>
+         <dt> Wie viele Wochen besteht Entgeltfortbezahlung </dt>
+         <dd tal:content="context/unfefz"/>
+         <dt> Krankenkasse des Versicherten </dt>
+         <dd tal:content="context/unfkka"/>
+       </dl>
      </div>
 
      <h2>  Informationen zum Unfall Teil I</h2>
      <div class="pane">
+       <dl>
+         <dt> Unfallzeitpunkt </dt>
+         <dd> <span tal:replace="context/unfdatum"/> <span tal:replace="context/unfzeit"/> </dd>
+         <dt> Unfallort </dt>
+         <dd tal:content="context/unfort_detail"/>
+         <dt> Unfallhergang </dt>
+         <dd tal:content="context/unfhg1"/>
+         <dt> Die Angaben zum Unfall sind von: </dt>
+         <dd tal:content="context/unfhg2" />
+         <dt> Zeugen des Unfalls </dt>
+         <dd tal:content="context/unfkn1" />
+         <dt> War diese Peron Augenzeuge </dt>
+         <dd tal:content="context/unfkn2" />
+       </dl>
      </div>
 
      <h2>  Informationen zum Unfall Teil II </h2>
      <div class="pane">
+       <dl>
+         <dt> Tödlicher Unfall </dt>
+         <dd tal:content="context/prstkz"/>
+         <div tal:condition="python: context.prstkz != 'ja'">
+            <dt> Hat der Versicherte die Arbeit eingestellt </dt>
+            <dd tal:content="context/unfae1"/>
+            <div tal:condition="python: context.unfae1 != 'nein'">
+              <div tal:condition="python: context.unfae1 != 'ja, spaeter am:'">
+                <dt> Datum Uhrzeit</dt>
+                <dd> <span tal:content="context/unfaedatum"/> <span tal:content="context/unfaezeit"/> </dd>
+              </div>
+              <dt> Arbeitet der Versicherte wieder? </dt>
+              <dd tal:content="context/unfwa1"/>
+              <div tal:condition="python: context.unfwa1 == 'ja'">
+                <dt> Datum </dt>
+                <dd> <span tal:content="context/unfwax"/> </dd>
+              </div>
+            </div>
+            <dt> Arbeitszeit von, bis </dt>
+            <dd> <span tal:replace="context/uadbavon"/> <span tal:replace="context/uadbabis"/> </dd>
+            <dt> Verletzte Körperteile </dt>
+            <dd tal:content="context/diavkt"/>
+            <dt> Art der Verletzung </dt>
+            <dd tal:content="context/diaadv"/>
+            <dt> War eine Erstbehandlung erforderlich ? </dt>
+            <dd tal:content="context/unfeba"/>
+            <dt> Erstbehandelnder Arzt </dt>
+            <dd tal:content="context/unfeba1" />
+         </div>
+       </dl>
      </div>
 
      <h2> Allgemeine Informationen zum Unternehmen </h2>
      <div class="pane">
+       <dt> Personal- bzw. Betriebsrat </dt>
+       <dd tal:content="context/unfus3"/>
+       <dt> Unternehmer, Bevollmächtigter </dt>
+       <dd tal:content="context/unfus2"/>
      </div>
   </div>
 
