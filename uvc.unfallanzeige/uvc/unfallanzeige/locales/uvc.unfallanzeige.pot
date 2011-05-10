@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-10-21 09:15+0000\n"
+"POT-Creation-Date: 2011-05-10 12:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,691 +17,1439 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: uvc.unfallanzeige\n"
 
-#: ./interfaces.py:301
+#: ./interfaces.py:351
 msgid "An welchem Tag wurde die Arbeit wieder aufgenommen (tt.mm.jjjj)?"
 msgstr ""
 
-#: ./interfaces.py:176
+#: ./interfaces.py:225
 msgid "Angaben zum Arbeitsverhaeltnis"
 msgstr ""
 
-#: ./interfaces.py:246
+#: ./interfaces.py:295
 msgid "Angaben zum Unfall"
 msgstr ""
 
-#: ./interfaces.py:236
+#: ./interfaces.py:285
 msgid "Angaben zum Unfallort"
 msgstr ""
 
-#: ./interfaces.py:132
+#: ./interfaces.py:181
 msgid "Anschrift (Strasse"
 msgstr ""
 
-#: ./interfaces.py:77
+#: ./interfaces.py:126
 msgid "Ansprechpartner"
 msgstr ""
 
-#: ./interfaces.py:41
+#: ./interfaces.py:90
 msgid "Arbeitsstelle des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:307
+#: ./interfaces.py:357
 msgid "Arbeitszeit (Beginn"
 msgstr ""
 
-#: ./interfaces.py:324
+#: ./interfaces.py:374
 msgid "Art der Verletzung"
 msgstr ""
 
-#: ./interfaces.py:258
+#: ./interfaces.py:307
 msgid "Augenzeuge"
 msgstr ""
 
-#: ./interfaces.py:96
+#: ./interfaces.py:145
 msgid "Beginn der Beschaeftigung"
 msgstr ""
 
-#: ./interfaces.py:183
+#: ./interfaces.py:232
 msgid "Besteht ein Ehegattenarbeitsvertrag?"
 msgstr ""
 
-#: ./interfaces.py:280
+#: ./interfaces.py:330
 msgid "Bitte geben Sie Datum (tt.mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:115
+#: ./interfaces.py:164
 msgid "Bitte geben Sie Name und Anschrift des Personaldienstleisters bzw. Zeitarbeitsunternehmens an."
 msgstr ""
 
-#: ./interfaces.py:336
+#: ./interfaces.py:386
 msgid "Bitte geben Sie Name und Anschrift des erstbehandelnden Arztes an."
 msgstr ""
 
-#: ./interfaces.py:66
+#: ./interfaces.py:115
 msgid "Bitte geben Sie Postleitzahl"
 msgstr ""
 
-#: ./interfaces.py:54
+#: ./interfaces.py:103
 msgid "Bitte geben Sie Strasse"
 msgstr ""
 
-#: ./interfaces.py:219
-msgid "Bitte geben Sie das Unfallatum (mm.tt.jjjj)"
-msgstr ""
-
-#: ./interfaces.py:237
-msgid "Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."
-msgstr ""
-
-#: ./interfaces.py:78
-msgid "Bitte geben Sie einen Ansprechpartner an, den wir bei Rueckfragen schnell erreichen koennen"
-msgstr ""
-
-#: ./interfaces.py:48
-msgid "Bitte geben Sie hier den Namen der Zweigstelle an."
-msgstr ""
-
-#: ./interfaces.py:242
-msgid "Bitte schildern sie moeglichst detailliert wie sich der Unfall ereignete"
-msgstr ""
-
-#: ./interfaces.py:231
-msgid "Bitte waehlen Sie aus wo sich der Unfall ereignete."
-msgstr ""
-
-#: ./interfaces.py:177
-msgid "Bitte waehlen Sie aus, in welchem Arbeitsverhaeltnis der Versicherte steht."
-msgstr ""
-
-#: ./interfaces.py:356
-msgid "Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."
-msgstr ""
-
-#: ./interfaces.py:279
-msgid "Datum"
-msgstr ""
-
-#: ./interfaces.py:300
-msgid "Datum der Wiederaufnahme"
-msgstr ""
-
-#: ./interfaces.py:97
-msgid "Der Versicherte ist beschaeftigt seit: (mm.jjjj)"
-msgstr ""
-
-#: ./interfaces.py:247
-msgid "Die Angaben beruhen auf den Schilderungen:"
-msgstr ""
-
-#: ./interfaces.py:344
-msgid "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"
-msgstr ""
-
-#: ./interfaces.py:308
-msgid "Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"
-msgstr ""
-
-#: ./interfaces.py:91
-msgid "Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"
-msgstr ""
-
-#: ./interfaces.py:182
-msgid "Ehegattenarbeitsvertrag"
-msgstr ""
-
-#: ./interfaces.py:189
-msgid "Ehegattenarbeitsvertrag (Vertragsbeginn)"
-msgstr ""
-
-#: ./interfaces.py:313
-msgid "Ende)"
-msgstr ""
-
-#: ./interfaces.py:197
-msgid "Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"
-msgstr ""
-
-#: ./interfaces.py:203
-msgid "Entgeltfortzahlung"
-msgstr ""
-
-#: ./interfaces.py:196
-msgid "Entgeltzahlung"
-msgstr ""
-
-#: ./interfaces.py:335
-msgid "Erstbehandelnder Arzt"
-msgstr ""
-
-#: ./interfaces.py:329
-msgid "Erstbehandlung des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:204
-msgid "Fuer wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?"
-msgstr ""
-
-#: ./interfaces.py:158
-msgid "Geburtsdatum"
-msgstr ""
-
-#: ./interfaces.py:159
-msgid "Geburtsdatum des Versicherten (tt.mm.jjjj)"
-msgstr ""
-
-#: ./interfaces.py:164
-msgid "Geschlecht"
-msgstr ""
-
-#: ./interfaces.py:165
-msgid "Geschlecht des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:273
-msgid "Hat der Versicherte die Arbeit eingestellt?"
-msgstr ""
-
-#: ./interfaces.py:294
-msgid "Hat der Versicherte die Arbeit wieder aufgenommen?"
-msgstr ""
-
-#: ./interfaces.py:60
-msgid "Hausnummer der Zweigstelle an."
-msgstr ""
-
-#: ./interfaces.py:138
-msgid "Hausnummer des Versicherten an."
-msgstr ""
-
-#: ./interfaces.py:59
-msgid "Hs.-Nr."
-msgstr ""
-
-#: ./interfaces.py:137
-msgid "Hs.-Nr.)"
-msgstr ""
-
-#: ./interfaces.py:103
-msgid "In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"
-msgstr ""
-
-#: ./interfaces.py:109
-msgid "Ist die versicherte Person Leiharbeitnehmer?"
-msgstr ""
-
-#: ./interfaces.py:211
-msgid "Krankenkasse des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:142
-msgid "Laenderkennzeichen"
-msgstr ""
-
-#: ./interfaces.py:143
-msgid "Laenderkennzeichen des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:108
-msgid "Leiharbeitnehmer"
-msgstr ""
-
-#: ./interfaces.py:122
-msgid "Name"
-msgstr ""
-
-#: ./interfaces.py:47
-msgid "Name der Zweigstelle"
-msgstr ""
-
-#: ./interfaces.py:123
-msgid "Name des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:212
-msgid "Name und Anschrift der Krankenkasse des Versicherten."
-msgstr ""
-
-#: ./interfaces.py:71
-msgid "Ort"
-msgstr ""
-
-#: ./interfaces.py:72
-msgid "Ort der Zweigstelle an."
-msgstr ""
-
-#: ./interfaces.py:154
-msgid "Ort des Versicherten an."
-msgstr ""
-
-#: ./interfaces.py:65
-msgid "PLZ"
-msgstr ""
-
-#: ./interfaces.py:343
-msgid "Personal- bzw. Betriebsrat"
-msgstr ""
-
-#: ./interfaces.py:114
-msgid "Personaldienstleister"
-msgstr ""
-
-#: ./interfaces.py:170
-msgid "Staatsangehoerigkeit"
-msgstr ""
-
-#: ./interfaces.py:171
-msgid "Staatsangehoerigkeit des Versicherten"
-msgstr ""
-
-#: ./interfaces.py:53
-msgid "Strasse"
-msgstr ""
-
-#: ./interfaces.py:90
-msgid "Taetigkeit zum Unfallzeitpunkt"
-msgstr ""
-
-#: ./interfaces.py:102
-msgid "Teil des Unternehmens"
-msgstr ""
-
-#: ./interfaces.py:82
-msgid "Telefon"
-msgstr ""
-
-#: ./interfaces.py:266
-msgid "Toedlicher Unfall"
+#: ./interfaces.py:268
+msgid "Bitte geben Sie das Unfallatum (tt.mm.jjjj)"
 msgstr ""
 
 #: ./interfaces.py:286
-msgid "Uhrzeit"
-msgstr ""
-
-#: ./interfaces.py:287
-msgid "Uhrzeit (hh:mm) an."
-msgstr ""
-
-#: ./interfaces.py:241
-msgid "Unfallhergang"
-msgstr ""
-
-#: ./interfaces.py:230
-msgid "Unfallort"
-msgstr ""
-
-#: ./interfaces.py:218
-msgid "Unfallzeitpunkt (Datum"
-msgstr ""
-
-#: ./interfaces.py:272
-msgid "Unterbrechung der Arbeit"
-msgstr ""
-
-#: ./interfaces.py:348
-msgid "Unternehmer / Bevollmaechtigter"
-msgstr ""
-
-#: ./interfaces.py:319
-msgid "Verletzte Koerperteile"
+msgid "Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."
 msgstr ""
 
 #: ./interfaces.py:127
-msgid "Vorname"
+msgid "Bitte geben Sie einen Ansprechpartner an, den wir bei Rueckfragen schnell erreichen koennen"
 msgstr ""
 
-#: ./interfaces.py:128
-msgid "Vorname des Versicherten"
+#: ./interfaces.py:97
+msgid "Bitte geben Sie hier den Namen der Zweigstelle an."
 msgstr ""
 
-#: ./interfaces.py:349
-msgid "Vorname, Name des Unternehmens bzw. des Bevollmaechtigten"
+#: ./interfaces.py:291
+msgid "Bitte schildern sie moeglichst detailliert wie sich der Unfall ereignete"
 msgstr ""
 
-#: ./interfaces.py:190
-msgid "Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"
+#: ./interfaces.py:280
+msgid "Bitte waehlen Sie aus wo sich der Unfall ereignete."
 msgstr ""
 
-#: ./interfaces.py:259
-msgid "War diese Person Augenzeuge?"
+#: ./interfaces.py:226
+msgid "Bitte waehlen Sie aus, in welchem Arbeitsverhaeltnis der Versicherte steht."
 msgstr ""
 
-#: ./interfaces.py:330
-msgid "War eine aerztliche Erstbehandlung des Versicherten erforderlich?"
+#: ./interfaces.py:406
+msgid "Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."
 msgstr ""
 
-#: ./interfaces.py:355
-msgid "Weiteres Vorgehen"
+#: ./interfaces.py:329
+msgid "Datum"
 msgstr ""
 
-#: ./interfaces.py:325
-msgid "Welche Art der Verletzung liegt vor?"
+#: ./interfaces.py:350
+msgid "Datum der Wiederaufnahme"
 msgstr ""
 
-#: ./interfaces.py:320
-msgid "Welche Koerperteile sind verletzt?"
+#: ./interfaces.py:146
+msgid "Der Versicherte ist beschaeftigt seit: (mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:253
-msgid "Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift des Zeugen)"
+#: ./interfaces.py:296
+msgid "Die Angaben beruhen auf den Schilderungen:"
 msgstr ""
 
-#: ./interfaces.py:293
-msgid "Wiederaufnahme der Arbeit"
+#: ./interfaces.py:394
+msgid "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"
 msgstr ""
 
-#: ./interfaces.py:42
-msgid "Wo ist die versicherte Person regelmaessig taetig?"
+#: ./interfaces.py:358
+msgid "Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"
 msgstr ""
 
-#: ./interfaces.py:224
-msgid "Zeit)"
+#: ./interfaces.py:140
+msgid "Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"
+msgstr ""
+
+#: ./interfaces.py:231
+msgid "Ehegattenarbeitsvertrag"
+msgstr ""
+
+#: ./interfaces.py:238
+msgid "Ehegattenarbeitsvertrag (Vertragsbeginn)"
+msgstr ""
+
+#: ./interfaces.py:363
+msgid "Ende)"
+msgstr ""
+
+#: ./interfaces.py:246
+msgid "Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"
 msgstr ""
 
 #: ./interfaces.py:252
+msgid "Entgeltfortzahlung"
+msgstr ""
+
+#: ./interfaces.py:245
+msgid "Entgeltzahlung"
+msgstr ""
+
+#: ./interfaces.py:385
+msgid "Erstbehandelnder Arzt"
+msgstr ""
+
+#: ./interfaces.py:379
+msgid "Erstbehandlung des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:253
+msgid "Fuer wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?"
+msgstr ""
+
+#: ./interfaces.py:207
+msgid "Geburtsdatum"
+msgstr ""
+
+#: ./interfaces.py:208
+msgid "Geburtsdatum des Versicherten (tt.mm.jjjj)"
+msgstr ""
+
+#: ./interfaces.py:213
+msgid "Geschlecht"
+msgstr ""
+
+#: ./interfaces.py:214
+msgid "Geschlecht des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:323
+msgid "Hat der Versicherte die Arbeit eingestellt?"
+msgstr ""
+
+#: ./interfaces.py:344
+msgid "Hat der Versicherte die Arbeit wieder aufgenommen?"
+msgstr ""
+
+#: ./interfaces.py:109
+msgid "Hausnummer der Zweigstelle an."
+msgstr ""
+
+#: ./interfaces.py:187
+msgid "Hausnummer des Versicherten an."
+msgstr ""
+
+#: ./interfaces.py:108
+msgid "Hs.-Nr."
+msgstr ""
+
+#: ./interfaces.py:186
+msgid "Hs.-Nr.)"
+msgstr ""
+
+#: ./interfaces.py:152
+msgid "In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"
+msgstr ""
+
+#: ./interfaces.py:158
+msgid "Ist die versicherte Person Leiharbeitnehmer?"
+msgstr ""
+
+#: ./interfaces.py:260
+msgid "Krankenkasse des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:191
+msgid "Laenderkennzeichen"
+msgstr ""
+
+#: ./interfaces.py:192
+msgid "Laenderkennzeichen des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:157
+msgid "Leiharbeitnehmer"
+msgstr ""
+
+#: ./interfaces.py:171
+msgid "Name"
+msgstr ""
+
+#: ./interfaces.py:96
+msgid "Name der Zweigstelle"
+msgstr ""
+
+#: ./interfaces.py:172
+msgid "Name des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:261
+msgid "Name und Anschrift der Krankenkasse des Versicherten."
+msgstr ""
+
+#: ./interfaces.py:120
+msgid "Ort"
+msgstr ""
+
+#: ./interfaces.py:121
+msgid "Ort der Zweigstelle an."
+msgstr ""
+
+#: ./interfaces.py:203
+msgid "Ort des Versicherten an."
+msgstr ""
+
+#: ./interfaces.py:114
+msgid "PLZ"
+msgstr ""
+
+#: ./interfaces.py:393
+msgid "Personal- bzw. Betriebsrat"
+msgstr ""
+
+#: ./interfaces.py:163
+msgid "Personaldienstleister"
+msgstr ""
+
+#: ./interfaces.py:219
+msgid "Staatsangehoerigkeit"
+msgstr ""
+
+#: ./interfaces.py:220
+msgid "Staatsangehoerigkeit des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:102
+msgid "Strasse"
+msgstr ""
+
+#: ./interfaces.py:139
+msgid "Taetigkeit zum Unfallzeitpunkt"
+msgstr ""
+
+#: ./interfaces.py:151
+msgid "Teil des Unternehmens"
+msgstr ""
+
+#: ./interfaces.py:131
+msgid "Telefon"
+msgstr ""
+
+#: ./interfaces.py:316
+msgid "Toedlicher Unfall"
+msgstr ""
+
+#: ./interfaces.py:336
+msgid "Uhrzeit"
+msgstr ""
+
+#: ./interfaces.py:337
+msgid "Uhrzeit (hh:mm) an."
+msgstr ""
+
+#: ./interfaces.py:290
+msgid "Unfallhergang"
+msgstr ""
+
+#: ./interfaces.py:279
+msgid "Unfallort"
+msgstr ""
+
+#: ./interfaces.py:267
+msgid "Unfallzeitpunkt (Datum"
+msgstr ""
+
+#: ./interfaces.py:322
+msgid "Unterbrechung der Arbeit"
+msgstr ""
+
+#: ./interfaces.py:398
+msgid "Unternehmer / Bevollmaechtigter"
+msgstr ""
+
+#: ./interfaces.py:369
+msgid "Verletzte Koerperteile"
+msgstr ""
+
+#: ./interfaces.py:176
+msgid "Vorname"
+msgstr ""
+
+#: ./interfaces.py:177
+msgid "Vorname des Versicherten"
+msgstr ""
+
+#: ./interfaces.py:399
+msgid "Vorname, Name des Unternehmens bzw. des Bevollmaechtigten"
+msgstr ""
+
+#: ./interfaces.py:239
+msgid "Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"
+msgstr ""
+
+#: ./interfaces.py:308
+msgid "War diese Person Augenzeuge?"
+msgstr ""
+
+#: ./interfaces.py:380
+msgid "War eine aerztliche Erstbehandlung des Versicherten erforderlich?"
+msgstr ""
+
+#: ./interfaces.py:405
+msgid "Weiteres Vorgehen"
+msgstr ""
+
+#: ./interfaces.py:375
+msgid "Welche Art der Verletzung liegt vor?"
+msgstr ""
+
+#: ./interfaces.py:370
+msgid "Welche Koerperteile sind verletzt?"
+msgstr ""
+
+#: ./interfaces.py:302
+msgid "Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift des Zeugen)"
+msgstr ""
+
+#: ./interfaces.py:343
+msgid "Wiederaufnahme der Arbeit"
+msgstr ""
+
+#: ./interfaces.py:91
+msgid "Wo ist die versicherte Person regelmaessig taetig?"
+msgstr ""
+
+#: ./interfaces.py:273
+msgid "Zeit)"
+msgstr ""
+
+#: ./interfaces.py:301
 msgid "Zeugen des Unfalls"
 msgstr ""
 
-#: ./interfaces.py:225
+#: ./interfaces.py:274
 msgid "den Zeitpunkt (hh:mm) des Unfalls an."
 msgstr ""
 
-#: ./interfaces.py:314
+#: ./interfaces.py:364
 msgid "endet um Uhrzeit (hh:mm)."
 msgstr ""
 
-#: ./vocabularies.py:83
+#: ./vocabularies.py:293
 msgid "label_aegypten"
 msgstr ""
 
-#: ./vocabularies.py:36
+#: ./vocabularies.py:246
 msgid "label_albanien"
 msgstr ""
 
-#: ./vocabularies.py:84
+#: ./vocabularies.py:294
 msgid "label_algerien"
 msgstr ""
 
-#: ./vocabularies.py:90
+#: ./vocabularies.py:300
 msgid "label_argentinien"
 msgstr ""
 
-#: ./vocabularies.py:56
+#: ./vocabularies.py:266
 msgid "label_armenien"
 msgstr ""
 
-#: ./vocabularies.py:57
+#: ./vocabularies.py:267
 msgid "label_aserbaidschan"
 msgstr ""
 
-#: ./vocabularies.py:106
+#: ./vocabularies.py:316
 msgid "label_australien"
 msgstr ""
 
-#: ./vocabularies.py:58
+#: ./vocabularies.py:268
 msgid "label_belarus"
 msgstr ""
 
-#: ./vocabularies.py:37
+#: ./vocabularies.py:247
 msgid "label_belgien"
 msgstr ""
 
-#: ./vocabularies.py:78
+#: ./vocabularies.py:288
 msgid "label_bosnien"
 msgstr ""
 
-#: ./vocabularies.py:91
+#: ./vocabularies.py:301
 msgid "label_brasilien"
 msgstr ""
 
-#: ./vocabularies.py:38
+#: ./vocabularies.py:248
 msgid "label_bulgarien"
 msgstr ""
 
-#: ./vocabularies.py:92
+#: ./vocabularies.py:302
 msgid "label_chile"
 msgstr ""
 
-#: ./vocabularies.py:97
+#: ./vocabularies.py:307
 msgid "label_china"
 msgstr ""
 
-#: ./vocabularies.py:39
+#: ./vocabularies.py:249
 msgid "label_daenemark"
 msgstr ""
 
-#: ./vocabularies.py:35
+#: ./vocabularies.py:245
 msgid "label_deutschland"
 msgstr ""
 
-#: ./vocabularies.py:75
+#: ./vocabularies.py:285
 msgid "label_estland"
 msgstr ""
 
-#: ./vocabularies.py:40
+#: ./vocabularies.py:250
 msgid "label_finnland"
 msgstr ""
 
-#: ./vocabularies.py:41
+#: ./vocabularies.py:251
 msgid "label_frankreich"
 msgstr ""
 
-#: ./vocabularies.py:59
+#: ./vocabularies.py:269
 msgid "label_georgien"
 msgstr ""
 
-#: ./vocabularies.py:85
+#: ./vocabularies.py:295
 msgid "label_ghana"
 msgstr ""
 
-#: ./vocabularies.py:42
+#: ./vocabularies.py:252
 msgid "label_griechenland"
 msgstr ""
 
-#: ./vocabularies.py:43
+#: ./vocabularies.py:253
 msgid "label_grossbritannien"
 msgstr ""
 
-#: ./vocabularies.py:98
+#: ./vocabularies.py:308
 msgid "label_indien"
 msgstr ""
 
-#: ./vocabularies.py:99
+#: ./vocabularies.py:309
 msgid "label_indonesien"
 msgstr ""
 
-#: ./vocabularies.py:100
+#: ./vocabularies.py:310
 msgid "label_irak"
 msgstr ""
 
-#: ./vocabularies.py:105
+#: ./vocabularies.py:315
 msgid "label_iran"
 msgstr ""
 
-#: ./vocabularies.py:44
+#: ./vocabularies.py:254
 msgid "label_irland"
 msgstr ""
 
-#: ./vocabularies.py:45
+#: ./vocabularies.py:255
 msgid "label_island"
 msgstr ""
 
-#: ./vocabularies.py:101
+#: ./vocabularies.py:311
 msgid "label_israel"
 msgstr ""
 
-#: ./vocabularies.py:46
+#: ./vocabularies.py:256
 msgid "label_italien"
 msgstr ""
 
-#: ./vocabularies.py:102
+#: ./vocabularies.py:312
 msgid "label_japan"
 msgstr ""
 
-#: ./vocabularies.py:103
+#: ./vocabularies.py:313
 msgid "label_jordanien"
 msgstr ""
 
-#: ./vocabularies.py:93
+#: ./vocabularies.py:303
 msgid "label_kanada"
 msgstr ""
 
-#: ./vocabularies.py:60
+#: ./vocabularies.py:270
 msgid "label_kasachstan"
 msgstr ""
 
-#: ./vocabularies.py:61
+#: ./vocabularies.py:271
 msgid "label_kirgisistan"
 msgstr ""
 
-#: ./vocabularies.py:79
+#: ./vocabularies.py:289
 msgid "label_kroatien"
 msgstr ""
 
-#: ./vocabularies.py:73
+#: ./vocabularies.py:283
 msgid "label_lettland"
 msgstr ""
 
-#: ./vocabularies.py:74
+#: ./vocabularies.py:284
 msgid "label_litauen"
 msgstr ""
 
+#: ./vocabularies.py:220
+msgid "label_lkz_(alte"
+msgstr ""
+
+#: ./vocabularies.py:91
+msgid "label_lkz_Aegypten"
+msgstr ""
+
+#: ./vocabularies.py:92
+msgid "label_lkz_Aethiopien"
+msgstr ""
+
 #: ./vocabularies.py:47
-msgid "label_luxemburg"
-msgstr ""
-
-#: ./vocabularies.py:76
-msgid "label_malta"
-msgstr ""
-
-#: ./vocabularies.py:86
-msgid "label_marokko"
-msgstr ""
-
-#: ./vocabularies.py:80
-msgid "label_mazedonien"
-msgstr ""
-
-#: ./vocabularies.py:94
-msgid "label_mexiko"
-msgstr ""
-
-#: ./vocabularies.py:62
-msgid "label_moldawien"
-msgstr ""
-
-#: ./vocabularies.py:48
-msgid "label_niederlande"
-msgstr ""
-
-#: ./vocabularies.py:87
-msgid "label_nigeria"
+msgid "label_lkz_Afghanistan"
 msgstr ""
 
 #: ./vocabularies.py:49
-msgid "label_norwegen"
+msgid "label_lkz_Albanien"
+msgstr ""
+
+#: ./vocabularies.py:103
+msgid "label_lkz_Alderney"
+msgstr ""
+
+#: ./vocabularies.py:83
+msgid "label_lkz_Algerien"
 msgstr ""
 
 #: ./vocabularies.py:50
-msgid "label_oesterreich"
+msgid "label_lkz_Andorra"
 msgstr ""
 
-#: ./vocabularies.py:104
-msgid "label_pakistan"
-msgstr ""
-
-#: ./vocabularies.py:95
-msgid "label_peru"
+#: ./vocabularies.py:48
+msgid "label_lkz_Angola"
 msgstr ""
 
 #: ./vocabularies.py:51
-msgid "label_polen"
+msgid "label_lkz_Antigua"
+msgstr ""
+
+#: ./vocabularies.py:167
+msgid "label_lkz_Argentinien"
 msgstr ""
 
 #: ./vocabularies.py:52
-msgid "label_portugal"
-msgstr ""
-
-#: ./vocabularies.py:53
-msgid "label_rumaenien"
-msgstr ""
-
-#: ./vocabularies.py:63
-msgid "label_russland"
-msgstr ""
-
-#: ./vocabularies.py:54
-msgid "label_schweden"
-msgstr ""
-
-#: ./vocabularies.py:55
-msgid "label_schweiz"
-msgstr ""
-
-#: ./vocabularies.py:81
-msgid "label_serbien"
-msgstr ""
-
-#: ./vocabularies.py:70
-msgid "label_slowakei"
-msgstr ""
-
-#: ./vocabularies.py:82
-msgid "label_slowenien"
-msgstr ""
-
-#: ./vocabularies.py:107
-msgid "label_sonstiges"
-msgstr ""
-
-#: ./vocabularies.py:68
-msgid "label_spanien"
-msgstr ""
-
-#: ./vocabularies.py:88
-msgid "label_suedafrika"
-msgstr ""
-
-#: ./vocabularies.py:64
-msgid "label_tadschikistan"
-msgstr ""
-
-#: ./vocabularies.py:69
-msgid "label_tschechien"
-msgstr ""
-
-#: ./vocabularies.py:71
-msgid "label_tuerkei"
-msgstr ""
-
-#: ./vocabularies.py:89
-msgid "label_tunesien"
+msgid "label_lkz_Australien"
 msgstr ""
 
 #: ./vocabularies.py:65
-msgid "label_turkmenistan"
+msgid "label_lkz_Bahamas"
+msgstr ""
+
+#: ./vocabularies.py:63
+msgid "label_lkz_Bahrein"
+msgstr ""
+
+#: ./vocabularies.py:54
+msgid "label_lkz_Bangla"
+msgstr ""
+
+#: ./vocabularies.py:55
+msgid "label_lkz_Barbados"
+msgstr ""
+
+#: ./vocabularies.py:53
+msgid "label_lkz_Belgien"
+msgstr ""
+
+#: ./vocabularies.py:57
+msgid "label_lkz_Belize"
+msgstr ""
+
+#: ./vocabularies.py:82
+msgid "label_lkz_Benin"
+msgstr ""
+
+#: ./vocabularies.py:58
+msgid "label_lkz_Bhutan"
 msgstr ""
 
 #: ./vocabularies.py:66
-msgid "label_ukraine"
+msgid "label_lkz_Birma"
 msgstr ""
 
-#: ./vocabularies.py:72
-msgid "label_ungarn"
+#: ./vocabularies.py:60
+msgid "label_lkz_Bolivien"
+msgstr ""
+
+#: ./vocabularies.py:61
+msgid "label_lkz_Bosnien-Herzegowina"
+msgstr ""
+
+#: ./vocabularies.py:168
+msgid "label_lkz_Botswana"
+msgstr ""
+
+#: ./vocabularies.py:62
+msgid "label_lkz_Brasilien"
+msgstr ""
+
+#: ./vocabularies.py:64
+msgid "label_lkz_Brunai"
+msgstr ""
+
+#: ./vocabularies.py:56
+msgid "label_lkz_Bulgarien"
+msgstr ""
+
+#: ./vocabularies.py:117
+msgid "label_lkz_Burkina"
+msgstr ""
+
+#: ./vocabularies.py:186
+msgid "label_lkz_Burundi"
+msgstr ""
+
+#: ./vocabularies.py:172
+msgid "label_lkz_Chile"
+msgstr ""
+
+#: ./vocabularies.py:209
+msgid "label_lkz_China"
+msgstr ""
+
+#: ./vocabularies.py:76
+msgid "label_lkz_Costa"
+msgstr ""
+
+#: ./vocabularies.py:152
+msgid "label_lkz_Curacao"
+msgstr ""
+
+#: ./vocabularies.py:81
+msgid "label_lkz_Daenemark"
+msgstr ""
+
+#: ./vocabularies.py:79
+msgid "label_lkz_Deutschland"
+msgstr ""
+
+#: ./vocabularies.py:224
+msgid "label_lkz_Dominica"
+msgstr ""
+
+#: ./vocabularies.py:80
+msgid "label_lkz_Dominikanische"
+msgstr ""
+
+#: ./vocabularies.py:89
+msgid "label_lkz_Ecuador"
+msgstr ""
+
+#: ./vocabularies.py:90
+msgid "label_lkz_El"
+msgstr ""
+
+#: ./vocabularies.py:73
+msgid "label_lkz_Elfenbeinkueste"
+msgstr ""
+
+#: ./vocabularies.py:93
+msgid "label_lkz_Estland"
+msgstr ""
+
+#: ./vocabularies.py:95
+msgid "label_lkz_Falklandinseln"
+msgstr ""
+
+#: ./vocabularies.py:99
+msgid "label_lkz_Faroeer"
+msgstr ""
+
+#: ./vocabularies.py:97
+msgid "label_lkz_Fidshi"
 msgstr ""
 
 #: ./vocabularies.py:96
-msgid "label_usa"
+msgid "label_lkz_Finnland"
+msgstr ""
+
+#: ./vocabularies.py:94
+msgid "label_lkz_Frankreich"
+msgstr ""
+
+#: ./vocabularies.py:101
+msgid "label_lkz_Gabun"
+msgstr ""
+
+#: ./vocabularies.py:221
+msgid "label_lkz_Gambia"
+msgstr ""
+
+#: ./vocabularies.py:109
+msgid "label_lkz_Georgien"
+msgstr ""
+
+#: ./vocabularies.py:110
+msgid "label_lkz_Ghana"
+msgstr ""
+
+#: ./vocabularies.py:107
+msgid "label_lkz_Gibraltar"
+msgstr ""
+
+#: ./vocabularies.py:225
+msgid "label_lkz_Grenada"
+msgstr ""
+
+#: ./vocabularies.py:111
+msgid "label_lkz_Griechenland"
+msgstr ""
+
+#: ./vocabularies.py:102
+msgid "label_lkz_Grossbritannien"
+msgstr ""
+
+#: ./vocabularies.py:108
+msgid "label_lkz_Guatemala"
+msgstr ""
+
+#: ./vocabularies.py:104
+msgid "label_lkz_Guernsey"
+msgstr ""
+
+#: ./vocabularies.py:173
+msgid "label_lkz_Guinea"
+msgstr ""
+
+#: ./vocabularies.py:112
+msgid "label_lkz_Guyana"
+msgstr ""
+
+#: ./vocabularies.py:174
+msgid "label_lkz_Haiti"
+msgstr ""
+
+#: ./vocabularies.py:114
+msgid "label_lkz_Honduras"
+msgstr ""
+
+#: ./vocabularies.py:115
+msgid "label_lkz_Hongkong"
+msgstr ""
+
+#: ./vocabularies.py:120
+msgid "label_lkz_Indien"
+msgstr ""
+
+#: ./vocabularies.py:175
+msgid "label_lkz_Indonesien"
+msgstr ""
+
+#: ./vocabularies.py:106
+msgid "label_lkz_Insel"
+msgstr ""
+
+#: ./vocabularies.py:121
+msgid "label_lkz_Iran"
+msgstr ""
+
+#: ./vocabularies.py:123
+msgid "label_lkz_Iraq"
+msgstr ""
+
+#: ./vocabularies.py:122
+msgid "label_lkz_Irland"
+msgstr ""
+
+#: ./vocabularies.py:124
+msgid "label_lkz_Island"
+msgstr ""
+
+#: ./vocabularies.py:119
+msgid "label_lkz_Israel"
+msgstr ""
+
+#: ./vocabularies.py:118
+msgid "label_lkz_Italien"
+msgstr ""
+
+#: ./vocabularies.py:126
+msgid "label_lkz_Jamaika"
+msgstr ""
+
+#: ./vocabularies.py:125
+msgid "label_lkz_Japan"
+msgstr ""
+
+#: ./vocabularies.py:46
+msgid "label_lkz_Jemen"
+msgstr ""
+
+#: ./vocabularies.py:105
+msgid "label_lkz_Jersey"
+msgstr ""
+
+#: ./vocabularies.py:127
+msgid "label_lkz_Jordanien"
+msgstr ""
+
+#: ./vocabularies.py:230
+msgid "label_lkz_Jugoslawien"
+msgstr ""
+
+#: ./vocabularies.py:128
+msgid "label_lkz_Kambodscha"
+msgstr ""
+
+#: ./vocabularies.py:69
+msgid "label_lkz_Kamerun"
+msgstr ""
+
+#: ./vocabularies.py:70
+msgid "label_lkz_Kanada"
+msgstr ""
+
+#: ./vocabularies.py:129
+msgid "label_lkz_Kasachstan"
+msgstr ""
+
+#: ./vocabularies.py:166
+msgid "label_lkz_Katar"
+msgstr ""
+
+#: ./vocabularies.py:85
+msgid "label_lkz_Kenia"
+msgstr ""
+
+#: ./vocabularies.py:130
+msgid "label_lkz_Kirgisistan"
+msgstr ""
+
+#: ./vocabularies.py:75
+msgid "label_lkz_Kolumbien"
+msgstr ""
+
+#: ./vocabularies.py:171
+msgid "label_lkz_Kongo"
+msgstr ""
+
+#: ./vocabularies.py:182
+msgid "label_lkz_Korea"
+msgstr ""
+
+#: ./vocabularies.py:116
+msgid "label_lkz_Kroatien"
+msgstr ""
+
+#: ./vocabularies.py:68
+msgid "label_lkz_Kuba"
+msgstr ""
+
+#: ./vocabularies.py:131
+msgid "label_lkz_Kuweit"
+msgstr ""
+
+#: ./vocabularies.py:133
+msgid "label_lkz_Laos"
+msgstr ""
+
+#: ./vocabularies.py:136
+msgid "label_lkz_Lesotho"
+msgstr ""
+
+#: ./vocabularies.py:138
+msgid "label_lkz_Lettland"
+msgstr ""
+
+#: ./vocabularies.py:177
+msgid "label_lkz_Libanon"
+msgstr ""
+
+#: ./vocabularies.py:135
+msgid "label_lkz_Liberia"
+msgstr ""
+
+#: ./vocabularies.py:134
+msgid "label_lkz_Libyen"
+msgstr ""
+
+#: ./vocabularies.py:98
+msgid "label_lkz_Liechtenstein"
+msgstr ""
+
+#: ./vocabularies.py:137
+msgid "label_lkz_Litauen"
+msgstr ""
+
+#: ./vocabularies.py:132
+msgid "label_lkz_Luxemburg"
+msgstr ""
+
+#: ./vocabularies.py:178
+msgid "label_lkz_Madagaskar"
+msgstr ""
+
+#: ./vocabularies.py:141
+msgid "label_lkz_Makedonien"
+msgstr ""
+
+#: ./vocabularies.py:150
+msgid "label_lkz_Malawi"
+msgstr ""
+
+#: ./vocabularies.py:142
+msgid "label_lkz_Malaysia"
+msgstr ""
+
+#: ./vocabularies.py:59
+msgid "label_lkz_Malediven"
+msgstr ""
+
+#: ./vocabularies.py:179
+msgid "label_lkz_Mali"
+msgstr ""
+
+#: ./vocabularies.py:139
+msgid "label_lkz_Malta"
+msgstr ""
+
+#: ./vocabularies.py:140
+msgid "label_lkz_Marokko"
+msgstr ""
+
+#: ./vocabularies.py:176
+msgid "label_lkz_Mauretanien"
+msgstr ""
+
+#: ./vocabularies.py:149
+msgid "label_lkz_Mauritius"
+msgstr ""
+
+#: ./vocabularies.py:145
+msgid "label_lkz_Mexiko"
+msgstr ""
+
+#: ./vocabularies.py:100
+msgid "label_lkz_Mikronesien,"
+msgstr ""
+
+#: ./vocabularies.py:147
+msgid "label_lkz_Moldawien"
+msgstr ""
+
+#: ./vocabularies.py:144
+msgid "label_lkz_Monaco"
+msgstr ""
+
+#: ./vocabularies.py:146
+msgid "label_lkz_Montenegro"
+msgstr ""
+
+#: ./vocabularies.py:148
+msgid "label_lkz_Mozambik"
+msgstr ""
+
+#: ./vocabularies.py:203
+msgid "label_lkz_Namibia"
+msgstr ""
+
+#: ./vocabularies.py:153
+msgid "label_lkz_Nauru"
+msgstr ""
+
+#: ./vocabularies.py:154
+msgid "label_lkz_Nepal"
+msgstr ""
+
+#: ./vocabularies.py:158
+msgid "label_lkz_Neue"
+msgstr ""
+
+#: ./vocabularies.py:157
+msgid "label_lkz_Neuseeland"
+msgstr ""
+
+#: ./vocabularies.py:155
+msgid "label_lkz_Nicaragua"
+msgstr ""
+
+#: ./vocabularies.py:156
+msgid "label_lkz_Niederlande"
+msgstr ""
+
+#: ./vocabularies.py:180
+msgid "label_lkz_Niger"
+msgstr ""
+
+#: ./vocabularies.py:223
+msgid "label_lkz_Nigeria"
+msgstr ""
+
+#: ./vocabularies.py:151
+msgid "label_lkz_Norwegen"
+msgstr ""
+
+#: ./vocabularies.py:44
+msgid "label_lkz_Oesterreich"
+msgstr ""
+
+#: ./vocabularies.py:143
+msgid "label_lkz_Oman"
+msgstr ""
+
+#: ./vocabularies.py:161
+msgid "label_lkz_Pakistan"
+msgstr ""
+
+#: ./vocabularies.py:160
+msgid "label_lkz_Panama"
+msgstr ""
+
+#: ./vocabularies.py:164
+msgid "label_lkz_Papua-Neuguinea"
+msgstr ""
+
+#: ./vocabularies.py:165
+msgid "label_lkz_Paraguay"
+msgstr ""
+
+#: ./vocabularies.py:162
+msgid "label_lkz_Peru"
+msgstr ""
+
+#: ./vocabularies.py:184
+msgid "label_lkz_Philippinen"
+msgstr ""
+
+#: ./vocabularies.py:163
+msgid "label_lkz_Polen"
+msgstr ""
+
+#: ./vocabularies.py:159
+msgid "label_lkz_Portugal"
+msgstr ""
+
+#: ./vocabularies.py:188
+msgid "label_lkz_Ruanda"
+msgstr ""
+
+#: ./vocabularies.py:181
+msgid "label_lkz_Rumaenien"
+msgstr ""
+
+#: ./vocabularies.py:187
+msgid "label_lkz_Russland"
+msgstr ""
+
+#: ./vocabularies.py:198
+msgid "label_lkz_Salomonen"
+msgstr ""
+
+#: ./vocabularies.py:232
+msgid "label_lkz_Sambia"
+msgstr ""
+
+#: ./vocabularies.py:228
+msgid "label_lkz_Samoa"
+msgstr ""
+
+#: ./vocabularies.py:185
+msgid "label_lkz_San"
+msgstr ""
+
+#: ./vocabularies.py:88
+msgid "label_lkz_Sansibar"
+msgstr ""
+
+#: ./vocabularies.py:201
+msgid "label_lkz_Sao"
+msgstr ""
+
+#: ./vocabularies.py:190
+msgid "label_lkz_Saudi-Arabien"
+msgstr ""
+
+#: ./vocabularies.py:189
+msgid "label_lkz_Schweden"
+msgstr ""
+
+#: ./vocabularies.py:71
+msgid "label_lkz_Schweiz"
+msgstr ""
+
+#: ./vocabularies.py:197
+msgid "label_lkz_Senegal"
+msgstr ""
+
+#: ./vocabularies.py:200
+msgid "label_lkz_Serbien"
+msgstr ""
+
+#: ./vocabularies.py:204
+msgid "label_lkz_Seychellen"
+msgstr ""
+
+#: ./vocabularies.py:222
+msgid "label_lkz_Sierra"
+msgstr ""
+
+#: ./vocabularies.py:235
+msgid "label_lkz_Simbabwe"
+msgstr ""
+
+#: ./vocabularies.py:193
+msgid "label_lkz_Singapur"
+msgstr ""
+
+#: ./vocabularies.py:194
+msgid "label_lkz_Slowakische"
+msgstr ""
+
+#: ./vocabularies.py:195
+msgid "label_lkz_Slowenien"
+msgstr ""
+
+#: ./vocabularies.py:199
+msgid "label_lkz_Somalia"
+msgstr ""
+
+#: ./vocabularies.py:84
+msgid "label_lkz_Spanien"
+msgstr ""
+
+#: ./vocabularies.py:74
+msgid "label_lkz_Sri"
+msgstr ""
+
+#: ./vocabularies.py:191
+msgid "label_lkz_St."
+msgstr ""
+
+#: ./vocabularies.py:202
+msgid "label_lkz_Sudan"
+msgstr ""
+
+#: ./vocabularies.py:233
+msgid "label_lkz_Suedafrika"
+msgstr ""
+
+#: ./vocabularies.py:196
+msgid "label_lkz_Surinam"
+msgstr ""
+
+#: ./vocabularies.py:192
+msgid "label_lkz_Swasiland"
+msgstr ""
+
+#: ./vocabularies.py:205
+msgid "label_lkz_Syrien"
+msgstr ""
+
+#: ./vocabularies.py:207
+msgid "label_lkz_Tadschikistan"
+msgstr ""
+
+#: ./vocabularies.py:169
+msgid "label_lkz_Taiwan"
+msgstr ""
+
+#: ./vocabularies.py:86
+msgid "label_lkz_Tansania"
+msgstr ""
+
+#: ./vocabularies.py:206
+msgid "label_lkz_Thailand"
+msgstr ""
+
+#: ./vocabularies.py:208
+msgid "label_lkz_Togo"
+msgstr ""
+
+#: ./vocabularies.py:213
+msgid "label_lkz_Trinidad"
+msgstr ""
+
+#: ./vocabularies.py:72
+msgid "label_lkz_Tschad"
+msgstr ""
+
+#: ./vocabularies.py:78
+msgid "label_lkz_Tschechische"
+msgstr ""
+
+#: ./vocabularies.py:212
+msgid "label_lkz_Tuerkei"
+msgstr ""
+
+#: ./vocabularies.py:211
+msgid "label_lkz_Tunesien"
+msgstr ""
+
+#: ./vocabularies.py:210
+msgid "label_lkz_Turkmenistan"
+msgstr ""
+
+#: ./vocabularies.py:87
+msgid "label_lkz_Uganda"
+msgstr ""
+
+#: ./vocabularies.py:214
+msgid "label_lkz_Ukraine"
+msgstr ""
+
+#: ./vocabularies.py:113
+msgid "label_lkz_Ungarn"
+msgstr ""
+
+#: ./vocabularies.py:183
+msgid "label_lkz_Uruguay"
+msgstr ""
+
+#: ./vocabularies.py:217
+msgid "label_lkz_Usbekistan"
+msgstr ""
+
+#: ./vocabularies.py:218
+msgid "label_lkz_Vatikanstadt"
+msgstr ""
+
+#: ./vocabularies.py:231
+msgid "label_lkz_Venezuela"
+msgstr ""
+
+#: ./vocabularies.py:215
+msgid "label_lkz_Vereinigte"
+msgstr ""
+
+#: ./vocabularies.py:219
+msgid "label_lkz_Vietnam"
 msgstr ""
 
 #: ./vocabularies.py:67
-msgid "label_usbekistan"
+msgid "label_lkz_Weissrussland"
+msgstr ""
+
+#: ./vocabularies.py:234
+msgid "label_lkz_Zaire"
+msgstr ""
+
+#: ./vocabularies.py:170
+msgid "label_lkz_Zentralafrikanische"
 msgstr ""
 
 #: ./vocabularies.py:77
+msgid "label_lkz_Zypern"
+msgstr ""
+
+#: ./vocabularies.py:45
+msgid "label_lkz_unbekannt"
+msgstr ""
+
+#: ./vocabularies.py:257
+msgid "label_luxemburg"
+msgstr ""
+
+#: ./vocabularies.py:286
+msgid "label_malta"
+msgstr ""
+
+#: ./vocabularies.py:296
+msgid "label_marokko"
+msgstr ""
+
+#: ./vocabularies.py:290
+msgid "label_mazedonien"
+msgstr ""
+
+#: ./vocabularies.py:304
+msgid "label_mexiko"
+msgstr ""
+
+#: ./vocabularies.py:272
+msgid "label_moldawien"
+msgstr ""
+
+#: ./vocabularies.py:258
+msgid "label_niederlande"
+msgstr ""
+
+#: ./vocabularies.py:297
+msgid "label_nigeria"
+msgstr ""
+
+#: ./vocabularies.py:259
+msgid "label_norwegen"
+msgstr ""
+
+#: ./vocabularies.py:260
+msgid "label_oesterreich"
+msgstr ""
+
+#: ./vocabularies.py:314
+msgid "label_pakistan"
+msgstr ""
+
+#: ./vocabularies.py:305
+msgid "label_peru"
+msgstr ""
+
+#: ./vocabularies.py:261
+msgid "label_polen"
+msgstr ""
+
+#: ./vocabularies.py:262
+msgid "label_portugal"
+msgstr ""
+
+#: ./vocabularies.py:263
+msgid "label_rumaenien"
+msgstr ""
+
+#: ./vocabularies.py:273
+msgid "label_russland"
+msgstr ""
+
+#: ./vocabularies.py:264
+msgid "label_schweden"
+msgstr ""
+
+#: ./vocabularies.py:265
+msgid "label_schweiz"
+msgstr ""
+
+#: ./vocabularies.py:291
+msgid "label_serbien"
+msgstr ""
+
+#: ./vocabularies.py:280
+msgid "label_slowakei"
+msgstr ""
+
+#: ./vocabularies.py:292
+msgid "label_slowenien"
+msgstr ""
+
+#: ./vocabularies.py:278
+msgid "label_spanien"
+msgstr ""
+
+#: ./vocabularies.py:298
+msgid "label_suedafrika"
+msgstr ""
+
+#: ./vocabularies.py:274
+msgid "label_tadschikistan"
+msgstr ""
+
+#: ./vocabularies.py:279
+msgid "label_tschechien"
+msgstr ""
+
+#: ./vocabularies.py:281
+msgid "label_tuerkei"
+msgstr ""
+
+#: ./vocabularies.py:299
+msgid "label_tunesien"
+msgstr ""
+
+#: ./vocabularies.py:275
+msgid "label_turkmenistan"
+msgstr ""
+
+#: ./vocabularies.py:276
+msgid "label_ukraine"
+msgstr ""
+
+#: ./vocabularies.py:282
+msgid "label_ungarn"
+msgstr ""
+
+#: ./vocabularies.py:306
+msgid "label_usa"
+msgstr ""
+
+#: ./vocabularies.py:277
+msgid "label_usbekistan"
+msgstr ""
+
+#: ./vocabularies.py:287
 msgid "label_zypern"
 msgstr ""
 
-#: ./interfaces.py:83
+#: ./interfaces.py:132
 msgid "vergessen Sie dabei bitte nicht die Telefonnummer."
 msgstr ""
 
