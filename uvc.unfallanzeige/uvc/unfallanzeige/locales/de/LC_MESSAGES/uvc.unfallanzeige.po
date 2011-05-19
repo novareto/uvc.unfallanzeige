@@ -313,6 +313,10 @@ msgstr ""
 msgid "Toedlicher Unfall"
 msgstr "Tödlicher Unfall"
 
+#: ./interfaces.py:276
+msgid "Handelt es sich um einen toedlichen Unfall?"
+msgstr "Handelt es sich um einen tödlichen Unfall?"
+
 #: ./interfaces.py:286
 msgid "Uhrzeit"
 msgstr ""

@@ -81,6 +81,27 @@ def vocab_unfortdetail(context):
         SimpleTerm('Ausserhalb des Betriebsgelaendes', 'Ausserhalb des Betriebsgelaendes', u'Ausserhalb des Betriebsgeländes'),
         ))
 
+@grok.provider(IContextSourceBinder) 
+def vocab_wiederaufnahme(context):
+    return SimpleVocabulary((
+        SimpleTerm('nein', 'nein', u'nein'),
+        SimpleTerm('ja, sofort', 'ja, sofort', u'ja, sofort'),
+        SimpleTerm('ja, spaeter am:', 'ja, spaeter am:', u'ja, später am:'),
+        ))
+
+
+@grok.provider(IContextSourceBinder) 
+def vocab_arzt(context):
+    return SimpleVocabulary((
+        SimpleTerm('Es ist keine aerztliche Behandlung erforderlich.', 
+                   'Es ist keine aerztliche Behandlung erforderlich.', 
+                   u'Es ist keine ärztliche Behandlung erforderlich.'),
+        SimpleTerm('Aerztliche Behandlung bei:',
+                   'Aerztliche Behandlung bei:',
+                   u'Ärztliche Behandlung bei:',)
+        ))
+
+
 
 class IUnfallanzeige(IContent):
 
@@ -314,14 +335,14 @@ class IUnfallanzeige(IContent):
 
     prstkz = Choice(
         title = _(u"Toedlicher Unfall"),
-        description = u"Handelt es sich um einen toedlichen Unfall?",
+        description = _(u"Handelt es sich um einen toedlichen Unfall?"),
         values = ('ja', 'nein'),
          )
 
     unfae1 = Choice(
         title = _(u"Unterbrechung der Arbeit"),
         description = _(u"Hat der Versicherte die Arbeit eingestellt?"),
-        values = ('nein', 'ja, sofort', 'ja, spaeter am:'),
+        source = vocab_wiederaufnahme,
         required = False,
         )
 
@@ -378,7 +399,7 @@ class IUnfallanzeige(IContent):
     unfeba = Choice(
         title = _(u"Erstbehandlung des Versicherten"),
         description = _(u"War eine aerztliche Erstbehandlung des Versicherten erforderlich?"),
-        values = ("Es ist keine aerztliche Behandlung erforderlich.", "Aerztliche Behandlung bei:"),
+        source = vocab_arzt,
         )
 
     unfeba1 = Text(
