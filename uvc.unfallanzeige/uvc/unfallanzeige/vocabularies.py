@@ -213,7 +213,7 @@ class LkzSources(grok.GlobalUtility):
                   ('TT', 'Trinidad', _(u'label_lkz_Trinidad')),
                   ('UA', 'Ukraine', _(u'label_lkz_Ukraine')),
                   ('UAE', 'Vereinigte UAE', _(u'label_lkz_Vereinigte')),
-                  ('USA', 'Vereinigte USA', _(u'label_lkz_Vereinigte')),
+                  ('USA', 'Vereinigte USA', _(u'label_lkz_VereinigteStaaten')),
                   ('USB', 'Usbekistan', _(u'label_lkz_Usbekistan')),
                   ('V', 'Vatikanstadt', _(u'label_lkz_Vatikanstadt')),
                   ('VN', 'Vietnam', _(u'label_lkz_Vietnam')),
