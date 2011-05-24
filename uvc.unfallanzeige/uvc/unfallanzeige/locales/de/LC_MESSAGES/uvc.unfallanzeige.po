@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9\n"
 "POT-Creation-Date: 2011-05-23 13:01+0000\n"
-"PO-Revision-Date: 2011-05-23 15:25+0100\n"
+"PO-Revision-Date: 2011-05-24 13:23+0100\n"
 "Last-Translator: Lars Walther <lwalther@novareto.de>\n"
 "Language-Team: GERMAN <info@novareto.de>\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr "Bitte geben Sie Straße"
 
 #: ./interfaces.py:289
 msgid "Bitte geben Sie das Unfallatum (tt.mm.jjjj)"
-msgstr "Bitte geben Sie das Unfallatum (tt.mm.jjjj) an."
+msgstr "Bitte geben Sie das Unfallatum (tt.mm.jjjj) und"
 
 #: ./interfaces.py:307
 msgid "Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."
@@ -135,7 +135,7 @@ msgstr "Die Angaben beruhen auf den Schilderungen:"
 
 #: ./interfaces.py:415
 msgid "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"
-msgstr "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)."
+msgstr "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Name, Vorname)."
 
 #: ./interfaces.py:379
 msgid "Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"
@@ -359,7 +359,7 @@ msgstr "Vorname des Versicherten"
 
 #: ./interfaces.py:420
 msgid "Vorname, Name des Unternehmens bzw. des Bevollmaechtigten"
-msgstr "Vorname, Name des Unternehmers bzw. des Bevollmächtigten."
+msgstr "Der Unternehmer bzw.  Bevollmächtigte des Unternehmers wurde vom Unfall in Kenntnis gesetzt (Name, Vorname)."
 
 #: ./interfaces.py:260
 msgid "Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"
@@ -411,7 +411,7 @@ msgstr "den Zeitpunkt (hh:mm) des Unfalls an."
 
 #: ./interfaces.py:385
 msgid "endet um Uhrzeit (hh:mm)."
-msgstr "endet um Uhrzeit (hh:mm)."
+msgstr "und endet um Uhrzeit (hh:mm)."
 
 #: ./vocabularies.py:293
 msgid "label_aegypten"

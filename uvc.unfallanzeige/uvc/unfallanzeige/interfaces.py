@@ -49,7 +49,7 @@ class DynVocab(object):
         vocab = queryUtility(
             IVocabularyFactory, name=self.name)
         if not vocab:
-            return SimpleVocabulary([]) 
+            return SimpleVocabulary([])
         return vocab(context) 
 
 

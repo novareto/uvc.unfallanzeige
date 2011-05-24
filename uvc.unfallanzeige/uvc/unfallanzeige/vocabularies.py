@@ -41,6 +41,7 @@ class LkzSources(grok.GlobalUtility):
 
     def __call__(self, context):
         return vocabulary_list((
+                  ('D', 'Deutschland', _(u'label_lkz_Deutschland')),
                   ('A', 'Oesterreich', _(u'label_lkz_Oesterreich')),
                   ('AAA', 'unbekannt', _(u'label_lkz_unbekannt')),
                   ('ADN', 'Jemen', _(u'label_lkz_Jemen')),
@@ -76,7 +77,6 @@ class LkzSources(grok.GlobalUtility):
                   ('CR', 'Costa', _(u'label_lkz_Costa')),
                   ('CY', 'Zypern', _(u'label_lkz_Zypern')),
                   ('CZ', 'Tschechische', _(u'label_lkz_Tschechische')),
-                  ('D', 'Deutschland', _(u'label_lkz_Deutschland')),
                   ('DCM', 'Dominikanische', _(u'label_lkz_Dominikanische')),
                   ('DK', 'Daenemark', _(u'label_lkz_Daenemark')),
                   ('DY', 'Benin', _(u'label_lkz_Benin')),
