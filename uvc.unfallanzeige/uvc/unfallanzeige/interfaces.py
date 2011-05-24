@@ -6,6 +6,8 @@ import time
 import grokcore.component as grok
 
 from zope.interface import Interface
+from zope.interface import Invalid, invariant
+
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
 from zope.schema.interfaces import IContextSourceBinder
@@ -25,6 +27,10 @@ def validateShortDatum(value):
     except ValueError:
         raise NotValidEingabeDatum(value)
     return True
+
+
+class ArbeitEingestelltFields(Invalid):
+    """Fehlerklasse"""
 
 
 class IUnfallanzeigenFolder(IProductFolder):
@@ -427,4 +433,13 @@ class IUnfallanzeige(IContent):
         description = _(u"Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."),
         values = ('Druck', 'Versand', 'Druck & Versand')
         )
+
+
+    @invariant
+    def validate_arbeit_eingestellt(obj):
+        if obj.unfae1 == 'ja, spaeter am:':
+            if not obj.unfaedatum or not obj.unfaezeit:
+                raise ArbeitEingestelltFields(_(u'Die Felder fuer Datum und Stunde muessen bearbeitet werden.'))
+            validateDatum(obj.unfaedatum)
+            validateUhrzeit(obj.unfaezeit)
 

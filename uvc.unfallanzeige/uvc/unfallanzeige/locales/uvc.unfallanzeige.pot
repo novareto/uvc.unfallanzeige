@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-05-23 13:01+0000\n"
+"POT-Creation-Date: 2011-05-24 20:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,399 +17,403 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: uvc.unfallanzeige\n"
 
-#: ./interfaces.py:372
+#: ./interfaces.py:378
 msgid "An welchem Tag wurde die Arbeit wieder aufgenommen (tt.mm.jjjj)?"
 msgstr ""
 
-#: ./interfaces.py:246
+#: ./interfaces.py:252
 msgid "Angaben zum Arbeitsverhaeltnis"
 msgstr ""
 
-#: ./interfaces.py:316
+#: ./interfaces.py:322
 msgid "Angaben zum Unfall"
 msgstr ""
 
-#: ./interfaces.py:306
+#: ./interfaces.py:312
 msgid "Angaben zum Unfallort"
 msgstr ""
 
-#: ./interfaces.py:202
+#: ./interfaces.py:208
 msgid "Anschrift (Strasse"
 msgstr ""
 
-#: ./interfaces.py:147
+#: ./interfaces.py:153
 msgid "Ansprechpartner"
 msgstr ""
 
-#: ./interfaces.py:111
+#: ./interfaces.py:117
 msgid "Arbeitsstelle des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:378
+#: ./interfaces.py:384
 msgid "Arbeitszeit (Beginn"
 msgstr ""
 
-#: ./interfaces.py:395
+#: ./interfaces.py:401
 msgid "Art der Verletzung"
 msgstr ""
 
-#: ./interfaces.py:328
+#: ./interfaces.py:334
 msgid "Augenzeuge"
 msgstr ""
 
-#: ./interfaces.py:166
+#: ./interfaces.py:172
 msgid "Beginn der Beschaeftigung"
 msgstr ""
 
-#: ./interfaces.py:253
+#: ./interfaces.py:259
 msgid "Besteht ein Ehegattenarbeitsvertrag?"
 msgstr ""
 
-#: ./interfaces.py:351
+#: ./interfaces.py:357
 msgid "Bitte geben Sie Datum (tt.mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:185
+#: ./interfaces.py:191
 msgid "Bitte geben Sie Name und Anschrift des Personaldienstleisters bzw. Zeitarbeitsunternehmens an."
 msgstr ""
 
-#: ./interfaces.py:407
+#: ./interfaces.py:413
 msgid "Bitte geben Sie Name und Anschrift des erstbehandelnden Arztes an."
 msgstr ""
 
-#: ./interfaces.py:136
+#: ./interfaces.py:142
 msgid "Bitte geben Sie Postleitzahl"
 msgstr ""
 
-#: ./interfaces.py:124
+#: ./interfaces.py:130
 msgid "Bitte geben Sie Strasse"
 msgstr ""
 
-#: ./interfaces.py:289
+#: ./interfaces.py:295
 msgid "Bitte geben Sie das Unfallatum (tt.mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:307
+#: ./interfaces.py:313
 msgid "Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."
 msgstr ""
 
-#: ./interfaces.py:148
+#: ./interfaces.py:154
 msgid "Bitte geben Sie einen Ansprechpartner an, den wir bei Rueckfragen schnell erreichen koennen"
 msgstr ""
 
-#: ./interfaces.py:118
+#: ./interfaces.py:124
 msgid "Bitte geben Sie hier den Namen der Zweigstelle an."
 msgstr ""
 
-#: ./interfaces.py:312
+#: ./interfaces.py:318
 msgid "Bitte schildern sie moeglichst detailliert wie sich der Unfall ereignete"
 msgstr ""
 
-#: ./interfaces.py:301
+#: ./interfaces.py:307
 msgid "Bitte waehlen Sie aus wo sich der Unfall ereignete."
 msgstr ""
 
-#: ./interfaces.py:247
+#: ./interfaces.py:253
 msgid "Bitte waehlen Sie aus, in welchem Arbeitsverhaeltnis der Versicherte steht."
 msgstr ""
 
-#: ./interfaces.py:427
+#: ./interfaces.py:433
 msgid "Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."
 msgstr ""
 
-#: ./interfaces.py:350
+#: ./interfaces.py:356
 msgid "Datum"
 msgstr ""
 
-#: ./interfaces.py:371
+#: ./interfaces.py:377
 msgid "Datum der Wiederaufnahme"
 msgstr ""
 
-#: ./interfaces.py:167
+#: ./interfaces.py:173
 msgid "Der Versicherte ist beschaeftigt seit: (mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:317
+#: ./interfaces.py:323
 msgid "Die Angaben beruhen auf den Schilderungen:"
 msgstr ""
 
-#: ./interfaces.py:415
+#: ./interfaces.py:442
+msgid "Die Felder fuer Datum und Stunde muessen bearbeitet werden."
+msgstr ""
+
+#: ./interfaces.py:421
 msgid "Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"
 msgstr ""
 
-#: ./interfaces.py:379
+#: ./interfaces.py:385
 msgid "Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"
 msgstr ""
 
-#: ./interfaces.py:161
+#: ./interfaces.py:167
 msgid "Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"
 msgstr ""
 
-#: ./interfaces.py:252
+#: ./interfaces.py:258
 msgid "Ehegattenarbeitsvertrag"
 msgstr ""
 
-#: ./interfaces.py:259
+#: ./interfaces.py:265
 msgid "Ehegattenarbeitsvertrag (Vertragsbeginn)"
 msgstr ""
 
-#: ./interfaces.py:384
+#: ./interfaces.py:390
 msgid "Ende)"
 msgstr ""
 
-#: ./interfaces.py:267
+#: ./interfaces.py:273
 msgid "Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"
 msgstr ""
 
-#: ./interfaces.py:273
+#: ./interfaces.py:279
 msgid "Entgeltfortzahlung"
 msgstr ""
 
-#: ./interfaces.py:266
+#: ./interfaces.py:272
 msgid "Entgeltzahlung"
 msgstr ""
 
-#: ./interfaces.py:406
+#: ./interfaces.py:412
 msgid "Erstbehandelnder Arzt"
 msgstr ""
 
-#: ./interfaces.py:400
+#: ./interfaces.py:406
 msgid "Erstbehandlung des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:274
+#: ./interfaces.py:280
 msgid "Fuer wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?"
 msgstr ""
 
-#: ./interfaces.py:228
+#: ./interfaces.py:234
 msgid "Geburtsdatum"
 msgstr ""
 
-#: ./interfaces.py:229
+#: ./interfaces.py:235
 msgid "Geburtsdatum des Versicherten (tt.mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:234
+#: ./interfaces.py:240
 msgid "Geschlecht"
 msgstr ""
 
-#: ./interfaces.py:235
+#: ./interfaces.py:241
 msgid "Geschlecht des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:338
+#: ./interfaces.py:344
 msgid "Handelt es sich um einen toedlichen Unfall?"
 msgstr ""
 
-#: ./interfaces.py:344
+#: ./interfaces.py:350
 msgid "Hat der Versicherte die Arbeit eingestellt?"
 msgstr ""
 
-#: ./interfaces.py:365
+#: ./interfaces.py:371
 msgid "Hat der Versicherte die Arbeit wieder aufgenommen?"
 msgstr ""
 
-#: ./interfaces.py:130
+#: ./interfaces.py:136
 msgid "Hausnummer der Zweigstelle an."
 msgstr ""
 
-#: ./interfaces.py:208
+#: ./interfaces.py:214
 msgid "Hausnummer des Versicherten an."
 msgstr ""
 
-#: ./interfaces.py:129
+#: ./interfaces.py:135
 msgid "Hs.-Nr."
 msgstr ""
 
-#: ./interfaces.py:207
+#: ./interfaces.py:213
 msgid "Hs.-Nr.)"
 msgstr ""
 
-#: ./interfaces.py:173
+#: ./interfaces.py:179
 msgid "In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"
 msgstr ""
 
-#: ./interfaces.py:179
+#: ./interfaces.py:185
 msgid "Ist die versicherte Person Leiharbeitnehmer?"
 msgstr ""
 
-#: ./interfaces.py:281
+#: ./interfaces.py:287
 msgid "Krankenkasse des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:212
+#: ./interfaces.py:218
 msgid "Laenderkennzeichen"
 msgstr ""
 
-#: ./interfaces.py:213
+#: ./interfaces.py:219
 msgid "Laenderkennzeichen des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:178
+#: ./interfaces.py:184
 msgid "Leiharbeitnehmer"
 msgstr ""
 
-#: ./interfaces.py:192
+#: ./interfaces.py:198
 msgid "Name"
 msgstr ""
 
-#: ./interfaces.py:117
+#: ./interfaces.py:123
 msgid "Name der Zweigstelle"
 msgstr ""
 
-#: ./interfaces.py:193
+#: ./interfaces.py:199
 msgid "Name des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:282
+#: ./interfaces.py:288
 msgid "Name und Anschrift der Krankenkasse des Versicherten."
 msgstr ""
 
-#: ./interfaces.py:141
+#: ./interfaces.py:147
 msgid "Ort"
 msgstr ""
 
-#: ./interfaces.py:142
+#: ./interfaces.py:148
 msgid "Ort der Zweigstelle an."
 msgstr ""
 
-#: ./interfaces.py:224
+#: ./interfaces.py:230
 msgid "Ort des Versicherten an."
 msgstr ""
 
-#: ./interfaces.py:135
+#: ./interfaces.py:141
 msgid "PLZ"
 msgstr ""
 
-#: ./interfaces.py:414
+#: ./interfaces.py:420
 msgid "Personal- bzw. Betriebsrat"
 msgstr ""
 
-#: ./interfaces.py:184
+#: ./interfaces.py:190
 msgid "Personaldienstleister"
 msgstr ""
 
-#: ./interfaces.py:240
+#: ./interfaces.py:246
 msgid "Staatsangehoerigkeit"
 msgstr ""
 
-#: ./interfaces.py:241
+#: ./interfaces.py:247
 msgid "Staatsangehoerigkeit des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:123
+#: ./interfaces.py:129
 msgid "Strasse"
 msgstr ""
 
-#: ./interfaces.py:160
+#: ./interfaces.py:166
 msgid "Taetigkeit zum Unfallzeitpunkt"
 msgstr ""
 
-#: ./interfaces.py:172
+#: ./interfaces.py:178
 msgid "Teil des Unternehmens"
 msgstr ""
 
-#: ./interfaces.py:152
+#: ./interfaces.py:158
 msgid "Telefon"
 msgstr ""
 
-#: ./interfaces.py:337
+#: ./interfaces.py:343
 msgid "Toedlicher Unfall"
 msgstr ""
 
-#: ./interfaces.py:357
+#: ./interfaces.py:363
 msgid "Uhrzeit"
 msgstr ""
 
-#: ./interfaces.py:358
+#: ./interfaces.py:364
 msgid "Uhrzeit (hh:mm) an."
 msgstr ""
 
-#: ./interfaces.py:311
+#: ./interfaces.py:317
 msgid "Unfallhergang"
 msgstr ""
 
-#: ./interfaces.py:300
+#: ./interfaces.py:306
 msgid "Unfallort"
 msgstr ""
 
-#: ./interfaces.py:288
+#: ./interfaces.py:294
 msgid "Unfallzeitpunkt (Datum"
 msgstr ""
 
-#: ./interfaces.py:343
+#: ./interfaces.py:349
 msgid "Unterbrechung der Arbeit"
 msgstr ""
 
-#: ./interfaces.py:419
+#: ./interfaces.py:425
 msgid "Unternehmer / Bevollmaechtigter"
 msgstr ""
 
-#: ./interfaces.py:390
+#: ./interfaces.py:396
 msgid "Verletzte Koerperteile"
 msgstr ""
 
-#: ./interfaces.py:197
+#: ./interfaces.py:203
 msgid "Vorname"
 msgstr ""
 
-#: ./interfaces.py:198
+#: ./interfaces.py:204
 msgid "Vorname des Versicherten"
 msgstr ""
 
-#: ./interfaces.py:420
+#: ./interfaces.py:426
 msgid "Vorname, Name des Unternehmens bzw. des Bevollmaechtigten"
 msgstr ""
 
-#: ./interfaces.py:260
+#: ./interfaces.py:266
 msgid "Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"
 msgstr ""
 
-#: ./interfaces.py:329
+#: ./interfaces.py:335
 msgid "War diese Person Augenzeuge?"
 msgstr ""
 
-#: ./interfaces.py:401
+#: ./interfaces.py:407
 msgid "War eine aerztliche Erstbehandlung des Versicherten erforderlich?"
 msgstr ""
 
-#: ./interfaces.py:426
+#: ./interfaces.py:432
 msgid "Weiteres Vorgehen"
 msgstr ""
 
-#: ./interfaces.py:396
+#: ./interfaces.py:402
 msgid "Welche Art der Verletzung liegt vor?"
 msgstr ""
 
-#: ./interfaces.py:391
+#: ./interfaces.py:397
 msgid "Welche Koerperteile sind verletzt?"
 msgstr ""
 
-#: ./interfaces.py:323
+#: ./interfaces.py:329
 msgid "Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift des Zeugen)"
 msgstr ""
 
-#: ./interfaces.py:364
+#: ./interfaces.py:370
 msgid "Wiederaufnahme der Arbeit"
 msgstr ""
 
-#: ./interfaces.py:112
+#: ./interfaces.py:118
 msgid "Wo ist die versicherte Person regelmaessig taetig?"
 msgstr ""
 
-#: ./interfaces.py:294
+#: ./interfaces.py:300
 msgid "Zeit)"
 msgstr ""
 
-#: ./interfaces.py:322
+#: ./interfaces.py:328
 msgid "Zeugen des Unfalls"
 msgstr ""
 
-#: ./interfaces.py:295
+#: ./interfaces.py:301
 msgid "den Zeitpunkt (hh:mm) des Unfalls an."
 msgstr ""
 
-#: ./interfaces.py:385
+#: ./interfaces.py:391
 msgid "endet um Uhrzeit (hh:mm)."
 msgstr ""
 
@@ -581,11 +585,11 @@ msgstr ""
 msgid "label_lkz_Aethiopien"
 msgstr ""
 
-#: ./vocabularies.py:47
+#: ./vocabularies.py:48
 msgid "label_lkz_Afghanistan"
 msgstr ""
 
-#: ./vocabularies.py:49
+#: ./vocabularies.py:50
 msgid "label_lkz_Albanien"
 msgstr ""
 
@@ -597,15 +601,15 @@ msgstr ""
 msgid "label_lkz_Algerien"
 msgstr ""
 
-#: ./vocabularies.py:50
+#: ./vocabularies.py:51
 msgid "label_lkz_Andorra"
 msgstr ""
 
-#: ./vocabularies.py:48
+#: ./vocabularies.py:49
 msgid "label_lkz_Angola"
 msgstr ""
 
-#: ./vocabularies.py:51
+#: ./vocabularies.py:52
 msgid "label_lkz_Antigua"
 msgstr ""
 
@@ -613,31 +617,31 @@ msgstr ""
 msgid "label_lkz_Argentinien"
 msgstr ""
 
-#: ./vocabularies.py:52
+#: ./vocabularies.py:53
 msgid "label_lkz_Australien"
 msgstr ""
 
-#: ./vocabularies.py:65
+#: ./vocabularies.py:66
 msgid "label_lkz_Bahamas"
 msgstr ""
 
-#: ./vocabularies.py:63
+#: ./vocabularies.py:64
 msgid "label_lkz_Bahrein"
 msgstr ""
 
-#: ./vocabularies.py:54
+#: ./vocabularies.py:55
 msgid "label_lkz_Bangla"
 msgstr ""
 
-#: ./vocabularies.py:55
+#: ./vocabularies.py:56
 msgid "label_lkz_Barbados"
 msgstr ""
 
-#: ./vocabularies.py:53
+#: ./vocabularies.py:54
 msgid "label_lkz_Belgien"
 msgstr ""
 
-#: ./vocabularies.py:57
+#: ./vocabularies.py:58
 msgid "label_lkz_Belize"
 msgstr ""
 
@@ -645,19 +649,19 @@ msgstr ""
 msgid "label_lkz_Benin"
 msgstr ""
 
-#: ./vocabularies.py:58
+#: ./vocabularies.py:59
 msgid "label_lkz_Bhutan"
 msgstr ""
 
-#: ./vocabularies.py:66
+#: ./vocabularies.py:67
 msgid "label_lkz_Birma"
 msgstr ""
 
-#: ./vocabularies.py:60
+#: ./vocabularies.py:61
 msgid "label_lkz_Bolivien"
 msgstr ""
 
-#: ./vocabularies.py:61
+#: ./vocabularies.py:62
 msgid "label_lkz_Bosnien-Herzegowina"
 msgstr ""
 
@@ -665,15 +669,15 @@ msgstr ""
 msgid "label_lkz_Botswana"
 msgstr ""
 
-#: ./vocabularies.py:62
+#: ./vocabularies.py:63
 msgid "label_lkz_Brasilien"
 msgstr ""
 
-#: ./vocabularies.py:64
+#: ./vocabularies.py:65
 msgid "label_lkz_Brunai"
 msgstr ""
 
-#: ./vocabularies.py:56
+#: ./vocabularies.py:57
 msgid "label_lkz_Bulgarien"
 msgstr ""
 
@@ -693,7 +697,7 @@ msgstr ""
 msgid "label_lkz_China"
 msgstr ""
 
-#: ./vocabularies.py:76
+#: ./vocabularies.py:77
 msgid "label_lkz_Costa"
 msgstr ""
 
@@ -705,7 +709,7 @@ msgstr ""
 msgid "label_lkz_Daenemark"
 msgstr ""
 
-#: ./vocabularies.py:79
+#: ./vocabularies.py:44
 msgid "label_lkz_Deutschland"
 msgstr ""
 
@@ -725,7 +729,7 @@ msgstr ""
 msgid "label_lkz_El"
 msgstr ""
 
-#: ./vocabularies.py:73
+#: ./vocabularies.py:74
 msgid "label_lkz_Elfenbeinkueste"
 msgstr ""
 
@@ -857,7 +861,7 @@ msgstr ""
 msgid "label_lkz_Japan"
 msgstr ""
 
-#: ./vocabularies.py:46
+#: ./vocabularies.py:47
 msgid "label_lkz_Jemen"
 msgstr ""
 
@@ -877,11 +881,11 @@ msgstr ""
 msgid "label_lkz_Kambodscha"
 msgstr ""
 
-#: ./vocabularies.py:69
+#: ./vocabularies.py:70
 msgid "label_lkz_Kamerun"
 msgstr ""
 
-#: ./vocabularies.py:70
+#: ./vocabularies.py:71
 msgid "label_lkz_Kanada"
 msgstr ""
 
@@ -901,7 +905,7 @@ msgstr ""
 msgid "label_lkz_Kirgisistan"
 msgstr ""
 
-#: ./vocabularies.py:75
+#: ./vocabularies.py:76
 msgid "label_lkz_Kolumbien"
 msgstr ""
 
@@ -917,7 +921,7 @@ msgstr ""
 msgid "label_lkz_Kroatien"
 msgstr ""
 
-#: ./vocabularies.py:68
+#: ./vocabularies.py:69
 msgid "label_lkz_Kuba"
 msgstr ""
 
@@ -977,7 +981,7 @@ msgstr ""
 msgid "label_lkz_Malaysia"
 msgstr ""
 
-#: ./vocabularies.py:59
+#: ./vocabularies.py:60
 msgid "label_lkz_Malediven"
 msgstr ""
 
@@ -1065,7 +1069,7 @@ msgstr ""
 msgid "label_lkz_Norwegen"
 msgstr ""
 
-#: ./vocabularies.py:44
+#: ./vocabularies.py:45
 msgid "label_lkz_Oesterreich"
 msgstr ""
 
@@ -1149,7 +1153,7 @@ msgstr ""
 msgid "label_lkz_Schweden"
 msgstr ""
 
-#: ./vocabularies.py:71
+#: ./vocabularies.py:72
 msgid "label_lkz_Schweiz"
 msgstr ""
 
@@ -1193,7 +1197,7 @@ msgstr ""
 msgid "label_lkz_Spanien"
 msgstr ""
 
-#: ./vocabularies.py:74
+#: ./vocabularies.py:75
 msgid "label_lkz_Sri"
 msgstr ""
 
@@ -1245,11 +1249,11 @@ msgstr ""
 msgid "label_lkz_Trinidad"
 msgstr ""
 
-#: ./vocabularies.py:72
+#: ./vocabularies.py:73
 msgid "label_lkz_Tschad"
 msgstr ""
 
-#: ./vocabularies.py:78
+#: ./vocabularies.py:79
 msgid "label_lkz_Tschechische"
 msgstr ""
 
@@ -1305,7 +1309,7 @@ msgstr ""
 msgid "label_lkz_Vietnam"
 msgstr ""
 
-#: ./vocabularies.py:67
+#: ./vocabularies.py:68
 msgid "label_lkz_Weissrussland"
 msgstr ""
 
@@ -1317,11 +1321,11 @@ msgstr ""
 msgid "label_lkz_Zentralafrikanische"
 msgstr ""
 
-#: ./vocabularies.py:77
+#: ./vocabularies.py:78
 msgid "label_lkz_Zypern"
 msgstr ""
 
-#: ./vocabularies.py:45
+#: ./vocabularies.py:46
 msgid "label_lkz_unbekannt"
 msgstr ""
 
@@ -1457,7 +1461,7 @@ msgstr ""
 msgid "label_zypern"
 msgstr ""
 
-#: ./interfaces.py:153
+#: ./interfaces.py:159
 msgid "vergessen Sie dabei bitte nicht die Telefonnummer."
 msgstr ""
 
