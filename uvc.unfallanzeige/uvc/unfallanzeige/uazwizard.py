@@ -13,7 +13,7 @@ from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, 
 class Unfallanzeige(uvcsite.Content):
     """ContentType fuer das Lastschriftverfahren"""
     uvcsite.schema(IUnfallanzeige)
-    grok.name('unfallanzeige')
+    grok.name('Unfallanzeige')
     grok.title('Unfallanzeige')
 
 

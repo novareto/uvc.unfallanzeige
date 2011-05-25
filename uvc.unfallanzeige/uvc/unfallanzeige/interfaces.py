@@ -433,13 +433,3 @@ class IUnfallanzeige(IContent):
         description = _(u"Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."),
         values = ('Druck', 'Versand', 'Druck & Versand')
         )
-
-
-    @invariant
-    def validate_arbeit_eingestellt(obj):
-        if obj.unfae1 == 'ja, spaeter am:':
-            if not obj.unfaedatum or not obj.unfaezeit:
-                raise ArbeitEingestelltFields(_(u'Die Felder fuer Datum und Stunde muessen bearbeitet werden.'))
-            validateDatum(obj.unfaedatum)
-            validateUhrzeit(obj.unfaezeit)
-
