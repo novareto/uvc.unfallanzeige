@@ -16,7 +16,7 @@ class Unfallanzeige(uvcsite.Content):
     grok.name('Unfallanzeige')
     grok.title('Unfallanzeige')
 
-
+    title = u"Unfallanzeige"
 
 
 class Unfallanzeigen(uvcsite.ProductFolder):
