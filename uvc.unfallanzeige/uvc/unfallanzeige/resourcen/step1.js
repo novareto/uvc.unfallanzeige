@@ -31,6 +31,8 @@ $(document).ready(function(){
           #form-widgets-unfunr-row, \
           #field-form-basic-field-unfuplz, \
           #field-form-basic-field-unfuort').slideUp();
+       $('span.label[for="form-basic-field-unfuname"], \
+          span.label[for="form-basic-field-unfustrasse"]').after('<span class="field-required"></span>')
         }  
      if (val=='In einer Zweigniederlassung') {
        $('#field-form-basic-field-unfustrasse, \

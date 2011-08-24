@@ -1051,7 +1051,6 @@ class Presentation(grok.MultiAdapter):
             c.drawString(14.4*cm,3.1*cm,'x')
 
             azeit=nN(context.unfwax)
-            import pdb; pdb.set_trace() 
 
             azeit=azeit.split('.')
             tag=azeit[0]
