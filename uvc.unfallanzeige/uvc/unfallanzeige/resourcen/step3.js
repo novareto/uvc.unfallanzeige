@@ -1,6 +1,11 @@
 /* Step3 */
 $(document).ready(function(){
 
+/* Plfichtfelder rotmarkieren */
+$('span.label[for="form-person-field-vehearbeitsv"], \
+   span.label[for="form-person-field-vehebis"], \
+   span.label[for="form-person-field-veheentgeltbis"]').after('<span class="field-required"></span>')
+
 /* Hide Show Ehegatten */
 
 /* 1) Initialize) First we hide the relevant Fields */

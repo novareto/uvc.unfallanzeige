@@ -6,6 +6,14 @@ $(document).ready(function(){
  $('#field-form-basic-field-unfunr').appendFieldTo('#field-form-basic-field-unfustrasse');
  $('#field-form-basic-field-unfuort').appendFieldTo('#field-form-basic-field-unfuplz');
 
+/* Pflichtfelder rotmarkieren */
+$('span.label[for="form-basic-field-unfuname"], \
+   span.label[for="form-basic-field-unfustrasse"], \
+   span.label[for="form-basic-field-unfunr"], \
+   span.label[for="form-basic-field-unfuplz"], \
+   span.label[for="form-basic-field-unfuort"]').after('<span class="field-required"></span>')
+
+
 /* Andere Adresse */
 
  var zweigstelle = $('#field-form-basic-field-unfustdor input:checked').val();
@@ -31,8 +39,6 @@ $(document).ready(function(){
           #form-widgets-unfunr-row, \
           #field-form-basic-field-unfuplz, \
           #field-form-basic-field-unfuort').slideUp();
-       $('span.label[for="form-basic-field-unfuname"], \
-          span.label[for="form-basic-field-unfustrasse"]').after('<span class="field-required"></span>')
         }  
      if (val=='In einer Zweigniederlassung') {
        $('#field-form-basic-field-unfustrasse, \

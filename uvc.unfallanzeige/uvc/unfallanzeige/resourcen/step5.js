@@ -1,6 +1,13 @@
 $(document).ready(function(){
- // Init Hide All //
 
+/* Pflichtfelder rotmarkieren */
+$('span.label[for="form-accidentii-field-unfae1"], \
+   span.label[for="form-accidentii-field-unfwa1"], \
+   span.label[for="form-accidentii-field-unfaedatum"], \
+   span.label[for="form-accidentii-field-unfwax"], \
+   span.label[for="form-accidentii-field-unfeba1"]').after('<span class="field-required"></span>')
+
+// Init Hide All //
  $('#field-form-accidentii-field-unfeba1, #field-form-accidentii-field-unfae1, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax').hide();
 
  var death = $('#field-form-accidentii-field-prstkz input:checked').val();

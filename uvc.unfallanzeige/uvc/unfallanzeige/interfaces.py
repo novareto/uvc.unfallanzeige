@@ -3,6 +3,7 @@
 # cklinger@novareto.de
 
 import time
+import datetime
 import grokcore.component as grok
 
 from zope.interface import Interface
@@ -14,10 +15,17 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
+from zope.schema import ValidationError
 from zope.component import queryUtility
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit
+
+
+class FutureDatum(ValidationError):
+    u""" Ihr eingegebenes Datum liegt in der Zukunft.
+         Bitte überprüfen Sie ihre Eingabe.
+    """
 
 
 def validateShortDatum(value):
@@ -26,6 +34,18 @@ def validateShortDatum(value):
         time.strptime(value, "%m.%Y")
     except ValueError:
         raise NotValidEingabeDatum(value)
+    return True
+
+
+def validateFutureDatum(value):
+    try:
+        t = time.strptime(value, "%d.%m.%Y")
+    except ValueError:
+        raise NotValidEingabeDatum(value)
+    vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
+    now = datetime.datetime.now()
+    if vdatum > now:
+        raise FutureDatum(value)
     return True
 
 
@@ -233,7 +253,7 @@ class IUnfallanzeige(IContent):
     prsgeb = TextLine(
         title = _(u"Geburtsdatum"),
         description = _(u"Geburtsdatum des Versicherten (tt.mm.jjjj)"),
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     prssex = Choice(
@@ -265,14 +285,14 @@ class IUnfallanzeige(IContent):
         title = _(u"Ehegattenarbeitsvertrag (Vertragsbeginn)"),
         description = _(u"Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"),
         required = False,
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     veheentgeltbis = TextLine(
         title = _(u"Entgeltzahlung"),
         description = _(u"Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"),
         required = False,
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     unfefz = Int(
@@ -293,7 +313,7 @@ class IUnfallanzeige(IContent):
     unfdatum = TextLine(
         title = _(u"Unfallzeitpunkt (Datum"),
         description = _(u"Bitte geben Sie das Unfallatum (tt.mm.jjjj)"),
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     unfzeit = TextLine(
@@ -356,7 +376,7 @@ class IUnfallanzeige(IContent):
         title = _(u"Datum"),
         description = _(u"Bitte geben Sie Datum (tt.mm.jjjj)"),
         required = False,
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     unfaezeit = TextLine(
@@ -377,7 +397,7 @@ class IUnfallanzeige(IContent):
         title = _(u"Datum der Wiederaufnahme"),
         description = _(u"An welchem Tag wurde die Arbeit wieder aufgenommen (tt.mm.jjjj)?"),
         required = False,
-        constraint = validateDatum,
+        constraint = validateFutureDatum,
         )
 
     uadbavon = TextLine(
@@ -419,6 +439,7 @@ class IUnfallanzeige(IContent):
     unfus3 = TextLine(
         title = _(u"Personal- bzw. Betriebsrat"),
         description = _(u"Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"),
+        required = False,
         )
 
     unfus2 = TextLine(
