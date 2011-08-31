@@ -15,7 +15,7 @@ var leihfirma = $('#field-form-job-field-unflar input:checked').val();
 
   $('#field-form-job-field-unflar input:radio').change(function() {
       if ($(this).val() == 'ja') {
-        $('#field-form-job-field-unvlaraddr').fadeIn();
+        $('#field-form-job-field-unvlaraddr').fadeIn().find('textarea').val("");
       }
       else {
         $('#field-form-job-field-unvlaraddr').fadeOut();

@@ -28,12 +28,15 @@ class FutureDatum(ValidationError):
     """
 
 
-def validateShortDatum(value):
-    """ """
+def validateFutureShortDatum(value):
     try:
-        time.strptime(value, "%m.%Y")
+        t = time.strptime(value, "%m.%Y")
     except ValueError:
         raise NotValidEingabeDatum(value)
+    vdatum = datetime.datetime.strptime(value, "%m.%Y")
+    now = datetime.datetime.now()
+    if vdatum > now:
+        raise FutureDatum(value)
     return True
 
 
@@ -191,7 +194,7 @@ class IUnfallanzeige(IContent):
     uadst = TextLine(
         title = _(u"Beginn der Beschaeftigung"),
         description = _(u"Der Versicherte ist beschaeftigt seit: (mm.jjjj)"),
-        constraint = validateShortDatum,
+        constraint = validateFutureShortDatum,
         )
 
     unfute = OptionalChoice(
@@ -452,5 +455,5 @@ class IUnfallanzeige(IContent):
     behandlung = Choice(
         title = _(u"Weiteres Vorgehen"),
         description = _(u"Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."),
-        values = ('Druck', 'Versand', 'Druck & Versand')
+        values = ('Druck', 'Versand', 'Druck & Versand'),
         )
