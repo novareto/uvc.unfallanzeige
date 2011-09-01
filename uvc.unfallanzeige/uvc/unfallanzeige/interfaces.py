@@ -455,5 +455,5 @@ class IUnfallanzeige(IContent):
     behandlung = Choice(
         title = _(u"Weiteres Vorgehen"),
         description = _(u"Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."),
-        values = ('Druck', 'Versand', 'Druck & Versand'),
+        values = ('Versand', 'Entwurf speichern'),
         )
