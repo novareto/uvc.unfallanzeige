@@ -6,6 +6,7 @@
 import grok
 import uvcsite
 
+from zope.lifecycleevent import ObjectCreatedEvent
 from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
 
@@ -31,6 +32,7 @@ class Adder(grok.View):
     
     def update(self):
         self.uaz = uaz = Unfallanzeige()
+        grok.notify(ObjectCreatedEvent(uaz))
         self.context.add(uaz)
 
     def render(self):
