@@ -45,6 +45,7 @@ class UnfallanzeigeWizard(uvcsite.Wizard):
     grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
     grok.name('edit')
+    grok.require('uvc.EditContent')
 
 
     label = u'Unfallanzeige'

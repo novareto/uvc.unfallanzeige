@@ -19,7 +19,7 @@ from zope.schema import ValidationError
 from zope.component import queryUtility
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
-from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit
+from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit, validatePLZ
 
 
 class FutureDatum(ValidationError):
@@ -164,6 +164,7 @@ class IUnfallanzeige(IContent):
         title = _(u"PLZ"),
         description = _(u"Bitte geben Sie Postleitzahl"),
         required = False,
+        constraint = validatePLZ,
         )
 
     unfuort = TextLine(
@@ -246,6 +247,7 @@ class IUnfallanzeige(IContent):
     ikzplz = TextLine(
         title = _(u"PLZ"),
         description = _(u"Bitte geben Sie Postleitzahl"),
+        constraint = validatePLZ,
         )
 
     ikzort = TextLine(
