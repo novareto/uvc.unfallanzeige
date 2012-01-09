@@ -38,7 +38,6 @@ import grok
 from zope.component import getMultiAdapter
 from zope.dublincore.interfaces import IZopeDublinCore
 from zope.publisher.interfaces import IRequest
-from uvcsite.api.interfaces import ICompanyInfo, ICompanyAddress
 
 class Druck(grok.View):
     grok.context(IUnfallanzeige)

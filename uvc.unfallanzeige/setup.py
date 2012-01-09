@@ -26,8 +26,10 @@ setup(name='uvc.unfallanzeige',
           'reportlab',
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      [z3c.autoinclude.plugin]
-      target = uvcsite 
-      """,
+      entry_points={
+      'fanstatic.libraries': [
+          'uvc.unfallanzeige = uvc.unfallanzeige.resources:library',
+           ],
+      'z3c.autoinclude.plugin': 'target = uvcsite',
+      },
       )

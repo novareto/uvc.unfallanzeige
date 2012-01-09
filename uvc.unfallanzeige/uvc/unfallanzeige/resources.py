@@ -4,37 +4,17 @@
 
 import grok
 
-from megrok import resource
-from hurry.jquery import jquery
-from uvcsite.resources import UVCResources
-
+from js.jquery import jquery
+from fanstatic import Library, Resource
 from uvc.widgets.resources import double
 
+library = Library('uvc.unfallanzeige', 'static')
 
-class UAZLibrary(resource.Library):
-    resource.name('uazlib')
-    grok.path('resourcen')
+uazcss = Resource(library, 'uaz.css')
+uazjs = Resource(library, 'uaz.js', depends=[double])
 
-#CSS
-uazcss = resource.ResourceInclusion(
-    UAZLibrary, 'uaz.css')
-
-#UAZ Javascript
-uazjs = resource.ResourceInclusion(
-    UAZLibrary, 'uaz.js', depends=[double])
-
-#STEP Javascript
-step1 = resource.ResourceInclusion(
-    UAZLibrary, 'step1.js', depends=[double])
-
-step2 = resource.ResourceInclusion(
-    UAZLibrary, 'step2.js', depends=[double])
-
-step3 = resource.ResourceInclusion(
-    UAZLibrary, 'step3.js', depends=[double])
-
-step4 = resource.ResourceInclusion(
-    UAZLibrary, 'step4.js', depends=[double])
-
-step5 = resource.ResourceInclusion(
-    UAZLibrary, 'step5.js', depends=[double])
+step1 = Resource(library, 'step1.js', depends=[double])
+step2 = Resource(library, 'step2.js', depends=[double])
+step3 = Resource(library, 'step3.js', depends=[double])
+step4 = Resource(library, 'step4.js', depends=[double])
+step5 = Resource(library, 'step5.js', depends=[double])
