@@ -262,7 +262,6 @@ class Overview(grok.Viewlet):
     grok.viewletmanager(uvcsite.IExtraInfo)
     grok.context(IUnfallanzeige)
 
-    @property
     def available(self):
         if int(self.view.step) == 6:
             return True

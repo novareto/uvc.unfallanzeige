@@ -1,52 +1,57 @@
 <div tal:condition="viewlet/available">
-
   <div id="accordion" tal:define="daten context">
-     <h2 class="current"> Basis Informationen </h2>
-     <div class="pane">
-      <table>
-        <tr>
-        <th>Titel del Unfallanzeige</th>
-        <td tal:content="daten/title"></td>
-        </tr>
-
-        <tr>
-        <th> Die versicherte Person ist regelmässig tätig: </th>
-        <td tal:content="daten/unfustdor"></td>
-        </tr>
-
-        <div tal:condition="python: context.unfustdor=='In einer Zweigniederlassung'">
-         
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="one" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Basis Informationen </a>
+      </div>
+      <div id="one" class="accordion-body collapse in">
+        <table>
           <tr>
-          <th> Name der Zweigniederlassung </th>
-          <td tal:content="context/unfuname"></td>
+            <th>Titel del Unfallanzeige</th>
+            <td tal:content="daten/title"></td>
           </tr>
 
           <tr>
-          <th>Unfallort</th>
-          <td><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></td>
+            <th> Die versicherte Person ist regelmässig tätig: </th>
+            <td tal:content="daten/unfustdor"></td>
+          </tr>
+
+          <div tal:condition="python: context.unfustdor=='In einer Zweigniederlassung'">
+
+            <tr>
+              <th> Name der Zweigniederlassung </th>
+              <td tal:content="context/unfuname"></td>
+            </tr>
+
+            <tr>
+              <th>Unfallort</th>
+              <td><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></td>
+            </tr>
+
+            <tr>
+              <th>Strasse, Nr.: </th>
+              <td> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></td>
+            </tr>
+
+          </div>
+
+          <tr>
+            <th> Ansprechpartner: </th>
+            <td tal:content="context/anspname"></td>
           </tr>
 
           <tr>
-          <th>Strasse, Nr.: </th>
-          <td> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></td>
+            <th> Telefonnummer: </th>
+            <td tal:content="context/anspfon"></td>
           </tr>
 
-        </div>
+        </table>
+      </div>
 
-        <tr>
-        <th> Ansprechpartner: </th>
-        <td tal:content="context/anspname"></td>
-        </tr>
-
-        <tr>
-        <th> Telefonnummer: </th>
-        <td tal:content="context/anspfon"></td>
-        </tr>
-
-      </table>
-
-     </div>
-
+    </div>
+  </div>
+</div>
+<!--
      <h2> Angaben zur versicherten Person </h2>
      <div class="pane">
        <table>
@@ -221,3 +226,4 @@
   </div>
 
 </div>
+-->

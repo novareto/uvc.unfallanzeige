@@ -52,5 +52,4 @@ class UnfallanzeigeWizard(uvcsite.Wizard):
 
     def update(self):
         super(UnfallanzeigeWizard, self).update()
-        uazjs.need()
         uazcss.need()
