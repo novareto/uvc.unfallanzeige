@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2010 NovaReto GmbH
-# cklinger@novareto.de
+# cklinger@novareto.de 
 
 
 import grok
 import uvcsite
+import zope.interface
+import zope.component
 
 from uvc.unfallanzeige import resources
-from uvc.unfallanzeige.interfaces import IUnfallanzeige
-from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige
+from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
+from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige 
 
 from dolmen.forms import base
 from zeam.form.base.markers import NO_VALUE
-from zeam.form.base.errors import Error
+from zeam.form.base.errors import Error 
 
 
 grok.templatedir('templates')
@@ -20,7 +22,6 @@ grok.templatedir('templates')
 #
 ## Step1
 #
-
 
 class Basic(uvcsite.Step):
     grok.context(Unfallanzeige)
@@ -30,7 +31,7 @@ class Basic(uvcsite.Step):
     ignoreContent = False
 
     fields = base.Fields(IUnfallanzeige).select(
-       'title', 'unfustdor', 'unfuname', 'unfustrasse',
+       'title', 'unfustdor', 'unfuname', 'unfustrasse', 
        'unfunr', 'unfuplz', 'unfuort', 'anspname', 'anspfon')
 
     fields['unfustdor'].mode = "radio"
@@ -42,31 +43,20 @@ class Basic(uvcsite.Step):
     def validateStep(self, data, errors):
         if data.get('unfustdor') == 'In einer Zweigniederlassung':
             if data.get('unfuort') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte das Feld Ort ausfüllen.',
-                    identifier='form.basic.field.unfuort'))
+                errors.append(Error(u'Bitte das Feld Ort ausfüllen.', identifier='unfuort'))
             if data.get('unfustrasse') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte das Feld Strasse ausfüllen.',
-                    identifier='form.basic.field.unfustrasse'))
+                errors.append(Error(u'Bitte das Feld Strasse ausfüllen.', identifier='unfustrasse'))
             if data.get('unfunr') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte das Feld Nummer ausfüllen.',
-                    identifier='form.basic.field.unfunr'))
+                errors.append(Error(u'Bitte das Feld Nummer ausfüllen.', identifier='unfunr'))
             if data.get('unfuname') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte das Feld Name ausfüllen.',
-                    identifier='form.basic.field.unfuname'))
+                errors.append(Error(u'Bitte das Feld Name ausfüllen.', identifier='unfuname'))
             if data.get('unfuplz') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte das Feld Plz ausfüllen.',
-                    identifier='form.basic.field.unfuplz'))
-        return errors
+                errors.append(Error(u'Bitte das Feld Plz ausfüllen.', identifier='unfuplz'))
+        return errors        
 
 #
 ## Step2
 #
-
 
 class Job(uvcsite.Step):
     grok.context(Unfallanzeige)
@@ -87,15 +77,12 @@ class Job(uvcsite.Step):
     def validateStep(self, data, errors):
         if data.get('unflar') == 'ja':
             if data.get('unvlaraddr') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte die Adresse der Firma ausfüllen.',
-                    'form.basic.job.unvlaraddr'))
+                errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.','unvlaraddr'))
         return errors
 
 #
 ## Step3
 #
-
 
 class Person(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -107,8 +94,8 @@ class Person(uvcsite.Step):
     handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
-        'prsname', 'prsvor', 'ikstr', 'iknr', 'lkz', 'ikzplz',
-        'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv',
+        'prsname', 'prsvor', 'ikstr', 'iknr', 'lkz', 'ikzplz', 
+        'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv', 
         'vehebis', 'veheentgeltbis', 'unfefz', 'unfkka')
 
     fields['unfbu'].mode = "radio"
@@ -122,24 +109,17 @@ class Person(uvcsite.Step):
     def validateStep(self, data, errors):
         if data.get('unfbu') == "Ehegatte des Unternehmers":
             if data.get('vehearbeitsv') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte hier eine Eingabe machen',
-                    identifier='form.person.field.vehearbeitsv'))
+                errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
                 if data.get('vehebis') == NO_VALUE:
-                    errors.append(Error(
-                        u'Bitte hier eine Eingabe machen',
-                        identifier='form.person.field.vehebis'))
+                    errors.append(Error('Bitte hier eine Eingabe machen', identifier='vehebis'))
                 if data.get('veheentgeltbis') == NO_VALUE:
-                    errors.append(Error(
-                        u'Bitte hier eine Eingabe machen',
-                        identifier='form.person.field.veheentgeltbis'))
-        return errors
+                    errors.append(Error('Bitte hier eine Eingabe machen', identifier='veheentgeltbis'))
+        return errors 
 
 #
 ## Step4
 #
-
 
 class AccidentI(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -163,7 +143,6 @@ class AccidentI(uvcsite.Step):
 ## Step5
 #
 
-
 class AccidentII(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
@@ -174,9 +153,8 @@ class AccidentII(uvcsite.Step):
     handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
-        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1',
-        'unfwax', 'uadbavon', 'uadbabis', 'diavkt', 'diaadv',
-        'unfeba', 'unfeba1')
+        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1', 
+        'unfwax', 'uadbavon', 'uadbabis', 'diavkt', 'diaadv', 'unfeba', 'unfeba1')
 
     fields['prstkz'].mode = "radio"
     fields['unfae1'].mode = "radio"
@@ -188,48 +166,35 @@ class AccidentII(uvcsite.Step):
         resources.step5.need()
 
     def validateStep(self, data, errors):
+        error = []
         if data.get('prstkz') == "nein":
             if data.get('unfae1') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte machen Sie Angaben in diesem Feld.',
-                    identifier='form.field.accidentII.unfae1',))
+                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfae1',))
             else:
                 if data.get('unfae1') == "ja, sofort":
                     if data.get('unfwa1') == NO_VALUE:
-                        errors.append(Error(
-                            u'Bitte machen Sie Angaben in diesem Feld.',
-                            identifier='form.field.accidentII.unfwa1'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
                     else:
                         if data.get('unfwa1') == "ja":
                             if data.get('unfwax') == NO_VALUE:
-                                errors.append(Error(
-                                    u'Bitte machen Sie Angaben in diesem Feld.',
-                                    identifier='form.field.accidentII.unfwax'))
+                                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwax'))
+                
                 elif data.get('unfae1') == "ja, spaeter am:":
                     if data.get('unfwa1') == NO_VALUE:
-                        errors.append(Error(
-                            u'Bitte machen Sie Angaben in diesem Feld.',
-                            identifier='form.field.accidentII.unfwa1'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfwa1'))
                     if data.get('unfaedatum') == NO_VALUE:
-                        errors.append(Error(
-                            u'Bitte machen Sie Angaben in diesem Feld.',
-                            identifier='form.field.accidentII.unfaedatum'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaedatum'))
                     if data.get('unfaezeit') == NO_VALUE:
-                        errors.append(Error(
-                            u'Bitte machen Sie Angaben in diesem Feld.',
-                            identifier='form.field.accidentII.unfaezeit'))
+                        errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfaezeit'))
         if data.get('unfeba') == "Aerztliche Behandlung bei:":
             if data.get('unfeba1') == NO_VALUE:
-                errors.append(Error(
-                    u'Bitte machen Sie Angaben in diesem Feld.',
-                    identifier='unfeba1'))
+                errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='unfeba1'))
         return errors
 
 
 #
-## Step 6
+## Step 6 
 #
-
 
 class BasicInformation(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -240,11 +205,9 @@ class BasicInformation(uvcsite.Step):
 
     fields = base.Fields(IUnfallanzeige).select('unfus3', 'unfus2')
 
-
 #
 ## Step 7
 #
-
 
 class Finish(uvcsite.Step):
     grok.context(IUnfallanzeige)
