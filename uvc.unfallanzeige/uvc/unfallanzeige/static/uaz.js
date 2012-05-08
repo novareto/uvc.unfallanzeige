@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
-   $("#accordion").tabs("#accordion div.pane", {tabs: 'h2', effect: 'slide', initialIndex: null});
-
+ $('input#form-action-back').removeClass('btn-primary');
+ $('input#form-action-speichern, input#form-action-weiter').addClass('btn-primary');
 });

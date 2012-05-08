@@ -148,7 +148,6 @@ div .input-form .row_error {
 }
 
 #accordion table th {
-  background: #333333;
   text-align: right;
   padding-right: 2em;
   width: 40%;
@@ -156,8 +155,3 @@ div .input-form .row_error {
   font-size: 14px;
   border-style: none;
 }
-
-#accordion .pane {
- background-color: #333333;
- height: auto;
- }
