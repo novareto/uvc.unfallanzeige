@@ -24,6 +24,8 @@ class Unfallanzeigen(uvcsite.ProductFolder):
     """Container fuer die Speicherung der Lastschriftdokumente"""
     grok.implements(IUnfallanzeigenFolder)
     uvcsite.contenttype(Unfallanzeige)
+    title = u"Unfallanzeigen"
+    description = u"In diesem Ordner werden alle Elektronischen Unfallanzeigen gespeichert"
 
 
 class Adder(grok.View):
@@ -53,3 +55,4 @@ class UnfallanzeigeWizard(uvcsite.Wizard):
     def update(self):
         super(UnfallanzeigeWizard, self).update()
         uazcss.need()
+        uazjs.need()
