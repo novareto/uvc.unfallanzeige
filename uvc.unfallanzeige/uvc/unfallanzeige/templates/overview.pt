@@ -1,224 +1,245 @@
 <div tal:condition="viewlet/available">
-
-  <div id="accordion" tal:define="daten context">
-     <h2 class="current"> Basis Informationen </h2>
-     <div class="pane">
-      <table>
-        <tr>
-        <th>Titel del Unfallanzeige</th>
-        <td tal:content="daten/title"></td>
-        </tr>
-
-        <tr>
-        <th> Die versicherte Person ist regelmässig tätig: </th>
-        <td tal:content="daten/unfustdor"></td>
-        </tr>
-
-        <div tal:condition="python: context.unfustdor=='In einer Zweigniederlassung'">
-         
-          <tr>
-          <th> Name der Zweigniederlassung </th>
-          <td tal:content="context/unfuname"></td>
-          </tr>
-
-          <tr>
-          <th>Unfallort</th>
-          <td><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></td>
-          </tr>
-
-          <tr>
-          <th>Strasse, Nr.: </th>
-          <td> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></td>
-          </tr>
-
+  <div id="accordion" class="accordion" tal:define="daten context">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#one" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Basis Informationen </a>
+      </div>
+      <div id="one" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th>Titel del Unfallanzeige</th>
+              <td tal:content="daten/title"></td>
+            </tr>
+            <tr>
+              <th> Die versicherte Person ist regelmässig tätig: </th>
+              <td tal:content="daten/unfustdor"></td>
+            </tr>
+            <div tal:condition="python: context.unfustdor=='In einer Zweigniederlassung'">
+              <tr>
+                <th> Name der Zweigniederlassung </th>
+                <td tal:content="context/unfuname"></td>
+              </tr>
+              <tr>
+                <th>Unfallort</th>
+                <td><span tal:content="daten/unfuplz"></span><span tal:content="daten/unfuort"></span></td>
+              </tr>
+              <tr>
+                <th>Strasse, Nr.: </th>
+                <td> <span tal:content="daten/unfustrasse"></span><span tal:content="daten/unfunr"></span></td>
+              </tr>
+            </div>
+            <tr>
+              <th> Ansprechpartner: </th>
+              <td tal:content="context/anspname"></td>
+            </tr>
+            <tr>
+              <th> Telefonnummer: </th>
+              <td tal:content="context/anspfon"></td>
+            </tr>
+          </table>
         </div>
-
-        <tr>
-        <th> Ansprechpartner: </th>
-        <td tal:content="context/anspname"></td>
-        </tr>
-
-        <tr>
-        <th> Telefonnummer: </th>
-        <td tal:content="context/anspfon"></td>
-        </tr>
-
-      </table>
-
-     </div>
-
-     <h2> Angaben zur versicherten Person </h2>
-     <div class="pane">
-       <table>
-       <tr>
-         <th> Die versicherte Person war zum Unfallzeitpunkt beschäftigt als: </th>
-         <td tal:content="context/uadbru1" ></td>
-        </tr>
-        <tr>
-         <th> Der versicherte ist beschÃ¤ftigt seit: </th>
-         <td tal:content="context/uadst" ></td>
-        </tr>
-        <tr>
-         <th> In welchen Teil des Unternehmens ist der Versicherte beschäftigt </th>
-         <td tal:content="context/unfute" ></td>
-        </tr>
-        <tr>
-         <th> Ist die versicherte Person Leiharbeitnehmer: </th>
-         <td tal:content="context/unflar" ></td>
-        </tr>
-         <div tal:condition="python: context.unflar == 'ja'">
-          <tr>
-           <th> Name und Anschrift des Personaldienstleister </th>
-           <td tal:content="context/unvlaraddr"></td>
-          </tr>
-         </div>
-       </table>
-     </div>
-
-     <h2> weitere Angaben zur versicherten Person </h2>
-     <div class="pane">
-       <table>
-       <tr>
-         <th> Name des Versicherten </th>
-         <td tal:content="context/prsname"> </td>
-       </tr>
-       <tr>
-         <th> Vorname </th>
-         <td tal:content="context/prsvor"> </td>
-       </tr>
-       <tr>
-         <th> Anschrift </th>
-         <td> <span tal:replace="context/ikstr"/> <span tal:replace="context/iknr"/>
-                  <span tal:replace="context/lkz"/>
-                  <span tal:replace="context/ikzplz"/>
-                  <span tal:replace="context/ikzort"/>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#second" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Angaben zur versicherten Person </a>
+      </div>
+      <div id="second" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th> Die versicherte Person war zum Unfallzeitpunkt beschäftigt als: </th>
+              <td tal:content="context/uadbru1" ></td>
+            </tr>
+            <tr>
+              <th> Der versicherte ist beschäftigt seit: </th>
+              <td tal:content="context/uadst" ></td>
+            </tr>
+            <tr>
+              <th> In welchen Teil des Unternehmens ist der Versicherte beschäftigt </th>
+              <td tal:content="context/unfute" ></td>
+            </tr>
+            <tr>
+              <th> Ist die versicherte Person Leiharbeitnehmer: </th>
+              <td tal:content="context/unflar" ></td>
+            </tr>
+            <div tal:condition="python: context.unflar == 'ja'">
+              <tr>
+                <th> Name und Anschrift des Personaldienstleister </th>
+                <td tal:content="context/unvlaraddr"></td>
+              </tr>
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#third" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> weitere Angaben zur versicherten Person </a>
+      </div>
+      <div id="third" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th> Name des Versicherten </th>
+              <td tal:content="context/prsname"> </td>
+            </tr>
+            <tr>
+              <th> Vorname </th>
+              <td tal:content="context/prsvor"> </td>
+            </tr>
+            <tr>
+              <th> Anschrift </th>
+              <td> 
+                <span tal:replace="context/ikstr"></span> 
+                <span tal:replace="context/iknr"> </span>
+                <span tal:replace="context/lkz"> </span>
+                <span tal:replace="context/ikzplz"> </span>
+                <span tal:replace="context/ikzort"> </span>
               </td>
-        </tr>
-        <tr>
-         <th> Geburtsdatum </th>
-         <td tal:content="context/prsgeb"></td>
-        </tr>
-        <tr>
-         <th> Geschlecht </th>
-         <td tal:content="context/prssex" ></td>
-        </tr>
-        <tr>
-         <th> Staatsangehörigkeit </th>
-         <td tal:content="context/prssta" ></td>
-        </tr>
-        <tr>
-           <th> Der Versicherte steht in folgenden Arbeitsverhältnis </th>
-           <td tal:content="context/unfbu" ></td>
-         </tr>
-        <tr>
-         <th> Wie viele Wochen besteht Entgeltfortbezahlung </th>
-         <td tal:content="context/unfefz"></td>
-        </tr>
-        <tr>
-         <th> Krankenkasse des Versicherten </th>
-         <td tal:content="context/unfkka"></td>
-        </tr>
-       </table>
-     </div>
+            </tr>
+            <tr>
+              <th> Geburtsdatum </th>
+              <td tal:content="context/prsgeb"></td>
+            </tr>
+            <tr>
+              <th> Geschlecht </th>
+              <td tal:content="context/prssex" ></td>
+            </tr>
+            <tr>
+              <th> Staatsangehörigkeit </th>
+              <td tal:content="context/prssta" ></td>
+            </tr>
+            <tr>
+              <th> Der Versicherte steht in folgenden Arbeitsverhältnis </th>
+              <td tal:content="context/unfbu" ></td>
+            </tr>
+            <tr>
+              <th> Wie viele Wochen besteht Entgeltfortbezahlung </th>
+              <td tal:content="context/unfefz"></td>
+            </tr>
+            <tr>
+              <th> Krankenkasse des Versicherten </th>
+              <td tal:content="context/unfkka"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#forth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Informationen zum Unfall Teil I</a>
+      </div>
+      <div id="forth" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th> Unfallzeitpunkt </th>
+              <td> <span tal:replace="context/unfdatum"> </span> <span tal:replace="context/unfzeit"> </span> </td>
+            </tr>
+            <tr>
+              <th> Unfallort </th>
+              <td tal:content="context/unfort_detail"></td>
+            </tr>
+            <tr>
+              <th> Unfallhergang </th>
+              <td tal:content="context/unfhg1"></td>
+            </tr>
+            <tr>
+              <th> Die Angaben zum Unfall sind von: </th>
+              <td tal:content="context/unfhg2" ></td>
+            </tr>
+            <tr>
+              <th> Zeugen des Unfalls </th>
+              <td tal:content="context/unfkn1" ></td>
+            </tr>
+            <tr>
+              <th> War diese Peron Augenzeuge </th>
+              <td tal:content="context/unfkn2" ></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
-     <h2>  Informationen zum Unfall Teil I</h2>
-     <div class="pane">
-       <table>
-        <tr>
-         <th> Unfallzeitpunkt </th>
-         <td> <span tal:replace="context/unfdatum"/> <span tal:replace="context/unfzeit"/> </td>
-        </tr>
-        <tr>
-         <th> Unfallort </th>
-         <td tal:content="context/unfort_detail"></td>
-        </tr>
-        <tr>
-         <th> Unfallhergang </th>
-         <td tal:content="context/unfhg1"></td>
-        </tr>
-        <tr>
-         <th> Die Angaben zum Unfall sind von: </th>
-         <td tal:content="context/unfhg2" ></td>
-        </tr>
-        <tr>
-         <th> Zeugen des Unfalls </th>
-         <td tal:content="context/unfkn1" ></td>
-        </tr>
-        <tr>
-         <th> War diese Peron Augenzeuge </th>
-         <td tal:content="context/unfkn2" ></td>
-        </tr>
-       </table>
-     </div>
-
-     <h2>  Informationen zum Unfall Teil II </h2>
-     <div class="pane">
-       <table>
-        <tr>
-         <th> Tödlicher Unfall </th>
-         <td tal:content="context/prstkz"></td>
-        </tr>
-         <div tal:condition="python: context.prstkz != 'ja'">
-           <tr>
-            <th> Hat der Versicherte die Arbeit eingestellt </th>
-            <td tal:content="context/unfae1"/>
-           </tr>
-            <div tal:condition="python: context.unfae1 != 'nein'">
-              <div tal:condition="python: context.unfae1 != 'ja, spaeter am:'">
-               <tr>
-                <th> Datum Uhrzeit</th>
-                <td> <span tal:content="context/unfaedatum"/> <span tal:content="context/unfaezeit"/> </td>
-               </tr>
-              </div>
-             <tr>
-              <th> Arbeitet der Versicherte wieder? </th>
-              <td tal:content="context/unfwa1"></td>
-             </tr>
-              <div tal:condition="python: context.unfwa1 == 'ja'">
-               <tr>
-                <th> Datum </th>
-                <td> <span tal:content="context/unfwax"/> </td>
-               </tr>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#fifth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Informationen zum Unfall Teil II</a>
+      </div>
+      <div id="fifth" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th> Tödlicher Unfall </th>
+              <td tal:content="context/prstkz"></td>
+            </tr>
+            <div tal:condition="python: context.prstkz != 'ja'">
+              <tr>
+                <th> Hat der Versicherte die Arbeit eingestellt </th>
+                <td tal:content="context/unfae1"> </td>
+              </tr>
+              <div tal:condition="python: context.unfae1 != 'nein'">
+                <div tal:condition="python: context.unfae1 != 'ja, spaeter am:'">
+                  <tr>
+                    <th> Datum Uhrzeit</th>
+                    <td> <span tal:content="context/unfaedatum"> </span> <span tal:content="context/unfaezeit"> </span> </td>
+                  </tr>
+                </div>
+                <tr>
+                  <th> Arbeitet der Versicherte wieder? </th>
+                  <td tal:content="context/unfwa1"></td>
+                </tr>
+                <div tal:condition="python: context.unfwa1 == 'ja'">
+                  <tr>
+                    <th> Datum </th>
+                    <td tal:content="context/unfwax"> </td>
+                  </tr>
+                </div>
               </div>
             </div>
-           <tr>
-            <th> Arbeitszeit von, bis </th>
-            <td> <span tal:replace="context/uadbavon"/> <span tal:replace="context/uadbabis"/> </td>
-           </tr>
-           <tr>
-            <th> Verletzte Körperteile </th>
-            <td tal:content="context/diavkt"></td>
-           </tr>
-           <tr>
-            <th> Art der Verletzung </th>
-            <td tal:content="context/diaadv"></td>
-           </tr>
-           <tr>
-            <th> War eine Erstbehandlung erforderlich ? </th>
-            <td tal:content="context/unfeba"></td>
-           </tr>
-           <tr>
-            <th> Erstbehandelnder Arzt </th>
-            <td tal:content="context/unfeba1"></td>
-           </tr>
-         </div>
-       </table>
-     </div>
-
-     <h2> Allgemeine Informationen zum Unternehmen </h2>
-     <div class="pane">
-     <table>
-      <tr>
-       <th> Personal- bzw. Betriebsrat </th>
-       <td tal:content="context/unfus3"></td>
-      </tr>
-      <tr>
-       <th> Unternehmer, Bevollmächtigter </th>
-       <td tal:content="context/unfus2"></td>
-      </tr>
-     </table>
-     </div>
+            <tr>
+              <th> Arbeitszeit von, bis </th>
+              <td> <span tal:replace="context/uadbavon"> </span> <span tal:replace="context/uadbabis"> </span> </td>
+            </tr>
+            <tr>
+              <th> Verletzte Körperteile </th>
+              <td tal:content="context/diavkt"></td>
+            </tr>
+            <tr>
+              <th> Art der Verletzung </th>
+              <td tal:content="context/diaadv"></td>
+            </tr>
+            <tr>
+              <th> War eine Erstbehandlung erforderlich ? </th>
+              <td tal:content="context/unfeba"></td>
+            </tr>
+            <tr>
+              <th> Erstbehandelnder Arzt </th>
+              <td tal:content="context/unfeba1"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a href="#sixth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Allgemeine Informationen zum Unternehmen </a>
+      </div>
+      <div id="sixth" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <table>
+            <tr>
+              <th> Personal- bzw. Betriebsrat </th>
+              <td tal:content="context/unfus3"></td>
+            </tr>
+            <tr>
+              <th> Unternehmer, Bevollmächtigter </th>
+              <td tal:content="context/unfus2"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
-
