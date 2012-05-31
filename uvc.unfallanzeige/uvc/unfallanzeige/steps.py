@@ -226,6 +226,11 @@ class Overview(grok.Viewlet):
     grok.context(IUnfallanzeige)
 
     def available(self):
-        if int(self.view.step) == 6:
+        if int(self.view.step) == 7:
             return True
         return False
+
+    def getTitle(self, term, vocab_name):
+        vocab = zope.component.getUtility(
+            zope.schema.interfaces.IVocabularyFactory, vocab_name)(None)
+        return vocab.getTerm(term).title

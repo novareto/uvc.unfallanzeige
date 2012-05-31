@@ -8,7 +8,7 @@
         <div class="accordion-inner">
           <table>
             <tr>
-              <th>Titel del Unfallanzeige</th>
+              <th>Titel der Unfallanzeige</th>
               <td tal:content="daten/title"></td>
             </tr>
             <tr>
@@ -50,7 +50,7 @@
           <table>
             <tr>
               <th> Die versicherte Person war zum Unfallzeitpunkt beschäftigt als: </th>
-              <td tal:content="context/uadbru1" ></td>
+              <td tal:content="python: viewlet.getTitle(context.uadbru1, 'uvc.uadbru1')" ></td>
             </tr>
             <tr>
               <th> Der versicherte ist beschäftigt seit: </th>
@@ -58,7 +58,7 @@
             </tr>
             <tr>
               <th> In welchen Teil des Unternehmens ist der Versicherte beschäftigt </th>
-              <td tal:content="context/unfute" ></td>
+              <td tal:content="python: viewlet.getTitle(context.unfute, 'uvc.unfute')" ></td>
             </tr>
             <tr>
               <th> Ist die versicherte Person Leiharbeitnehmer: </th>
@@ -109,7 +109,7 @@
             </tr>
             <tr>
               <th> Staatsangehörigkeit </th>
-              <td tal:content="context/prssta" ></td>
+              <td tal:content="python: viewlet.getTitle(context.prssta, 'uvc.sta')" ></td>
             </tr>
             <tr>
               <th> Der Versicherte steht in folgenden Arbeitsverhältnis </th>
