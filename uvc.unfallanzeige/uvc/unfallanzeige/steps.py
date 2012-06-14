@@ -233,4 +233,8 @@ class Overview(grok.Viewlet):
     def getTitle(self, term, vocab_name):
         vocab = zope.component.getUtility(
             zope.schema.interfaces.IVocabularyFactory, vocab_name)(None)
-        return vocab.getTerm(term).title
+#        return vocab.getTrem(term).title
+        try:
+            return vocab.getTerm(term).title
+        except:
+            return term
