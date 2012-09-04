@@ -24,6 +24,7 @@ class Unfallanzeigen(uvcsite.ProductFolder):
     """Container fuer die Speicherung der Lastschriftdokumente"""
     grok.implements(IUnfallanzeigenFolder)
     uvcsite.contenttype(Unfallanzeige)
+    grok.title(u'Elektronische Unfallanzeigen')
     title = u"Unfallanzeigen"
     description = u"In diesem Ordner werden alle Elektronischen Unfallanzeigen gespeichert"
 

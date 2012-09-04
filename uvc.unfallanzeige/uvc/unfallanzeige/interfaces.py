@@ -238,7 +238,7 @@ class IUnfallanzeige(IContent):
         description = _(u"Hausnummer des Versicherten an."),
         )
 
-    lkz = Choice(
+    lkz = OptionalChoice(
         title = _(u"Laenderkennzeichen"),
         description = _(u"Laenderkennzeichen des Versicherten"),
         source = DynVocab(u'uvc.lkz'),
