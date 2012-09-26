@@ -180,7 +180,7 @@
                 <td tal:content="context/unfae1"> </td>
               </tr>
               <div tal:condition="python: context.unfae1 != 'nein'">
-                <div tal:condition="python: context.unfae1 != 'ja, spaeter am:'">
+                <div tal:condition="python: context.unfae1 == 'ja, spaeter am:'">
                   <tr>
                     <th> Datum Uhrzeit</th>
                     <td> <span tal:content="context/unfaedatum"> </span> <span tal:content="context/unfaezeit"> </span> </td>
