@@ -155,3 +155,19 @@ div .input-form .row_error {
   font-size: 14px;
   border-style: none;
 }
+
+
+.accordion-body {
+display: none;
+}
+.accordion-group .in {
+display: block;
+}
+h2 {
+    color: #5F789D;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0;
+    padding: 12px 0 8px;
+}
