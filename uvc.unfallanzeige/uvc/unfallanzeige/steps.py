@@ -226,7 +226,7 @@ class Overview(grok.Viewlet):
     grok.context(IUnfallanzeige)
 
     def available(self):
-        if int(self.view.step) == 7:
+        if int(self.view.step) + 1 == len(self.view.allSubforms):
             return True
         return False
 
