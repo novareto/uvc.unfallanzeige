@@ -182,6 +182,9 @@ class AccidentII(uvcsite.Step):
                 elif data.get('unfae1') == "ja, spaeter am:":
                     if data.get('unfwa1') == NO_VALUE:
                         errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwa1'))
+                    if data.get('unfwa1') == "ja":
+                        if data.get('unfwax') == NO_VALUE:
+                            errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwax'))
                     if data.get('unfaedatum') == NO_VALUE:
                         errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfaedatum'))
                     if data.get('unfaezeit') == NO_VALUE:
