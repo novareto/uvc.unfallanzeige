@@ -4,11 +4,9 @@
 
 
 import grok
-import uvcsite
 import zope.interface
 
 from uvc.unfallanzeige.uazwizard import Unfallanzeige
-from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder
 
 from zope.app.homefolder.interfaces import IHomeFolder
 

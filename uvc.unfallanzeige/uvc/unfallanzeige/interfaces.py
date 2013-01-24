@@ -7,7 +7,7 @@ import datetime
 import grokcore.component as grok
 
 from zope.interface import Interface
-from zope.interface import Invalid, invariant
+from zope.interface import Invalid
 
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
@@ -19,7 +19,7 @@ from zope.schema import ValidationError
 from zope.component import queryUtility
 from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
-from uvc.validation.validation import NotValidEingabeDatum, validateDatum, validateUhrzeit, validatePLZ
+from uvc.validation.validation import NotValidEingabeDatum, validateUhrzeit, validatePLZ
 
 
 class FutureDatum(ValidationError):
@@ -30,7 +30,7 @@ class FutureDatum(ValidationError):
 
 def validateFutureShortDatum(value):
     try:
-        t = time.strptime(value, "%m.%Y")
+        time.strptime(value, "%m.%Y")
     except ValueError:
         raise NotValidEingabeDatum(value)
     vdatum = datetime.datetime.strptime(value, "%m.%Y")
@@ -42,7 +42,7 @@ def validateFutureShortDatum(value):
 
 def validateFutureDatum(value):
     try:
-        t = time.strptime(value, "%d.%m.%Y")
+        time.strptime(value, "%d.%m.%Y")
     except ValueError:
         raise NotValidEingabeDatum(value)
     vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
@@ -79,10 +79,10 @@ class DynVocab(object):
             IVocabularyFactory, name=self.name)
         if not vocab:
             return SimpleVocabulary([])
-        return vocab(context) 
+        return vocab(context)
 
 
-@grok.provider(IContextSourceBinder) 
+@grok.provider(IContextSourceBinder)
 def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
@@ -90,7 +90,7 @@ def vocab_prssex(context):
         ))
 
 
-@grok.provider(IContextSourceBinder) 
+@grok.provider(IContextSourceBinder)
 def vocab_unfbu(context):
     return SimpleVocabulary((
         SimpleTerm('Arbeitnehmer', 'Arbeitnehmer', u'Arbeitnehmer'),
@@ -101,7 +101,7 @@ def vocab_unfbu(context):
     ))
 
 
-@grok.provider(IContextSourceBinder) 
+@grok.provider(IContextSourceBinder)
 def vocab_unfortdetail(context):
     return SimpleVocabulary((
         SimpleTerm('Auf dem Betriebsgelaende', 'Auf dem Betriebsgelaende', u'Auf dem Betriebsgelände'),
@@ -110,7 +110,8 @@ def vocab_unfortdetail(context):
         SimpleTerm('Ausserhalb des Betriebsgelaendes', 'Ausserhalb des Betriebsgelaendes', u'Ausserhalb des Betriebsgeländes'),
         ))
 
-@grok.provider(IContextSourceBinder) 
+
+@grok.provider(IContextSourceBinder)
 def vocab_wiederaufnahme(context):
     return SimpleVocabulary((
         SimpleTerm('nein', 'nein', u'nein'),
@@ -119,17 +120,16 @@ def vocab_wiederaufnahme(context):
         ))
 
 
-@grok.provider(IContextSourceBinder) 
+@grok.provider(IContextSourceBinder)
 def vocab_arzt(context):
     return SimpleVocabulary((
-        SimpleTerm('Es ist keine aerztliche Behandlung erforderlich.', 
-                   'Es ist keine aerztliche Behandlung erforderlich.', 
+        SimpleTerm('Es ist keine aerztliche Behandlung erforderlich.',
+                   'Es ist keine aerztliche Behandlung erforderlich.',
                    u'Es ist keine ärztliche Behandlung erforderlich.'),
         SimpleTerm('Aerztliche Behandlung bei:',
                    'Aerztliche Behandlung bei:',
                    u'Ärztliche Behandlung bei:',)
         ))
-
 
 
 class IUnfallanzeige(IContent):
@@ -182,7 +182,6 @@ class IUnfallanzeige(IContent):
         title = _(u"Telefon"),
         description = _(u"vergessen Sie dabei bitte nicht die Telefonnummer."),
         )
-
 
 # Page Two
 
@@ -362,7 +361,7 @@ class IUnfallanzeige(IContent):
         required = False,
         )
 
-# Step 5     
+# Step 5
 
     prstkz = Choice(
         title = _(u"Toedlicher Unfall"),
@@ -390,7 +389,7 @@ class IUnfallanzeige(IContent):
         required = False,
         constraint = validateUhrzeit,
         )
-     
+
     unfwa1 = Choice(
         title = _(u"Wiederaufnahme der Arbeit"),
         description = _(u"Hat der Versicherte die Arbeit wieder aufgenommen?"),
@@ -416,7 +415,7 @@ class IUnfallanzeige(IContent):
         description = _(u"endet um Uhrzeit (hh:mm)."),
         constraint = validateUhrzeit,
         )
-     
+
     diavkt = TextLine(
         title = _(u"Verletzte Koerperteile"),
         description = _(u"Welche Koerperteile sind verletzt?"),

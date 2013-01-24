@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2010 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 
 import grok
@@ -8,7 +8,7 @@ import uvcsite
 
 from zope.lifecycleevent import ObjectCreatedEvent
 from uvc.unfallanzeige.resources import uazjs, uazcss
-from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
+from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige
 
 
 class Unfallanzeige(uvcsite.Content):
@@ -32,7 +32,7 @@ class Unfallanzeigen(uvcsite.ProductFolder):
 class Adder(grok.View):
     grok.context(IUnfallanzeigenFolder)
     grok.name('add')
-    
+
     def update(self):
         self.uaz = uaz = Unfallanzeige()
         grok.notify(ObjectCreatedEvent(uaz))
@@ -42,14 +42,12 @@ class Adder(grok.View):
         self.redirect(self.url(self.uaz, 'edit'))
 
 
-
 class UnfallanzeigeWizard(uvcsite.Wizard):
     """ Wizard form."""
     grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')
-
 
     label = u'Unfallanzeige'
 

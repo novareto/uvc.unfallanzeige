@@ -28,30 +28,22 @@ $('span.label[for="form-basic-field-unfuname"], \
         #field-form-basic-field-unfuname, \
         #form-widgets-unfunr-row, \
         #field-form-basic-field-unfuplz, \
-        #field-form-basic-field-unfuort').hide()
+        #field-form-basic-field-unfuort').hide().find('input').attr('disabled', 'disabled');
         }
 
  $('#field-form-basic-field-unfustdor input:radio').click( function(event){
      val = $(this).val()
      if (val=='In dem vorher genannten Unternehmen') {
-       /* Feldinhalte leeren */ 
-      /* $('#form-basic-field-unfustrasse, \
-          #form-basic-field-unfuname, \
-          #form-basic-field-unfuplz, \
-          #form-basic-field-unfunr, \
-          #form-basic-field-unfuort').find('input').val("");*/
-      
- 
        $('#field-form-basic-field-unfustrasse, \
           #field-form-basic-field-unfuname, \
           #form-widgets-unfunr-row, \
           #field-form-basic-field-unfuplz, \
-          #field-form-basic-field-unfuort').slideUp().find('input').val("");
+          #field-form-basic-field-unfuort').slideUp().find('input').attr('disabled','disabled').val('');
         }  
         if (val=='In einer Zweigniederlassung') {
        $('#field-form-basic-field-unfustrasse, \
         #field-form-basic-field-unfuname, \
-        #field-form-basic-field-unfuplz').slideDown();
+        #field-form-basic-field-unfuplz').slideDown().find('input').removeAttr('disabled');
       }  
  });
 

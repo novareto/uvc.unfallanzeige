@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2010 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 
 import grok
@@ -9,12 +9,11 @@ import zope.interface
 import zope.component
 
 from uvc.unfallanzeige import resources
-from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige, IUnfallanzeigeWizard
-from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige 
+from uvc.unfallanzeige.interfaces import IUnfallanzeige
+from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige
 
 from dolmen.forms import base
-from zeam.form.base.markers import NO_VALUE
-from zeam.form.base.errors import Error 
+from zeam.form.base.errors import Error
 
 
 grok.templatedir('templates')
@@ -22,6 +21,9 @@ grok.templatedir('templates')
 #
 ## Step1
 #
+
+NO_VALUE = ""
+
 
 class Basic(uvcsite.Step):
     grok.context(Unfallanzeige)
@@ -31,8 +33,9 @@ class Basic(uvcsite.Step):
     ignoreContent = False
 
     fields = base.Fields(IUnfallanzeige).select(
-       'title', 'unfustdor', 'unfuname', 'unfustrasse', 
-       'unfunr', 'unfuplz', 'unfuort', 'anspname', 'anspfon')
+        'title', 'unfustdor', 'unfuname', 'unfustrasse',
+        'unfunr', 'unfuplz', 'unfuort', 'anspname', 'anspfon',
+    )
 
     fields['unfustdor'].mode = "radio"
 
@@ -52,11 +55,12 @@ class Basic(uvcsite.Step):
                 errors.append(Error(u'Bitte das Feld Name ausfüllen.', identifier='form.basic.field.unfuname'))
             if data.get('unfuplz') == NO_VALUE:
                 errors.append(Error(u'Bitte das Feld Plz ausfüllen.', identifier='form.basic.field.unfuplz'))
-        return errors        
+        return errors
 
 #
 ## Step2
 #
+
 
 class Job(uvcsite.Step):
     grok.context(Unfallanzeige)
@@ -77,12 +81,13 @@ class Job(uvcsite.Step):
     def validateStep(self, data, errors):
         if data.get('unflar') == 'ja':
             if data.get('unvlaraddr') == NO_VALUE:
-                errors.append( Error(u'Bitte die Adresse der Firma ausfüllen.', 'form.job.field.unvlaraddr'))
+                errors.append(Error(u'Bitte die Adresse der Firma ausfüllen.', 'form.job.field.unvlaraddr'))
         return errors
 
 #
 ## Step3
 #
+
 
 class Person(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -94,8 +99,8 @@ class Person(uvcsite.Step):
     handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
-        'prsname', 'prsvor', 'ikstr', 'iknr', 'lkz', 'ikzplz', 
-        'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv', 
+        'prsname', 'prsvor', 'ikstr', 'iknr', 'lkz', 'ikzplz',
+        'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv',
         'vehebis', 'veheentgeltbis', 'unfefz', 'unfkka')
 
     fields['unfbu'].mode = "radio"
@@ -115,11 +120,12 @@ class Person(uvcsite.Step):
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehebis'))
                 if data.get('veheentgeltbis') == NO_VALUE:
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.veheentgeltbis'))
-        return errors 
+        return errors
 
 #
 ## Step4
 #
+
 
 class AccidentI(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -143,6 +149,7 @@ class AccidentI(uvcsite.Step):
 ## Step5
 #
 
+
 class AccidentII(uvcsite.Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
@@ -153,7 +160,7 @@ class AccidentII(uvcsite.Step):
     handleApplyOnBack = True
 
     fields = base.Fields(IUnfallanzeige).select(
-        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1', 
+        'prstkz', 'unfae1', 'unfaedatum', 'unfaezeit', 'unfwa1',
         'unfwax', 'uadbavon', 'uadbabis', 'diavkt', 'diaadv', 'unfeba', 'unfeba1')
 
     fields['prstkz'].mode = "radio"
@@ -166,7 +173,6 @@ class AccidentII(uvcsite.Step):
         resources.step5.need()
 
     def validateStep(self, data, errors):
-        error = []
         if data.get('prstkz') == "nein":
             if data.get('unfae1') == NO_VALUE:
                 errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfae1',))
@@ -178,7 +184,7 @@ class AccidentII(uvcsite.Step):
                         if data.get('unfwa1') == "ja":
                             if data.get('unfwax') == NO_VALUE:
                                 errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwax'))
-                
+
                 elif data.get('unfae1') == "ja, spaeter am:":
                     if data.get('unfwa1') == NO_VALUE:
                         errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwa1'))
@@ -196,8 +202,9 @@ class AccidentII(uvcsite.Step):
 
 
 #
-## Step 6 
+## Step 6
 #
+
 
 class BasicInformation(uvcsite.Step):
     grok.context(IUnfallanzeige)
@@ -211,6 +218,7 @@ class BasicInformation(uvcsite.Step):
 #
 ## Step 7
 #
+
 
 class Finish(uvcsite.Step):
     grok.context(IUnfallanzeige)

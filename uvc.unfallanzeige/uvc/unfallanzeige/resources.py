@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2010 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
-import grok
-
-from js.jquery import jquery
 from fanstatic import Library, Resource
 from uvc.widgets.resources import double
 
