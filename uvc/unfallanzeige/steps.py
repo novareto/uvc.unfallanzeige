@@ -113,7 +113,7 @@ class Person(uvcsite.Step):
 
     def validateStep(self, data, errors):
         if data.get('unfbu') == "Ehegatte des Unternehmers":
-            if data.get('vehearbeitsv') == NO_VALUE:
+            if data.get('vehearbeitsv') == uvcsite.NO_VALUE:
                 errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
                 if data.get('vehebis') == NO_VALUE:
