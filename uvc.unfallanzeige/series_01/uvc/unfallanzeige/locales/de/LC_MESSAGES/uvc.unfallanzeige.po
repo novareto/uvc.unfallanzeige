@@ -441,7 +441,7 @@ msgstr "Armenien"
 msgid "label_aserbaidschan"
 msgstr "Aserbaidschan"
 
-#: ./vocabularies.py:316
+#: ./vocabularies.py:317
 msgid "label_australien"
 msgstr "Australien"
 
@@ -1412,6 +1412,10 @@ msgstr "Slowakische Republik"
 #: ./vocabularies.py:292
 msgid "label_slowenien"
 msgstr "Slowenien"
+
+#: ./vocabularies.py:316
+msgid "label_asien"
+msgstr "Sonstiges Asien"
 
 #: ./vocabularies.py:278
 msgid "label_spanien"

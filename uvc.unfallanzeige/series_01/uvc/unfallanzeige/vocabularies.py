@@ -313,5 +313,6 @@ class StaSources(grok.GlobalUtility):
                           ('076','Jordanien',_(u'label_jordanien')),
                           ('077','Pakistan',_(u'label_pakistan')),
                           ('078','Iran',_(u'label_iran')),
+                          ('079','Sonstiges Asien',_(u'label_asien')),
                           ('089','Australien',_(u'label_australien')),
                           ))
