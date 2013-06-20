@@ -1453,6 +1453,10 @@ msgstr "Ungarn"
 msgid "label_usa"
 msgstr "USA"
 
+#: ./vocabularies.py:306
+msgid "label_asien"
+msgstr "Sonstiges Asien"
+
 #: ./vocabularies.py:277
 msgid "label_usbekistan"
 msgstr "Usbekistan"
