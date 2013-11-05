@@ -140,7 +140,7 @@
             </tr>
             <tr>
               <th> Unfallort </th>
-              <td tal:content="context/unfort_detail"></td>
+              <td tal:content="context/unfort"></td>
             </tr>
             <tr>
               <th> Unfallhergang </th>
@@ -155,7 +155,7 @@
               <td tal:content="context/unfkn1" ></td>
             </tr>
             <tr>
-              <th> War diese Peron Augenzeuge </th>
+              <th> War diese Person Augenzeuge </th>
               <td tal:content="context/unfkn2" ></td>
             </tr>
           </table>
