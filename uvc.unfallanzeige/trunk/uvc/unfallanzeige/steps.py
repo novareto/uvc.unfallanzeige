@@ -14,6 +14,7 @@ from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige
 
 from dolmen.forms import base
 from zeam.form.base.errors import Error
+from zeam.form.base import NO_VALUE as NO_VALUEM
 
 
 grok.templatedir('templates')
@@ -174,7 +175,7 @@ class AccidentII(uvcsite.Step):
 
     def validateStep(self, data, errors):
         if data.get('prstkz') == "nein":
-            if data.get('unfae1') == NO_VALUE:
+            if data.get('unfae1') == NO_VALUEM:
                 errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfae1',))
             else:
                 if data.get('unfae1') == "ja, sofort":
@@ -186,7 +187,7 @@ class AccidentII(uvcsite.Step):
                                 errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwax'))
 
                 elif data.get('unfae1') == "ja, spaeter am:":
-                    if data.get('unfwa1') == NO_VALUE:
+                    if data.get('unfwa1') == NO_VALUEM:
                         errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwa1'))
                     if data.get('unfwa1') == "ja":
                         if data.get('unfwax') == NO_VALUE:
