@@ -179,7 +179,7 @@ class AccidentII(uvcsite.Step):
                 errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfae1',))
             else:
                 if data.get('unfae1') == "ja, sofort":
-                    if data.get('unfwa1') == NO_VALUE:
+                    if data.get('unfwa1') == NO_VALUEM:
                         errors.append(Error('Bitte machen Sie Angaben in diesem Feld.', identifier='form.accidentii.field.unfwa1'))
                     else:
                         if data.get('unfwa1') == "ja":
