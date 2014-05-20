@@ -113,6 +113,9 @@ class Person(uvcsite.Step):
         resources.step3.need()
 
     def validateStep(self, data, errors):
+        if data.get('lkz') == 'D':
+            if len(data.get('ikzplz', '')) != 5:
+                errors.append((Error(u'Ihre Postleitzahl muss aus fünf Zahlen bestehen.', identifier='form.person.field.ikzplz')))
         if data.get('unfbu') == "Ehegatte des Unternehmers":
             if data.get('vehearbeitsv') == uvcsite.NO_VALUE:
                 errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehearbeitsv'))

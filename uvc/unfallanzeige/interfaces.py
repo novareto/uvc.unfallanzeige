@@ -246,7 +246,7 @@ class IUnfallanzeige(IContent):
     ikzplz = TextLine(
         title = _(u"PLZ"),
         description = _(u"Bitte geben Sie Postleitzahl"),
-        constraint = validatePLZ,
+        #constraint = validatePLZ,
         )
 
     ikzort = TextLine(
