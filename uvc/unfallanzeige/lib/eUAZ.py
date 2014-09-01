@@ -42,6 +42,7 @@ from zope.publisher.interfaces import IRequest
 class Druck(grok.View):
     grok.context(IUnfallanzeige)
     grok.title(" ")
+    grok.require('uvc.ViewContent')
 
     #uvcsite.sectionmenu(uvcsite.IDocumentActions, order=0, icon="/@@/uvc-icons/icon_pdf.gif")
 
