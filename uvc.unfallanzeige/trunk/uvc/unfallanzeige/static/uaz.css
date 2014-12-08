@@ -6,7 +6,7 @@ UAZ StyleSheets
 
 div#field-form-accidentii-field-unfae1 div.widget,
 div#field-form-person-field-vehearbeitsv div.widget {
-  margin-left: 4em;
+  margin-left: 5em;
 }    
 
 div#field-form-accidentii-field-unfaedatum div.widget,
@@ -34,11 +34,11 @@ div#field-form-accidentii-field-unfwax div.widget {
 #form-person-field-veheentgeltbis,
 #form-person-field-vehebis,
 #form-person-field-prsgeb {
- width: 7em;
+ width: 8em;
 }
 
 #form-job-field-uadst {
- width: 5em;
+ width: 6em;
 }
 
 #form-accidentii-field-unfaezeit,
@@ -55,7 +55,7 @@ div#field-form-accidentii-field-unfwax div.widget {
 }
 
 #form-person-field-unfefz {
- width: 2em;
+ width: 4em;
 }
 
 /* Längere Beschreibung der options in select */
