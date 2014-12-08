@@ -1,12 +1,12 @@
 <div tal:condition="viewlet/available">
-  <div id="accordion" class="accordion" tal:define="daten context">
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#one" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Basis Informationen </a>
+  <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true" tal:define="daten context">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingone">
+        <a href="#one" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="one"> Basis Informationen </a>
       </div>
-      <div id="one" class="accordion-body collapse in">
-        <div class="accordion-inner">
-          <table>
+      <div id="one" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingone">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th>Titel der Unfallanzeige</th>
               <td tal:content="daten/title"></td>
@@ -41,13 +41,13 @@
         </div>
       </div>
     </div>
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#second" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Angaben zur versicherten Person </a>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingsecond">
+        <a href="#second" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="second"> Angaben zur versicherten Person </a>
       </div>
-      <div id="second" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <table>
+      <div id="second" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsecond">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th> Die versicherte Person war zum Unfallzeitpunkt beschäftigt als: </th>
               <td tal:content="python: viewlet.getTitle(context.uadbru1, 'uvc.uadbru1')" ></td>
@@ -74,13 +74,13 @@
         </div>
       </div>
     </div>
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#third" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> weitere Angaben zur versicherten Person </a>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingthird">
+        <a href="#third" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="third"> weitere Angaben zur versicherten Person </a>
       </div>
-      <div id="third" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <table>
+      <div id="third" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingthird">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th> Name des Versicherten </th>
               <td tal:content="context/prsname"> </td>
@@ -127,13 +127,13 @@
         </div>
       </div>
     </div>
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#forth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Informationen zum Unfall Teil I</a>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingforth">
+        <a href="#forth" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="forth"> Informationen zum Unfall Teil I </a>
       </div>
-      <div id="forth" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <table>
+      <div id="forth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingforth">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th> Unfallzeitpunkt </th>
               <td> <span tal:replace="context/unfdatum"> </span> <span tal:replace="context/unfzeit"> </span> </td>
@@ -162,14 +162,13 @@
         </div>
       </div>
     </div>
-
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#fifth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Informationen zum Unfall Teil II</a>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingfifth">
+        <a href="#fifth" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="fifth"> Informationen zum Unfall Teil II </a>
       </div>
-      <div id="fifth" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <table>
+      <div id="fifth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfifth">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th> Tödlicher Unfall </th>
               <td tal:content="context/prstkz"></td>
@@ -222,13 +221,13 @@
         </div>
       </div>
     </div>
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a href="#sixth" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle"> Allgemeine Informationen zum Unternehmen </a>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingsixth">
+        <a href="#sixth" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="sixth"> Allgemeine Informationen zum Unternehmen </a>
       </div>
-      <div id="sixth" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <table>
+      <div id="sixth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsixth">
+        <div class="panel-body">
+          <table class="table">
             <tr>
               <th> Personal- bzw. Betriebsrat </th>
               <td tal:content="context/unfus3"></td>
