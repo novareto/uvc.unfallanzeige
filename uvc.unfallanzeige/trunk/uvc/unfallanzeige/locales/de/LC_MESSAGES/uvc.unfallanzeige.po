@@ -87,7 +87,7 @@ msgstr "Bitte geben Sie Straße"
 
 #: ./interfaces.py:295
 msgid "Bitte geben Sie das Unfallatum (tt.mm.jjjj)"
-msgstr "Bitte geben Sie das Unfallatum (tt.mm.jjjj) und"
+msgstr "Bitte geben Sie das Unfalldatum (tt.mm.jjjj) und"
 
 #: ./interfaces.py:313
 msgid "Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."
