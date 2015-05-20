@@ -38,7 +38,7 @@ div#field-form-accidentii-field-unfwax div.widget {
 }
 
 #form-job-field-uadst {
- width: 6em;
+ width: 7em;
 }
 
 #form-accidentii-field-unfaezeit,
@@ -51,11 +51,11 @@ div#field-form-accidentii-field-unfwax div.widget {
 #form-basic-field-unfuplz,
 #form-person-field-iknr,
 #form-person-field-ikzplz {
- width: 5em;
+ width: 6em;
 }
 
 #form-person-field-unfefz {
- width: 4em;
+ width: 5em;
 }
 
 /* Längere Beschreibung der options in select */
