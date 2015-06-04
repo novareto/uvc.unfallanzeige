@@ -9,7 +9,7 @@ from uvc.widgets import masked_input
 library = Library('uvc.unfallanzeige', 'static')
 
 uazcss = Resource(library, 'uaz.css')
-uazjs = Resource(library, 'uaz.js', depends=[double, masked_input])
+uazjs = Resource(library, 'uaz.js', depends=[double, masked_input], bottom=True)
 
 step1 = Resource(library, 'step1.js', depends=[double])
 step2 = Resource(library, 'step2.js', depends=[double])
