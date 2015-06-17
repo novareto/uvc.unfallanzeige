@@ -29,26 +29,28 @@ class FutureDatum(ValidationError):
 
 
 def validateFutureShortDatum(value):
-    try:
-        time.strptime(value, "%m.%Y")
-    except ValueError:
-        raise NotValidEingabeDatum(value)
-    vdatum = datetime.datetime.strptime(value, "%m.%Y")
-    now = datetime.datetime.now()
-    if vdatum > now:
-        raise FutureDatum(value)
+    if value:
+        try:
+            time.strptime(value, "%m.%Y")
+        except ValueError:
+            raise NotValidEingabeDatum(value)
+        vdatum = datetime.datetime.strptime(value, "%m.%Y")
+        now = datetime.datetime.now()
+        if vdatum > now:
+            raise FutureDatum(value)
     return True
 
 
 def validateFutureDatum(value):
-    try:
-        time.strptime(value, "%d.%m.%Y")
-    except ValueError:
-        raise NotValidEingabeDatum(value)
-    vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
-    now = datetime.datetime.now()
-    if vdatum > now:
-        raise FutureDatum(value)
+    if value:
+        try:
+            time.strptime(value, "%d.%m.%Y")
+        except ValueError:
+            raise NotValidEingabeDatum(value)
+        vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
+        now = datetime.datetime.now()
+        if vdatum > now:
+            raise FutureDatum(value)
     return True
 
 
