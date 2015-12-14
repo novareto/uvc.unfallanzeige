@@ -1465,6 +1465,12 @@ msgstr "Usbekistan"
 msgid "label_zypern"
 msgstr "Zypern"
 
+msgid "label_bolivien"
+msgstr "Bolivien"
+
+msgid "label_syrien"
+msgstr "Syrien"
+
 #: ./interfaces.py:159
 msgid "vergessen Sie dabei bitte nicht die Telefonnummer."
 msgstr "vergessen Sie dabei bitte nicht die Telefonnummer."
