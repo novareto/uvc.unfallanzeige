@@ -11,6 +11,9 @@ from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige
 
 
+grok.templatedir('templates')
+
+
 class Unfallanzeige(uvcsite.Content):
     """ContentType fuer das Lastschriftverfahren"""
     uvcsite.schema(IUnfallanzeige)
@@ -21,7 +24,7 @@ class Unfallanzeige(uvcsite.Content):
 
 
 class Unfallanzeigen(uvcsite.ProductFolder):
-    """Container fuer die Speicherung der Lastschriftdokumente"""
+    """Container fuer die Speicherung der Unfallanzeige"""
     grok.implements(IUnfallanzeigenFolder)
     uvcsite.contenttype(Unfallanzeige)
     grok.title(u'Elektronische Unfallanzeigen')
@@ -48,6 +51,7 @@ class UnfallanzeigeWizard(uvcsite.Wizard):
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')
+    
 
     label = u'Unfallanzeige'
 

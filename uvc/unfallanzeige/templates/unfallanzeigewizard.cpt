@@ -1,0 +1,9 @@
+<form action="." method="post" tal:attributes="action request.getURL()" enctype="multipart/form-data" class="dolmen-wizard-form">
+  <div tal:replace="structure view.current.render()"> </div>
+  <span class="action" tal:repeat="widget view.actionWidgets">
+    <tal:widget tal:content="structure widget.render()" />
+  </span>
+  <span class="action" tal:repeat="widget view.current.actionWidgets">
+    <tal:widget tal:content="structure widget.render()" />
+  </span>
+</form>
