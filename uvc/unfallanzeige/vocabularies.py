@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
 
 import grok
+import uvcsite
+import zope.security.management
+import zope.security.interfaces
+import zope.publisher.interfaces
+
+from zope.interface import Interface
+from zope.component import getMultiAdapter, queryMultiAdapter
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
@@ -14,19 +22,33 @@ def vocabulary_list(terms):
     return SimpleVocabulary([SimpleTerm(value, token, title) for value, token, title in terms])
 
 
-class Uadbru1Sources(grok.GlobalUtility):
-    grok.implements(IVocabularyFactory)
-    grok.name(u'uvc.uadbru1')
-    
+class IMultiSource(Interface):
+    pass
+
+
+class DefaultUadbru1Sources(grok.MultiAdapter):
+    grok.provides(IMultiSource)
+    grok.adapts(Interface, zope.publisher.interfaces.IRequest)
+    grok.name('uvc.uadbru1')
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
     def __call__(self, context):
         return vocabulary(('Hausmeister', 'Hausmeister', 'Hausmeister'),
                           ('Drucker', 'Drucker', 'Druker'),
                           ('Bildhauer', 'Bildhauer', 'Bildhauer'))
-        
 
-class UnfuteSources(grok.GlobalUtility):
-    grok.implements(IVocabularyFactory)
+
+class DefaultUnfuteSources(grok.MultiAdapter):
+    grok.provides(IMultiSource)
+    grok.adapts(Interface, zope.publisher.interfaces.IRequest)
     grok.name(u'uvc.unfute')
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
     
     def __call__(self, context):
         return vocabulary(('Verwaltung', 'Verwaltung', 'Verwaltung'),
@@ -35,10 +57,15 @@ class UnfuteSources(grok.GlobalUtility):
 
 
 
-class LkzSources(grok.GlobalUtility):
-    grok.implements(IVocabularyFactory)
+class DefaultLkzSources(grok.MultiAdapter):
+    grok.provides(IMultiSource)
+    grok.adapts(Interface, zope.publisher.interfaces.IRequest)
     grok.name(u'uvc.lkz')
 
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+    
     def __call__(self, context):
         return vocabulary(
                   ('D', 'Deutschland', _(u'label_lkz_Deutschland')),
@@ -236,10 +263,15 @@ class LkzSources(grok.GlobalUtility):
             )
 
 
-class StaSources(grok.GlobalUtility):
-    grok.implements(IVocabularyFactory)
+class DefaultStaSources(grok.MultiAdapter):
+    grok.provides(IMultiSource)
+    grok.adapts(Interface, zope.publisher.interfaces.IRequest)
     grok.name(u'uvc.sta')
 
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+    
     def __call__(self, context):
         return vocabulary_list((
                           ('001','Deutschland',_(u'label_deutschland')),
@@ -318,3 +350,33 @@ class StaSources(grok.GlobalUtility):
                           ('038','Zypern',_(u'label_zypern')),
                           ('0999','Sonstige','Sonstige'),
                          ))
+
+
+class MultiSource(grok.GlobalUtility):
+    grok.implements(IVocabularyFactory)
+    grok.baseclass()
+
+    def __call__(self, context):
+        name = grok.name.bind().get(self)
+        request = uvcsite.getRequest()
+        vocabulary = queryMultiAdapter((context, request), name=name)
+        if vocabulary is not None:
+            return vocabulary(context)
+        raise NotImplementedError(
+            "MultiSource couldn't find a vocabulary %r" % name)
+
+
+class Uadbru1Sources(MultiSource):
+    grok.name('uvc.uadbru1')
+
+
+class UnfuteSources(MultiSource):
+    grok.name(u'uvc.unfute')
+
+
+class LkzSources(MultiSource):
+    grok.name(u'uvc.lkz')
+
+
+class StaSources(MultiSource):
+    grok.name(u'uvc.sta')
