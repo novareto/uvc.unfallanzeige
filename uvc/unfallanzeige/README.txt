@@ -13,8 +13,8 @@ Wir beginnen damit uns eine Beispiel uvcsite aufzubauen.
 
   >>> import zope.security
   >>> from zope.publisher.browser import TestRequest
-  >>> from zope.app.component.hooks import getSite, setSite
-  >>> from zope.app.authentication.principalfolder import PrincipalInfo, Principal
+  >>> from zope.component.hooks import getSite, setSite
+  >>> from zope.pluggableauth.factories import Principal
 
   >>> request = TestRequest()
   >>> klaus = Principal('klaus', 'klaus', 'klaus')
@@ -29,12 +29,29 @@ Wir beginnen damit uns eine Beispiel uvcsite aufzubauen.
   <uvcsite.app.Uvcsite object at 0...>
 
 
+Product Registration
+
+  >>> import uvcsite
+  >>> import grok 
+  >>> class UnfallanzeigeRegistration(uvcsite.ProductRegistration):
+  ...     grok.name('Unfallanzeige')
+  ...     grok.title('Unfallanzeige')
+  ...     grok.description(u'Bitte klicken Sie hier um eine .')
+  ...     grok.order(50)
+  ...     uvcsite.productfolder('uvc.unfallanzeige.uazwizard.Unfallanzeigen')
+  ...     icon = "fanstatic/guv.unfallanzeige/unfallanzeige.gif"
+  ...     def action(self):
+  ...         return "%sUnfallanzeigen/@@add" % (uvcsite.getHomeFolderUrl(self.request))
+  >>> from grokcore.component.testing import grok_component
+  >>> grok_component('UnfallanzeigeRegistration', UnfallanzeigeRegistration)
+  True
+
+
 Anlegen einer Unfallanzeige
 ---------------------------
 
   >>> import uvcsite
   >>> from zope import component
-  >>> from zope.contentprovider.interfaces import IContentProvider
 
 Für den Wizard brachen wir zuerst ein Object um auf diesem die steps auszufürhen
 Zunächst holen wir uns den HomeFolder,
@@ -46,7 +63,7 @@ Zunächst holen wir uns den HomeFolder,
 
 in diesem sollte ein ProductFolder 'unfallanzeigen' liegen,
 
-  >>> unfallanzeigen = homeFolder.get('unfallanzeigen')
+  >>> unfallanzeigen = homeFolder.get('Unfallanzeigen')
   >>> unfallanzeigen 
   <uvc.unfallanzeige.uazwizard.Unfallanzeigen object at ...>
 
@@ -63,7 +80,7 @@ Hier vergewissern wir uns, dass das richtige Interface geladen wird.
 
 Der View Start Wizard legt uns die Unfallanzeige an.
 
-  >>> view = component.getMultiAdapter((unfallanzeigen, request), name=u"startwizard")
+  >>> view = component.getMultiAdapter((unfallanzeigen, request), name=u"add")
   >>> view.update()
 
   >>> len(unfallanzeigen)
@@ -79,23 +96,25 @@ Der Wizard
 
 Auf unserem unfallanzeige Object sollten wir nun den Wizard View ausführen können
 
-  >>> wizard = component.getMultiAdapter((unfallanzeige, request), name=u"unfallanzeigewizard")
+  >>> wizard = component.getMultiAdapter((unfallanzeige, request), name=u"edit")
   >>> wizard
-  <UnfallanzeigeWizard 'unfallanzeigewizard'>
+  <uvc.unfallanzeige.uazwizard.UnfallanzeigeWizard object at...>
 
 Der Wizard sollte sieben Seiten haben
-
-  >>> len(wizard.steps)
+  >>> wizard.getMaximumStepId()
+  6
+  >>> len(wizard._getAvailableSubForms())
   7
+
+  >>> step1, step2, step3, step4, step5, step6, step7 = wizard._getAvailableSubForms()
 
 Step1
 -----
 
 Zunächst holen wir den Step direkt vom Wizard
 
-  >>> step1 = wizard.steps[0]
   >>> step1
-  <Basic 'basic'>
+  <uvc.unfallanzeige.steps.Basic object at 0...>
 
 
 
