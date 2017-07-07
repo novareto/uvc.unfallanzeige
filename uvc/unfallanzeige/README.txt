@@ -115,6 +115,24 @@ Zunächst holen wir den Step direkt vom Wizard
 
   >>> step1
   <uvc.unfallanzeige.steps.Basic object at 0...>
+  >>> wizard.updateForm()
+  >>> request.method = "POST"
+  >>> request.form = {
+  ...    'form.action.weiter': 'Weiter', 
+  ...    'form.field.step': '0', 
+  ...    'form.basic.field.title': u'Meine Unfallanzeige',
+  ...    'form.basic.field.unfustdor': u'In dem vorher genannten Unternehmen',
+  ...    'form.basic.field.anspfon': u'09841 3644',
+  ...    'form.basic.field.anspname': u'KLINGER'
+  ...    }
+  >>> pr = wizard.actions.process(wizard, request)
+  >>> values, errors = wizard.extractData()
+  >>> print values
+
+  >>> values, errors = step1.extractData()
+  >>> values
+
+  >>> [(x.title, x.identifier) for x in errors]
 
 
 
