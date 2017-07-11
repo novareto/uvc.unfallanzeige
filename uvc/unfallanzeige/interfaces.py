@@ -271,7 +271,7 @@ class IUnfallanzeige(IContent):
 
     ikzort = TextLine(
         title = u"Ort",
-        description = u"den Ord der versicherten Person an.",
+        description = u"den Ort der versicherten Person an.",
         )
 
     prsgeb = TextLine(
@@ -384,7 +384,7 @@ class IUnfallanzeige(IContent):
 # Step 5
 
     prstkz = Choice(
-        title = u"Toedlicher Unfall",
+        title = u"Tödlicher Unfall",
         values = ('ja', 'nein'),
          )
 
