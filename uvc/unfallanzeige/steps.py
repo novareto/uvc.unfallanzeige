@@ -81,6 +81,7 @@ class Job(uvcsite.Step):
         resources.step2.need()
 
     def validateStep(self, data, errors):
+        import pdb; pdb.set_trace()
         if data.get('unflar') == 'ja':
             if data.get('unvlaraddr') == NO_VALUE:
                 errors.append(Error(u'Bitte die Adresse der Firma ausfüllen.', 'form.job.field.unvlaraddr'))

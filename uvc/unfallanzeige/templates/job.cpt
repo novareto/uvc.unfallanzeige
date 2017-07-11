@@ -1,18 +1,10 @@
-<style>
-div.control-group {
-  margin-bottom: 30px;
-}
-</style>
-
-
 <fieldset>
   <legend tal:content="view.label"> </legend>
   <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
-
-
      <div tal:define="widget W.get('form.job.field.uadbru1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
      <div tal:define="widget W.get('form.job.field.uadst')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
      <div tal:define="widget W.get('form.job.field.unfute')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.job.field.azubi')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
 
 <div class="row">
   <div class="col-md-3">

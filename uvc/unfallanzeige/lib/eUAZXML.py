@@ -14,14 +14,14 @@ import uvcsite
 from uvc.unfallanzeige.interfaces import IUnfallanzeige
 
 # Interne Imports
-from bgv.unfallanzeige.lib import helpers
-from bgv.schnittstellen.interfaces import IStammdaten
-from bgv.auth.interfaces import IPrincipalSparteVerkehr
+#from bgv.unfallanzeige.lib import helpers
+#from bgv.schnittstellen.interfaces import IStammdaten
+#from bgv.auth.interfaces import IPrincipalSparteVerkehr
 
 # Sonstige Imports
 import lxml.etree as etree
 from time import strftime, localtime
-from elementtree.SimpleXMLWriter import XMLWriter
+#from elementtree.SimpleXMLWriter import XMLWriter
 from StringIO import StringIO
 
 
