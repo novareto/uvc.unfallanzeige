@@ -46,8 +46,6 @@ $('span.label[for="form-person-field-vehearbeitsv"], \
      }
      });
 
- // Doppel Feld //
- $('#field-form-person-field-ikzort').appendFieldTo('#field-form-person-field-ikzplz');
- $('#field-form-person-field-iknr').appendFieldTo('#field-form-person-field-ikstr');
+
 
 });
