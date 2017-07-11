@@ -2,12 +2,12 @@
   <legend tal:content="view.label"> </legend>
   <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
 		 <div class="row">
-		   <div class="col-md-8">
+		   <div class="col-md-12">
 		     <div tal:define="widget W.get('form.person.field.prsname')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
 		   </div>
 		 </div>
 		 <div class="row">
-		   <div class="col-md-8">
+		   <div class="col-md-12">
 		     <div tal:define="widget W.get('form.person.field.prsvor')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
 		   </div>
 		 </div>

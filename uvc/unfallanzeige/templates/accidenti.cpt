@@ -11,25 +11,21 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
        <div tal:define="widget W.get('form.accidenti.field.unfort_detail')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
     </div>
-
-    <div class="col-md-8"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
        <div tal:define="widget W.get('form.accidenti.field.unfort')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
        <div tal:define="widget W.get('form.accidenti.field.unfhg1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
 
   <div class="row">
@@ -39,10 +35,9 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
        <div tal:define="widget W.get('form.accidenti.field.unfkn1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
 
   <div class="row">

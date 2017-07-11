@@ -17,10 +17,11 @@ $('span.label[for="form-person-field-vehearbeitsv"], \
      $('#field-form-person-field-vehearbeitsv').show().find('input').removeAttr('disabled');
  }
  
+
  /* 2) On click on unfbu1 we should show/hide the fields */
  $('#field-form-person-field-unfbu input:radio').change(function() {
      var value = $(this).val();
-     if (value == 'Ehegatte des Unternehmers'){
+     if (value == 'Ehegatte des Unternehmers' || value == 'eingetragene Lebenspartnerschaft'){
          $('#field-form-person-field-vehearbeitsv').fadeIn().find('input').removeAttr('disabled');
      }
      else {
