@@ -71,9 +71,10 @@ class Job(uvcsite.Step):
     label = form_name = u'Angaben zur versicherten Person'
 
     fields = base.Fields(IUnfallanzeige).select(
-        'uadbru1', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
+        'uadbru1', 'azubi', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
     fields['unflar'].mode = "radio"
+    fields['azubi'].mode = "radio"
 
     def update(self):
         super(Job, self).update()

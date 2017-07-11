@@ -1,0 +1,40 @@
+<fieldset>
+  <legend tal:content="view.label"> </legend>
+	  <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
+	    <div class="row">
+				<div class="col-md-8">
+					<div tal:define="widget W.get('form.basicinformation.field.unfus3')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-md-8">
+				 <div tal:define="widget W.get('form.basicinformation.field.unfus2')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+				</div
+			</div>
+		
+
+		 <br/>
+		 <br/>
+    <!--
+    <div class="field" tal:repeat="widget view.fieldWidgets">
+      <label class="field-label" for="#" tal:attributes="for widget.htmlId" tal:content="widget.title"> Label </label>
+      <span class="field-required" tal:condition="widget.required">*</span>
+      <div class="field-description" tal:condition="widget.description"
+        tal:content="widget.description"> </div>
+      <div class="field-error" tal:define="error widget.error"
+        tal:condition="error" tal:content="error.title"> </div>
+      <tal:widget tal:content="structure widget.render()" />
+    </div>
+    -->
+  </div>
+  <div class="fields" tal:condition="view.parent.fieldWidgets">
+    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+  <div class="actions">
+    <span class="action" tal:repeat="widget view.actionWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+</fieldset>
