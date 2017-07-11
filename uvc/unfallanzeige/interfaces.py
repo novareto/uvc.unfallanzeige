@@ -95,11 +95,21 @@ def vocab_prssex(context):
 @grok.provider(IContextSourceBinder)
 def vocab_unfbu(context):
     return SimpleVocabulary((
-        SimpleTerm('Arbeitnehmer', 'Arbeitnehmer', u'Arbeitnehmer'),
-        SimpleTerm('Gesellschafter/Geschaeftsfuehrer', 'Gesellschfter/Geschaeftsfuehrer', u'Gesellschafter/Geschäftsführer'),
-        SimpleTerm('Unternehmer', 'Unternehmer', u'Unternehmer'),
-        SimpleTerm('Mit dem Unternehmer verwandt', 'Mit dem Unternehmer verwandt', u'Mit dem Unternehmer verwandt'),
-        SimpleTerm('Ehegatte des Unternehmers', 'Ehegatte des Unternehmers', u'Ehegatte des Unternehmers'),
+        SimpleTerm('Arbeitnehmer', 'Arbeitnehmer', u'Arbeitnehmer/-in'),
+        SimpleTerm('Unternehmer', 'Unternehmer', u'Unternehmer/-in'),
+        SimpleTerm('Gesellschafter/Geschaeftsfuehrer', 'Gesellschfter/Geschaeftsfuehrer', u'Gesellschafter/-in, Geschäftsführer/-in'),
+        SimpleTerm('Ehegatte des Unternehmers', 'Ehegatte des Unternehmers', u'mit der Unternehmerin/dem Unternehmer verheiratet'),
+        SimpleTerm('eingetragenen Lebenspartnerschaft', 'eingetragene Lebenspartnerschaft', u'mit der Unternehmerin/dem Unternehmer in eingetragener Lebenspartnerschaft lebend'),
+        SimpleTerm('Mit dem Unternehmer verwandt', 'Mit dem Unternehmer verwandt', u'mit der Unternehmerin/dem Unternehmer verwandt'),
+    ))
+
+
+
+@grok.provider(IContextSourceBinder)
+def vocab_unfhg2(context):
+    return SimpleVocabulary((
+        SimpleTerm('des Versicherten', 'des Versicherten', u'der versicherten Person'),
+        SimpleTerm('einer anderen Person', 'einer anderen Person', u'anderer Personen'),
     ))
 
 
@@ -139,226 +149,234 @@ class IUnfallanzeige(IContent):
 # Default Page
 
     unfustdor = Choice(
-        title = _(u"Arbeitsstelle des Versicherten"),
-        description = _(u"Wo ist die versicherte Person regelmaessig taetig?"),
-        values = (u'In dem vorher genannten Unternehmen', 'In einer Zweigniederlassung'),
+        title = u'Arbeitsstelle der versicherten Person',
+        description = u"Wo ist die versicherte Person regelmäßig tätig?",
+        values = (u'In dem vorher genannten Unternehmen', u'In einer Zweigniederlassung'),
         )
 
     unfuname = TextLine(
-        title = _(u"Name der Zweigstelle"),
-        description = _(u"Bitte geben Sie hier den Namen der Zweigstelle an."),
+        title = u"Name der Zweigstelle",
+        description = u"Bitte geben Sie hier den Namen der Zweigstelle an.",
         required = False,
         )
 
     unfustrasse = TextLine(
-        title = _(u"Strasse"),
-        description = _(u"Bitte geben Sie Strasse"),
+        title = u'Straße',
+        description = u"Bitte geben Sie Straße",
         required = False,
         )
 
     unfunr = TextLine(
-        title = _(u"Hs.-Nr."),
-        description = _(u"Hausnummer der Zweigstelle an."),
+        title = u'Hausnummer',
+        description = u'und die Hausnummer an.',
         required = False,
         )
 
     unfuplz = TextLine(
-        title = _(u"PLZ"),
-        description = _(u"Bitte geben Sie Postleitzahl"),
+        title = u"PLZ",
+        description = u"Bitte geben Sie die Postleitzahl",
         required = False,
         constraint = validatePLZ,
         )
 
     unfuort = TextLine(
-        title = _(u"Ort"),
-        description = _(u"Ort der Zweigstelle an."),
+        title = u"Ort",
+        description = u'und den Ort an.',
         required = False,
         )
 
     anspname = TextLine(
-        title = _(u"Ansprechpartner"),
-        description = _(u"Bitte geben Sie einen Ansprechpartner an, den wir bei Rueckfragen schnell erreichen koennen"),
+        title = u"Ansprechpartner/-in",
+        description = u"Bitte geben Sie eine Ansprechperson an,",
         )
 
     anspfon = TextLine(
-        title = _(u"Telefon"),
-        description = _(u"vergessen Sie dabei bitte nicht die Telefonnummer."),
+        title = u"Telefonnummer",
+        description = u"die wir bei Rückfragen schnell erreichen können.",
         )
 
 # Page Two
 
     uadbru1 = OptionalChoice(
-        title = _(u"Taetigkeit zum Unfallzeitpunkt"),
-        description = _(u"Die versicherte Person ist zum Unfallzeitpunkt beschaeftigt als:"),
+        title = u"Tätigkeit zum Unfallzeitpunkt",
+        description = u"Die versicherte Person ist zum Unfallzeitpunkt beschäftigt als:",
         source=DynVocab("uvc.uadbru1"),
         )
 
+    azubi = Choice(
+        title = u'Auszubildende/-r',
+        description=u'Befindet sich die versicherte Person in der Ausbildung?',
+        required=True,
+        values=['ja', 'nein'],
+        default='nein',
+        )
+
     uadst = TextLine(
-        title = _(u"Beginn der Beschaeftigung"),
-        description = _(u"Der Versicherte ist beschaeftigt seit: (mm.jjjj)"),
+        title = u"Beginn der Beschäftigung",
+        description = u"Die versicherte Person ist beschäftigt seit: (Monat, Jahr)",
         constraint = validateFutureShortDatum,
         )
 
     unfute = OptionalChoice(
-        title = _(u"Teil des Unternehmens"),
-        description = _(u"In welchem Teil des Unternehmens ist der Versicherte staendig taetig?"),
+        title = u"Teil des Unternehmens",
+        description = u"In welchem Teil des Unternehmens ist die versicherte Person ständig tätig?",
         source = DynVocab("uvc.unfute"),
         )
 
     unflar = Choice(
-        title = _(u"Leiharbeitnehmer"),
-        description = _(u"Ist die versicherte Person Leiharbeitnehmer?"),
+        title = u"Leiharbeitnehmer/-in",
+        description = u"Ist die versicherte Person Leiharbeitnehmer/-in?",
         values = ('ja', 'nein'),
         )
 
     unvlaraddr = Text(
-        title = _(u"Personaldienstleister"),
-        description = _(u"Bitte geben Sie Name und Anschrift des Personaldienstleisters bzw. Zeitarbeitsunternehmens an."),
+        title = u"Personaldienstleister",
+        description = u"Bitte geben Sie Name und Anschrift des Personaldienstleisters bzw. Zeitarbeitsunternehmens an.",
         required = False,
         )
 
 # Step 3
 
     prsname = TextLine(
-        title = _(u"Name"),
-        description = _(u"Name des Versicherten"),
+        title = u"Name",
+        description = u"Bitte geben Sie den Namen der versicherten Person an.",
         )
 
     prsvor = TextLine(
-        title = _(u"Vorname"),
-        description = _(u"Vorname des Versicherten"),
+        title = u"Vorname",
+        description = u"Bitte geben Sie den Vornamen der versicherten Person an.",
         )
 
     ikstr = TextLine(
-        title = _(u"Anschrift (Strasse"),
-        description = _(u"Bitte geben Sie Strasse"),
+        title = u"Straße",
+        description = u"Bitte geben Sie die Straße und ",
         )
 
     iknr = TextLine(
-        title = _(u"Hs.-Nr.)"),
-        description = _(u"Hausnummer des Versicherten an."),
+        title = u"Hausnummer",
+        description = u"die Hausnummer der versicherten Person an.",
         )
 
     lkz = OptionalChoice(
-        title = _(u"Laenderkennzeichen"),
-        description = _(u"Laenderkennzeichen des Versicherten"),
+        title = u"Länderkennzeichen",
+        description = u"Länderkennzeichen der versicherten Person",
         source = DynVocab(u'uvc.lkz'),
         )
 
     ikzplz = TextLine(
-        title = _(u"PLZ"),
-        description = _(u"Bitte geben Sie Postleitzahl"),
+        title = u"PLZ",
+        description = u"Bitte geben Sie die Postleitzahl und",
         #constraint = validatePLZ,
         )
 
     ikzort = TextLine(
-        title = _(u"Ort"),
-        description = _(u"Ort des Versicherten an."),
+        title = u"Ort",
+        description = u"den Ord der versicherten Person an.",
         )
 
     prsgeb = TextLine(
-        title = _(u"Geburtsdatum"),
-        description = _(u"Geburtsdatum des Versicherten (tt.mm.jjjj)"),
+        title = u"Geburtsdatum",
+        description = u"Bitte geben Sie das Geburtstdatum der versicherten Person an (Tag, Monat, Jahr).",
         constraint = validateFutureDatum,
         )
 
     prssex = Choice(
-        title = _(u"Geschlecht"),
-        description = _(u"Geschlecht des Versicherten"),
+        title = u"Geschlecht",
+        description = u'Bitte wählen Sie das Geschlecht der versicherten Person aus.',
         source = vocab_prssex,
         )
 
     prssta = Choice(
-        title = _(u"Staatsangehoerigkeit"),
-        description = _(u"Staatsangehoerigkeit des Versicherten"),
+        title = u"Staatsangehörigkeit",
+        description = u'Bitte wählen Sie die Staatsangehörigkeit der versicherten Person aus.',
         source = DynVocab(u'uvc.sta'),
         )
 
     unfbu = Choice(
-        title = _(u"Angaben zum Arbeitsverhaeltnis"),
-        description = _(u"Bitte waehlen Sie aus, in welchem Arbeitsverhaeltnis der Versicherte steht."),
+        title = u"Angaben zum Arbeitsverhältnis",
+        description = u"Bitte wählen Sie aus, in welchem Arbeitsverhältnis die versicherte Person steht.",
         source = vocab_unfbu,
         )
 
     vehearbeitsv = Choice(
-        title = _(u"Ehegattenarbeitsvertrag"),
-        description = _(u"Besteht ein Ehegattenarbeitsvertrag?"),
+        title = u"Arbeitsvertrag",
+        description = u'Besteht ein Arbeitsvertrag?',
         values = (u'Ja', u'Nein'),
         required = False,
         )
 
     vehebis = TextLine(
-        title = _(u"Ehegattenarbeitsvertrag (Vertragsbeginn)"),
-        description = _(u"Wann wurde der Ehegattenarbeitsvertrag geschlossen (tt.mm.jjjj)"),
+        title = u'Vertragsbeginn',
+        description = u'Wann wurde der Arbeitsvertrag geschlossen (Tag, Monat, Jahr)?',
         required = False,
         constraint = validateFutureDatum,
         )
 
     veheentgeltbis = TextLine(
-        title = _(u"Entgeltzahlung"),
-        description = _(u"Entgelt aus dem Ehegattenarbeitsvertrag wurde gezahlt bis (tt.mm.jjjj):"),
+        title = u"Entgeltzahlung",
+        description = u'Entgelt aus dem Arbeitsvertrag wurde gezahlt bis (Tag, Monat, Jahr):',
         required = False,
         constraint = validateFutureDatum,
         )
 
     unfefz = Int(
-        title = _(u"Entgeltfortzahlung"),
-        description = _(u"Fuer wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?"),
+        title = u"Entgeltfortzahlung",
+        description = u"Für wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?",
         required = False,
         max=99,
         min=0,
         )
 
     unfkka = TextLine(
-        title = _(u"Krankenkasse des Versicherten"),
-        description = _(u"Name und Anschrift der Krankenkasse des Versicherten."),
+        title = u'Krankenkasse der versicherten Person',
+        description = u'Bitte geben Sie den Namen und die Anschrift der Krankenkasse der versicherten Person an.',
         )
 
 #Step4
 
     unfdatum = TextLine(
-        title = _(u"Unfallzeitpunkt (Datum"),
-        description = _(u"Bitte geben Sie das Unfallatum (tt.mm.jjjj)"),
+        title = u'Unfalldatum,',
+        description = u'Bitte geben Sie das Unfalldatum (Tag, Monat, Jahr) und ',
         constraint = validateFutureDatum,
         )
 
     unfzeit = TextLine(
-        title = _(u"Zeit)"),
-        description = _(u"den Zeitpunkt (hh:mm) des Unfalls an."),
+        title = u'Unfallzeit',
+        description = u'den Unfallzeit (Stunde, Minute) an.',
         constraint = validateUhrzeit,
         )
 
     unfort_detail = Choice(
-        title = _(u"Unfallort"),
-        description = _(u"Bitte waehlen Sie aus wo sich der Unfall ereignete."),
+        title = u"Unfallort",
+        description = u'Bitte wählen Sie aus, wo sich der Unfall ereignete.',
         source = vocab_unfortdetail,
         )
 
     unfort = Text(
-        title = _(u"Angaben zum Unfallort"),
-        description = _(u"Bitte geben Sie den Unfallort moeglichst genau an (genaue Orts- und Strassenangabe mit Postleitzahl)."),
+        title = u"Angaben zum Unfallort",
+        description = u'Bitte tragen Sie hier den Unfallort mit möglichst genauer Orts- und Straßenangabe und Postleitzahl ein.',
         )
 
     unfhg1= Text(
-        title = _(u"Unfallhergang"),
-        description = _(u"Bitte schildern sie moeglichst detailliert wie sich der Unfall ereignete"),
+        title = u"Unfallhergang",
+        description = u'Bitte schildern Sie möglichst detailliert, wie sich der Unfall ereignete.',
         )
 
     unfhg2= Choice(
-        title = _(u"Angaben zum Unfall"),
-        description = _(u"Die Angaben beruhen auf den Schilderungen:"),
-        values = ('des Versicherten', 'einer anderen Person'),
+        title = u"Angaben zum Unfall",
+        description = u"Die Angaben beruhen auf den Schilderungen:",
+        source = vocab_unfhg2,
         )
 
     unfkn1 = Text(
-        title = _(u"Zeugen des Unfalls"),
-        description = _(u"Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift des Zeugen)"),
+        title = u"Zeugen des Unfalls",
+        description = u'Wer hat von dem Unfall zuerst Kenntnis genommen (Name und Anschrift der Zeugin/des Zeugen)?',
         required = False,
         )
 
     unfkn2 = Choice(
-        title = _(u"Augenzeuge"),
-        description = _(u"War diese Person Augenzeuge?"),
+        title = u'Augenzeugin/Augenzeuge',
+        description = u'War diese Person Augenzeugin/Augenzeuge?',
         values = ('ja', 'nein'),
         required = False,
         )
@@ -366,97 +384,96 @@ class IUnfallanzeige(IContent):
 # Step 5
 
     prstkz = Choice(
-        title = _(u"Toedlicher Unfall"),
-        description = _(u"Handelt es sich um einen toedlichen Unfall?"),
+        title = u"Toedlicher Unfall",
         values = ('ja', 'nein'),
          )
 
     unfae1 = Choice(
-        title = _(u"Unterbrechung der Arbeit"),
-        description = _(u"Hat der Versicherte die Arbeit eingestellt?"),
+        title = u"Unterbrechung der Arbeit",
+        description = u'Hat die versicherte Person die Arbeit eingestellt?',
         source = vocab_wiederaufnahme,
         required = False,
         )
 
     unfaedatum = TextLine(
-        title = _(u"Datum"),
-        description = _(u"Bitte geben Sie Datum (tt.mm.jjjj)"),
+        title = u"Datum",
+        description = u'Bitte geben Sie das Datum (Tag, Monat, Jahr) ',
         required = False,
         constraint = validateFutureDatum,
         )
 
     unfaezeit = TextLine(
-        title = _(u"Uhrzeit"),
-        description = _(u"Uhrzeit (hh:mm) an."),
+        title = u"Uhrzeit",
+        description = u'und die Uhrzeit (Stunde, Minute) an.',
         required = False,
         constraint = validateUhrzeit,
         )
 
     unfwa1 = Choice(
-        title = _(u"Wiederaufnahme der Arbeit"),
-        description = _(u"Hat der Versicherte die Arbeit wieder aufgenommen?"),
+        title = u"Wiederaufnahme der Arbeit",
+        description = u'Hat die versicherte Person die Arbeit wieder aufgenommen?',
         values = ('ja', 'nein'),
         required = False,
         )
 
     unfwax = TextLine(
-        title = _(u"Datum der Wiederaufnahme"),
-        description = _(u"An welchem Tag wurde die Arbeit wieder aufgenommen (tt.mm.jjjj)?"),
+        title = u"Datum der Wiederaufnahme",
+        description = u'An welchem Tag wurde die Arbeit wieder aufgenommen (Tag, Monat, Jahr)?',
         required = False,
         constraint = validateFutureDatum,
         )
 
     uadbavon = TextLine(
-        title = _(u"Arbeitszeit (Beginn"),
-        description = _(u"Die taegliche Arbeitszeit beginnt um Uhrzeit (hh:mm)"),
+        title = u'Arbeitszeitbeginn,',
+        description = u'Um welche Uhrzeit beginnt und endet ',
         constraint = validateUhrzeit,
         )
 
     uadbabis = TextLine(
-        title = _(u"Ende)"),
-        description = _(u"endet um Uhrzeit (hh:mm)."),
+        title = u'Arbeitszeitende',
+        description = u' die tägliche Arbeitszeit (Stunde, Minute)?',
         constraint = validateUhrzeit,
         )
 
     diavkt = TextLine(
-        title = _(u"Verletzte Koerperteile"),
-        description = _(u"Welche Koerperteile sind verletzt?"),
+        title = u"Verletzte Körperteile",
+        description = u"Welche Körperteile sind verletzt?",
         )
 
     diaadv = TextLine(
-        title = _(u"Art der Verletzung"),
-        description = _(u"Welche Art der Verletzung liegt vor?"),
+        title = u"Art der Verletzung",
+        description = u"Welche Art der Verletzung liegt vor?",
         )
 
     unfeba = Choice(
-        title = _(u"Erstbehandlung des Versicherten"),
-        description = _(u"War eine aerztliche Erstbehandlung des Versicherten erforderlich?"),
+        title = u'Erstbehandlung der versicherten Person',
+        description = u'War eine ärztliche Behandlung der versicherten Person erforderlich?',
         source = vocab_arzt,
         )
 
     unfeba1 = Text(
-        title = _(u"Erstbehandelnder Arzt"),
-        description = _(u"Bitte geben Sie Name und Anschrift des erstbehandelnden Arztes an."),
+        title = u'Ärztliche Erstbehandlung',
+        description = u'Bitte geben Sie den Namen und die Anschrift der Ärztin/des Arztes oder des Krankenhauses an.',
         required = False,
         )
 
 #Step 6
 
     unfus3 = TextLine(
-        title = _(u"Personal- bzw. Betriebsrat"),
-        description = _(u"Die folgende Person des Personal- bzw Betriebsrates wurde informiert: (Vorname, Name)"),
+        title = u"Personal- bzw. Betriebsrat",
+        description = u'Die folgende Person (Name, Vorname) des Personal- bzw. Betriebsrates wurde informiert:',
         required = False,
         )
 
     unfus2 = TextLine(
-        title = _(u"Unternehmer / Bevollmaechtigter"),
-        description = _(u"Vorname, Name des Unternehmens bzw. des Bevollmaechtigten"),
+        title = u'Unternehmer/-in (Bevollmächtigte/-r)',
+        description = u'Bitte geben Sie den Namen und Vornamen der Unternehmerin/des Unternehmers oder der Bevollmächtigten/des Bevollmächtigten an, der von dem Unfall in Kenntnis gesetzt wurde.',
         )
 
 #Step 7
 
     behandlung = Choice(
-        title = _(u"Weiteres Vorgehen"),
-        description = _(u"Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."),
+        title = u"Weiteres Vorgehen",
+        description = u"Bitte wählen Sie aus, wie Sie weiter vorgehen möchten.",
         values = ('Versand', 'Entwurf speichern'),
         )
