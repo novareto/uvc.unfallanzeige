@@ -1,0 +1,56 @@
+<div id="extrainfo" tal:replace="structure provider: uvcsite.extrainfo" />
+<h1> Hallo Welt</h1>
+<fieldset>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Basis Informationen</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel-body">Titel der Unfallanzeige</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div id="extrainfo" tal:replace="structure provider: uvcsite.extrainfo" />
+			</div>
+    </div>
+  </div>
+</div>
+  <legend tal:content="view.label"> </legend>
+  <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
+		 <div class="row">
+		   <div class="col-md-8">
+		     <div tal:define="widget W.get('form.finish.field.behandlung')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+		   </div>
+		 </div>
+		 <br/>
+		 <br/>
+    <!--
+    <div class="field" tal:repeat="widget view.fieldWidgets">
+      <label class="field-label" for="#" tal:attributes="for widget.htmlId" tal:content="widget.title"> Label </label>
+      <span class="field-required" tal:condition="widget.required">*</span>
+      <div class="field-description" tal:condition="widget.description"
+        tal:content="widget.description"> </div>
+      <div class="field-error" tal:define="error widget.error"
+        tal:condition="error" tal:content="error.title"> </div>
+      <tal:widget tal:content="structure widget.render()" />
+    </div>
+    -->
+  </div>
+  <div class="fields" tal:condition="view.parent.fieldWidgets">
+    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+  <div class="actions">
+    <span class="action" tal:repeat="widget view.actionWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+</fieldset>
+
