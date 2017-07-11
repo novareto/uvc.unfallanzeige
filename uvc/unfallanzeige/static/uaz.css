@@ -173,3 +173,8 @@ h2 {
     padding: 12px 0 8px;
 }
 */
+
+.radio input[type=radio], .radio-inline input[type=radio], .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox] {
+    position: absolute;
+    margin-left: 0px !important;
+}
