@@ -51,8 +51,6 @@ class UnfallanzeigeWizard(uvcsite.Wizard):
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')
-    
-
     label = u'Unfallanzeige'
 
     def update(self):

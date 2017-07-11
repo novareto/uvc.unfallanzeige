@@ -111,11 +111,17 @@ Der Wizard sollte sieben Seiten haben
 Step1
 -----
 
-Zunächst holen wir den Step direkt vom Wizard
+Zunächst holen wir die Instanz des 1. Steps direkt vom Wizard.
 
   >>> step1
   <uvc.unfallanzeige.steps.Basic object at 0...>
+
+Anschließend wird die updateForm Methode aufgerufen um den Wizard zu initialisieren
+
   >>> wizard.updateForm()
+
+Vorbereiten des Requests...
+
   >>> request.method = "POST"
   >>> request.form = {
   ...    'form.action.weiter': 'Weiter', 
@@ -125,15 +131,40 @@ Zunächst holen wir den Step direkt vom Wizard
   ...    'form.basic.field.anspfon': u'09841 3644',
   ...    'form.basic.field.anspname': u'KLINGER'
   ...    }
+
+Ausführen/Absenden des Requests
+
   >>> pr = wizard.actions.process(wizard, request)
-  >>> values, errors = wizard.extractData()
-  >>> print values
+
+Gab es Fehler? Wie sehen die Daten aus.
 
   >>> values, errors = step1.extractData()
   >>> values
+  {'unfuort': <Marker NO_VALUE>, 'unfunr': <Marker NO_VALUE>, 'title': u'Meine Unfallanzeige', 'unfuplz': <Marker NO_VALUE>, 'unfustrasse': <Marker NO_VALUE>, 'anspfon': u'09841 3644', 'unfustdor': u'In dem vorher genannten Unternehmen', 'unfuname': <Marker NO_VALUE>, 'anspname': u'KLINGER'}
 
   >>> [(x.title, x.identifier) for x in errors]
+  []
 
+Step2
+-----
+
+  >>> step2
+  <uvc.unfallanzeige.steps.Job object at ...>
+
+  >>> [(x.identifier, x) for x in step2.fields]
+
+  >>> request.form = {
+  ...    'form.action.weiter': 'Weiter', 
+  ...    'form.field.step': '1', 
+  ...    'form.job.field.uadbru1': ['Hausmeister', None],
+  ...    'form.job.field.unfute': ['Verwaltung', None],
+  ...    }
+  
+  >>> pr = wizard.actions.process(wizard, request)
+  >>> values, errors = step2.extractData()
+  >>> values
+
+  >>> [(x.title, x.identifier) for x in errors]
 
 
 Cleanup
