@@ -60,7 +60,7 @@ $('label[for="form-accidentii-field-unfae1"], \
  $('#form-accidentii-field-unfae1-2').click( function(event){
    $('#field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit').show().find('input').removeAttr('disabled');
    $('#field-form-accidentii-field-unfwa1').show().find('input').removeAttr('disabled');
-   $('#field-form-accidentii-field-unfaezeit').hide().find('input').attr('disabled', 'disabled');
+   //$('#field-form-accidentii-field-unfaezeit').hide().find('input').attr('disabled', 'disabled');
  });
 
 
@@ -90,8 +90,4 @@ $('label[for="form-accidentii-field-unfae1"], \
  $('#form-accidentii-field-unfeba-1').click( function(event){
    $('#field-form-accidentii-field-unfeba1').fadeIn().find('input').removeAttr('disabled');
  });
-
- //DoppelFelder //
- $('#field-form-accidentii-field-unfaezeit').appendFieldTo('#field-form-accidentii-field-unfaedatum');
- $('#field-form-accidentii-field-uadbabis').appendFieldTo('#field-form-accidentii-field-uadbavon');
 });

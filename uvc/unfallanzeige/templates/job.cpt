@@ -1,10 +1,30 @@
+<style>
+div.control-group {
+  margin-bottom: 30px;
+}
+</style>
+
+
 <fieldset>
   <legend tal:content="view.label"> </legend>
   <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
-     <!--
-     <div tal:define="widget W.get('form.basic.field.title')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
-     -->
+
+
+     <div tal:define="widget W.get('form.job.field.uadbru1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.job.field.uadst')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.job.field.unfute')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+
+<div class="row">
+  <div class="col-md-3">
+     <div tal:define="widget W.get('form.job.field.unflar')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
   </div>
+  <div class="col-md-9">
+     <div tal:define="widget W.get('form.job.field.unvlaraddr')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+  </div>
+</div>
+
+  </div>
+
   <div class="fields" tal:condition="view.parent.fieldWidgets">
     <span class="field" tal:repeat="widget view.parent.fieldWidgets">
       <tal:widget tal:content="structure widget.render()" />
