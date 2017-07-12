@@ -152,9 +152,6 @@ Der Name des Ansprechpartners ist ein Pflichtfeld und soll ausgefüllt werden
   >>> 'form.basic.field.anspname' in errors.keys()
   True
 
-  >>> step1.__extracted = None 
-  >>> wizard.__extracted = None 
-
   >>> request.form = {
   ...    'form.action.weiter': 'Weiter', 
   ...    'form.field.step': '0', 
@@ -165,6 +162,8 @@ Der Name des Ansprechpartners ist ein Pflichtfeld und soll ausgefüllt werden
   ...    'form.basic.field.unfuort': u''
   ...    }
 
+  >>> wizard = component.getMultiAdapter((unfallanzeige, request), name=u"edit")
+  >>> wizard.updateForm()
 
 Ausführen/Absenden des Requests
 
@@ -172,6 +171,7 @@ Ausführen/Absenden des Requests
 
 Gab es Fehler? Wie sehen die Daten aus.
 
+  >>> step1 = wizard.current
   >>> values, errors = step1.extractData()
 
   >>> 'form.basic.field.anspname' in errors.keys()
