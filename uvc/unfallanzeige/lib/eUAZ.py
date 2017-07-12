@@ -57,13 +57,13 @@ class Presentation(grok.MultiAdapter):
         self.request = request
 
 
-    def createpdf(self, outputfilename):
+    def createpdf(self):
         context = self.context
         request = self.request
         metadata = IZopeDublinCore(context)
         mitglied = ''.join(metadata.creators)
         filename = "/tmp/uaz_%s.pdf" %mitglied
-        addr = ICompanyInfo(request.principal).getAddress()
+        addr = {'plz':u'22222','ort':u'Testhausen','strasse':u'X-Straße','hausnr':'666','name1':u'Firma Name 1','name2':u'Auch Name 2 vorhanden','name3':u'Ich bin Name 3','untern_bez':u'Bezeichnung'}
         c = canvas.Canvas(filename,pagesize=A4)
 
         c.setAuthor("BG für Transport und Verkehrswirtschaft")
@@ -74,30 +74,7 @@ class Presentation(grok.MultiAdapter):
         date = metadata.modified.strftime("%d.%m.%Y")
         jahr = int(date[6:])
 
-        if jahr > 2015:
-          bv2={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Hamburg','name2':'Post-Logistik Telekommunikation','strasse':'Ottenser Hauptstraße 54','plzort':'22765 Hamburg'}
-          bv3={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Hannover','name2':'Post-Logistik Telekommunikation','strasse':'Walderseestraße 5/6','plzort':'30163 Hannover'}
-          bv4={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Berlin','name2':'Post-Logistik Telekommunikation','strasse':'Axel-Springer-Straße 52','plzort':'10969 Berlin'}
-          bv5={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Dresden','name2':'Post-Logistik Telekommunikation','strasse':'Hofmühlenstraße 4','plzort':'01187 Dresden'}
-          bv6={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Wuppertal','name2':'Post-Logistik Telekommunikation','strasse':'Aue 96','plzort':'42103 Wuppertal'}
-          bv7={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Wiesbaden','name2':'Post-Logistik Telekommunikation','strasse':'Wiesbadener Straße 70','plzort':'65197 Wiesbaden'}
-          bv9={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung München','name2':'Post-Logistik Telekommunikation','strasse':'Deisenhofener Straße 74','plzort':'81539 München'}
-        elif jahr > 2009:
-          bv2={'name1':'Berufsgenossenschaft für','name3':'BV Hamburg','name2':'Transport und Verkehrswirtschaft','strasse':'Ottenser Hauptstraße 54','plzort':'22765 Hamburg'}
-          bv3={'name1':'Berufsgenossenschaft für','name3':'BV Hannover','name2':'Transport und Verkehrswirtschaft','strasse':'Walderseestraße 5/6','plzort':'30163 Hannover'}
-          bv4={'name1':'Berufsgenossenschaft für','name3':'BV Berlin','name2':'Transport und Verkehrswirtschaft','strasse':'Axel-Springer-Straße 52','plzort':'10969 Berlin'}
-          bv5={'name1':'Berufsgenossenschaft für','name3':'BV Dresden','name2':'Transport und Verkehrswirtschaft','strasse':'Hofmühlenstraße 4','plzort':'01187 Dresden'}
-          bv6={'name1':'Berufsgenossenschaft für','name3':'BV Wuppertal','name2':'Transport und Verkehrswirtschaft','strasse':'Aue 96','plzort':'42103 Wuppertal'}
-          bv7={'name1':'Berufsgenossenschaft für','name3':'BV Wiesbaden','name2':'Transport und Verkehrswirtschaft','strasse':'Wiesbadener Straße 70','plzort':'65197 Wiesbaden'}
-          bv9={'name1':'Berufsgenossenschaft für','name3':'BV München','name2':'Transport und Verkehrswirtschaft','strasse':'Deisenhofener Straße 74','plzort':'81539 München'}
-        else:
-          bv2={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Hamburg','name3':'','strasse':'Ottenser Hauptstrasse 54','plzort':'22765 Hamburg'}
-          bv3={'name1':'Berufsgenossenschaft fr Fahrzeughaltungen','name2':'BV Hannover','name3':'','strasse':'Walderseestrasse 5/6','plzort':'30163 Hannover'}
-          bv4={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Berlin','name3':'','strasse':'Axel-Springer-Strasse 52','plzort':'10969 Berlin'}
-          bv5={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Dresden','name3':'','strasse':'Hofmühlenstrasse 4','plzort':'01187 Dresden'}
-          bv6={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Wuppertal','name3':'','strasse':'Aue 96','plzort':'42103 Wuppertal'}
-          bv7={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV Wiesbaden','name3':'','strasse':'Wiesbadener Strasse 70','plzort':'65197 Wiesbaden'}
-          bv9={'name1':'Berufsgenossenschaft für Fahrzeughaltungen','name2':'BV München','name3':'','strasse':'Deisenhofener Strasse 74','plzort':'81539 München'}
+        bv2={'name1':'Berufsgenossenschaft Verkehrswirtschaft','name3':'Bezirksverwaltung Hamburg','name2':'Post-Logistik Telekommunikation','strasse':'Ottenser Hauptstraße 54','plzort':'22765 Hamburg'}
 
         #Grauer Hintergrund
         c.setFillGray(0.85)
@@ -409,25 +386,7 @@ class Presentation(grok.MultiAdapter):
             c.drawString(2.7*cm,25.8*cm,"An den")
             c.drawString(2.7*cm,25.3*cm,"Betriebsrat")
         else:
-            bv=self.request.principal.id[1]
-            if bv == '1':
-                bv=bv1
-            elif bv == '2':
-                bv=bv2
-            elif bv == '3':
-                bv=bv3
-            elif bv == '4':
-                bv=bv4
-            elif bv == '5':
-                bv=bv5
-            elif bv == '6':
-                bv=bv6
-            elif bv == '7':
-                bv=bv7
-            elif bv == '9':
-                bv=bv9
-            else:
-               bv=bv2
+            bv=bv2
             c.setFont(schriftartfett,7)
             c.drawString(1.8*cm,27.1*cm,"3")
             c.setFont(schriftart,7)
@@ -712,11 +671,11 @@ class Presentation(grok.MultiAdapter):
         plz=addr['plz']
         if plz == None:
             plz = ' '
-        ort=unicode(addr['ort']).decode('utf-8')
+        ort=addr['ort']
         if ort == None:
             ort = ' '
         ort=unicode(ort)
-        strasse=unicode(addr['strasse']).decode('utf-8')
+        strasse=addr['strasse']
         if strasse == None:
             strasse = ' '
         strasse=unicode(strasse)
@@ -1342,11 +1301,7 @@ class Presentation(grok.MultiAdapter):
         verleihfirma = nN(context.unflar) #getattr(uaz,'unflar','')
 
         ehegatte = ''
-        if IPrincipalSparteVerkehr.providedBy(self.request.principal):
-            ehegatte     = nN(context.unfbu) #getattr(uaz,'unfbu','')
-        else:
-            if hasattr(context, 'seeunfbu'):
-                ehegatte     = nN(context.seeunfbu)
+        ehegatte     = nN(context.unfbu) #getattr(uaz,'unfbu','')
 
         if hasattr(context, 'maschine'):
             maschine = nN(context.maschine)
@@ -1394,8 +1349,8 @@ class Presentation(grok.MultiAdapter):
 #	Name und Anschrift des Unternehmens
 #
             plz=nN(addr['plz'])
-            ort=nN(unicode(addr['ort']).decode('utf-8'))
-            strasse=nN(unicode(addr['strasse']).decode('utf-8'))
+            ort=nN(addr['ort'])
+            strasse=nN(addr['strasse'])
             hsnr=nN(addr['hausnr'])
             name3=unicode(addr['name2'])#.decode('utf-8')
             name2=unicode(addr['name1'])#.decode('utf-8')
