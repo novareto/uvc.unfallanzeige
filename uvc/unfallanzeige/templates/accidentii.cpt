@@ -11,16 +11,16 @@ div.control-group {
 
 <div class="row">
   <div class="col-md-4">
-     <div tal:define="widget W.get('form.accidentii.field.prstkz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.prstkz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-4">
-     <div tal:define="widget W.get('form.accidentii.field.unfae1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfae1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-2">
-     <div tal:define="widget W.get('form.accidentii.field.unfaedatum')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfaedatum')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-2">
-    <div tal:define="widget W.get('form.accidentii.field.unfaezeit')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+    <div tal:define="widget W.get('form.accidentii.field.unfaezeit')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   
 </div>
@@ -28,10 +28,10 @@ div.control-group {
 
 <div class="row">
   <div class="col-md-4">
-     <div tal:define="widget W.get('form.accidentii.field.unfwa1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfwa1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-8">
-     <div tal:define="widget W.get('form.accidentii.field.unfwax')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfwax')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
 </div>
 
@@ -39,24 +39,24 @@ div.control-group {
 
 <div class="row">
   <div class="col-md-2">
-     <div tal:define="widget W.get('form.accidentii.field.uadbavon')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.uadbavon')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-10">
-     <div tal:define="widget W.get('form.accidentii.field.uadbabis')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.uadbabis')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
 </div>
 
-     <div tal:define="widget W.get('form.accidentii.field.diavkt')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
-     <div tal:define="widget W.get('form.accidentii.field.diaadv')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.diavkt')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.diaadv')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
 
 
 
 <div class="row">
   <div class="col-md-4">
-     <div tal:define="widget W.get('form.accidentii.field.unfeba')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfeba')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
   <div class="col-md-8">
-     <div tal:define="widget W.get('form.accidentii.field.unfeba1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline"> </div>
+     <div tal:define="widget W.get('form.accidentii.field.unfeba1')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
   </div>
 </div>
   </div>

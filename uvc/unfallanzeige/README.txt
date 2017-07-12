@@ -126,10 +126,11 @@ Vorbereiten des Requests...
   >>> request.form = {
   ...    'form.action.weiter': 'Weiter', 
   ...    'form.field.step': '0', 
-  ...    'form.basic.field.title': u'Meine Unfallanzeige',
-  ...    'form.basic.field.unfustdor': u'In dem vorher genannten Unternehmen',
+  ...    'form.basic.field.title': u'Unfallanzeige',
+  ...    'form.basic.field.unfustdor': u'In einer Zweigniederlassung',
   ...    'form.basic.field.anspfon': u'09841 3644',
-  ...    'form.basic.field.anspname': u'KLINGER'
+  ...    'form.basic.field.anspname': u'',
+  ...    'form.basic.field.unfuort': u''
   ...    }
 
 Ausführen/Absenden des Requests
@@ -139,32 +140,42 @@ Ausführen/Absenden des Requests
 Gab es Fehler? Wie sehen die Daten aus.
 
   >>> values, errors = step1.extractData()
-  >>> values
-  {'unfuort': <Marker NO_VALUE>, 'unfunr': <Marker NO_VALUE>, 'title': u'Meine Unfallanzeige', 'unfuplz': <Marker NO_VALUE>, 'unfustrasse': <Marker NO_VALUE>, 'anspfon': u'09841 3644', 'unfustdor': u'In dem vorher genannten Unternehmen', 'unfuname': <Marker NO_VALUE>, 'anspname': u'KLINGER'}
 
-  >>> [(x.title, x.identifier) for x in errors]
-  []
+Es sollte einen Fehler geben für das Feld unfort da der Mitarbeiter in einer
+Zweigniederlassung arbeitet
 
-Step2
------
+  >>> 'form.basic.field.unfuort' in errors.keys()
+  True
 
-  >>> step2
-  <uvc.unfallanzeige.steps.Job object at ...>
+Der Name des Ansprechpartners ist ein Pflichtfeld und soll ausgefüllt werden
 
-  >>> [(x.identifier, x) for x in step2.fields]
+  >>> 'form.basic.field.anspname' in errors.keys()
+  True
+
+  >>> step1.__extracted = None 
+  >>> wizard.__extracted = None 
 
   >>> request.form = {
   ...    'form.action.weiter': 'Weiter', 
-  ...    'form.field.step': '1', 
-  ...    'form.job.field.uadbru1': ['Hausmeister', None],
-  ...    'form.job.field.unfute': ['Verwaltung', None],
+  ...    'form.field.step': '0', 
+  ...    'form.basic.field.title': u'Unfallanzeige',
+  ...    'form.basic.field.unfustdor': u'In einer Zweigniederlassung',
+  ...    'form.basic.field.anspfon': u'09841 3644',
+  ...    'form.basic.field.anspname': u'Christian Klinger',
+  ...    'form.basic.field.unfuort': u''
   ...    }
-  
-  >>> pr = wizard.actions.process(wizard, request)
-  >>> values, errors = step2.extractData()
-  >>> values
 
-  >>> [(x.title, x.identifier) for x in errors]
+
+Ausführen/Absenden des Requests
+
+  >>> pr = wizard.actions.process(wizard, request)
+
+Gab es Fehler? Wie sehen die Daten aus.
+
+  >>> values, errors = step1.extractData()
+
+  >>> 'form.basic.field.anspname' in errors.keys()
+  False 
 
 
 Cleanup
