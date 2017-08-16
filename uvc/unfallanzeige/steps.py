@@ -26,7 +26,16 @@ grok.templatedir('templates')
 NO_VALUE = ""
 
 
-class Basic(uvcsite.Step):
+class Step(uvcsite.Step):
+    grok.baseclass()
+    
+    def __init__(self, *args):
+        uvcsite.Step.__init__(self, *args)
+        self.macros = zope.component.getMultiAdapter(
+            (self.context, self.request), name='fieldmacros').template.macros
+
+
+class Basic(Step):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(10)
@@ -63,7 +72,7 @@ class Basic(uvcsite.Step):
 #
 
 
-class Job(uvcsite.Step):
+class Job(Step):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(20)
@@ -91,7 +100,7 @@ class Job(uvcsite.Step):
 #
 
 
-class Person(uvcsite.Step):
+class Person(Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(30)
@@ -133,7 +142,7 @@ class Person(uvcsite.Step):
 #
 
 
-class AccidentI(uvcsite.Step):
+class AccidentI(Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(40)
@@ -148,7 +157,7 @@ class AccidentI(uvcsite.Step):
     fields['unfkn2'].mode = "radio"
 
     def update(self):
-        super(uvcsite.Step, self).update()
+        super(Step, self).update()
         resources.step4.need()
 
 #
@@ -156,7 +165,7 @@ class AccidentI(uvcsite.Step):
 #
 
 
-class AccidentII(uvcsite.Step):
+class AccidentII(Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(50)
@@ -175,7 +184,7 @@ class AccidentII(uvcsite.Step):
     fields['unfeba'].mode = "radio"
 
     def update(self):
-        super(uvcsite.Step, self).update()
+        super(Step, self).update()
         resources.step5.need()
 
     def validateStep(self, data, errors):
@@ -212,7 +221,7 @@ class AccidentII(uvcsite.Step):
 #
 
 
-class BasicInformation(uvcsite.Step):
+class BasicInformation(Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(60)
@@ -226,7 +235,7 @@ class BasicInformation(uvcsite.Step):
 #
 
 
-class Finish(uvcsite.Step):
+class Finish(Step):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(70)

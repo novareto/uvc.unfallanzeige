@@ -1,7 +1,9 @@
 <fieldset>
   <legend tal:content="view.label" />
 
-  <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
+  <div class="step-fields form-group"
+       tal:define="W view.fieldWidgets"
+       tal:condition="view.fieldWidgets">
     
     <div class="row">
       <div class="col-md-12">

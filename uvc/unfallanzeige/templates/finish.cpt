@@ -19,7 +19,8 @@
 	  </div>
 	  <div class="row">
 	    <div class="col-md-4">
-	      <div id="extrainfo" tal:replace="structure provider: uvcsite.extrainfo" />
+	      <div id="extrainfo"
+		   tal:replace="structure provider: uvcsite.extrainfo" />
 	    </div>
 	  </div>
 	</div>
@@ -27,11 +28,13 @@
     </div>
 
     <legend tal:content="view.label" />
-    <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
+    <div class="step-fields"
+	 tal:define="W view.fieldWidgets"
+	 tal:condition="W">
       <div class="row">
 	<div class="col-md-12">
 	  <div tal:define="widget W.get('form.finish.field.behandlung')"
-	       metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+	       metal:use-macro="view.macros['field']" />
 	</div>
       </div>
     </div>
