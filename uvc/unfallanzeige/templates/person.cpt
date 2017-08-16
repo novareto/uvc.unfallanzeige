@@ -1,95 +1,114 @@
 <fieldset>
-  <legend tal:content="view.label"> </legend>
-  <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
-		 <div class="row">
-		   <div class="col-md-12">
-		     <div tal:define="widget W.get('form.person.field.prsname')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-		   </div>
-		 </div>
-		 <div class="row">
-		   <div class="col-md-12">
-		     <div tal:define="widget W.get('form.person.field.prsvor')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-		   </div>
-		 </div>
-		 <div class="row">
-		   <div class="col-md-4">
-         <div tal:define="widget W.get('form.person.field.ikstr')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-		   </div>
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.iknr')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.lkz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-      <div class="row">
-        <div class="col-md-4">
-         <div tal:define="widget W.get('form.person.field.ikzplz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-        </div>
-        <div class="col-md-4">
-          <div tal:define="widget W.get('form.person.field.ikzort')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-       </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.prsgeb')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.prssex')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.prssta')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-       </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.unfbu')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-			 <div class="col-md-4 col-md-offset-1">
-				 <div tal:define="widget W.get('form.person.field.vehearbeitsv')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-			 <div class="col-md-4 col-md-offset-1">
-				 <div tal:define="widget W.get('form.person.field.vehebis')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-		   </div>
-			 <div class="col-md-4 col-md-offset-1">
-				 <div tal:define="widget W.get('form.person.field.veheentgeltbis')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-	     </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.unfefz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-		 <div class="row">
-			 <div class="col-md-4">
-				 <div tal:define="widget W.get('form.person.field.unfkka')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-			 </div>
-		 </div>
-		 <br/>
-		 <br/>
-    <!--
-    <div class="field" tal:repeat="widget view.fieldWidgets">
-      <label class="field-label" for="#" tal:attributes="for widget.htmlId" tal:content="widget.title"> Label </label>
-      <span class="field-required" tal:condition="widget.required">*</span>
-      <div class="field-description" tal:condition="widget.description"
-        tal:content="widget.description"> </div>
-      <div class="field-error" tal:define="error widget.error"
-        tal:condition="error" tal:content="error.title"> </div>
-      <tal:widget tal:content="structure widget.render()" />
+  <legend tal:content="view.label" />
+  <div class="step-fields"
+       tal:define="W view.fieldWidgets"
+       tal:condition="view.fieldWidgets">
+
+    <div class="row">
+      <div class="col-md-12">
+	<div tal:define="widget W.get('form.person.field.prsname')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
     </div>
-    -->
+    
+    <div class="row">
+      <div class="col-md-12">
+	<div tal:define="widget W.get('form.person.field.prsvor')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div tal:define="widget W.get('form.person.field.ikstr')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.iknr')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.lkz')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div tal:define="widget W.get('form.person.field.ikzplz')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+      <div class="col-md-4">
+        <div tal:define="widget W.get('form.person.field.ikzort')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.prsgeb')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.prssex')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.prssta')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.unfbu')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+	<div tal:define="widget W.get('form.person.field.vehearbeitsv')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+	<div tal:define="widget W.get('form.person.field.vehebis')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+	<div tal:define="widget W.get('form.person.field.veheentgeltbis')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.unfefz')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+	<div tal:define="widget W.get('form.person.field.unfkka')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+      </div>
+    </div>
+
   </div>
+
   <div class="fields" tal:condition="view.parent.fieldWidgets">
     <span class="field" tal:repeat="widget view.parent.fieldWidgets">
       <tal:widget tal:content="structure widget.render()" />
     </span>
   </div>
+
   <div class="actions">
     <span class="action" tal:repeat="widget view.actionWidgets">
       <tal:widget tal:content="structure widget.render()" />

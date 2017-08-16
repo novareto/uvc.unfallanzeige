@@ -1,58 +1,66 @@
 <fieldset>
-  <legend tal:content="view.label"> </legend>
-  <div class="step-fields" tal:condition="view.fieldWidgets" tal:define="W view.fieldWidgets">
-     <div tal:define="widget W.get('form.basic.field.title')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-     <div tal:define="widget W.get('form.basic.field.unfustdor')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
-     <div id="unfustdor">
-     <div tal:define="widget W.get('form.basic.field.unfuname')" metal:use-macro="path: context/@@fieldmacros/template/macros/field"> </div>
+  <legend tal:content="view.label" />
+  <div class="step-fields"
+       tal:define="W view.fieldWidgets"
+       tal:condition="view.fieldWidgets">
+
+    <div tal:define="widget W.get('form.basic.field.title')"
+	 metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+
+    <div tal:define="widget W.get('form.basic.field.unfustdor')"
+	 metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+
+
+    <div id="unfustdor">
+       <div tal:define="widget W.get('form.basic.field.unfuname')"
+	    metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
+       <div class="row">
+	 <div class="col-md-8">
+	   <div class="form-group col-md-8" tal:define="widget W.get('form.basic.field.unfustrasse')"
+		metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	   </div>
+	 </div>
+	 <div class="col-md-4">
+	   <div class="form-group col-md-4" tal:define="widget W.get('form.basic.field.unfunr')"
+		metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	   </div>
+	 </div>
+       </div>
+ 
+       <div class="row">
+	 <div class="col-md-4">
+	   <div tal:define="widget W.get('form.basic.field.unfuplz')"
+		metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	   </div>
+	 </div>
+	 <div class="col-md-8">
+	   <div tal:define="widget W.get('form.basic.field.unfuort')"
+		metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	   </div>
+	 </div>
+       </div>
+    </div>
+
     <div class="row">
-    <div class="col-md-8">
-     <div class="form-group col-md-8" tal:define="widget W.get('form.basic.field.unfustrasse')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+      <div class="col-md-6">
+	<div tal:define="widget W.get('form.basic.field.anspname')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	</div>
+      </div>
+      <div class="col-md-6">
+	<div tal:define="widget W.get('form.basic.field.anspfon')"
+	     metal:use-macro="path: context/@@fieldmacros/template/macros/field">
+	</div>
+      </div>
     </div>
-    </div>
-    <div class="col-md-4">
-     <div class="form-group col-md-4" tal:define="widget W.get('form.basic.field.unfunr')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-4">
-     <div tal:define="widget W.get('form.basic.field.unfuplz')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
-    </div>
-    </div>
-    <div class="col-md-8">
-     <div tal:define="widget W.get('form.basic.field.unfuort')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6">
-     <div tal:define="widget W.get('form.basic.field.anspname')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
-    </div>
-    </div>
-    <div class="col-md-6">
-     <div tal:define="widget W.get('form.basic.field.anspfon')" metal:use-macro="path: context/@@fieldmacros/template/macros/field">
-    </div>
-    </div>
-    </div>
-    <!--
-    <div class="field" tal:repeat="widget view.fieldWidgets">
-      <label class="field-label" for="#" tal:attributes="for widget.htmlId" tal:content="widget.title"> Label </label>
-      <span class="field-required" tal:condition="widget.required">*</span>
-      <div class="field-description" tal:condition="widget.description"
-        tal:content="widget.description"> </div>
-      <div class="field-error" tal:define="error widget.error"
-        tal:condition="error" tal:content="error.title"> </div>
-      <tal:widget tal:content="structure widget.render()" />
-    </div>
-    -->
   </div>
+
   <div class="fields" tal:condition="view.parent.fieldWidgets">
     <span class="field" tal:repeat="widget view.parent.fieldWidgets">
       <tal:widget tal:content="structure widget.render()" />
     </span>
   </div>
+
   <div class="actions">
     <span class="action" tal:repeat="widget view.actionWidgets">
       <tal:widget tal:content="structure widget.render()" />
