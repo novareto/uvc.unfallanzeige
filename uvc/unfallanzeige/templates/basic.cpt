@@ -16,18 +16,11 @@
 	   metal:use-macro="view.macros['field']" />
     </div>
  
-    <div id="unfustdor">
-       <div tal:define="widget W.get('form.basic.field.unfuname')"
-	    metal:use-macro="view.macros['field']" />
+    <div id="unfustdor"> <div tal:define="widget W.get('form.basic.field.unfuname')" metal:use-macro="view.macros['field']" />
        <div class="row">
 	 <div class="col-md-8">
-	   <div class="form-group col-md-8" tal:define="widget W.get('form.basic.field.unfustrasse')"
-		metal:use-macro="view.macros['field']">
-	   </div>
-	 </div>
-	 <div class="col-md-4">
-	   <div class="form-group col-md-4" tal:define="widget W.get('form.basic.field.unfunr')"
-		metal:use-macro="view.macros['field']">
+     <div class="form-group col-md-8" 
+       tal:define="widget W.get('form.basic.field.unfustrasse'); widget2 W.get('form.basic.field.unfunr)" metal:use-macro="view.macros['doublefield']">
 	   </div>
 	 </div>
        </div>
@@ -59,7 +52,6 @@
       </div>
     </div>
   </div>
-
   <div class="fields" tal:condition="view.parent.fieldWidgets">
     <span class="field" tal:repeat="widget view.parent.fieldWidgets">
       <tal:widget tal:content="structure widget.render()" />

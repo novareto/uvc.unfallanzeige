@@ -115,7 +115,7 @@ msgstr "Bitte wählen Sie aus, in welchem Arbeitsverhältnis der Versicherte ste
 
 #: ./interfaces.py:433
 msgid "Bitte waehlen Sie aus, wie Sie weiter vorgehen moechten."
-msgstr "Bitte wählen Sie aus, wie Sie weiter vorgehen möchten."
+msgstr "Unfallanzeige abschicken oder zur späteren Bearbeitung als Entwurf speichern."
 
 #: ./interfaces.py:356
 msgid "Datum"
@@ -283,7 +283,7 @@ msgstr "Ort des Versicherten an."
 
 #: ./interfaces.py:141
 msgid "PLZ"
-msgstr "PLZ"
+msgstr "PLZ, "
 
 #: ./interfaces.py:420
 msgid "Personal- bzw. Betriebsrat"
@@ -303,7 +303,7 @@ msgstr "Staatsangehörigkeit des Versicherten"
 
 #: ./interfaces.py:129
 msgid "Strasse"
-msgstr "Straße"
+msgstr "Straße, "
 
 #: ./interfaces.py:166
 msgid "Taetigkeit zum Unfallzeitpunkt"

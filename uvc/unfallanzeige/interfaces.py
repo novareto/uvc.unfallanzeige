@@ -161,7 +161,7 @@ class IUnfallanzeige(IContent):
         )
 
     unfustrasse = TextLine(
-        title = u'Straße',
+        title = u'Straße, ',
         description = u"Bitte geben Sie Straße",
         required = False,
         )
@@ -173,7 +173,7 @@ class IUnfallanzeige(IContent):
         )
 
     unfuplz = TextLine(
-        title = u"PLZ",
+        title = u"PLZ, ",
         description = u"Bitte geben Sie die Postleitzahl",
         required = False,
         constraint = validatePLZ,
@@ -186,13 +186,15 @@ class IUnfallanzeige(IContent):
         )
 
     anspname = TextLine(
-        title = u"Ansprechpartner/-in",
-        description = u"Bitte geben Sie eine Ansprechperson an,",
+        title = u"Name Ansprechpartner*in",
+        description = u"",
+        #description = u"Bitte geben Sie eine Ansprechperson an,",
         )
 
     anspfon = TextLine(
-        title = u"Telefonnummer",
-        description = u"die wir bei Rückfragen schnell erreichen können.",
+        title = u"und Telefonnummer",
+        description = u"",
+        #description = u"die wir bei Rückfragen schnell erreichen können.",
         )
 
 # Page Two
@@ -385,6 +387,7 @@ class IUnfallanzeige(IContent):
 
     prstkz = Choice(
         title = u"Tödlicher Unfall",
+        default = 'nein',
         values = ('ja', 'nein'),
          )
 
@@ -474,6 +477,6 @@ class IUnfallanzeige(IContent):
 
     behandlung = Choice(
         title = u"Weiteres Vorgehen",
-        description = u"Bitte wählen Sie aus, wie Sie weiter vorgehen möchten.",
+        description = u"Unfallanzeige abschicken oder zur späteren Bearbeitung als Entwurf speichern.",
         values = ('Versand', 'Entwurf speichern'),
         )

@@ -29,7 +29,8 @@ class Unfallanzeigen(uvcsite.ProductFolder):
     uvcsite.contenttype(Unfallanzeige)
     grok.title(u'Elektronische Unfallanzeigen')
     title = u"Unfallanzeigen"
-    description = u"In diesem Ordner werden alle Elektronischen Unfallanzeigen gespeichert"
+    #description = u"In diesem Ordner werden alle Elektronischen Unfallanzeigen gespeichert"
+    description = u""
 
 
 class Adder(grok.View):
@@ -47,7 +48,7 @@ class Adder(grok.View):
 
 class UnfallanzeigeWizard(uvcsite.Wizard):
     """ Wizard form."""
-    grok.implements(IUnfallanzeige)
+#    grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')

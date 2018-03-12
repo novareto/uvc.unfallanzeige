@@ -6,6 +6,7 @@ import grok
 import uvcsite
 
 from zope import interface
+from uvcsite.interfaces import IMyHomeFolder
 
 from .uazwizard import Unfallanzeige
 from dolmen.forms.base.utils import set_fields_data
@@ -26,12 +27,18 @@ class MetaTypeColumn(MetaTypeColumn):
         return item.meta_type
 
 
-class AddVerbandsbuch(uvcsite.Form):
+class MetaTypeColumn(MetaTypeColumn):
+    grok.context(IMyHomeFolder)
+
+
+class AddVerbandbuch(uvcsite.Form):
     grok.context(IUnfallanzeigenFolder)
+    label = title = "Verbandbuch"
+    description = u"Bitte tragen Sie die fehlenden Werte ein"
 
-    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'unfhg1')
+    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'diavkt', 'diaadv', 'unfhg1')
 
-    @uvcsite.action('Ins Versandbuch eintragen.')
+    @uvcsite.action('Eintrag speichern')
     def handle_save(self):
         data, errors = self.extractData()
         if errors:
@@ -46,17 +53,17 @@ class AddVerbandsbuch(uvcsite.Form):
 
 class Edit(uvcsite.Form):
     grok.context(IVerbandbuchEintrag)
-    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'unfhg1')
+    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'diavkt', 'diaadv', 'unfhg1')
     ignoreContent = False
 
-    @uvcsite.action('Bearbeiten')
+    @uvcsite.action('Speichern')
     def handle_update(self):
         data, errors = self.extractData()
         if errors:
             return
         set_fields_data(IUnfallanzeige, self.context, data)
         self.flash(u'Ihr Eintrag wurde erstellt')
-        self.redirect(self.url(self.context))
+        self.redirect(self.application_url())
 
     @uvcsite.action('Zu einer Unfallanzeige machen')
     def handle_update(self):
@@ -64,5 +71,5 @@ class Edit(uvcsite.Form):
         if errors:
             return
         interface.noLongerProvides(self.context, IVerbandbuchEintrag)
-        self.flash(u'Aus Ihrem Verbandsbucheintrag wurde eine Unfallanzeige erstellt')
+        self.flash(u'Aus Ihrem Verbandbucheintrag wurde eine Unfallanzeige erstellt')
         self.redirect(self.url(self.context, 'edit'))

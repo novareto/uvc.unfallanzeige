@@ -7,8 +7,8 @@ $(document).ready(function(){
  $('input#form-accidentii-field-unfaedatum').attr('placeholder', 'TT.MM.JJJJ').mask('99.99.9999');
  $('input#form-accidentii-field-unfaezeit').attr('placeholder', 'HH:MM').mask('99:99');
  $('input#form-accidentii-field-unfwax').attr('placeholder', 'TT.MM.JJJJ').mask('99.99.9999');
- $('input#form-accidentii-field-uadbavon').attr('placeholder', 'HH:MM').mask('99:99');
  $('input#form-accidentii-field-uadbabis').attr('placeholder', 'HH:MM').mask('99:99');
+ $('input#form-accidentii-field-uadbavon').attr('placeholder', 'HH:MM').mask('99:99');
  /*
  $('#form-accidenti-field-unfdatum').focus();
  */

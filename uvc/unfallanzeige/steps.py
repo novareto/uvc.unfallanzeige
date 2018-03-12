@@ -39,7 +39,7 @@ class Basic(Step):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(10)
-    label = u'Basis Informationen'
+    label = u'Basis-Informationen'
     ignoreContent = False
 
     fields = base.Fields(IUnfallanzeige).select(
@@ -242,7 +242,6 @@ class Finish(Step):
     ignoreContent = False
     label = form_name = u'Versand und Druck der Unfallanzeige'
     fields = base.Fields(IUnfallanzeige).select('behandlung')
-
     fields['behandlung'].mode = "radio"
 
 
