@@ -70,8 +70,8 @@ class IPresentation(Interface):
     """ Marker Interface """
 
 
+@grok.implementer(IContextSourceBinder)
 class DynVocab(object):
-    grok.implements(IContextSourceBinder)
 
     def __init__(self, name):
         self.name = name
