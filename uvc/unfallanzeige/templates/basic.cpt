@@ -20,7 +20,7 @@
        <div class="row">
 	 <div class="col-md-8">
      <div class="form-group col-md-8" 
-       tal:define="widget W.get('form.basic.field.unfustrasse'); widget2 W.get('form.basic.field.unfunr)" metal:use-macro="view.macros['doublefield']">
+       tal:define="widget W.get('form.basic.field.unfustrasse'); widget2 W.get('form.basic.field.unfunr')" metal:use-macro="view.macros['doublefield']">
 	   </div>
 	 </div>
        </div>

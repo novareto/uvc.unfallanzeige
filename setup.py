@@ -24,6 +24,7 @@ setup(name='uvc.unfallanzeige',
       install_requires=[
           'setuptools',
           'reportlab',
+          'uvc.tbskin >= 0.7.2',
           # -*- Extra requirements: -*-
       ],
       entry_points={
