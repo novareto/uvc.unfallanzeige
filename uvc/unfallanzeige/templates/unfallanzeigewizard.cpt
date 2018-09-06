@@ -1,6 +1,7 @@
 <form action="." method="post"
       enctype="multipart/form-data"
       class="dolmen-wizard-form"
+      novalidate="novalidate"
       tal:attributes="action request.getURL()">
   <div tal:replace="structure view.current.render()" />
   <span class="action" tal:repeat="widget view.actionWidgets">
