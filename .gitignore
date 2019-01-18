@@ -4,3 +4,4 @@ syntax:glob
 *.pyo
 *.swo
 *.swp
+*.egg-info
