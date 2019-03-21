@@ -8,7 +8,7 @@ import zope.interface
 
 from uvc.unfallanzeige.uazwizard import Unfallanzeige
 
-from zope.app.homefolder.interfaces import IHomeFolder
+from uvcsite.homefolder.interfaces import IHomeFolder
 
 
 class StartWizard(grok.View):
