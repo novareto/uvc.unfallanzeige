@@ -8,6 +8,7 @@ import grokcore.component as grok
 
 from zope.interface import Interface
 from zope.interface import Invalid
+from zope.interface import implementer 
 
 from uvcsite import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
@@ -70,8 +71,8 @@ class IPresentation(Interface):
     """ Marker Interface """
 
 
+@implementer(IContextSourceBinder)
 class DynVocab(object):
-    grok.implements(IContextSourceBinder)
 
     def __init__(self, name):
         self.name = name
