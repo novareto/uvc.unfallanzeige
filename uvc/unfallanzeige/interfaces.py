@@ -89,7 +89,8 @@ class DynVocab(object):
 def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
-        SimpleTerm('weiblich', 'weiblich', u'weiblich')
+        SimpleTerm('weiblich', 'weiblich', u'weiblich'),
+        SimpleTerm('unbekannt', 'unbekannt', u'unbekannt')
         ))
 
 
