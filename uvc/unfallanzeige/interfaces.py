@@ -263,7 +263,7 @@ class IUnfallanzeige(IContent):
 
     lkz = OptionalChoice(
         title = u"Länderkennzeichen",
-        description = u"Länderkennzeichen des wohnortes",
+        description = u"Länderkennzeichen des Wohnortes",
         source = DynVocab(u'uvc.lkz'),
         )
 
