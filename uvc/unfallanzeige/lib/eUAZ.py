@@ -8,13 +8,12 @@ import uvcsite
 import grok
 
 from tempfile import TemporaryFile
-from string   import replace
-from time     import gmtime, strftime
+from time import gmtime, strftime
 
-from reportlab.pdfgen        import canvas
+from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.units     import cm
-from reportlab.lib.colors    import gray
+from reportlab.lib.units import cm
+from reportlab.lib.colors import gray
 
 from zope.i18n import translate
 from zope.interface import implementer
@@ -172,9 +171,11 @@ class Presentation(grok.MultiAdapter):
             vocab = getUtility(IVocabularyFactory, name='uvc.sta')(None)
             try:
                 term = vocab.getTerm(land)
-                land = translate(term.title, 'uvc.unfallanzeige', target_language="de")
-            except LookupError, e:
-                print e
+                land = translate(
+                    term.title, 'uvc.unfallanzeige', target_language="de")
+
+            except LookupError as e:
+                print(e)
             
             if land != '':
                 if land[0] == 'D' or land == '  ':
@@ -790,9 +791,11 @@ class Presentation(grok.MultiAdapter):
         vocab = getUtility(IVocabularyFactory, name='uvc.sta')(None)
         try:
             term  = vocab.getTerm(staat)
-            staat = translate(term.title, 'uvc.unfallanzeige', target_language="de")
-        except LookupError, e:
-            print e
+            staat = translate(
+                term.title, 'uvc.unfallanzeige', target_language="de")
+
+        except LookupError as e:
+            print(e)
         c.setFont(schriftart,10)
         c.drawString(6.6*cm,y*cm,staat)
 #

@@ -22,7 +22,7 @@ from uvc.unfallanzeige.interfaces import IUnfallanzeige
 import lxml.etree as etree
 from time import strftime, localtime
 #from elementtree.SimpleXMLWriter import XMLWriter
-from StringIO import StringIO
+from io import StringIO
 
 
 def create_uaz_xml(mgldata, unfdata, xmlfile, principal):

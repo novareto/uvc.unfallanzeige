@@ -4,6 +4,7 @@
 
 import grok
 import uvcsite
+import uvcsite.utils.dataviews
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
@@ -25,7 +26,7 @@ class MockA(object):
     ort = u"ORT"
 
 
-class PDFPresentation(uvcsite.BasePDF):
+class PDFPresentation(uvcsite.utils.dataviews.BasePDF):
     grok.context(IUnfallanzeige)
     grok.name('pdf')
     grok.title('unfallanzeige.pdf')
@@ -36,8 +37,8 @@ class PDFPresentation(uvcsite.BasePDF):
         #stammdaten = IStammdaten(self.request.principal)
         self.uaz.addr = MockA() #stammdaten.getAdresse()
         self.uaz.bv = MockA() #stammdaten.getHauptAdresse()
-        print self.uaz.addr
-        print self.uaz.bv
+        print(self.uaz.addr)
+        print(self.uaz.bv)
         #self.canvas = canvas.Canvas("/tmp/unfallanzeige.pdf")
         #self.canvas.setAuthor(u"novareto GmbH")
         #self.canvas.setTitle(u"Elektronische Unfallanzeige")
@@ -536,8 +537,8 @@ class PDFPresentation(uvcsite.BasePDF):
         try:
             term  = vocab.getTerm(staat)
             staat = translate(term.title, 'uvc.unfallanzeige', target_language="de")
-        except LookupError, e:
-            print e
+        except LookupError as e:
+            print(e)
 
         c.drawString(6.6*cm, 18.05*cm, staat)
         if uaz.unfefz:

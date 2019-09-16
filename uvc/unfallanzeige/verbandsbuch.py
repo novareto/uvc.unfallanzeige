@@ -6,12 +6,13 @@ import grok
 import uvcsite
 
 from zope import interface
-from uvcsite.interfaces import IMyHomeFolder
-
-from .uazwizard import Unfallanzeige
-from dolmen.forms.base.utils import set_fields_data
-from .interfaces import IUnfallanzeige, IUnfallanzeigenFolder
+from zeam.form.base import Fields, action
+from uvcsite.interfaces import IHomeFolder
+from uvcsite.browser.forms import set_fields_data
 from uvcsite.content.tables import MetaTypeColumn
+
+from .interfaces import IUnfallanzeige, IUnfallanzeigenFolder
+from .uazwizard import Unfallanzeige
 
 
 class IVerbandbuchEintrag(interface.Interface):
@@ -28,17 +29,19 @@ class MetaTypeColumn(MetaTypeColumn):
 
 
 class MetaTypeColumn(MetaTypeColumn):
-    grok.context(IMyHomeFolder)
+    grok.context(IHomeFolder)
 
 
-class AddVerbandbuch(uvcsite.Form):
+class AddVerbandbuch(uvcsite.browser.Form):
     grok.context(IUnfallanzeigenFolder)
     label = title = "Verbandbuch"
     description = u"Bitte tragen Sie die fehlenden Werte ein"
 
-    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'diavkt', 'diaadv', 'unfhg1')
+    fields = Fields(IUnfallanzeige).select(
+        'prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit',
+        'diavkt', 'diaadv', 'unfhg1')
 
-    @uvcsite.action('Eintrag speichern')
+    @action('Eintrag speichern')
     def handle_save(self):
         data, errors = self.extractData()
         if errors:
@@ -51,12 +54,15 @@ class AddVerbandbuch(uvcsite.Form):
         self.redirect(self.url(self.context))
 
 
-class Edit(uvcsite.Form):
+class Edit(uvcsite.browser.Form):
     grok.context(IVerbandbuchEintrag)
-    fields = uvcsite.Fields(IUnfallanzeige).select('prsname', 'prsvor', 'prsgeb', 'unfdatum', 'unfzeit', 'diavkt', 'diaadv', 'unfhg1')
+
+    fields = Fields(IUnfallanzeige).select(
+        'prsname', 'prsvor', 'prsgeb', 'unfdatum',
+        'unfzeit', 'diavkt', 'diaadv', 'unfhg1')
     ignoreContent = False
 
-    @uvcsite.action('Speichern')
+    @action('Speichern')
     def handle_update(self):
         data, errors = self.extractData()
         if errors:
@@ -65,11 +71,12 @@ class Edit(uvcsite.Form):
         self.flash(u'Ihr Eintrag wurde erstellt')
         self.redirect(self.application_url())
 
-    @uvcsite.action('Zu einer Unfallanzeige machen')
+    @action('Zu einer Unfallanzeige machen')
     def handle_update(self):
         data, errors = self.extractData()
         if errors:
             return
         interface.noLongerProvides(self.context, IVerbandbuchEintrag)
-        self.flash(u'Aus Ihrem Verbandbucheintrag wurde eine Unfallanzeige erstellt')
+        self.flash(
+            'Aus Ihrem Verbandbucheintrag wurde eine Unfallanzeige erstellt')
         self.redirect(self.url(self.context, 'edit'))

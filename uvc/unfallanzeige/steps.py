@@ -4,15 +4,16 @@
 
 
 import grok
-import uvcsite
 import zope.interface
 import zope.component
+import uvcsite.browser.layout.slots.interfaces
 
+from dolmen.forms.wizard import WizardStep
 from uvc.unfallanzeige import resources
 from uvc.unfallanzeige.interfaces import IUnfallanzeige
 from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige
 
-from dolmen.forms import base
+from zeam.form import base
 from zeam.form.base.errors import Error
 from zeam.form.base import NO_VALUE as NO_VALUEM
 
@@ -26,7 +27,7 @@ grok.templatedir('templates')
 NO_VALUE = ""
 
 
-class Step(uvcsite.Step):
+class Step(WizardStep):
     grok.baseclass()
     
     def __init__(self, *args):
@@ -35,10 +36,11 @@ class Step(uvcsite.Step):
             (self.context, self.request), name='fieldmacros').template.macros
 
 
-class Basic(Step):
+class Basic(WizardStep):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(10)
+
     label = u'Basis-Informationen'
     ignoreContent = False
 
@@ -72,10 +74,11 @@ class Basic(Step):
 #
 
 
-class Job(Step):
+class Job(WizardStep):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(20)
+
     ignoreContent = False
     label = form_name = u'Angaben zur versicherten Person'
 
@@ -100,7 +103,7 @@ class Job(Step):
 #
 
 
-class Person(Step):
+class Person(WizardStep):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(30)
@@ -142,7 +145,7 @@ class Person(Step):
 #
 
 
-class AccidentI(Step):
+class AccidentI(WizardStep):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(40)
@@ -165,7 +168,7 @@ class AccidentI(Step):
 #
 
 
-class AccidentII(Step):
+class AccidentII(WizardStep):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(50)
@@ -221,7 +224,7 @@ class AccidentII(Step):
 #
 
 
-class BasicInformation(Step):
+class BasicInformation(WizardStep):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(60)
@@ -235,7 +238,7 @@ class BasicInformation(Step):
 #
 
 
-class Finish(Step):
+class Finish(WizardStep):
     grok.context(IUnfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(70)
@@ -247,7 +250,7 @@ class Finish(Step):
 
 class Overview(grok.Viewlet):
     grok.view(UnfallanzeigeWizard)
-    grok.viewletmanager(uvcsite.IExtraInfo)
+    grok.viewletmanager(uvcsite.browser.layout.slots.interfaces.IExtraInfo)
     grok.context(IUnfallanzeige)
 
     def available(self):

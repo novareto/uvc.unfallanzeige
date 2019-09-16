@@ -25,7 +25,7 @@ setup(name='uvc.unfallanzeige',
           'setuptools',
           'reportlab',
           'uvc.tbskin >= 0.7.2',
-          # -*- Extra requirements: -*-
+          'dolmen.forms.wizard',
       ],
       entry_points={
       'fanstatic.libraries': [

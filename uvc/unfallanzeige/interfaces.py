@@ -10,7 +10,7 @@ from zope.interface import Interface
 from zope.interface import Invalid
 from zope.interface import implementer 
 
-from uvcsite import IProductFolder, IContent
+from uvcsite.content.interfaces import IProductFolder, IContent
 from zope.schema import TextLine, Choice, Text, Int
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.interfaces import IVocabularyFactory
