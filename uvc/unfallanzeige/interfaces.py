@@ -28,6 +28,11 @@ class FutureDatum(ValidationError):
          Bitte überprüfen Sie ihre Eingabe.
     """
 
+class FalseYear(ValidationError):
+    u""" Ihr eingegebenes Jahr ist nicht korrekt.
+         Bitte überprüfen Sie ihre Eingabe
+    """
+
 
 def validateFutureShortDatum(value):
     if value:
@@ -50,8 +55,12 @@ def validateFutureDatum(value):
             raise NotValidEingabeDatum(value)
         vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
         now = datetime.datetime.now()
+        jahr = value[6:]
+        aktJahr = int(time.strftime('%Y'))
         if vdatum > now:
             raise FutureDatum(value)
+        if (int(jahr) > (aktJahr-14)) or (int(jahr) < (aktJahr-81)):
+            raise FalseYear(value)
     return True
 
 
