@@ -46,7 +46,6 @@ def validateFutureShortDatum(value):
             raise FutureDatum(value)
     return True
 
-
 def validateFutureDatum(value):
     if value:
         try:
@@ -55,7 +54,19 @@ def validateFutureDatum(value):
             raise NotValidEingabeDatum(value)
         vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
         now = datetime.datetime.now()
-        jahr = value[6:]
+        if vdatum > now:
+            raise FutureDatum(value)
+    return True
+
+def validateGeburtsDatum(value):
+    if value:
+        try:
+            time.strptime(value, "%d.%m.%Y")
+        except ValueError:
+            raise NotValidEingabeDatum(value)
+        vdatum = datetime.datetime.strptime(value, "%d.%m.%Y")
+        now = datetime.datetime.now()
+        jahr = value[6:10]
         aktJahr = int(time.strftime('%Y'))
         if vdatum > now:
             raise FutureDatum(value)
@@ -290,7 +301,7 @@ class IUnfallanzeige(IContent):
     prsgeb = TextLine(
         title = u"Geburtsdatum",
         description = u"Bitte geben Sie das Geburtstdatum der versicherten Person an (Tag, Monat, Jahr).",
-        constraint = validateFutureDatum,
+        constraint = validateGeburtsDatum,
         )
 
     prssex = Choice(
