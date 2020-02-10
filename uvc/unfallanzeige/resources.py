@@ -3,16 +3,14 @@
 # cklinger@novareto.de
 
 from fanstatic import Library, Resource
-from uvc.widgets.resources import double
-from uvc.widgets import masked_input
 
 library = Library('uvc.unfallanzeige', 'static')
 
 uazcss = Resource(library, 'uaz.css')
-uazjs = Resource(library, 'uaz.js', depends=[double, masked_input], bottom=True)
+uazjs = Resource(library, 'uaz.js', bottom=True)
 
-step1 = Resource(library, 'step1.js', depends=[double])
-step2 = Resource(library, 'step2.js', depends=[double])
-step3 = Resource(library, 'step3.js', depends=[double])
-step4 = Resource(library, 'step4.js', depends=[double])
-step5 = Resource(library, 'step5.js', depends=[double])
+step1 = Resource(library, 'step1.js')
+step2 = Resource(library, 'step2.js')
+step3 = Resource(library, 'step3.js')
+step4 = Resource(library, 'step4.js')
+step5 = Resource(library, 'step5.js')
