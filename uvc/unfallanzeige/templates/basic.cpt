@@ -1,66 +1,56 @@
 <fieldset>
   <legend tal:content="view.label" />
   <div class="step-fields"
-       tal:define="W view.fieldWidgets"
-       tal:condition="W">
+    tal:define="W view.fieldWidgets"
+    tal:condition="W">
 
     <div class="row">
       <div class="col-md-12"
-	   tal:define="widget W.get('form.basic.field.title')"
-	   metal:use-macro="view.macros['field']" />
+        tal:define="widget W.get('form.basic.field.title')"
+        metal:use-macro="view.macros['field']" />
     </div>
 
     <div class="row">
       <div class="col-md-12"
-	   tal:define="widget W.get('form.basic.field.unfustdor')"
-	   metal:use-macro="view.macros['field']" />
-    </div>
- 
-    <div id="unfustdor"> <div tal:define="widget W.get('form.basic.field.unfuname')" metal:use-macro="view.macros['field']" />
-       <div class="row">
-	 <div class="col-md-8">
-     <div class="form-group col-md-8" 
-       tal:define="widget W.get('form.basic.field.unfustrasse'); widget2 W.get('form.basic.field.unfunr')" metal:use-macro="view.macros['doublefield']">
-	   </div>
-	 </div>
-       </div>
- 
-       <div class="row">
-	 <div class="col-md-4">
-	   <div tal:define="widget W.get('form.basic.field.unfuplz')"
-		metal:use-macro="view.macros['field']">
-	   </div>
-	 </div>
-	 <div class="col-md-8">
-	   <div tal:define="widget W.get('form.basic.field.unfuort')"
-		metal:use-macro="view.macros['field']">
-	   </div>
-	 </div>
-       </div>
+        tal:define="widget W.get('form.basic.field.unfustdor')"
+        metal:use-macro="view.macros['field']" />
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-	<div tal:define="widget W.get('form.basic.field.anspname')"
-	     metal:use-macro="view.macros['field']">
-	</div>
+    <div id="unfustdor"> 
+      <div tal:define="widget W.get('form.basic.field.unfuname')" metal:use-macro="view.macros['field']" />
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group" 
+            tal:define="widget W.get('form.basic.field.unfustrasse'); widget2 W.get('form.basic.field.unfunr')" metal:use-macro="view.macros['doublefield']">
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-	<div tal:define="widget W.get('form.basic.field.anspfon')"
-	     metal:use-macro="view.macros['field']">
-	</div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group" 
+            tal:define="widget W.get('form.basic.field.unfuplz'); widget2 W.get('form.basic.field.unfuort')" metal:use-macro="view.macros['doublefield']">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group" 
+            tal:define="widget W.get('form.basic.field.anspname'); widget2 W.get('form.basic.field.anspfon')" metal:use-macro="view.macros['doublefield']">
+          </div>
+        </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="fields" tal:condition="view.parent.fieldWidgets">
-    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
-      <tal:widget tal:content="structure widget.render()" />
-    </span>
-  </div>
+    <div class="fields" tal:condition="view.parent.fieldWidgets">
+      <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+        <tal:widget tal:content="structure widget.render()" />
+      </span>
+    </div>
 
-  <div class="actions">
-    <span class="action" tal:repeat="widget view.actionWidgets">
-      <tal:widget tal:content="structure widget.render()" />
-    </span>
-  </div>
-</fieldset>
+    <div class="actions">
+      <span class="action" tal:repeat="widget view.actionWidgets">
+        <tal:widget tal:content="structure widget.render()" />
+      </span>
+    </div>
+  </fieldset>

@@ -11,6 +11,7 @@ from dolmen.forms.wizard import Wizard
 from zope.lifecycleevent import ObjectCreatedEvent
 from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige
+from grok.components import ViewSupportMixin
 
 
 grok.templatedir('templates')
@@ -49,7 +50,7 @@ class Adder(grok.View):
         self.redirect(self.url(self.uaz, 'edit'))
 
 
-class UnfallanzeigeWizard(Wizard):
+class UnfallanzeigeWizard(Wizard, ViewSupportMixin):
     """ Wizard form."""
     grok.context(Unfallanzeige)
     grok.name('edit')

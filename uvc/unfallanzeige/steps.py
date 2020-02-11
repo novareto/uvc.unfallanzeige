@@ -16,6 +16,7 @@ from uvc.unfallanzeige.uazwizard import UnfallanzeigeWizard, Unfallanzeige
 from zeam.form import base
 from zeam.form.base.errors import Error
 from zeam.form.base import NO_VALUE as NO_VALUEM
+from grok.components import ViewSupportMixin
 
 
 grok.templatedir('templates')
@@ -27,16 +28,16 @@ grok.templatedir('templates')
 NO_VALUE = ""
 
 
-class Step(WizardStep):
+class Step(WizardStep, ViewSupportMixin):
     grok.baseclass()
     
     def __init__(self, *args):
-        uvcsite.Step.__init__(self, *args)
+        WizardStep.__init__(self, *args)
         self.macros = zope.component.getMultiAdapter(
             (self.context, self.request), name='fieldmacros').template.macros
 
 
-class Basic(WizardStep):
+class Basic(Step):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(10)
