@@ -358,7 +358,7 @@ class MultiSource(grok.GlobalUtility):
 
     def __call__(self, context):
         name = grok.name.bind().get(self)
-        request = uvcsite.getRequest()
+        request = uvcsite.utils.shorties.getRequest()
         vocabulary = queryMultiAdapter((context, request), name=name)
         if vocabulary is not None:
             return vocabulary(context)
