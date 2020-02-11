@@ -12,6 +12,9 @@ from zope.lifecycleevent import ObjectCreatedEvent
 from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige
 from grok.components import ViewSupportMixin
+from zeam.form.base import Actions
+from dolmen.forms.wizard.actions import (PreviousAction, SaveAction,
+     NextAction, HiddenSaveAction)
 
 
 grok.templatedir('templates')
@@ -55,6 +58,11 @@ class UnfallanzeigeWizard(Wizard, ViewSupportMixin):
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')
+
+    actions = Actions(
+        PreviousAction(u"Zurück"),
+        SaveAction(u"Speichern"),
+        NextAction(u"Weiter"))
 
     label = u'Unfallanzeige'
 

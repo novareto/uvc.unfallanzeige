@@ -52,8 +52,8 @@ class Basic(Step):
 
     fields['unfustdor'].mode = "radio"
 
-    def update(self):
-        super(Basic, self).update()
+    def updateWidgets(self):
+        super(Basic, self).updateWidgets()
         resources.step1.need()
 
     def validateStep(self, data, errors):
@@ -89,8 +89,8 @@ class Job(Step):
     fields['unflar'].mode = "radio"
     fields['azubi'].mode = "radio"
 
-    def update(self):
-        super(Job, self).update()
+    def updateWidgets(self):
+        super(Job, self).updateWidgtes()
         resources.step2.need()
 
     def validateStep(self, data, errors):
@@ -122,8 +122,8 @@ class Person(Step):
     fields['prssex'].mode = "radio"
     fields['vehearbeitsv'].mode = "radio"
 
-    def update(self):
-        super(Person, self).update()
+    def updateWidgtes(self):
+        super(Person, self).updateWidgtes()
         resources.step3.need()
 
     def validateStep(self, data, errors):
@@ -160,8 +160,8 @@ class AccidentI(Step):
     fields['unfhg2'].mode = "radio"
     fields['unfkn2'].mode = "radio"
 
-    def update(self):
-        super(Step, self).update()
+    def updateWidgets(self):
+        super(Step, self).updateWidgets()
         resources.step4.need()
 
 #
@@ -187,8 +187,8 @@ class AccidentII(Step):
     fields['unfwa1'].mode = "radio"
     fields['unfeba'].mode = "radio"
 
-    def update(self):
-        super(Step, self).update()
+    def updateWidgtes(self):
+        super(Step, self).updateWidgets()
         resources.step5.need()
 
     def validateStep(self, data, errors):

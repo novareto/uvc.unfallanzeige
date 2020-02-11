@@ -4,10 +4,12 @@
 
 from fanstatic import Library, Resource
 
+
 library = Library('uvc.unfallanzeige', 'static')
 
 uazcss = Resource(library, 'uaz.css')
-uazjs = Resource(library, 'uaz.js', bottom=True)
+jqms = Resource(library, 'jquery.maskedinput.js')
+uazjs = Resource(library, 'uaz.js', depends=[jqms,], bottom=True)
 
 step1 = Resource(library, 'step1.js')
 step2 = Resource(library, 'step2.js')
