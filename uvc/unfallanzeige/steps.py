@@ -75,7 +75,7 @@ class Basic(Step):
 #
 
 
-class Job(WizardStep):
+class Job(Step):
     grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(20)
@@ -104,8 +104,8 @@ class Job(WizardStep):
 #
 
 
-class Person(WizardStep):
-    grok.context(IUnfallanzeige)
+class Person(Step):
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(30)
     ignoreContent = False
@@ -146,8 +146,8 @@ class Person(WizardStep):
 #
 
 
-class AccidentI(WizardStep):
-    grok.context(IUnfallanzeige)
+class AccidentI(Step):
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(40)
     ignoreContent = False
@@ -169,8 +169,8 @@ class AccidentI(WizardStep):
 #
 
 
-class AccidentII(WizardStep):
-    grok.context(IUnfallanzeige)
+class AccidentII(Step):
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(50)
     ignoreContent = False
@@ -225,8 +225,8 @@ class AccidentII(WizardStep):
 #
 
 
-class BasicInformation(WizardStep):
-    grok.context(IUnfallanzeige)
+class BasicInformation(Step):
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(60)
     ignoreContent = False
@@ -239,8 +239,8 @@ class BasicInformation(WizardStep):
 #
 
 
-class Finish(WizardStep):
-    grok.context(IUnfallanzeige)
+class Finish(Step):
+    grok.context(Unfallanzeige)
     grok.view(UnfallanzeigeWizard)
     grok.order(70)
     ignoreContent = False
