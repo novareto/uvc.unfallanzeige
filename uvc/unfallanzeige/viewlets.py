@@ -17,3 +17,6 @@ class UAZStepsProgressBar(grok.Viewlet):
     grok.viewletmanager(uvcsite.browser.layout.slots.interfaces.IAboveContent)
     grok.order(10000)
 
+    def update(self):
+        self.progress = (
+            (float(self.view.step + 1) / float(self.view.getMaximumStepId() + 1)) * 100)

@@ -90,7 +90,7 @@ class Job(Step):
     fields['azubi'].mode = "radio"
 
     def updateWidgets(self):
-        super(Job, self).updateWidgtes()
+        super().updateWidgets()
         resources.step2.need()
 
     def validateStep(self, data, errors):
