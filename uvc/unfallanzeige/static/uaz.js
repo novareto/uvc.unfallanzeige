@@ -1,7 +1,7 @@
 $(document).ready(function(){
  // Buttons
- $('input#form-action-back').removeClass('btn-primary').addClass('btn-default');
- $('input#form-action-speichern, input#form-action-weiter').addClass('btn-primary');
+ $('input#form-action-back').removeClass('btn-primary').addClass('btn btn-default');
+ $('input#form-action-speichern, input#form-action-weiter').addClass('btn btn-primary');
  $('input#form-job-field-uadst').attr('placeholder', 'MM.JJJJ').mask('99.9999');
  $('input#form-person-field-prsgeb').attr('placeholder', 'TT.MM.JJJJ').mask('99.99.9999');
  $('input#form-accidentii-field-unfaedatum').attr('placeholder', 'TT.MM.JJJJ').mask('99.99.9999');

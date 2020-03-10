@@ -32,25 +32,23 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group" 
-            tal:define="widget W.get('form.basic.field.anspname'); widget2 W.get('form.basic.field.anspfon')" metal:use-macro="view.macros['doublefield']">
-          </div>
-        </div>
-        </div>
+    <div class="row">
+      <div class="form-group" 
+        tal:define="widget W.get('form.basic.field.anspname'); widget2 W.get('form.basic.field.anspfon')" metal:use-macro="view.macros['doublefield']">
       </div>
     </div>
-    <div class="fields" tal:condition="view.parent.fieldWidgets">
-      <span class="field" tal:repeat="widget view.parent.fieldWidgets">
-        <tal:widget tal:content="structure widget.render()" />
-      </span>
-    </div>
+  </div>
+  <div class="fields" tal:condition="view.parent.fieldWidgets">
+    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
 
-    <div class="actions">
-      <span class="action" tal:repeat="widget view.actionWidgets">
-        <tal:widget tal:content="structure widget.render()" />
-      </span>
-    </div>
-  </fieldset>
+  <div class="actions">
+    <span class="action" tal:repeat="widget view.actionWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+</fieldset>
