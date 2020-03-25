@@ -188,7 +188,7 @@ class IUnfallanzeige(IContent):
         )
 
     anspname = TextLine(
-        title = u"Name Ansprechpartner*in",
+        title = u"Name Ansprechpartner/in",
         description = u"",
         #description = u"Bitte geben Sie eine Ansprechperson an,",
         )

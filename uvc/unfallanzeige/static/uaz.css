@@ -2,6 +2,22 @@
 UAZ StyleSheets
 */
 
+.form-group {
+    width: 100%;
+}
+
+label span {
+    font-weight: bold;
+    font-size: large;
+}
+.top-titel {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 30px !important;
+}
+
 /* Einrückung optionale Felder */
 
 div#field-form-accidentii-field-unfae1 div.widget,

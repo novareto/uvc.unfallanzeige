@@ -42,6 +42,8 @@ class Basic(Step):
     grok.view(UnfallanzeigeWizard)
     grok.order(10)
 
+    available = False
+
     label = u'Basis-Informationen'
     ignoreContent = False
 
@@ -51,6 +53,9 @@ class Basic(Step):
     )
 
     fields['unfustdor'].mode = "radio"
+
+    def data(self):
+        return "jinx"
 
     def updateWidgets(self):
         super(Basic, self).updateWidgets()
