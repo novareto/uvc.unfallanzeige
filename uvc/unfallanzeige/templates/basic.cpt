@@ -90,9 +90,9 @@
       </span>
     </div>
 
-    <div class="actions">
-      <span class="action" tal:repeat="widget view.actionWidgets">
-        <tal:widget tal:content="structure widget.render()" />
-      </span>
-    </div>
-  </fieldset>
+  <div class="actions">
+    <span class="action" tal:repeat="widget view.actionWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+</fieldset>

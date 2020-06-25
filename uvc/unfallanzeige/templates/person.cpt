@@ -5,29 +5,18 @@
        tal:condition="W">
 
     <div class="row">
-      <div class="col-md-12">
-	<div tal:define="widget W.get('form.person.field.prsname')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-    </div>
+     <div class="col-md-12">
+	   <div tal:define="widget W.get('form.person.field.prsname');widget2 W.get('form.person.field.prsvor')"
+	     metal:use-macro="view.macros['doublefield']" />
+       </div>
+     </div>
 
     <div class="row">
-      <div class="col-md-12">
-	<div tal:define="widget W.get('form.person.field.prsvor')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <div tal:define="widget W.get('form.person.field.ikstr')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-      <div class="col-md-4">
-	<div tal:define="widget W.get('form.person.field.iknr')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-    </div>
+     <div class="col-md-12">
+	   <div tal:define="widget W.get('form.person.field.ikstr');widget2 W.get('form.person.field.iknr')"
+	     metal:use-macro="view.macros['doublefield']" />
+       </div>
+     </div>
 
     <div class="row">
       <div class="col-md-4">
@@ -37,15 +26,12 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
-        <div tal:define="widget W.get('form.person.field.ikzplz')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-      <div class="col-md-4">
-        <div tal:define="widget W.get('form.person.field.ikzort')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-    </div>
+     <div class="col-md-12">
+	   <div tal:define="widget W.get('form.person.field.ikzplz');widget2 W.get('form.person.field.ikzort')"
+	     metal:use-macro="view.macros['doublefield']" />
+       </div>
+     </div>
+
 
     <div class="row">
       <div class="col-md-4">
@@ -69,7 +55,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-8">
 	<div tal:define="widget W.get('form.person.field.unfbu')"
 	     metal:use-macro="view.macros['field']" />
       </div>

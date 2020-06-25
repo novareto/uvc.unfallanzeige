@@ -389,6 +389,7 @@ class IUnfallanzeige(IContent):
 
     prstkz = Choice(
         title = u"Tödlicher Unfall",
+        description = u'War der Unfall tödlich?',
         default = 'nein',
         values = ('ja', 'nein'),
          )

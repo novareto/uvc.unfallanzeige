@@ -91,6 +91,7 @@ class Job(Step):
     fields = base.Fields(IUnfallanzeige).select(
         'uadbru1', 'azubi', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
 
+
     fields['unflar'].mode = "radio"
     fields['azubi'].mode = "radio"
 
