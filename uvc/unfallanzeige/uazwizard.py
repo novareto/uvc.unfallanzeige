@@ -13,13 +13,26 @@ from uvc.unfallanzeige.resources import uazjs, uazcss
 from uvc.unfallanzeige.interfaces import IUnfallanzeigenFolder, IUnfallanzeige
 from grok.components import ViewSupportMixin
 from zeam.form.base import Actions
+from zeam.form.base.markers import SUCCESS, FAILURE
+from uvcsite.content.events import AfterSaveEvent
 from dolmen.forms.wizard.actions import (PreviousAction, SaveAction,
      NextAction, HiddenSaveAction)
+from zope.interface import implementer
 
 
 grok.templatedir('templates')
 
 
+class MySaveAction(SaveAction):
+    def __call__(self, form):
+        if form.current.actions['save'](form.current) is SUCCESS:
+            if super(MySaveAction, self).__call__(form) is SUCCESS:
+                grok.notify(AfterSaveEvent(form.context, form.request))
+                form.redirect(form.url(self.redirect_url))
+            return SUCCESS
+        return FAILURE
+
+@implementer(IUnfallanzeige)
 class Unfallanzeige(uvcsite.content.components.Content):
     """ContentType fuer das Lastschriftverfahren"""
     grok.name('Unfallanzeige')
@@ -61,7 +74,7 @@ class UnfallanzeigeWizard(Wizard, ViewSupportMixin):
 
     actions = Actions(
         PreviousAction(u"Zurück"),
-        SaveAction(u"Speichern"),
+        MySaveAction(u"Speichern"),
         NextAction(u"Weiter"))
 
     label = u'Unfallanzeige'
