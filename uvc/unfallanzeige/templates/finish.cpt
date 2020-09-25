@@ -1,6 +1,5 @@
 <div>
-  <div id="extrainfo" tal:replace="structure provider: uvcsite.extrainfo" />
-  <h1>Hallo Welt</h1>
+  <div id="extrainfo" tal:content="structure provider: uvcsite.extrainfo" />
   <fieldset>
   
     <div class="panel-group">

@@ -36,6 +36,14 @@ class Step(WizardStep, ViewSupportMixin):
         self.macros = zope.component.getMultiAdapter(
             (self.context, self.request), name='fieldmacros').template.macros
 
+    def validateStep(self, fields, data):
+        return
+
+    def validateData(self, fields, data):
+        errors = super(Step, self).validateData(fields, data)
+        self.validateStep(data, errors)
+        return errors
+
 
 class Basic(Step):
     grok.context(Unfallanzeige)
@@ -96,7 +104,7 @@ class Job(Step):
     fields['azubi'].mode = "radio"
 
     def updateWidgets(self):
-        super().updateWidgets()
+        super(Job, self).updateWidgets()
         resources.step2.need()
 
     def validateStep(self, data, errors):
@@ -128,22 +136,22 @@ class Person(Step):
     fields['prssex'].mode = "radio"
     fields['vehearbeitsv'].mode = "radio"
 
-    def updateWidgtes(self):
-        super(Person, self).updateWidgtes()
+    def updateWidgets(self):
+        super(Person, self).updateWidgets()
         resources.step3.need()
 
     def validateStep(self, data, errors):
         if data.get('lkz') == 'D':
-            if data.get('ikzplz') is not uvcsite.NO_VALUE:
+            if data.get('ikzplz') is not NO_VALUEM:
                 if len(data.get('ikzplz', '')) != 5:
                     errors.append((Error(u'Ihre Postleitzahl muss aus fünf Zahlen bestehen.', identifier='form.person.field.ikzplz')))
         if data.get('unfbu') == "Ehegatte des Unternehmers":
-            if data.get('vehearbeitsv') == uvcsite.NO_VALUE:
+            if data.get('vehearbeitsv') == NO_VALUEM:
                 errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
-                if data.get('vehebis') == NO_VALUE:
+                if data.get('vehebis') == NO_VALUEM:
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehebis'))
-                if data.get('veheentgeltbis') == NO_VALUE:
+                if data.get('veheentgeltbis') == NO_VALUEM:
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.veheentgeltbis'))
         return errors
 
@@ -193,7 +201,7 @@ class AccidentII(Step):
     fields['unfwa1'].mode = "radio"
     fields['unfeba'].mode = "radio"
 
-    def updateWidgtes(self):
+    def updateWidgets(self):
         super(Step, self).updateWidgets()
         resources.step5.need()
 
@@ -255,15 +263,17 @@ class Finish(Step):
     fields['behandlung'].mode = "radio"
 
 
+
 class Overview(grok.Viewlet):
-    grok.view(UnfallanzeigeWizard)
+    grok.view(Finish)
     grok.viewletmanager(uvcsite.browser.layout.slots.interfaces.IExtraInfo)
     grok.context(IUnfallanzeige)
 
-    def available(self):
-        if int(self.view.step) + 1 == len(self.view.allSubforms):
-            return True
-        return False
+#    def available(self):
+#        if int(self.view.step) + 1 == len(self.view.allSubforms):
+#            return True
+#        return False
+
 
     def getTitle(self, term, vocab_name):
         vocab = zope.component.getUtility(

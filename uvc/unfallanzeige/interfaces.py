@@ -18,7 +18,7 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from zope.schema import ValidationError
 from zope.component import queryUtility
-#from uvc.widgets.fields import OptionalChoice
+from uvc.widgets.fields import OptionalChoice
 from uvc.unfallanzeige import UvcUnfallanzeigeMessageFactory as _
 from uvc.validation.validation import NotValidEingabeDatum, validateUhrzeit, validatePLZ
 
@@ -201,7 +201,7 @@ class IUnfallanzeige(IContent):
 
 # Page Two
 
-    uadbru1 = Choice(
+    uadbru1 = OptionalChoice(
         title = u"Tätigkeit zum Unfallzeitpunkt",
         description = u"Die versicherte Person ist zum Unfallzeitpunkt beschäftigt als:",
         source=DynVocab("uvc.uadbru1"),

@@ -16,7 +16,7 @@
       <div class="col-md-12">
 	<div tal:define="widget W.get('form.basicinformation.field.unfus2')"
 	     metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline" />
-      </div
+      </div>
     </div>
 
   </div>
