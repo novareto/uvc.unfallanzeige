@@ -1,57 +1,29 @@
-<div class="row">
-    <div class="form-group top-titel">
-        <h1>Unfallanzeige</h1>
-    </div>
+<div class="form-group top-titel">
+  <h1>Unfallanzeige</h1>
+  <legend tal:content="view.label" />
 </div>
 
 <fieldset>
-  <!--<legend tal:content="view.label" />-->
   <div class="step-fields"
     tal:define="W view.fieldWidgets"
     tal:condition="W">
 
-
     <div class="row">
-        <div class="form-group">
-            <div tal:condition="view.available">
-                <label>
-                    <span> Anschrift des Unternehmens </span>
-                </label>
-                <span tal:define="data view.data">
-                    <div tal:condition="data.exminname1">
-                        <p tal:content="data.exminname1"> </p>
-                         <p tal:content="data.exminname2"> </p>
-                         <p tal:content="data.exminname3"> </p>
-                         <span tal:condition="data.exminhnrbi" > <p tal:content="string: ${data.exminstras} ${data.exminhnrvo} - ${data.exminhnrbi}"> </p> </span>
-                         <span tal:condition="not: data.exminhnrbi" > <p tal:content="string: ${data.exminstras} ${data.exminhnrvo} "> </p> </span>
-                         <p tal:content="string:${data.exminplz} ${data.exminort}"> </p>
-                    </div>
-                </span>
-             </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12"
-        tal:define="widget W.get('form.basic.field.title')"
-        metal:use-macro="view.macros['field']" />
-    </div>
-
-   <div class="row">
-      <div class="col-md-12"
-        tal:define="widget W.get('form.basic.field.bs')"
-        metal:use-macro="view.macros['field']" />
+      <div class="col-md-12">
+        <div tal:define="widget W.get('form.basic.field.title')"
+          metal:use-macro="view.macros['field']" />
+      </div>
     </div>
 
     <div class="row">
-      <div class="col-md-12"
-        tal:define="widget W.get('form.basic.field.unfustdor')"
-        metal:use-macro="view.macros['field']" />
+      <div class="col-md-12">
+        <div tal:define="widget W.get('form.basic.field.unfustdor')"
+          metal:use-macro="view.macros['field']" />
+      </div>
     </div>
 
-  <div class="row">
-    <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
         <div id="unfustdor">
           <div tal:define="widget W.get('form.basic.field.unfuname')" metal:use-macro="view.macros['field']" />
           <div class="row">
@@ -68,31 +40,30 @@
               </div>
             </div>
           </div>
-          </div>
-      </div>
-   </div>
-    <div class="row">
-        <div class="form-group">
-          <div class="form-group"
-            tal:define="widget W.get('form.basic.field.anspname'); widget2 W.get('form.basic.field.anspfon')" metal:use-macro="view.macros['doublefield']">
-          </div>
         </div>
+      </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group"
+          tal:define="widget W.get('form.basic.field.anspname'); widget2 W.get('form.basic.field.anspfon')" metal:use-macro="view.macros['doublefield']">
+        </div>
+      </div>
     </div>
 
+  </div>
 
-
-
-    <div class="fields" tal:condition="view.parent.fieldWidgets">
-      <span class="field" tal:repeat="widget view.parent.fieldWidgets">
-        <tal:widget tal:content="structure widget.render()" />
-      </span>
-    </div>
+  <div class="fields" tal:condition="view.parent.fieldWidgets">
+    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
 
   <div class="actions">
     <span class="action" tal:repeat="widget view.actionWidgets">
       <tal:widget tal:content="structure widget.render()" />
     </span>
   </div>
+
 </fieldset>

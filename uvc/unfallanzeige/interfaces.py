@@ -221,7 +221,7 @@ class IUnfallanzeige(IContent):
         constraint = validateFutureShortDatum,
         )
 
-    unfute = Choice(
+    unfute = OptionalChoice(
         title = u"Teil des Unternehmens",
         description = u"In welchem Teil des Unternehmens ist die versicherte Person ständig tätig?",
         source = DynVocab("uvc.unfute"),
