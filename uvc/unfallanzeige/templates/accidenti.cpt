@@ -1,17 +1,17 @@
-<fieldset>
+<div class="form-group top-titel">
+  <h1>Unfallanzeige</h1>
   <legend tal:content="view.label" />
+</div>
+
+<fieldset>
   <div class="step-fields"
        tal:define="W view.fieldWidgets"
        tal:condition="W">
 
     <div class="row">
-      <div class="col-md-2">
-	<div tal:define="widget W.get('form.accidenti.field.unfdatum')"
-	     metal:use-macro="view.macros['field']" />
-      </div>
-      <div class="col-md-10">
-	<div tal:define="widget W.get('form.accidenti.field.unfzeit')"
-	     metal:use-macro="view.macros['field']" />
+      <div class="col-md-12">
+	<div tal:define="widget W.get('form.accidenti.field.unfdatum');widget2 W.get('form.accidenti.field.unfzeit')"
+	  metal:use-macro="view.macros['doublefield']" />
       </div>
     </div>
 

@@ -1,6 +1,9 @@
-<fieldset>
+<div class="form-group top-titel">
+  <h1>Unfallanzeige</h1>
   <legend tal:content="view.label" />
+</div>
 
+<fieldset>
   <div class="step-fields form-group"
        tal:define="W view.fieldWidgets"
        tal:condition="view.fieldWidgets">
@@ -8,19 +11,18 @@
     <div class="row">
       <div class="col-md-12">
 	<div tal:define="widget W.get('form.basicinformation.field.unfus3')"
-	     metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline" />
+	  metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-	<div tal:define="widget W.get('form.basicinformation.field.unfus2')"
-	     metal:use-macro="path: context/@@fieldmacros/template/macros/field_inline" />
+        <div tal:define="widget W.get('form.basicinformation.field.unfus2')"
+	  metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
       </div>
     </div>
 
   </div>
-
   
   <div class="fields" tal:condition="view.parent.fieldWidgets">
     <span class="field" tal:repeat="widget view.parent.fieldWidgets">
