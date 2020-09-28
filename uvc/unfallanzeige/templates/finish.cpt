@@ -1,52 +1,33 @@
-<div>
-  <div id="extrainfo" tal:content="structure provider: uvcsite.extrainfo" />
-  <fieldset>
-  
-    <div class="panel-group">
-      <div class="panel panel-default">
-	<div class="panel-heading">
-	  <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse1">Basis Informationen</a>
-	  </h4>
-	</div>
-
-	<div id="collapse1" class="panel-collapse collapse">
-	  <div class="row">
-	    <div class="col-md-4">
-	      <div class="panel-body">Titel der Unfallanzeige</div>
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="col-md-4">
-	      <div id="extrainfo"
-		   tal:replace="structure provider: uvcsite.extrainfo" />
-	    </div>
-	  </div>
-	</div>
-      </div>
-    </div>
-
-    <legend tal:content="view.label" />
-    <div class="step-fields"
-	 tal:define="W view.fieldWidgets"
-	 tal:condition="W">
-      <div class="row">
-	<div class="col-md-12">
-	  <div tal:define="widget W.get('form.finish.field.behandlung')"
-	       metal:use-macro="view.macros['field']" />
-	</div>
-      </div>
-    </div>
-
-    <div class="fields" tal:condition="view.parent.fieldWidgets">
-	<span class="field" tal:repeat="widget view.parent.fieldWidgets">
-	  <tal:widget tal:content="structure widget.render()" />
-	</span>
-    </div>
-    <div class="actions">
-      <span class="action" tal:repeat="widget view.actionWidgets">
-	<tal:widget tal:content="structure widget.render()" />
-      </span>
-    </div>
-  </fieldset>
+<div class="form-group top-titel">
+  <h1>Unfallanzeige</h1>
+  <legend tal:content="view.label" />
 </div>
+
+<fieldset>
+  <div id="extrainfo" tal:content="structure provider: uvcsite.extrainfo" />
+  
+  <div class="step-fields"
+     tal:define="W view.fieldWidgets"
+     tal:condition="W">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div tal:define="widget W.get('form.finish.field.behandlung')"
+	  metal:use-macro="view.macros['field']" />
+      </div>
+    </div>
+  </div>
+
+  <div class="fields" tal:condition="view.parent.fieldWidgets">
+    <span class="field" tal:repeat="widget view.parent.fieldWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+
+  <div class="actions">
+    <span class="action" tal:repeat="widget view.actionWidgets">
+      <tal:widget tal:content="structure widget.render()" />
+    </span>
+  </div>
+
+</fieldset>
