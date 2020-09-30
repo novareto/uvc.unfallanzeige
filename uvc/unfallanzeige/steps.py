@@ -145,13 +145,13 @@ class Person(Step):
             if data.get('ikzplz') is not NO_VALUEM:
                 if len(data.get('ikzplz', '')) != 5:
                     errors.append((Error(u'Ihre Postleitzahl muss aus fünf Zahlen bestehen.', identifier='form.person.field.ikzplz')))
-        if data.get('unfbu') == "Ehegatte des Unternehmers":
+        if data.get('unfbu') == "Ehegatte des Unternehmers" or data.get('unfbu') == "eingetragenen Lebenspartnerschaft":
             if data.get('vehearbeitsv') == NO_VALUEM:
                 errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehearbeitsv'))
             if data.get('vehearbeitsv') == "Ja":
-                if data.get('vehebis') == NO_VALUEM:
+                if data.get('vehebis') == "":
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.vehebis'))
-                if data.get('veheentgeltbis') == NO_VALUEM:
+                if data.get('veheentgeltbis') == "":
                     errors.append(Error('Bitte hier eine Eingabe machen', identifier='form.person.field.veheentgeltbis'))
         return errors
 

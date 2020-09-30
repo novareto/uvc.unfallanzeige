@@ -1,10 +1,12 @@
 /* Step3 */
 $(document).ready(function(){
 
+$('input#form-person-field-vehebis').attr('placeholder', 'TT.MM.JJJJ').mask('99.99.9999');
+
 /* Plfichtfelder rotmarkieren */
-$('span.label[for="form-person-field-vehearbeitsv"], \
-   span.label[for="form-person-field-vehebis"], \
-   span.label[for="form-person-field-veheentgeltbis"]').after('<span class="field-required"></span>')
+$('label[for="form-person-field-vehearbeitsv"] span, \
+   label[for="form-person-field-vehebis"] span, \
+   label[for="form-person-field-veheentgeltbis"] span').after('<span> *</span>')
 
 /* Hide Show Ehegatten */
 
@@ -12,8 +14,7 @@ $('span.label[for="form-person-field-vehearbeitsv"], \
     #field-form-person-field-vehebis, \
     #field-form-person-field-veheentgeltbis').hide().find('input').attr('disabled', 'disabled')
 
- var ehegatte = $('#form-person-field-unfbu-4:checked').val();
- if (ehegatte == 'Ehegatte des Unternehmers'){
+ if ( $('#form-person-field-unfbu-3').prop('checked') || $('#form-person-field-unfbu-4').prop('checked') ) {
      $('#field-form-person-field-vehearbeitsv').show().find('input').removeAttr('disabled');
  }
  

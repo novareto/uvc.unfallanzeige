@@ -2,14 +2,11 @@ $(document).ready(function(){
 
 
 /* Pflichtfelder rotmarkieren */
-/*
-$('span.label[for="form-basic-field-unfuname"], \
-   span.label[for="form-basic-field-unfustrasse"], \
-   span.label[for="form-basic-field-unfunr"], \
-   span.label[for="form-basic-field-unfuplz"], \
-   span.label[for="form-basic-field-unfuort"]').after('<span class="field-required"></span>')
 
-*/
+$('label[for="form-basic-field-unfuname"] span').after('<span> *</span>');
+$('label[for="form-basic-field-unfustrasse"] span').after('<span> *</span>');
+$('label[for="form-basic-field-unfuplz"] span').after('<span> *</span>');
+
 /* Andere Adresse */
 
 var zweigstelle = $('#field-form-basic-field-unfustdor input:checked').val();

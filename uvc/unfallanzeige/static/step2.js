@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 /* Pflichtfelder rotmarkieren */
-$('span.label[for="form-job-field-unvlaraddr"]').after('<span class="field-required"></span>')
+$('label[for="form-job-field-unvlaraddr"] span').after('<span> *</span>')
 
 
 var leihfirma = $('#field-form-job-field-unflar input:checked').val();
