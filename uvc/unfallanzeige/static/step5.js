@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
 /* Pflichtfelder rotmarkieren */
-$('label[for="form-accidentii-field-unfae1"], \
-   label[for="form-accidentii-field-unfwa1"], \
-   label[for="form-accidentii-field-unfaedatum"], \
-   label[for="form-accidentii-field-unfwax"], \
-   label[for="form-accidentii-field-unfeba1"]').after('<span>*</span>')
+$('label[for="form-accidentii-field-unfae1"] span, \
+   label[for="form-accidentii-field-unfwa1"] span, \
+   label[for="form-accidentii-field-unfaedatum"] span, \
+   label[for="form-accidentii-field-unfwax"] span, \
+   label[for="form-accidentii-field-unfeba1"] span').after('<span> *</span>')
 
 // Init Hide All //
  $('#field-form-accidentii-field-unfeba1, #field-form-accidentii-field-unfae1, #field-form-accidentii-field-unfaedatum, #field-form-accidentii-field-unfaezeit, #field-form-accidentii-field-unfwa1, #field-form-accidentii-field-unfwax').hide().find('input').attr('disabled', 'disabled');
