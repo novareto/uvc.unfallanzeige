@@ -24,6 +24,7 @@ setup(name='uvc.unfallanzeige',
       install_requires=[
           'setuptools',
           'reportlab',
+          'dolmen.forms.wizard',
       ],
       entry_points={
       'fanstatic.libraries': [
