@@ -4,7 +4,9 @@
 </div>
 
 <fieldset>
+	<!--
   <div id="extrainfo" tal:content="structure provider: uvcsite.extrainfo" />
+	-->
   
   <div class="step-fields"
      tal:define="W view.fieldWidgets"

@@ -3,6 +3,7 @@
            xmlns:i18n="http://namespaces.zope.org/i18n">
 
   <include package="grok" />
+  <include package="dolmen.forms.wizard" />
   <grok:grok package="." />
 
   <i18n:registerTranslations directory="locales" />

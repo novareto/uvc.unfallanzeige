@@ -17,7 +17,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div tal:define="widget W.get('form.job.field.azubi')"
+        <div tal:define="widget W.get('form.job.field.azubi', None)" tal:condition="widget"
           metal:use-macro="path: context/@@fieldmacros/template/macros/field" />
       </div>
     </div>
