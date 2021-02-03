@@ -70,7 +70,7 @@ def validateGeburtsDatum(value):
         aktJahr = int(time.strftime('%Y'))
         if vdatum > now:
             raise FutureDatum(value)
-        if (int(jahr) > (aktJahr-14)) or (int(jahr) < (aktJahr-81)):
+        if (int(jahr) > (aktJahr-14)) or (int(jahr) < (aktJahr-86)):
             raise FalseYear(value)
     return True
 
