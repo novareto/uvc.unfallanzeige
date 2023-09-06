@@ -4,16 +4,17 @@
 
 
 import grok
+import uvcsite
 import zope.interface
 
-from uvcsite.interfaces import IHomeFolder
+from zope.app.homefolder.interfaces import IHomeFolder
 from uvc.unfallanzeige.uazwizard import Unfallanzeige
 
 
 class StartWizard(grok.View):
     grok.context(zope.interface.Interface)
     grok.title(u"Unfallanzeige")
-    grok.baseclass()
+    #grok.baseclass()
 
     def update(self):
         """ Wir müssen zunächst eine Instanz der Unfallanzeige
@@ -26,3 +27,13 @@ class StartWizard(grok.View):
 
     def render(self):
         self.redirect(self.url(self.uaz, 'edit'))
+
+
+class UnfallanzeigenRegistration(uvcsite.ProductRegistration):
+    grok.name('UnfallanzeigenRegistration')
+    grok.title('Unfallanzeige')
+    grok.description(u'Die gesetzlich vorgeschriebene Unfallanzeige können Sie über diese Seiten erstellen.')
+    grok.order(20)
+    uvcsite.productfolder('uvc.unfallanzeige.uazwizard.Unfallanzeigen')
+    icon = "fanstatic/bghw.staticcontent/unfallanzeige.gif"
+

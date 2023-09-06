@@ -71,9 +71,10 @@ class Job(uvcsite.Step):
     label = form_name = u'Angaben zur versicherten Person'
 
     fields = base.Fields(IUnfallanzeige).select(
-        'uadbru1', 'uadst', 'unfute', 'unflar', 'unvlaraddr')
+        'uadbru1', 'uadst', 'unfute', 'unflar', 'unvlaraddr', 'unfbv')
 
     fields['unflar'].mode = "radio"
+    fields['unfbv'].mode = "radio"
 
     def update(self):
         super(Job, self).update()
@@ -101,7 +102,7 @@ class Person(uvcsite.Step):
 
     fields = base.Fields(IUnfallanzeige).select(
         'prsname', 'prsvor', 'ikstr', 'iknr', 'lkz', 'ikzplz',
-        'ikzort', 'prsgeb', 'prssex', 'prssta', 'unfbu', 'vehearbeitsv',
+        'ikzort', 'prsgeb', 'prssex', 'prstel', 'prssta', 'unfbu', 'vehearbeitsv',
         'vehebis', 'veheentgeltbis', 'unfefz', 'unfkka')
 
     fields['unfbu'].mode = "radio"
@@ -141,10 +142,11 @@ class AccidentI(uvcsite.Step):
 
     fields = base.Fields(IUnfallanzeige).select(
         'unfdatum', 'unfzeit', 'unfort_detail', 'unfort',
-        'unfhg1', 'unfhg2', 'unfkn1', 'unfkn2')
+        'unfhg1', 'unfge', 'unfhg2', 'unfkn1', 'unfkn2')
 
     fields['unfhg2'].mode = "radio"
     fields['unfkn2'].mode = "radio"
+    fields['unfge'].mode = "radio"
 
     def update(self):
         super(uvcsite.Step, self).update()
