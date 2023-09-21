@@ -69,9 +69,10 @@ class IUnfallanzeigeWizard(Interface):
 class IPresentation(Interface):
     """ Marker Interface """
 
-
+from zope.interface import implementer
+@implementer(IContextSourceBinder)
 class DynVocab(object):
-    grok.implements(IContextSourceBinder)
+    #grok.implements(IContextSourceBinder)
 
     def __init__(self, name):
         self.name = name
@@ -88,7 +89,8 @@ class DynVocab(object):
 def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
-        SimpleTerm('weiblich', 'weiblich', u'weiblich')
+        SimpleTerm('weiblich', 'weiblich', u'weiblich'),
+        SimpleTerm('divers', 'divers', u'divers')
         ))
 
 
