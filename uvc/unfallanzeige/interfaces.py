@@ -2,6 +2,7 @@
 # Copyright (c) 2007-2010 NovaReto GmbH
 # cklinger@novareto.de
 
+import re
 import time
 import datetime
 import grokcore.component as grok
