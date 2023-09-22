@@ -74,6 +74,14 @@ def validateGeburtsDatum(value):
             raise FalseYear(value)
     return True
 
+def validate_tel_number(value):
+    # Deutsche Telefon Formate
+    pattern = r'^(?:\+49|0)[1-9][0-9]*(?:\s?[/\-]?\s?\d+)*$'
+    if re.match(pattern, value):
+        return True
+    else:
+        raise Exception("Falsches Format")
+
 
 class ArbeitEingestelltFields(Invalid):
     """Fehlerklasse"""
@@ -110,7 +118,7 @@ def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
         SimpleTerm('weiblich', 'weiblich', u'weiblich'),
-        SimpleTerm('unbekannt', 'unbekannt', u'unbekannt'),
+        SimpleTerm('unbekannt', 'unbekannt', u'divers'),
         SimpleTerm('keine Angabe', 'keine Angabe', u'keine Angabe')
         ))
 
@@ -261,6 +269,13 @@ class IUnfallanzeige(IContent):
         required = False,
         )
 
+    unfgfb = Choice(
+        title=u"geringfügiges Beschäftigungsverhältnis",
+        description=u'Liegt ein geringfügiges Beschäftigungsverhältnis vor?',
+        required=True,
+        values=['ja', 'nein']
+        )
+
 # Step 3
 
     prsname = TextLine(
@@ -314,9 +329,11 @@ class IUnfallanzeige(IContent):
 
 
     prstel = TextLine(
-        title = u"Telefonnummer",
-        description = u"Telefonnummer der versicherten Person",
-        required=False,
+        title = u"Telefonnummer der versicherten Person",
+        description = u"Bitte tragen Sie hier eine Telefonnummer ein.",
+        max_length = 30,
+        required = False,
+        constraint = validate_tel_number
         )
 
     prssta = Choice(
