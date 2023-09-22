@@ -110,7 +110,8 @@ def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
         SimpleTerm('weiblich', 'weiblich', u'weiblich'),
-        SimpleTerm('unbekannt', 'unbekannt', u'unbekannt')
+        SimpleTerm('unbekannt', 'unbekannt', u'unbekannt'),
+        SimpleTerm('keine Angabe', 'keine Angabe', u'keine Angabe')
         ))
 
 
@@ -142,6 +143,7 @@ def vocab_unfortdetail(context):
         SimpleTerm('Auf dem Weg von oder zur Arbeit', 'Auf dem Weg von oder zur Arbeit', u'Auf dem Weg von oder zur Arbeit'),
         SimpleTerm('Auf dem Geschaeftsweg', 'Auf dem Geschaeftsweg', u'Auf dem Geschäftsweg'),
         SimpleTerm('Ausserhalb des Betriebsgelaendes', 'Ausserhalb des Betriebsgelaendes', u'Ausserhalb des Betriebsgeländes'),
+        SimpleTerm('Homeoffice', 'Homeoffice', u'Während einer Homeoffice-Tätigkeit')
         ))
 
 
@@ -310,6 +312,13 @@ class IUnfallanzeige(IContent):
         source = vocab_prssex,
         )
 
+
+    prstel = TextLine(
+        title = u"Telefonnummer",
+        description = u"Telefonnummer der versicherten Person",
+        required=False,
+        )
+
     prssta = Choice(
         title = u"Staatsangehörigkeit",
         description = u'Bitte wählen Sie die Staatsangehörigkeit der versicherten Person aus.',
@@ -390,6 +399,14 @@ class IUnfallanzeige(IContent):
         title = u"Angaben zum Unfall",
         description = u"Die Angaben beruhen auf den Schilderungen:",
         source = vocab_unfhg2,
+        )
+
+
+    unfgew = Choice(
+        title=u"Hat ein Gewaltereignis stattgefunden?",
+        description=u'zum Beispiel körperliche Gewalt oder sexueller Übergriff',
+        required=True,
+        values=['ja', 'nein']
         )
 
     unfkn1 = Text(
