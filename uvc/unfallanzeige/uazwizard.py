@@ -44,7 +44,7 @@ class Adder(grok.View):
 
 class UnfallanzeigeWizard(uvcsite.Wizard):
     """ Wizard form."""
-    grok.implements(IUnfallanzeige)
+    #grok.implements(IUnfallanzeige)
     grok.context(Unfallanzeige)
     grok.name('edit')
     grok.require('uvc.EditContent')

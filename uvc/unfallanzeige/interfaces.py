@@ -90,7 +90,8 @@ def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
         SimpleTerm('weiblich', 'weiblich', u'weiblich'),
-        SimpleTerm('divers', 'divers', u'divers')
+        SimpleTerm('diverse', 'divers', u'divers'),
+        SimpleTerm('keine Angabe', 'keine Angabe', u'keine Angabe'),
         ))
 
 
@@ -112,6 +113,7 @@ def vocab_unfortdetail(context):
         SimpleTerm('Auf dem Weg von oder zur Arbeit', 'Auf dem Weg von oder zur Arbeit', u'Auf dem Weg von oder zur Arbeit'),
         SimpleTerm('Auf dem Geschaeftsweg', 'Auf dem Geschaeftsweg', u'Auf dem Geschäftsweg'),
         SimpleTerm('Ausserhalb des Betriebsgelaendes', 'Ausserhalb des Betriebsgelaendes', u'Ausserhalb des Betriebsgeländes'),
+        SimpleTerm('Homeoffice', 'Homeoffice', u'während der Homeoffice-Tätigkeit'),
         ))
 
 
@@ -219,6 +221,12 @@ class IUnfallanzeige(IContent):
         required = False,
         )
 
+    unfbv = Choice(
+        title = _(u"Geringfügiges Beschäftigungsverhältnis"),
+        description = _(u"Liegt ein geringfügiges Beschäftigungsverhältnis vor?"),
+        values = ('ja', 'nein'),
+        )
+
 # Step 3
 
     prsname = TextLine(
@@ -268,6 +276,12 @@ class IUnfallanzeige(IContent):
         title = _(u"Geschlecht"),
         description = _(u"Geschlecht des Versicherten"),
         source = vocab_prssex,
+        )
+
+    prstel = TextLine(
+        title = _(u"Telefonnummer"),
+        description = _(u"Telefonnummer der versicherten Person"),
+        required=False,
         )
 
     prssta = Choice(
@@ -344,6 +358,12 @@ class IUnfallanzeige(IContent):
     unfhg1= Text(
         title = _(u"Unfallhergang"),
         description = _(u"Bitte schildern sie moeglichst detailliert wie sich der Unfall ereignete"),
+        )
+
+    unfge = Choice(
+        title = _(u"Gewaltereignis"),
+        description = _(u"Hat ein Gewaltereignis vorgelegen? (z.B. körperlicher Übergriff oder sexueller Übergriff)"),
+        values = ('ja', 'nein'),
         )
 
     unfhg2= Choice(

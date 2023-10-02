@@ -24,6 +24,7 @@ setup(name='uvc.unfallanzeige',
       install_requires=[
           'setuptools',
           'reportlab',
+          'PyPDF2',
           # -*- Extra requirements: -*-
       ],
       entry_points={
