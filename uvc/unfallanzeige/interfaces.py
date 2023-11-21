@@ -119,8 +119,8 @@ def vocab_prssex(context):
     return SimpleVocabulary((
         SimpleTerm('maennlich', 'maennlich', u'männlich'),
         SimpleTerm('weiblich', 'weiblich', u'weiblich'),
-        SimpleTerm('unbekannt', 'unbekannt', u'divers'),
-        SimpleTerm('keine Angabe', 'keine Angabe', u'keine Angabe')
+        SimpleTerm('divers', 'divers', u'divers'),
+        SimpleTerm('unbekannt', 'unbekannt', u'keine Angabe')
         ))
 
 
@@ -334,7 +334,6 @@ class IUnfallanzeige(IContent):
         description = u"Bitte tragen Sie hier eine Telefonnummer ein.",
         max_length = 30,
         required = False,
-        constraint = validate_tel_number
         )
 
     prssta = Choice(
