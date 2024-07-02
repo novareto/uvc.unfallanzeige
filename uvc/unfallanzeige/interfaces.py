@@ -372,7 +372,7 @@ class IUnfallanzeige(IContent):
     unfefz = Int(
         title = u"Entgeltfortzahlung",
         description = u"Für wie viele Wochen besteht Anspuch auf Entgeltfortzahlung?",
-        required = False,
+        required = True,
         max=99,
         min=0,
         )
